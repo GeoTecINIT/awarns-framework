@@ -16,6 +16,7 @@
   },
   "private": true,
   "devDependencies": {
+    "@angular-devkit/build-angular": "^13.2.0",
     "@angular/animations": "^13.2.0",
     "@angular/common": "^13.2.0",
     "@angular/compiler": "^13.2.0",
@@ -31,19 +32,25 @@
     "@nativescript/types": "~8.2.0",
     "@nativescript/webpack": "~5.0.5",
     "@ngtools/webpack": "^13.0.0",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "3.3.0",
     "husky": "^7.0.0",
+    "nativescript-permissions": "1.3.11",
     "nativescript-vue": "~2.9.0",
     "nativescript-vue-template-compiler": "~2.9.0",
     "ng-packagr": "^13.2.0",
     "rxjs": "~7.5.0",
     "typescript": "~4.5.5",
-    "zone.js": "~0.11.1",
-    "@angular-devkit/build-angular": "^13.2.0",
-    "nativescript-permissions": "1.3.11"
+    "zone.js": "~0.11.1"
   },
   "lint-staged": {
     "**/*.{js,ts,scss,json,html}": [
       "npx prettier --write"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
