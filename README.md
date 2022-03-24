@@ -5,7 +5,7 @@ npm run setup
 npm start
 ```
 
-- @awarns
+- [@awarns/core](packages/core/README.md)
 
 # How to use?
 

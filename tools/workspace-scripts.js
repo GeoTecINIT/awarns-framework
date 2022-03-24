@@ -63,6 +63,13 @@ module.exports = {
     // packages
     // build output is always in dist/packages
     '@awarns': {
+      // @awarns/core
+      core: {
+        build: {
+          script: 'nx run core:build.all',
+          description: '@awarns/core: Build',
+        },
+      },
       'build-all': {
         script: 'nx run-many --target=build.all --all',
         description: 'Build all packages',
@@ -73,6 +80,10 @@ module.exports = {
       description: '_____________  Focus (VS Code supported)  _____________',
     },
     focus: {
+      core: {
+        script: 'nx run core:focus',
+        description: 'Focus on @awarns/core',
+      },
       reset: {
         script: 'nx g @awarns/plugin-tools:focus-packages',
         description: 'Reset Focus',

@@ -21,6 +21,7 @@
     ],
     "paths": {
       "@awarns/*": ["packages/*"],
+      "@awarns/core": ["packages/core/index.d.ts"],
       "@demo/shared": ["tools/demo/index.ts"]
     }
   },
