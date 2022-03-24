@@ -50,6 +50,17 @@
         "clean": true
       }
     },
+    "test": {
+      "executor": "@nativescript/nx:test",
+      "outputs": ["coverage/apps/nativescript-mobile"],
+      "options": {
+        "coverage": true
+      },
+      "configurations": {
+        "android": {},
+        "ios": {}
+      }
+    },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {

@@ -4,11 +4,19 @@
   "license": "SEE LICENSE IN <your-license-filename>",
   "repository": "<fill-your-repository-here>",
   "dependencies": {
+    "@awarns/core": "file:../../packages/core",
     "@nativescript/core": "file:../../node_modules/@nativescript/core",
-    "@awarns/core": "file:../../packages/core"
+    "@nativescript/unit-test-runner": "^3.0.3"
   },
   "devDependencies": {
+    "@jsdevtools/coverage-istanbul-loader": "3.0.5",
     "@nativescript/android": "~8.2.0",
-    "@nativescript/ios": "~8.2.0"
+    "@nativescript/ios": "~8.2.0",
+    "@types/jasmine": "^4.0.0",
+    "karma": "6.3.17",
+    "karma-coverage": "2.0.3",
+    "karma-jasmine": "4.0.1",
+    "karma-nativescript-launcher": "0.4.0",
+    "nyc": "15.1.0"
   }
 }

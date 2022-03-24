@@ -10,7 +10,7 @@ module.exports = {
       description: 'Execute any command with the @nrwl/cli',
     },
     format: {
-      script: 'nx format:write',
+      script: 'nx format:write --base=main',
       description: 'Format source code of the entire workspace (auto-run on precommit hook)',
     },
     '🔧': {
