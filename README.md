@@ -1,13 +1,13 @@
 # @awarns/\* plugins
 
+- [@awarns/core](packages/core/README.md)
+
+# How to use?
+
 ```
 npm run setup
 npm start
 ```
-
-- [@awarns/core](packages/core/README.md)
-
-# How to use?
 
 This workspace manages the suite of plugins listed above.
 
