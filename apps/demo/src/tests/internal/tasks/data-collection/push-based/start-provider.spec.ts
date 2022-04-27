@@ -1,6 +1,6 @@
 import { PushProvider } from '@awarns/core/internal/providers';
 import { StartPushProviderTask } from '@awarns/core/internal/tasks/data-collection/push-based';
-import { createPushProviderMock } from '~/tests/internal/tasks/data-collection/push-based/index';
+import { createPushProviderMock } from '~/tests/internal/tasks/data-collection/push-based/common.spec.ts';
 import { createEvent } from 'nativescript-task-dispatcher/testing/events';
 
 describe('Start push provider task', () => {

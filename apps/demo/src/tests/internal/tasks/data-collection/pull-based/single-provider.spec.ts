@@ -1,6 +1,6 @@
 import { PullProvider } from '@awarns/core/internal/providers';
 import { SinglePullProviderTask } from '@awarns/core/internal/tasks/data-collection/pull-based';
-import { createPullProviderMock } from './index';
+import { createPullProviderMock } from './common.spec';
 import { Geolocation } from '@awarns/core/internal/providers/geolocation/geolocation';
 import { createEvent, listenToEventTrigger } from 'nativescript-task-dispatcher/testing/events';
 

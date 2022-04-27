@@ -1,6 +1,6 @@
 import { ActivityRecognizer } from 'nativescript-context-apis/internal/activity-recognition';
 import { HumanActivityProvider } from '@awarns/core/internal/providers/activity-recognition/provider';
-import { createActivityRecognizerMock } from './index';
+import { createActivityRecognizerMock } from './common.spec';
 import { HumanActivityRecognizerNotReadyErr } from '@awarns/core/internal/providers/activity-recognition/provider';
 import { Resolution } from '@awarns/core/internal/providers/activity-recognition/provider';
 

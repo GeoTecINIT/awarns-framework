@@ -1,5 +1,5 @@
 import { TracesStore } from '@awarns/core/internal/persistence/stores/timeseries';
-import { createTracesStoreMock } from './index';
+import { createTracesStoreMock } from './common.spec';
 import { TraceableTask, TracerConfig, TraceType, TraceResult } from '@awarns/core/internal/tasks/tracing';
 import { TaskOutcome, TaskParams } from 'nativescript-task-dispatcher/internal/tasks/task';
 import { DispatchableEvent, TaskDispatcherEvent } from 'nativescript-task-dispatcher/internal/events';

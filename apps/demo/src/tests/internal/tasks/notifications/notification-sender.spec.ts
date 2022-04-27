@@ -1,5 +1,5 @@
 import { NotificationsManager } from '@awarns/core/internal/notifications/manager';
-import { createNotificationsManagerMock } from './index';
+import { createNotificationsManagerMock } from './common.spec';
 import { NotificationSenderTask } from '@awarns/core/internal/tasks/notifications/notification-sender';
 import { DispatchableEvent } from 'nativescript-task-dispatcher/events';
 import { TapActionType } from '@awarns/core/notifications';

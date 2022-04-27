@@ -1,6 +1,6 @@
 import { GeolocationProvider as NativeProvider, Geolocation as NativeGeolocation } from 'nativescript-context-apis/geolocation';
 
-import { createNativeGeolocationProviderMock } from './index';
+import { createNativeGeolocationProviderMock } from './common.spec';
 
 import { GeolocationProvider, geolocationProviderNotReadyErr } from '@awarns/core/internal/providers/geolocation/provider';
 import { RecordType } from '@awarns/core/internal/providers';

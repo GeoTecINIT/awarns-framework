@@ -1,6 +1,6 @@
 import { PushProvider } from '@awarns/core/internal/providers';
 import { StopPushProviderTask } from '@awarns/core/internal/tasks/data-collection/push-based';
-import { createPushProviderMock } from './index';
+import { createPushProviderMock } from './common.spec';
 import { createEvent } from 'nativescript-task-dispatcher/testing/events';
 
 describe('Stop push provider task', () => {

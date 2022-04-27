@@ -1,6 +1,6 @@
 import { AreasOfInterestStore } from '@awarns/core/internal/persistence/stores/geofencing/aois';
 import { GeofencingChecker } from '@awarns/core/internal/tasks/geofencing/checker';
-import { createAreasOfInterestStoreMock } from './index';
+import { createAreasOfInterestStoreMock } from './common.spec';
 import { AreaOfInterest } from '@awarns/core/internal/tasks/geofencing/aoi';
 import { Geolocation } from '@awarns/core/internal/providers/geolocation/geolocation';
 import { GeofencingProximity } from '@awarns/core/internal/tasks/geofencing/geofencing-state';

@@ -5,7 +5,7 @@ import { GeofencingChecker } from '@awarns/core/internal/tasks/geofencing/checke
 import { AreasOfInterestStore } from '@awarns/core/internal/persistence/stores/geofencing/aois';
 import { GeofencingTask } from '@awarns/core/internal/tasks/geofencing/task';
 import { DispatchableEvent } from 'nativescript-task-dispatcher/events';
-import { createAreasOfInterestStoreMock, createGeofencingCheckerMock, createGeofencingStateStoreMock } from './index';
+import { createAreasOfInterestStoreMock, createGeofencingCheckerMock, createGeofencingStateStoreMock } from './common.spec';
 import { GeofencingProximity } from '@awarns/core/internal/tasks/geofencing/geofencing-state';
 import { Change, RecordType } from '@awarns/core/internal/providers/base-record';
 import { AoIProximityChange } from '@awarns/core/internal/tasks/geofencing/aoi';
