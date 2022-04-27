@@ -1,12 +1,12 @@
 trigger:
   branches:
     include:
-      - master
+      - main
   tags:
     include:
       - v*
 pr:
-  - master
+  - main
 
 pool:
   vmImage: 'macos-latest'
