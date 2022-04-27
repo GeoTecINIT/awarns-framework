@@ -1,3 +1,5 @@
 import { CoreCommon } from './common';
 
-export class Core extends CoreCommon {}
+export class AwarnsCore extends CoreCommon {}
+
+export const awarns = new AwarnsCore();
