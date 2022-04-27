@@ -32,6 +32,7 @@
     "@nativescript/types": "~8.2.0",
     "@nativescript/webpack": "~5.0.5",
     "@ngtools/webpack": "^13.0.0",
+    "@swc-node/register": "~1.4.2",
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "3.3.0",
     "husky": "^7.0.0",
