@@ -18,6 +18,7 @@
     "karma": "6.3.17",
     "karma-coverage": "2.0.3",
     "karma-jasmine": "4.0.1",
+    "karma-junit-reporter": "2.0.1",
     "karma-nativescript-launcher": "0.4.0",
     "nyc": "15.1.0"
   }
