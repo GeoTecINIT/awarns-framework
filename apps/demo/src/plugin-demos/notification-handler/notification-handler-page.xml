@@ -1,0 +1,30 @@
+<Page
+        showingModally="onShowingModally"
+        navigatingTo="onNavigatingTo"
+        xmlns="http://schemas.nativescript.org/tns.xsd">
+    <ActionBar title="{{ content.title }}" class="action-bar"/>
+
+    <StackLayout>
+        <StackLayout class="m-8 p-x-12" visibility="{{ content.type === 'rich-text' ? 'visible' : 'collapsed' }}">
+            <Label text="{{ content.body }}" textWrap="true" class="body"/>
+            <Button class="btn btn-primary" text="Close" tap="closeModal"/>
+        </StackLayout>
+        <StackLayout class="m-8 p-x-12" visibility="{{ content.type === 'questions' ? 'visible' : 'collapsed' }}">
+            <Label text="{{ content.description }}" textWrap="true" class="body"/>
+            <ListView items="{{ questions }}" rowHeight="200">
+                <ListView.itemTemplate>
+                    <StackLayout>
+                        <Label text="{{ title, 'Q: ' + title }}" class="h2" textWrap="true"/>
+                        <Slider id="{{ title }}"
+                                value="{{ Math.round(start + end / 2) }}"
+                                minValue="{{ start }}"
+                                maxValue="{{ end }}"
+                                loaded="onSliderLoaded"/>
+                    </StackLayout>
+                </ListView.itemTemplate>
+            </ListView>
+
+            <Button class="btn btn-primary" text="Submit answers" tap="submit"/>
+        </StackLayout>
+    </StackLayout>
+</Page>

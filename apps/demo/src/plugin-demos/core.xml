@@ -1,14 +1,57 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="page">
-    <Page.actionBar>
-        <ActionBar title="core" icon="" class="action-bar">
-        </ActionBar>
-    </Page.actionBar>
-    <StackLayout class="p-20">
-        <ScrollView class="h-full">
-          <StackLayout>
-            <Button text="Test core" tap="{{ testIt }}" class="btn btn-primary"/>
+<Page
+  navigatingTo="navigatingTo"
+  navigatedTo="navigatedTo"
+  xmlns="http://schemas.nativescript.org/tns.xsd">
 
-          </StackLayout>
-        </ScrollView>
-    </StackLayout>
+  <ActionBar title="Core Demo">
+    <ActionBar.actionItems>
+      <ActionItem tap="exportTap" text="Export log"
+                  ios.systemIcon="3" ios.position="left"
+                  android.systemIcon="ic_menu_save" android.position="actionBar"/>
+      <ActionItem tap="clearTap" text="Clear events"
+                  ios.systemIcon="16" ios.position="right"
+                  android.position="popup"/>
+    </ActionBar.actionItems>
+  </ActionBar>
+
+  <GridLayout rows="*" columns="*">
+    <ListView row="0" col="0" visibility="{{ exportingTraces ? 'collapsed' : 'visible' }}"
+              items="{{ traces }}"
+              loadMoreItems="loadMoreItemsReq"
+              separatorColor="orangered" rowHeight="140"
+              class="list-group" itemTemplateSelector="type"
+              id="listView">
+      <ListView.itemTemplates>
+        <!-- The item template can only have a single root view container (e.g. GriLayout, StackLayout, etc.) -->
+        <template key="task">
+          <GridLayout columns="auto, *" rows="auto, auto, auto, auto" class="list-group-item">
+            <Label text="{{ name }}" row="0" col="0" colSpan="2" textWrap="true" class="h3" />
+            <Label text="{{ result, 'Result: ' + result }}" row="1" col="0" colSpan="2" textWrap="true" class="title" />
+            <Label text="{{ content.took, 'Took: ' + content.took + 'ms' }}" row="2" col="0" colSpan="2" textWrap="true" class="title" />
+            <Label text="{{ content.message, 'Error?: ' + (!!content.message ? content.message : 'None') }}" row="3" col="0" colSpan="2" textWrap="true" class="title" />
+            <Label text="{{ timestamp }}" row="3" col="1" textWrap="true" class="h4 text-right" />
+          </GridLayout>
+        </template>
+        <template key="event">
+          <GridLayout columns="auto, *" rows="auto, auto, auto, auto" class="list-group-item">
+            <Label text="{{ name }}" row="0" col="0" colSpan="2" textWrap="true" class="h3" />
+            <Label text="{{ content.activity, 'Activity?: ' + (!!content.activity ? content.activity : 'None') }}" row="1" col="0" textWrap="true" class="title" />
+            <Label text="{{ content.change, 'Change?: ' + (!!content.change ? content.change : 'None') }}" row="2" col="0" textWrap="true" class="title" />
+            <Label text="{{ content.confidence, 'Confidence?: ' + (!!content.confidence ? (content.confidence + '%') : '--') }}" row="3" col="0" textWrap="true" class="title" />
+            <Label text="{{ timestamp }}" row="3" col="1" textWrap="true" class="h4 text-right" />
+          </GridLayout>
+        </template>
+      </ListView.itemTemplates>
+    </ListView>
+
+    <GridLayout rows="*, *" columns="*" visibility="{{ exportingTraces ? 'visible' : 'collapsed' }}">
+      <StackLayout row="0" col="0" verticalAlignment="bottom">
+        <Label text="Exporting event log." class="h2" horizontalAlignment="center"/>
+        <Label text="Please wait..." class="h3" horizontalAlignment="center"/>
+      </StackLayout>
+      <ActivityIndicator row="1" col="0" busy="{{ exportingTraces }}"
+                         verticalAlignment="center" horizontalAlignment="center"/>
+    </GridLayout>
+  </GridLayout>
+
 </Page>

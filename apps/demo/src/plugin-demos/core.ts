@@ -1,10 +1,59 @@
-import { Observable, EventData, Page } from '@nativescript/core';
+import { EventData, Page } from '@nativescript/core';
 import { DemoSharedCore } from '@demo/shared';
-import {} from '@awarns/core';
+import { Notification } from '@awarns/core/notifications';
 
 export function navigatingTo(args: EventData) {
   const page = <Page>args.object;
-  page.bindingContext = new DemoModel();
+
+  page.bindingContext = getDemoViewModel();
+
+  getDemoViewModel().setupDemo();
+}
+
+export function navigatedTo(args: EventData) {
+  const page = <Page>args.object;
+
+  const vm = getDemoViewModel();
+  vm.setupNotificationTapListener((notification) => showNotificationModal(notification, page));
+  vm.setupNotificationClearedListener();
+}
+
+export function exportTap() {
+  getDemoViewModel().handleExportTap();
+}
+
+export function clearTap() {
+  getDemoViewModel().handleClearTap();
+}
+
+export function loadMoreItemsReq() {
+  getDemoViewModel().loadMore();
+}
+
+function showNotificationModal(notification: Notification, page: Page) {
+  const context = notification;
+  const closeCallback = null;
+  const fullscreen = true;
+  const animated = true;
+
+  try {
+    page.showModal('notification-handler/notification-handler-root', {
+      context,
+      closeCallback,
+      fullscreen,
+      animated,
+    });
+  } catch (err) {
+    console.error(`Could not show modal: ${err.stack ? err.stack : JSON.stringify(err)}`);
+  }
 }
 
 export class DemoModel extends DemoSharedCore {}
+
+let _vm: DemoModel;
+function getDemoViewModel() {
+  if (!_vm) {
+    _vm = new DemoModel();
+  }
+  return _vm;
+}
