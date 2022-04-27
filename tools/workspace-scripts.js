@@ -13,6 +13,14 @@ module.exports = {
       script: 'nx format:write --base=main',
       description: 'Format source code of the entire workspace (auto-run on precommit hook)',
     },
+    lint: {
+      script: 'nx run-many --all --target=lint',
+      description: 'Lint source code of the entire workspace',
+    },
+    'android-test-ci': {
+      script: 'nx run demo:test:android --watch false --justlaunch',
+      description: 'Run all tests on Android device and finish test runner execution (ideal for CI)',
+    },
     '🔧': {
       script: `npx cowsay "NativeScript plugin demos make developers 😊"`,
       description: '_____________  Apps to demo plugins with  _____________',
@@ -35,6 +43,16 @@ module.exports = {
         android: {
           script: 'nx run demo:android',
           description: '⚆  Run Android  🤖',
+        },
+      },
+      'demo-test': {
+        ios: {
+          script: 'nx run demo:test:ios',
+          description: '⚆  Run tests on iOS  ',
+        },
+        android: {
+          script: 'nx run demo:test:android',
+          description: '⚆  Run tests on Android  🤖',
         },
       },
       '...Angular...': {
