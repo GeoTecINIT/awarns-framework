@@ -1,5 +1,4 @@
-import { Change, Record, RecordType } from '../../providers/base-record';
-import { GeofencingProximity } from './geofencing-state';
+import { Change, Record, RecordType } from '../../../providers';
 
 export class AoIProximityChange extends Record {
   constructor(public aoi: AreaOfInterest, public proximity: GeofencingProximity, change: Change, timestamp = new Date()) {
@@ -7,7 +6,7 @@ export class AoIProximityChange extends Record {
   }
 }
 
-export interface AreaOfInterest {
+interface AreaOfInterest {
   id: string;
   name: string;
   latitude: number;
@@ -15,4 +14,10 @@ export interface AreaOfInterest {
   radius: number;
   category?: string;
   level?: number;
+}
+
+export enum GeofencingProximity {
+  INSIDE = 'inside',
+  NEARBY = 'nearby',
+  OUTSIDE = 'outside',
 }
