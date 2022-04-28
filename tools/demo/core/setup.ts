@@ -1,9 +1,10 @@
 import { awarns } from '@awarns/core';
+import { demoTasks } from '../tasks';
 import { demoTaskGraph } from './graph';
 
 export function initializePlugin() {
   awarns
-    .init([], demoTaskGraph, {
+    .init(demoTasks, demoTaskGraph, {
       enableLogging: true,
       notificationsChannelName: 'Intervention alerts',
     })
