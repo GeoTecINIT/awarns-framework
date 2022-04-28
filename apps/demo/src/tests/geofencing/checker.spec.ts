@@ -1,9 +1,8 @@
-import { AreasOfInterestStore } from '../../persistence/stores/geofencing/aois';
-import { GeofencingChecker } from './checker';
+import { AreasOfInterestStore } from '@awarns/geofencing/internal/persistence';
+import { GeofencingChecker } from '@awarns/geofencing/internal/checker';
 import { createAreasOfInterestStoreMock } from './common.spec';
-import { AreaOfInterest } from './aoi';
-import { Geolocation } from '../../providers/geolocation/geolocation';
-import { GeofencingProximity } from './geofencing-state';
+import { AreaOfInterest, GeofencingProximity } from '@awarns/geofencing/internal/entities';
+import { Geolocation } from '@awarns/core/entities/geolocation';
 
 describe('Geofencing checker', () => {
   let store: AreasOfInterestStore;

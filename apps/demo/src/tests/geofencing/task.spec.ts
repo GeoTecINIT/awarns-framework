@@ -1,14 +1,11 @@
-import { Geolocation } from '../../providers/geolocation/geolocation';
-import { AreaOfInterest } from './aoi';
-import { GeofencingStateStore } from '../../persistence/stores/geofencing/state';
-import { GeofencingChecker } from './checker';
-import { AreasOfInterestStore } from '../../persistence/stores/geofencing/aois';
-import { GeofencingTask } from './task';
+import { Geolocation } from '@awarns/core/entities/geolocation';
+import { AoIProximityChange, AreaOfInterest, GeofencingProximity } from '@awarns/geofencing/internal/entities';
+import { AreasOfInterestStore, GeofencingStateStore } from '@awarns/geofencing/internal/persistence';
+import { GeofencingChecker } from '@awarns/geofencing/internal/checker';
+import { GeofencingTask } from '@awarns/geofencing/internal/task';
 import { DispatchableEvent } from 'nativescript-task-dispatcher/events';
 import { createAreasOfInterestStoreMock, createGeofencingCheckerMock, createGeofencingStateStoreMock } from './common.spec';
-import { GeofencingProximity } from './geofencing-state';
-import { Change, RecordType } from '../../providers';
-import { AoIProximityChange } from './aoi';
+import { Change, RecordType } from '@awarns/core/entities';
 import { createEvent, listenToEventTrigger } from 'nativescript-task-dispatcher/testing/events';
 
 describe('Geofencing task', () => {
