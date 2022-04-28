@@ -6,7 +6,8 @@
   "dependencies": {
     "@awarns/core": "file:../../packages/core",
     "@nativescript/core": "file:../../node_modules/@nativescript/core",
-    "@nativescript/unit-test-runner": "^3.0.3"
+    "@nativescript/unit-test-runner": "^3.0.3",
+    "@awarns/geofencing": "file:../../packages/geofencing"
   },
   "devDependencies": {
     "@jsdevtools/coverage-istanbul-loader": "3.0.5",

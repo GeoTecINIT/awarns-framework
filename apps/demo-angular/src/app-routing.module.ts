@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'core', loadChildren: () => import('./plugin-demos/core.module').then((m) => m.CoreModule) },
+  { path: 'geofencing', loadChildren: () => import('./plugin-demos/geofencing.module').then((m) => m.GeofencingModule) },
 ];
 
 @NgModule({

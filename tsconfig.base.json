@@ -22,7 +22,8 @@
     "paths": {
       "@awarns/*": ["packages/*"],
       "@awarns/core": ["packages/core/index.d.ts"],
-      "@demo/shared": ["tools/demo/index.ts"]
+      "@demo/shared": ["tools/demo/index.ts"],
+      "@awarns/geofencing": ["packages/geofencing/index.d.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

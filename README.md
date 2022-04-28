@@ -1,6 +1,5 @@
-# @awarns/\* plugins
-
 - [@awarns/core](packages/core/README.md)
+- [@awarns/geofencing](packages/geofencing/README.md)
 
 # How to use?
 

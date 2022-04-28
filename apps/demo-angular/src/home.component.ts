@@ -9,5 +9,8 @@ export class HomeComponent {
     {
       name: 'core',
     },
+    {
+      name: 'geofencing',
+    },
   ];
 }
