@@ -88,6 +88,13 @@ module.exports = {
           description: '@awarns/core: Build',
         },
       },
+      // @awarns/geolocation
+      geolocation: {
+        build: {
+          script: 'nx run geolocation:build.all',
+          description: '@awarns/geolocation: Build',
+        },
+      },
       // @awarns/geofencing
       geofencing: {
         build: {
@@ -112,6 +119,10 @@ module.exports = {
       geofencing: {
         script: 'nx run geofencing:focus',
         description: 'Focus on @awarns/geofencing',
+      },
+      geolocation: {
+        script: 'nx run geolocation:focus',
+        description: 'Focus on @awarns/geolocation',
       },
       reset: {
         script: 'nx g @awarns/plugin-tools:focus-packages',

@@ -12,47 +12,47 @@ pool:
   vmImage: 'macos-latest'
 
 steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '16.x'
-  displayName: 'Install Node.js'
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '16.x'
+    displayName: 'Install Node.js'
 
-- task: JavaToolInstaller@0
-  inputs:
-    versionSpec: '11'
-    jdkArchitectureOption: 'x64'
-    jdkSourceOption: 'PreInstalled'
-  displayName: 'Install JDK'
+  - task: JavaToolInstaller@0
+    inputs:
+      versionSpec: '11'
+      jdkArchitectureOption: 'x64'
+      jdkSourceOption: 'PreInstalled'
+    displayName: 'Install JDK'
 
-- script: |
-    echo no | npm install -g nativescript
-    ns usage-reporting disable
-    ns error-reporting disable
-  displayName: 'Install NativeScript CLI'
+  - script: |
+      echo no | npm install -g nativescript
+      ns usage-reporting disable
+      ns error-reporting disable
+    displayName: 'Install NativeScript CLI'
 
-- script: |
-    npm run setup
-    cd apps/demo
-    npm i
-    cd ..
-  displayName: 'Setup'
+  - script: |
+      npm run setup
+      cd apps/demo
+      npm i
+      cd ..
+    displayName: 'Setup'
 
-- script: |
-    npm start lint
-  displayName: 'Lint'
+  - script: |
+      npm start lint
+    displayName: 'Lint'
 
-- script: |
-    npm start @awarns.core.build
-    npm start @awarns.build-all
-  displayName: 'Build'
+  - script: |
+      npm start @awarns.core.build
+      npm start @awarns.build-all
+    displayName: 'Build'
 
-- script: |
-    ./ci-tools/wait-for-emulator.sh
-    npm start android-test-ci
-  displayName: 'Test'
+  - script: |
+      ./ci-tools/wait-for-emulator.sh
+      npm start android-test-ci
+    displayName: 'Test'
 
-- task: PublishTestResults@2
-  condition: succeededOrFailed()
-  inputs:
-    testResultsFormat: 'JUnit'
-    testResultsFiles: 'apps/demo/src/test-reports/**/report.xml'
+  - task: PublishTestResults@2
+    condition: succeededOrFailed()
+    inputs:
+      testResultsFormat: 'JUnit'
+      testResultsFiles: 'apps/demo/src/test-reports/**/report.xml'
