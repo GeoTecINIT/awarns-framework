@@ -5,7 +5,7 @@ import { GeofencingChecker } from '@awarns/geofencing/internal/checker';
 import { GeofencingTask } from '@awarns/geofencing/internal/task';
 import { DispatchableEvent } from 'nativescript-task-dispatcher/events';
 import { createAreasOfInterestStoreMock, createGeofencingCheckerMock, createGeofencingStateStoreMock } from './common.spec';
-import { Change, RecordType } from '@awarns/core/entities';
+import { Change, KnownTypes } from '@awarns/core/entities';
 import { createEvent, listenToEventTrigger } from 'nativescript-task-dispatcher/testing/events';
 
 describe('Geofencing task', () => {

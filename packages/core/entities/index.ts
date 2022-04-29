@@ -1,1 +1,1 @@
-export { Record, RecordType, Change } from '../internal/providers/base-record';
+export * from '../internal/providers/base-record';
