@@ -1,7 +1,6 @@
-import { PullProvider, RecordType } from '../../../providers';
+import { PullProvider } from '../../../providers';
 import { BatchPullProviderTask } from './index';
-import { createPullProviderMock } from './common.spec';
-import { Geolocation } from '../../../providers/geolocation/geolocation';
+import { createPullProviderMock, SampleRecord, SampleRecordType } from './common.spec';
 import { ProviderInterrupter } from '../../../providers/provider-interrupter';
 import { createEvent, listenToEventTrigger } from 'nativescript-task-dispatcher/testing/events';
 import { TaskDispatcherEvent } from 'nativescript-task-dispatcher/internal/events';
@@ -12,52 +11,52 @@ describe('Batch pull-based provider task', () => {
 
   beforeEach(() => {
     provider = createPullProviderMock();
-    task = new BatchPullProviderTask(provider, 'Phone');
+    task = new BatchPullProviderTask(provider, 'Imaginary');
   });
 
   it('should have a predictable name', () => {
-    expect(task.name).toEqual('acquireMultiplePhoneGeolocation');
+    expect(task.name).toEqual('acquireMultipleImaginarySampleRecord');
   });
 
   it('runs and generates an event with multiple measurements collected', async () => {
     spyOn(provider, 'next').and.callFake(() => {
-      return [new Promise((resolve) => setTimeout(() => resolve(createFakeGeolocation()), 200)), () => null];
+      return [new Promise((resolve) => setTimeout(() => resolve(new SampleRecord()), 200)), () => null];
     });
 
     const igniter = createEvent('fake', {
       expirationTimestamp: Date.now() + 1000,
     });
-    const done = listenToGeolocationAcquiredEvent(igniter.id);
+    const done = listenToSampleRecordAcquiredEvent(igniter.id);
 
     task.run({}, igniter);
     const acquiredData = await done;
     expect(acquiredData.length).toBe(4);
     for (let i = 0; i < 4; i++) {
-      expect(acquiredData[i].type).toEqual(RecordType.Geolocation);
+      expect(acquiredData[i].type).toEqual(SampleRecordType);
     }
   });
 
   it('allows to limit the frequency at which measurements should be collected at maximum', async () => {
     spyOn(provider, 'next').and.callFake(() => {
-      return [new Promise((resolve) => setTimeout(() => resolve(createFakeGeolocation()), 200)), () => null];
+      return [new Promise((resolve) => setTimeout(() => resolve(new SampleRecord()), 200)), () => null];
     });
 
     const igniter = createEvent('fake', {
       expirationTimestamp: Date.now() + 1000,
     });
-    const done = listenToGeolocationAcquiredEvent(igniter.id);
+    const done = listenToSampleRecordAcquiredEvent(igniter.id);
 
     task.run({ maxInterval: 400 }, igniter);
     const acquiredData = await done;
     expect(acquiredData.length).toBe(2);
     for (let i = 0; i < 2; i++) {
-      expect(acquiredData[i].type).toEqual(RecordType.Geolocation);
+      expect(acquiredData[i].type).toEqual(SampleRecordType);
     }
   });
 
   it('throws an error and finishes the task chain when no record is obtained', async () => {
     spyOn(provider, 'next').and.callFake(() => {
-      return [new Promise((_, reject) => setTimeout(() => reject('Could not get location!'), 200)), () => null];
+      return [new Promise((_, reject) => setTimeout(() => reject('Could not get a sample!'), 200)), () => null];
     });
 
     const igniter = createEvent('fake', {
@@ -71,8 +70,8 @@ describe('Batch pull-based provider task', () => {
   it('gracefully finishes when timeout rises', async () => {
     spyOn(provider, 'next').and.callFake(() => {
       const interrupter = new ProviderInterrupter();
-      const promise = new Promise<Geolocation>((resolve) => {
-        const listenerId = setTimeout(() => resolve(createFakeGeolocation()), 10000);
+      const promise = new Promise<SampleRecord>((resolve) => {
+        const listenerId = setTimeout(() => resolve(new SampleRecord()), 10000);
         interrupter.interruption = () => {
           clearTimeout(listenerId);
           resolve(null);
@@ -101,7 +100,7 @@ describe('Batch pull-based provider task', () => {
       return [
         new Promise((resolve) =>
           setTimeout(
-            () => resolve(createFakeGeolocation()),
+            () => resolve(new SampleRecord()),
 
             200
           )
@@ -119,11 +118,7 @@ describe('Batch pull-based provider task', () => {
   });
 });
 
-function createFakeGeolocation(): Geolocation {
-  return new Geolocation(0.0, 0.0, 0, 0, 0, 0, 0, new Date());
-}
-
-async function listenToGeolocationAcquiredEvent(id: string): Promise<Array<Geolocation>> {
-  const data = await listenToEventTrigger('geolocationAcquired', id);
-  return data as Array<Geolocation>;
+async function listenToSampleRecordAcquiredEvent(id: string): Promise<Array<SampleRecord>> {
+  const data = await listenToEventTrigger('sampleRecordAcquired', id);
+  return data as Array<SampleRecord>;
 }

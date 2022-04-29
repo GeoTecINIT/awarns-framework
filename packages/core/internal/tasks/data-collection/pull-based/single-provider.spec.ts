@@ -1,7 +1,6 @@
 import { PullProvider } from '../../../providers';
 import { SinglePullProviderTask } from './index';
-import { createPullProviderMock } from './common.spec';
-import { Geolocation } from '../../../providers/geolocation/geolocation';
+import { createPullProviderMock, SampleRecord, SampleRecordType } from './common.spec';
 import { createEvent, listenToEventTrigger } from 'nativescript-task-dispatcher/testing/events';
 
 describe('Single pull-based provider task', () => {
@@ -10,24 +9,24 @@ describe('Single pull-based provider task', () => {
 
   beforeEach(() => {
     provider = createPullProviderMock();
-    task = new SinglePullProviderTask(provider, 'Phone');
+    task = new SinglePullProviderTask(provider, 'Fake');
   });
 
   it('should have a predictable name', () => {
-    expect(task.name).toEqual('acquirePhoneGeolocation');
+    expect(task.name).toEqual('acquireFakeSampleRecord');
   });
 
   it('runs and generates an event with the collected data', async () => {
-    const expectedData = new Geolocation(0.0, 0.0, 0, 0, 0, 0, 0, new Date());
+    const expectedData = new SampleRecord();
     spyOn(provider, 'next').and.returnValue([Promise.resolve(expectedData), () => null]);
 
     const igniter = createEvent('fake');
-    const outputEventName = 'geolocationAcquired';
+    const outputEventName = 'sampleRecordAcquired';
     const done = listenToEventTrigger(outputEventName, igniter.id);
 
     task.run({}, igniter);
-    const acquiredData = (await done) as Geolocation;
-    expect(acquiredData.type).toEqual(expectedData.type);
+    const acquiredData = (await done) as SampleRecord;
+    expect(acquiredData.type).toEqual(SampleRecordType);
   });
 
   it('indicates the underlying provider to stop collecting data on cancel', async () => {
