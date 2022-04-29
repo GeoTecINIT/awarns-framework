@@ -33,6 +33,7 @@
   "readmeFilename": "README.md",
   "bootstrapper": "@nativescript/plugin-seed",
   "dependencies": {
+    "@awarns/core": "^1.0.0-alpha.1",
     "nativescript-context-apis": "^4.0.0",
     "rxjs": "^7.5.5"
   }
