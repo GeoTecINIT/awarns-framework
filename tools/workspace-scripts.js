@@ -37,11 +37,11 @@ module.exports = {
           description: '⚆  Clean  🧹',
         },
         ios: {
-          script: 'nx run demo:ios',
+          script: 'nx run demo:ios --parallel=false',
           description: '⚆  Run iOS  ',
         },
         android: {
-          script: 'nx run demo:android',
+          script: 'nx run demo:android --parallel=false',
           description: '⚆  Run Android  🤖',
         },
       },
@@ -65,11 +65,11 @@ module.exports = {
           description: '⚆  Clean  🧹',
         },
         ios: {
-          script: 'nx run demo-angular:ios',
+          script: 'nx run demo-angular:ios --parallel=false',
           description: '⚆  Run iOS  ',
         },
         android: {
-          script: 'nx run demo-angular:android',
+          script: 'nx run demo-angular:android --parallel=false',
           description: '⚆  Run Android  🤖',
         },
       },
