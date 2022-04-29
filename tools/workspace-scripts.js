@@ -10,7 +10,7 @@ module.exports = {
       description: 'Execute any command with the @nrwl/cli',
     },
     format: {
-      script: 'nx format:write --base=main',
+      script: 'nx format:write',
       description: 'Format source code of the entire workspace (auto-run on precommit hook)',
     },
     lint: {
@@ -103,7 +103,7 @@ module.exports = {
         },
       },
       'build-all': {
-        script: 'nx run-many --target=build.all --all',
+        script: 'nx run-many --target=build.all --all --parallel=1',
         description: 'Build all packages',
       },
     },
