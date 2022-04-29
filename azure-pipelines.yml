@@ -42,8 +42,6 @@ steps:
     displayName: 'Lint'
 
   - script: |
-      npm start @awarns.core.build
-      npm start @awarns.geolocation.build
       npm start @awarns.build-all
     displayName: 'Build'
 
