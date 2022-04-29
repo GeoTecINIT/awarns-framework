@@ -4,7 +4,9 @@
     "outDir": "../../dist/out-tsc",
     "rootDirs": [".", "../.."],
     "paths": {
-      "@awarns/core/*": ["packages/core/*"]
+      "@awarns/core/*": ["packages/core/*"],
+      "@awarns/geolocation": ["packages/geolocation/index.d.ts"],
+      "@awarns/geolocation/*": ["packages/geolocation/*"]
     }
   },
   "exclude": ["**/*.spec.ts", "**/*.test.ts", "angular"],

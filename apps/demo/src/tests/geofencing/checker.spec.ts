@@ -2,7 +2,7 @@ import { AreasOfInterestStore } from '@awarns/geofencing/internal/persistence';
 import { GeofencingChecker } from '@awarns/geofencing/internal/checker';
 import { createAreasOfInterestStoreMock } from './common.spec';
 import { AreaOfInterest, GeofencingProximity } from '@awarns/geofencing/internal/entities';
-import { Geolocation } from '@awarns/core/entities/geolocation';
+import { Geolocation } from '@awarns/geolocation';
 
 describe('Geofencing checker', () => {
   let store: AreasOfInterestStore;

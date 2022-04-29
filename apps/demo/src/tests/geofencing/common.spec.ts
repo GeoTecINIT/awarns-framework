@@ -1,7 +1,7 @@
 import { AreasOfInterestStore, GeofencingStateStore, NearbyArea } from '@awarns/geofencing/internal/persistence';
 import { AreaOfInterest, GeofencingProximity } from '@awarns/geofencing/internal/entities';
 import { GeofencingChecker, GeofencingResult } from '@awarns/geofencing/internal/checker';
-import { Geolocation } from '@awarns/core/entities/geolocation';
+import { Geolocation } from '@awarns/geolocation';
 
 export function createAreasOfInterestStoreMock(): AreasOfInterestStore {
   return {

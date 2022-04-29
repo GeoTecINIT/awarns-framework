@@ -1,4 +1,4 @@
-import { Geolocation } from '@awarns/core/entities/geolocation';
+import { Geolocation } from '@awarns/geolocation';
 import { AoIProximityChange, AreaOfInterest, GeofencingProximity } from '@awarns/geofencing/internal/entities';
 import { AreasOfInterestStore, GeofencingStateStore } from '@awarns/geofencing/internal/persistence';
 import { GeofencingChecker } from '@awarns/geofencing/internal/checker';
@@ -387,7 +387,7 @@ function createAreaOfInterest(id: string): AreaOfInterest {
 
 function aoiProximityChangeFrom(aoi: AreaOfInterest, proximity: GeofencingProximity, change: Change, timestamp: Date): AoIProximityChange {
   return {
-    type: RecordType.AoIProximityChange,
+    type: KnownTypes.AoIProximityChange,
     timestamp,
     change,
     aoi,
