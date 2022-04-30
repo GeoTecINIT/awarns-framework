@@ -102,6 +102,13 @@ module.exports = {
           description: '@awarns/geofencing: Build',
         },
       },
+      // @awarns/human-activity
+      'human-activity': {
+        build: {
+          script: 'nx run human-activity:build.all',
+          description: '@awarns/human-activity: Build',
+        },
+      },
       'build-all': {
         script: 'nx run-many --target=build.all --all --parallel=1',
         description: 'Build all packages',
@@ -123,6 +130,10 @@ module.exports = {
       geolocation: {
         script: 'nx run geolocation:focus',
         description: 'Focus on @awarns/geolocation',
+      },
+      'human-activity': {
+        script: 'nx run human-activity:focus',
+        description: 'Focus on @awarns/human-activity',
       },
       reset: {
         script: 'nx g @awarns/plugin-tools:focus-packages',

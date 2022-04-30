@@ -15,5 +15,8 @@ export class HomeComponent {
     {
       name: 'geofencing',
     },
+    {
+      name: 'human-activity',
+    },
   ];
 }
