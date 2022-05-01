@@ -1,10 +1,11 @@
 import { awarns } from '@awarns/core';
 import { demoTasks } from '../tasks';
-import { demoTaskGraph } from './graph';
+import { demoTaskGraph } from '../graph';
+import { registerHumanActivityPlugin } from '@awarns/human-activity';
 
 export function initializePlugin() {
   awarns
-    .init(demoTasks, demoTaskGraph, {
+    .init(demoTasks, demoTaskGraph, [registerHumanActivityPlugin()], {
       enableLogging: true,
       notificationsChannelName: 'Intervention alerts',
     })
