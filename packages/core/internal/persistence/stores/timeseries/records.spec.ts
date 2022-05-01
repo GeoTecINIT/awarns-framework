@@ -1,8 +1,7 @@
 import { localRecordsStore as store } from './records';
 import { Record, Change } from '../../../providers';
 
-import { Geolocation, AoIProximityChange, GeofencingProximity } from './sample-records.spec';
-import { HumanActivity, HumanActivityChange } from '../../../providers/activity-recognition/human-activity-change';
+import { Geolocation, HumanActivity, HumanActivityChange, AoIProximityChange, GeofencingProximity } from './sample-records.spec';
 import { QuestionnaireAnswers, QuestionnaireAnswer } from '../../../tasks/notifications/questionnaire-answers';
 
 import { firstValueFrom, lastValueFrom } from 'rxjs';
