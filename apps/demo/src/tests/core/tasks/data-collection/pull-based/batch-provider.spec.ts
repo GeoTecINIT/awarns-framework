@@ -1,9 +1,8 @@
-import { PullProvider } from '../../../providers';
-import { BatchPullProviderTask } from './index';
+import { PullProvider, ProviderInterrupter } from '@awarns/core/data-sources';
+import { BatchPullProviderTask } from '@awarns/core/internal/tasks/data-collection/pull-based';
 import { createPullProviderMock, SampleRecord, SampleRecordType } from './common.spec';
-import { ProviderInterrupter } from '../../../providers/provider-interrupter';
-import { createEvent, listenToEventTrigger } from 'nativescript-task-dispatcher/testing/events';
-import { TaskDispatcherEvent } from 'nativescript-task-dispatcher/internal/events';
+import { createEvent, listenToEventTrigger } from '@awarns/core/testing/events';
+import { TaskDispatcherEvent } from '@awarns/core/events';
 
 describe('Batch pull-based provider task', () => {
   let provider: PullProvider;

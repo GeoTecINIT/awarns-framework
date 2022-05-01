@@ -1,6 +1,6 @@
-import { Trace, TraceResult, TraceType } from '../../../tasks/tracing';
+import { Trace, TraceResult, TraceType } from '@awarns/core/internal/tasks/tracing';
 
-import { localTracesStore as store } from './traces';
+import { localTracesStore as store } from '@awarns/core/internal/persistence/stores/timeseries/traces';
 import { firstValueFrom, lastValueFrom } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { uuid } from 'nativescript-task-dispatcher/internal/utils/uuid';

@@ -1,5 +1,5 @@
-import { BaseProvider } from '../../providers/base-provider';
-import { Record } from '../../providers';
+import { BaseProvider } from '@awarns/core/internal/providers/base-provider';
+import { Record } from '@awarns/core/entities';
 
 export const SampleRecordType = 'sample-record';
 

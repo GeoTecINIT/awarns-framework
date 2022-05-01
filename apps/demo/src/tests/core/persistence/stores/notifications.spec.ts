@@ -1,5 +1,5 @@
-import { Notification, TapActionType } from '../../notifications';
-import { notificationsStoreDB } from './notifications';
+import { Notification, TapActionType } from '@awarns/core/internal/notifications';
+import { notificationsStoreDB } from '@awarns/core/internal/persistence/stores/notifications';
 import { firstValueFrom, lastValueFrom } from 'rxjs';
 import { take } from 'rxjs/operators';
 

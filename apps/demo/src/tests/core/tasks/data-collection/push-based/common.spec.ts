@@ -1,9 +1,9 @@
-import { PullProvider } from '../../../providers';
+import { PushProvider } from '@awarns/core/data-sources';
 import { SampleRecordType } from '../common.spec';
 
 export * from '../common.spec';
 
-export function createPullProviderMock(): PullProvider {
+export function createPushProviderMock(): PushProvider {
   return {
     get provides() {
       return SampleRecordType;
@@ -14,8 +14,11 @@ export function createPullProviderMock(): PullProvider {
     prepare() {
       return Promise.resolve();
     },
-    next() {
-      return [Promise.resolve(null), () => null];
+    startProviding() {
+      return Promise.resolve();
+    },
+    stopProviding() {
+      return Promise.resolve();
     },
   };
 }

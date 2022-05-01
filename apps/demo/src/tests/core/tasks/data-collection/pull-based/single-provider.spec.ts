@@ -1,7 +1,7 @@
-import { PullProvider } from '../../../providers';
-import { SinglePullProviderTask } from './index';
+import { PullProvider } from '@awarns/core/data-sources';
+import { SinglePullProviderTask } from '@awarns/core/internal/tasks/data-collection/pull-based';
 import { createPullProviderMock, SampleRecord, SampleRecordType } from './common.spec';
-import { createEvent, listenToEventTrigger } from 'nativescript-task-dispatcher/testing/events';
+import { createEvent, listenToEventTrigger } from '@awarns/core/testing/events';
 
 describe('Single pull-based provider task', () => {
   let provider: PullProvider;

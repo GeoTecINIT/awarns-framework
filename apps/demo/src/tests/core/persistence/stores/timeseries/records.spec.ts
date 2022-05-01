@@ -1,8 +1,10 @@
-import { localRecordsStore as store } from './records';
-import { Record, Change } from '../../../providers';
+import { localRecordsStore as store } from '@awarns/core/internal/persistence/stores/timeseries/records';
+import { Record, Change } from '@awarns/core/internal/providers';
 
-import { Geolocation, HumanActivity, HumanActivityChange, AoIProximityChange, GeofencingProximity } from './sample-records.spec';
-import { QuestionnaireAnswers, QuestionnaireAnswer } from '../../../tasks/notifications/questionnaire-answers';
+import { Geolocation } from '@awarns/geolocation';
+import { HumanActivity, HumanActivityChange } from '@awarns/human-activity';
+import { AoIProximityChange, GeofencingProximity } from '@awarns/geofencing';
+import { QuestionnaireAnswers, QuestionnaireAnswer } from '@awarns/core/entities/answers';
 
 import { firstValueFrom, lastValueFrom } from 'rxjs';
 import { take } from 'rxjs/operators';
