@@ -5,7 +5,6 @@
 		To read more about android permissions go to https://developer.android.com/guide/topics/permissions/index.html -->
 	<!--EXAMPLE: uses-permission android:name="android.permission.INTERNET"/> -->
 
-	<!-- The following two permissions are required if your app wants to receive human activity changes -->
 	<uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION"/>
 	<uses-permission android:name="android.permission.ACTIVITY_RECOGNITION"/>
 

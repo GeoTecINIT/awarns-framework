@@ -1,3 +1,6 @@
-import { HumanActivityCommon } from './common';
+import { PluginLoader } from '@awarns/core';
 
-export declare class HumanActivity extends HumanActivityCommon {}
+export * from './entities';
+export * from './tasks';
+
+export function registerHumanActivityPlugin(): PluginLoader;
