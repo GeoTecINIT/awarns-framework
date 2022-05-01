@@ -2,18 +2,18 @@ import { Task, StartPushProviderTask, StopPushProviderTask } from '@awarns/core/
 
 import { HumanActivityProvider, Resolution } from './provider';
 
-export function startDetectingCoarseHumanActivityChanges(): Task {
+export function startDetectingCoarseHumanActivityChangesTask(): Task {
   return new StartPushProviderTask(new HumanActivityProvider(Resolution.LOW), 'Coarse');
 }
 
-export function stopDetectingCoarseHumanActivityChanges(): Task {
+export function stopDetectingCoarseHumanActivityChangesTask(): Task {
   return new StopPushProviderTask(new HumanActivityProvider(Resolution.LOW), 'Coarse');
 }
 
-export function startDetectingIntermediateHumanActivityChanges(): Task {
+export function startDetectingIntermediateHumanActivityChangesTask(): Task {
   return new StartPushProviderTask(new HumanActivityProvider(Resolution.MEDIUM), 'Intermediate');
 }
 
-export function stopDetectingIntermediateHumanActivityChanges(): Task {
+export function stopDetectingIntermediateHumanActivityChangesTask(): Task {
   return new StopPushProviderTask(new HumanActivityProvider(Resolution.MEDIUM), 'Intermediate');
 }
