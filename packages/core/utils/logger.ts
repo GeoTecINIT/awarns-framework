@@ -1,1 +1,1 @@
-export { Logger, AbstractLogger, LoggerCreator } from '../internal/utils/logger';
+export { Logger, AbstractLogger, LoggerCreator, getLogger } from '../internal/utils/logger';
