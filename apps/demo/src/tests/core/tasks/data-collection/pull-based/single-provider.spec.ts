@@ -1,4 +1,4 @@
-import { PullProvider } from '@awarns/core/data-sources';
+import { PullProvider } from '@awarns/core/providers';
 import { SinglePullProviderTask } from '@awarns/core/internal/tasks/data-collection/pull-based';
 import { createPullProviderMock, SampleRecord, SampleRecordType } from './common.spec';
 import { createEvent, listenToEventTrigger } from '@awarns/core/testing/events';

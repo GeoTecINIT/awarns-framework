@@ -1,4 +1,4 @@
-import { PushProvider } from '@awarns/core/data-sources';
+import { PushProvider } from '@awarns/core/providers';
 import { ActivityRecognizer, getActivityRecognizer, Resolution } from 'nativescript-context-apis/activity-recognition';
 
 import { KnownTypes } from '@awarns/core/entities';

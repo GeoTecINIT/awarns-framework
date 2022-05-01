@@ -1,4 +1,4 @@
-import { PushProvider } from '@awarns/core/data-sources';
+import { PushProvider } from '@awarns/core/providers';
 import { SampleRecordType } from '../common.spec';
 
 export * from '../common.spec';
