@@ -3,20 +3,20 @@ import { Task } from 'nativescript-task-dispatcher/tasks';
 import { TaskGraph } from 'nativescript-task-dispatcher/tasks/graph';
 import { taskDispatcher, ConfigParams as TDConfigParams } from 'nativescript-task-dispatcher';
 import { builtInTasks } from './internal/tasks';
-import { contextApis } from 'nativescript-context-apis';
 import { EventData } from 'nativescript-task-dispatcher/events';
-import { HumanActivityProvider } from './internal/providers/activity-recognition/provider';
 import { RecordsStore, syncedRecordsStore, syncedTracesStore } from './internal/persistence/stores/timeseries';
 import { enableLogging, setLoggerCreator } from './internal/utils/logger';
 import { notificationsManager } from './internal/notifications/manager';
 import { TracesStore } from './storage/traces';
 
 export class CoreCommon extends Observable {
-  public async init(appTasks: Array<Task>, appTaskGraph: TaskGraph, config: ConfigParams = {}): Promise<void> {
+  public async init(appTasks: Array<Task>, appTaskGraph: TaskGraph, pluginLoaders: Array<PluginLoader> = [], config: ConfigParams = {}): Promise<void> {
     CoreCommon.configure(config);
-    await taskDispatcher.init([...builtInTasks, ...appTasks], appTaskGraph, config);
-    CoreCommon.initializeListeners();
-    await contextApis.init();
+    const tasksInUse = [...builtInTasks, ...appTasks];
+    await taskDispatcher.init(tasksInUse, appTaskGraph, config);
+    for (const pluginLoader of pluginLoaders) {
+      await pluginLoader(tasksInUse);
+    }
     await CoreCommon.syncStores();
     await CoreCommon.clearOldData();
   }
@@ -35,10 +35,6 @@ export class CoreCommon extends Observable {
 
   public emitEvent(eventName: string, eventData: EventData = {}): void {
     taskDispatcher.emitEvent(eventName, eventData);
-  }
-
-  private static initializeListeners() {
-    HumanActivityProvider.setup();
   }
 
   private static async syncStores() {
@@ -75,6 +71,8 @@ export class CoreCommon extends Observable {
     }
   }
 }
+
+export type PluginLoader = (tasksInUse?: Array<Task>) => Promise<void>;
 
 export interface ConfigParams extends TDConfigParams {
   notificationsChannelName?: string;
