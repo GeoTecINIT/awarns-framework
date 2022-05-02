@@ -1,3 +1,3 @@
 export interface TracerConfig {
-  sensitiveData?: boolean;
+  outputsSensitiveData?: boolean;
 }

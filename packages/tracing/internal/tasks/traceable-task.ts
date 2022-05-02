@@ -15,7 +15,7 @@ export class TraceableTask extends Task {
   ) {
     // @ts-ignore
     super(innerTask.name, innerTask._taskConfig);
-    this.sensibleData = tracerConfig && tracerConfig.sensitiveData;
+    this.sensibleData = tracerConfig && tracerConfig.outputsSensitiveData;
 
     // Use task method overrides
     this.checkIfCanRun = () => innerTask.checkIfCanRun();

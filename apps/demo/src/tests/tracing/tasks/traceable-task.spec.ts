@@ -88,7 +88,7 @@ describe('Traceable task', () => {
   it('successfully runs and traces its execution and but not its sensitive result', async () => {
     const invocationEvent = createEvent('test');
 
-    const traceableTask = new TraceableTask(new DummyTask(false), { sensitiveData: true }, tracesStore);
+    const traceableTask = new TraceableTask(new DummyTask(false), { outputsSensitiveData: true }, tracesStore);
 
     const done = listenToTaskFinished(invocationEvent);
 

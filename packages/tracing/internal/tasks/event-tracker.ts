@@ -7,9 +7,9 @@ import { Trace, TraceResult, TraceType } from '../entities';
 export class EventTrackerTask extends Task {
   private readonly sensitiveData: boolean;
 
-  constructor(name: string, taskConfig?: TracerConfig, private tracesStore: TracesStore = syncedTracesStore) {
-    super(name, taskConfig);
-    this.sensitiveData = taskConfig && taskConfig.sensitiveData;
+  constructor(name: string, tracerConfig?: TracerConfig, private tracesStore: TracesStore = syncedTracesStore) {
+    super(name);
+    this.sensitiveData = tracerConfig && tracerConfig.outputsSensitiveData;
   }
 
   protected async onRun(taskParams: TaskParams, invocationEvent: DispatchableEvent): Promise<void> {

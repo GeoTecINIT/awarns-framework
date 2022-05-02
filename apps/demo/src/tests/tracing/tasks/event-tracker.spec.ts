@@ -44,7 +44,7 @@ describe('Event tracker task', () => {
     const eventTracker = new EventTrackerTask(
       'trackEvent',
       {
-        sensitiveData: true,
+        outputsSensitiveData: true,
       },
       tracesStore
     );
