@@ -88,6 +88,13 @@ module.exports = {
           description: '@awarns/core: Build',
         },
       },
+      // @awarns/tracing
+      tracing: {
+        build: {
+          script: 'nx run tracing:build.all',
+          description: '@awarns/tracing: Build',
+        },
+      },
       // @awarns/geolocation
       geolocation: {
         build: {
@@ -145,6 +152,10 @@ module.exports = {
       notifications: {
         script: 'nx run notifications:focus',
         description: 'Focus on @awarns/notifications',
+      },
+      tracing: {
+        script: 'nx run tracing:focus',
+        description: 'Focus on @awarns/tracing',
       },
       reset: {
         script: 'nx g @awarns/plugin-tools:focus-packages',

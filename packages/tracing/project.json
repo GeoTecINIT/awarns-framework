@@ -1,0 +1,64 @@
+{
+  "root": "packages/tracing",
+  "projectType": "library",
+  "sourceRoot": "packages/tracing",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "options": {
+        "outputPath": "dist/packages/tracing",
+        "tsConfig": "packages/tracing/tsconfig.json",
+        "packageJson": "packages/tracing/package.json",
+        "main": "packages/tracing/index.d.ts",
+        "assets": [
+          "packages/tracing/*.md",
+          "packages/tracing/index.d.ts",
+          "LICENSE",
+          {
+            "glob": "**/*",
+            "input": "packages/tracing/platforms/",
+            "output": "./platforms/"
+          }
+        ],
+        "dependsOn": [
+          {
+            "target": "build.all",
+            "projects": "dependencies"
+          }
+        ]
+      }
+    },
+    "build.all": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["node tools/scripts/build-finish.ts tracing"],
+        "parallel": false
+      },
+      "outputs": ["dist/packages/tracing"],
+      "dependsOn": [
+        {
+          "target": "build.all",
+          "projects": "dependencies"
+        },
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ]
+    },
+    "focus": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["nx g @nativescript/plugin-tools:focus-packages tracing"],
+        "parallel": false
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["packages/tracing/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}
