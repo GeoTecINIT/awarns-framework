@@ -1,5 +1,5 @@
 import { ShownModallyData } from '@nativescript/core';
-import { Notification } from '@awarns/core/notifications';
+import { Notification } from '@awarns/notifications';
 import { getNotificationHandlerService } from './notification-handler-service';
 
 export function onShownModally(args: ShownModallyData) {

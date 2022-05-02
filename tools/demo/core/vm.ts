@@ -1,4 +1,6 @@
 import { DemoSharedBase } from '../utils';
+import { NotificationCallbacks } from '../notifications/callbacks';
+
 import { alert, AlertOptions, confirm, ConfirmOptions, knownFolders } from '@nativescript/core';
 
 import { Subject, Subscription } from 'rxjs';
@@ -8,14 +10,16 @@ import { Trace, TracesStore, tracesStore } from '@awarns/core/storage/traces';
 
 import { ExportResult, createTracesExporter } from '@awarns/core/storage/exporters';
 
-import { notificationsManager, Notification, TapActionType } from '@awarns/core/notifications';
-import { emitStartEvent, setupAreasOfInterest } from './common';
+import { setupAreasOfInterest } from '../geofencing/setup';
+import { emitStartEvent } from './common';
 
 const SIZE_INCREMENT = 10;
 
 const EXPORT_FOLDER = knownFolders.documents().getFolder('Record logs');
 
 export class DemoSharedCore extends DemoSharedBase {
+  notificationCallbacks = new NotificationCallbacks();
+
   get traces() {
     return this._traces;
   }
@@ -47,22 +51,6 @@ export class DemoSharedCore extends DemoSharedBase {
       .catch((err) => {
         console.error(`Could not emit start event: ${err.stack ? err.stack : JSON.stringify(err)}`);
       });
-  }
-
-  setupNotificationTapListener(cb: (notification: Notification) => void) {
-    this.onNotificationTap((notification) => {
-      if (notification.tapAction.type === TapActionType.OPEN_APP) {
-        return;
-      }
-
-      cb(notification);
-    });
-  }
-
-  setupNotificationClearedListener() {
-    this.onNotificationCleared((notification) => {
-      console.log(`Notification with id ${notification.id} cleared`);
-    });
   }
 
   handleExportTap() {
@@ -97,14 +85,6 @@ export class DemoSharedCore extends DemoSharedBase {
     console.log(`Loading more items...`);
     this._size += SIZE_INCREMENT;
     this._fetchOrders.next(this._size);
-  }
-
-  private onNotificationTap(cb: (notification: Notification) => void) {
-    notificationsManager.onNotificationTap(cb).catch((err) => console.error(`Could not subscribe to notification taps. Reason: ${err}`));
-  }
-
-  private onNotificationCleared(cb: (notification: Notification) => void) {
-    notificationsManager.onNotificationCleared(cb).catch((err) => console.error(`Could not subscribe to notification taps. Reason: ${err}`));
   }
 
   private exportTraces(): Promise<ExportResult> {

@@ -1,9 +1,7 @@
 import { Observable } from '@nativescript/core';
-import { TapActionType } from '@awarns/core/notifications';
+import { QuestionnaireAnswers, QuestionnaireAnswer, TapActionType, notificationsManager } from '@awarns/notifications';
 import { awarns } from '@awarns/core';
-import { QuestionnaireAnswers, QuestionnaireAnswer } from '@awarns/core/entities/answers';
 import { TappedNotification } from './notification-handler-service';
-import { notificationsManager } from '@awarns/core/notifications';
 
 export class NotificationViewModel extends Observable {
   private readonly _content: NotificationContent;
