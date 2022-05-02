@@ -6,7 +6,6 @@ import { builtInTasks } from './internal/tasks';
 import { EventData } from 'nativescript-task-dispatcher/events';
 import { RecordsStore, syncedRecordsStore, syncedTracesStore } from './internal/persistence/stores/timeseries';
 import { enableLogging, setLoggerCreator } from './internal/utils/logger';
-import { notificationsManager } from './internal/notifications/manager';
 import { TracesStore } from './storage/traces';
 
 export class CoreCommon extends Observable {
@@ -54,9 +53,6 @@ export class CoreCommon extends Observable {
     if (config.enableLogging || config.customLogger) {
       enableLogging();
     }
-    if (config.notificationsChannelName) {
-      notificationsManager.setChannelName(config.notificationsChannelName);
-    }
     if (config.externalRecordsStore) {
       syncedRecordsStore.setExternalStore(config.externalRecordsStore);
     }
@@ -75,7 +71,6 @@ export class CoreCommon extends Observable {
 export type PluginLoader = (tasksInUse?: Array<Task>) => Promise<void>;
 
 export interface ConfigParams extends TDConfigParams {
-  notificationsChannelName?: string;
   externalRecordsStore?: RecordsStore;
   oldRecordsMaxAgeHours?: number;
   externalTracesStore?: TracesStore;
