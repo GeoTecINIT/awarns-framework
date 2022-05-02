@@ -1,7 +1,8 @@
 import { Folder } from '@nativescript/core';
-import { Exporter as E, ExportResult as ER, ExportFormats } from '@awarns/core/internal/persistence/file/exporters';
+import { Exporter as E, ExportResult as ER, ExportFormats as EF } from '@awarns/core/internal/persistence/file/exporters';
 export type Exporter = E;
 export type ExportResult = ER;
+export type ExportFormats = EF;
 
 import { CSVTracesExporter } from './csv';
 import { JSONTracesExporter } from './json';
@@ -14,5 +15,3 @@ export function createTracesExporter(folder: Folder, format: ExportFormats = 'cs
       return new JSONTracesExporter(folder, fileName);
   }
 }
-
-export { ExportFormats };
