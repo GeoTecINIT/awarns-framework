@@ -8,3 +8,6 @@ export interface ExportResult {
 }
 
 export type ExportFormats = 'csv' | 'json';
+
+export * from './csv-exporter';
+export * from './json-exporter';
