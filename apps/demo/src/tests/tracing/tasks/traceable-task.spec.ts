@@ -156,7 +156,7 @@ class AdvancedTask extends Task {
     return Promise.resolve();
   }
 
-  protected async onRun(taskParams: TaskParams, invocationEvent: DispatchableEvent): Promise<void> {
+  protected async onRun(_taskParams: TaskParams, _invocationEvent: DispatchableEvent): Promise<void> {
     this.log(this.remainingTime());
     this.runAgainIn(10);
     return new Promise<void>((resolve) => {
