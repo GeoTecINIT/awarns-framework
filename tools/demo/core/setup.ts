@@ -7,9 +7,14 @@ import { registerTracingPlugin } from '@awarns/tracing';
 
 export function initializePlugin() {
   awarns
-    .init(demoTasks, demoTaskGraph, [registerHumanActivityPlugin(), registerNotificationsPlugin('Intervention alerts'), registerTracingPlugin()], {
-      enableLogging: true,
-    })
+    .init(
+      demoTasks,
+      demoTaskGraph,
+      [registerHumanActivityPlugin(), registerNotificationsPlugin('Intervention alerts'), registerTracingPlugin()],
+      {
+        enableLogging: true,
+      }
+    )
     .then(() => console.log('AwarNS framework successfully loaded'))
     .catch((err) => {
       console.error(`Could not load AwarNS framework: ${err.stack ? err.stack : err}`);

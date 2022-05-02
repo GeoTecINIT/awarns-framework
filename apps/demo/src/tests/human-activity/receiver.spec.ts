@@ -23,7 +23,12 @@ describe('Human activity change receiver', () => {
       confidence: 1,
     };
 
-    const expectedChange = new HumanActivityChange(activityChange.type, Change.END, activityChange.timestamp, activityChange.confidence);
+    const expectedChange = new HumanActivityChange(
+      activityChange.type,
+      Change.END,
+      activityChange.timestamp,
+      activityChange.confidence
+    );
 
     receiver.onReceive(activityChange);
     expect(eventEmitter).toHaveBeenCalledWith('userActivityChanged', expectedChange);
@@ -38,7 +43,12 @@ describe('Human activity change receiver', () => {
       confidence: 1,
     };
 
-    const expectedChange = new HumanActivityChange(activityChange.type, Change.START, activityChange.timestamp, activityChange.confidence);
+    const expectedChange = new HumanActivityChange(
+      activityChange.type,
+      Change.START,
+      activityChange.timestamp,
+      activityChange.confidence
+    );
 
     receiver.onReceive(activityChange);
     expect(eventEmitter).toHaveBeenCalledWith('userActivityChanged', expectedChange);

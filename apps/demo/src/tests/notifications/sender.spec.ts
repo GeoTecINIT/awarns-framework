@@ -26,7 +26,9 @@ describe('Notification sender task', () => {
   it('throws an error if notification permission has not been granted', async () => {
     spyOn(manager, 'hasPermission').and.returnValue(Promise.resolve(false));
 
-    await expectAsync(notificationSender.checkIfCanRun()).toBeRejectedWithError('Notification permission has not been granted');
+    await expectAsync(notificationSender.checkIfCanRun()).toBeRejectedWithError(
+      'Notification permission has not been granted'
+    );
   });
 
   it('can ask the native notification mechanism to ask for a missing notification permission', async () => {
@@ -42,7 +44,9 @@ describe('Notification sender task', () => {
     spyOn(manager, 'hasPermission').and.returnValue(Promise.resolve(false));
     spyOn(manager, 'requestPermission').and.returnValue(Promise.resolve(false));
 
-    await expectAsync(notificationSender.prepare()).toBeRejectedWithError('Notification permission has not been granted');
+    await expectAsync(notificationSender.prepare()).toBeRejectedWithError(
+      'Notification permission has not been granted'
+    );
   });
 
   it('does not ask for a missing notification permission if it has already been granted', async () => {

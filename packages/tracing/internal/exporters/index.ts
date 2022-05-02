@@ -1,5 +1,9 @@
 import { Folder } from '@nativescript/core';
-import { Exporter as E, ExportResult as ER, ExportFormats as EF } from '@awarns/core/internal/persistence/file/exporters';
+import {
+  Exporter as E,
+  ExportResult as ER,
+  ExportFormats as EF,
+} from '@awarns/core/internal/persistence/file/exporters';
 export type Exporter = E;
 export type ExportResult = ER;
 export type ExportFormats = EF;

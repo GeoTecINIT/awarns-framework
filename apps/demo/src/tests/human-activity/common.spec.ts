@@ -1,4 +1,8 @@
-import { ActivityRecognizer, RecognitionCallback, StartOptions } from 'nativescript-context-apis/internal/activity-recognition';
+import {
+  ActivityRecognizer,
+  RecognitionCallback,
+  StartOptions,
+} from 'nativescript-context-apis/internal/activity-recognition';
 
 export function createActivityRecognizerMock(): ActivityRecognizer {
   return {

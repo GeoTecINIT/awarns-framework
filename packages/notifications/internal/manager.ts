@@ -28,7 +28,10 @@ const NOTIFICATION_CLEARED_EVENT = 'notificationCleared';
 class NotificationsManagerImpl implements NotificationsManager, NotificationActionsManager {
   private logger: Logger;
 
-  constructor(private store: NotificationsStore, private emitEvent: (eventName: string, eventData?: EventData) => void) {
+  constructor(
+    private store: NotificationsStore,
+    private emitEvent: (eventName: string, eventData?: EventData) => void
+  ) {
     this.logger = getLogger('NotificationsManager');
   }
 
@@ -108,11 +111,17 @@ class NotificationsManagerImpl implements NotificationsManager, NotificationActi
     if (typeof android === 'undefined' || android.os.Build.VERSION.SDK_INT < 26) {
       return;
     }
-    const notificationManager = Application.android.context.getSystemService(android.content.Context.NOTIFICATION_SERVICE);
+    const notificationManager = Application.android.context.getSystemService(
+      android.content.Context.NOTIFICATION_SERVICE
+    );
     if (!notificationManager || !!notificationManager.getNotificationChannel(this.channelName)) {
       return;
     }
-    const channel = new android.app.NotificationChannel(this.channelName, this.channelName, android.app.NotificationManager.IMPORTANCE_HIGH);
+    const channel = new android.app.NotificationChannel(
+      this.channelName,
+      this.channelName,
+      android.app.NotificationManager.IMPORTANCE_HIGH
+    );
     channel.enableLights(true);
     channel.setLightColor(android.graphics.Color.BLUE);
     channel.enableVibration(true);

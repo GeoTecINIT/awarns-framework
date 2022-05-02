@@ -9,7 +9,9 @@ describe('Traces store', () => {
   const createFakeTrace = fakeTraceCreator();
 
   const traces: Array<Trace> = [
-    createFakeTrace(TraceType.EVENT, 'userStartedBeingStill', TraceResult.OK, { someEvtData: "it's ok" }),
+    createFakeTrace(TraceType.EVENT, 'userStartedBeingStill', TraceResult.OK, {
+      someEvtData: "it's ok",
+    }),
     createFakeTrace(TraceType.TASK, 'acquirePhoneGeolocation', TraceResult.OK, {
       invokedBy: 'taskSchedulerRun',
       took: 15000,

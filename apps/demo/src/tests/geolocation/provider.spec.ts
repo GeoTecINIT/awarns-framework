@@ -1,4 +1,10 @@
-import { GeolocationProvider as NativeProvider, Geolocation as NativeGeolocation, AcquireOptions, Geolocation, StreamOptions } from 'nativescript-context-apis/geolocation';
+import {
+  GeolocationProvider as NativeProvider,
+  Geolocation as NativeGeolocation,
+  AcquireOptions,
+  Geolocation,
+  StreamOptions,
+} from 'nativescript-context-apis/geolocation';
 
 import { GeolocationProvider, geolocationProviderNotReadyErr } from '@awarns/geolocation/internal/provider';
 import { KnownTypes } from '@awarns/core/entities';
@@ -65,7 +71,9 @@ describe('Geolocation provider', () => {
 
   it('throws an error if the sensor is unable to get a fix and no last location is available', async () => {
     spyOn(nativeProvider, 'locationStream').and.returnValue(of(null));
-    spyOn(nativeProvider, 'acquireLocation').and.returnValue(new Promise((resolve) => setTimeout(() => resolve(locations[0]), timeout + 500)));
+    spyOn(nativeProvider, 'acquireLocation').and.returnValue(
+      new Promise((resolve) => setTimeout(() => resolve(locations[0]), timeout + 500))
+    );
     const [bestLocation] = provider.next();
     await expectAsync(bestLocation).toBeRejectedWithError('Could not acquire location');
   });

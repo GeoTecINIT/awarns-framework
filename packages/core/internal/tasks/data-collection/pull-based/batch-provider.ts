@@ -11,7 +11,10 @@ export class BatchPullProviderTask extends SinglePullProviderTask {
   protected async onRun(taskParams: TaskParams, invocationEvent: DispatchableEvent): Promise<TaskOutcome> {
     const records: Array<Record> = [];
     const executionTimes = [];
-    while (this.remainingTime() > 0 && (executionTimes.length === 0 || average(executionTimes) < this.remainingTime())) {
+    while (
+      this.remainingTime() > 0 &&
+      (executionTimes.length === 0 || average(executionTimes) < this.remainingTime())
+    ) {
       const { record, executionTime } = await this.acquireSingleRecord(taskParams, invocationEvent);
       if (record) {
         records.push(record);
@@ -24,7 +27,10 @@ export class BatchPullProviderTask extends SinglePullProviderTask {
     return { result: records };
   }
 
-  private async acquireSingleRecord(taskParams: TaskParams, invocationEvent: DispatchableEvent): Promise<SingleExecutionResult> {
+  private async acquireSingleRecord(
+    taskParams: TaskParams,
+    invocationEvent: DispatchableEvent
+  ): Promise<SingleExecutionResult> {
     const { maxInterval } = taskParams;
     const start = Date.now();
     let record: Record;

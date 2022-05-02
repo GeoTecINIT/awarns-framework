@@ -8,7 +8,11 @@ import { flatten } from '@awarns/core/utils/serialization';
 export class TraceableTask extends Task {
   private readonly sensibleData: boolean;
 
-  constructor(private innerTask: Task, tracerConfig?: TracerConfig, private tracesStore: TracesStore = syncedTracesStore) {
+  constructor(
+    private innerTask: Task,
+    tracerConfig?: TracerConfig,
+    private tracesStore: TracesStore = syncedTracesStore
+  ) {
     // @ts-ignore
     super(innerTask.name, innerTask._taskConfig);
     this.sensibleData = tracerConfig && tracerConfig.sensitiveData;

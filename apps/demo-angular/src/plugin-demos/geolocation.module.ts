@@ -3,7 +3,10 @@ import { NativeScriptCommonModule, NativeScriptRouterModule } from '@nativescrip
 import { GeolocationComponent } from './geolocation.component';
 
 @NgModule({
-  imports: [NativeScriptCommonModule, NativeScriptRouterModule.forChild([{ path: '', component: GeolocationComponent }])],
+  imports: [
+    NativeScriptCommonModule,
+    NativeScriptRouterModule.forChild([{ path: '', component: GeolocationComponent }]),
+  ],
   declarations: [GeolocationComponent],
   schemas: [NO_ERRORS_SCHEMA],
 })

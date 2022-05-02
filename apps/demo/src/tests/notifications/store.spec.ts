@@ -47,7 +47,9 @@ describe('Notifications store', () => {
   it('allows to delete a persisted notification', async () => {
     await store.insert(expectedNotification1);
     await store.delete(notification1Id);
-    await expectAsync(store.get(notification1Id)).toBeRejectedWithError(`Notification not found (id=${notification1Id})`);
+    await expectAsync(store.get(notification1Id)).toBeRejectedWithError(
+      `Notification not found (id=${notification1Id})`
+    );
   });
 
   it('allows to query all stored notifications', async () => {

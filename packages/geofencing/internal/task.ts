@@ -1,6 +1,12 @@
 import { Task, TaskConfig, TaskOutcome, TaskParams } from '@awarns/core/tasks';
 import { DispatchableEvent } from '@awarns/core/events';
-import { AreasOfInterestStore, areasOfInterestStoreDB, GeofencingStateStore, geofencingStateStoreDB, NearbyArea } from './persistence';
+import {
+  AreasOfInterestStore,
+  areasOfInterestStoreDB,
+  GeofencingStateStore,
+  geofencingStateStoreDB,
+  NearbyArea,
+} from './persistence';
 import { GeofencingChecker, GeofencingResult } from './checker';
 import { Geolocation } from '@awarns/geolocation';
 import { AoIProximityChange, AreaOfInterest, GeofencingProximity } from './entities';
@@ -15,7 +21,13 @@ const MOVED_OUTSIDE = 'movedOutsideAreaOfInterest';
 const MOVED_AWAY = 'movedAwayFromAreaOfInterest';
 
 export class GeofencingTask extends Task {
-  constructor(name: string, taskConfig: TaskConfig = {}, private state: GeofencingStateStore = geofencingStateStoreDB, private checker = new GeofencingChecker(), private aois: AreasOfInterestStore = areasOfInterestStoreDB) {
+  constructor(
+    name: string,
+    taskConfig: TaskConfig = {},
+    private state: GeofencingStateStore = geofencingStateStoreDB,
+    private checker = new GeofencingChecker(),
+    private aois: AreasOfInterestStore = areasOfInterestStoreDB
+  ) {
     super(name, {
       ...taskConfig,
       outputEventNames: [`${name}Finished`, MOVED_CLOSE, MOVED_INSIDE, MOVED_OUTSIDE, MOVED_AWAY],
@@ -32,7 +44,10 @@ export class GeofencingTask extends Task {
     return this.handleNearbyAreas(nearbyAreas);
   }
 
-  private queryNearbyAreasWith(invocationEvent: DispatchableEvent, taskParams: TaskParams): Promise<Array<GeofencingResult>> {
+  private queryNearbyAreasWith(
+    invocationEvent: DispatchableEvent,
+    taskParams: TaskParams
+  ): Promise<Array<GeofencingResult>> {
     const nearbyRange = taskParams.nearbyRange ? taskParams.nearbyRange : DEFAULT_NEARBY_RANGE;
     const offset = taskParams.offset ? taskParams.offset : DEFAULT_OFFSET;
     const evtData = invocationEvent.data;
@@ -104,7 +119,10 @@ export class GeofencingTask extends Task {
     return { eventName: MOVED_INSIDE, result };
   }
 
-  private async updateProximityState(identifiables: Array<Identifiable>, newProximity: GeofencingProximity): Promise<void> {
+  private async updateProximityState(
+    identifiables: Array<Identifiable>,
+    newProximity: GeofencingProximity
+  ): Promise<void> {
     await Promise.all(identifiables.map((identifiable) => this.state.updateProximity(identifiable.id, newProximity)));
   }
 
@@ -114,7 +132,9 @@ export class GeofencingTask extends Task {
     return aois.filter((aoi) => ids.indexOf(aoi.id) !== -1);
   }
 
-  private async splitChangedFromNearby(checkResults: Array<GeofencingResult>): Promise<[Array<GeofencingResult>, Array<GeofencingResult>]> {
+  private async splitChangedFromNearby(
+    checkResults: Array<GeofencingResult>
+  ): Promise<[Array<GeofencingResult>, Array<GeofencingResult>]> {
     const changedFromInsideAreas: Array<GeofencingResult> = [];
     const changedFromOutsideAreas: Array<GeofencingResult> = [];
     for (const result of checkResults) {
@@ -140,7 +160,11 @@ export class GeofencingTask extends Task {
     return changedOnes;
   }
 
-  private buildAoIProximityChanges(aois: Array<AreaOfInterest>, proximity: GeofencingProximity, change: Change): Array<AoIProximityChange> {
+  private buildAoIProximityChanges(
+    aois: Array<AreaOfInterest>,
+    proximity: GeofencingProximity,
+    change: Change
+  ): Array<AoIProximityChange> {
     return aois.map((aoi) => new AoIProximityChange(aoi, proximity, change));
   }
 }

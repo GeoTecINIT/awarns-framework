@@ -1,5 +1,9 @@
 import { ActivityRecognizer } from 'nativescript-context-apis/internal/activity-recognition';
-import { HumanActivityProvider, HumanActivityRecognizerNotReadyErr, Resolution } from '@awarns/human-activity/internal/provider';
+import {
+  HumanActivityProvider,
+  HumanActivityRecognizerNotReadyErr,
+  Resolution,
+} from '@awarns/human-activity/internal/provider';
 import { createActivityRecognizerMock } from './common.spec';
 
 describe('Human activity provider', () => {
@@ -21,7 +25,9 @@ describe('Human activity provider', () => {
   });
   it('throws an error if the underlying provider is not ready', async () => {
     spyOn(nativeRecognizer, 'isReady').and.returnValue(false);
-    await expectAsync(provider.checkIfIsReady()).toBeRejectedWith(new HumanActivityRecognizerNotReadyErr(Resolution.MEDIUM));
+    await expectAsync(provider.checkIfIsReady()).toBeRejectedWith(
+      new HumanActivityRecognizerNotReadyErr(Resolution.MEDIUM)
+    );
   });
   it('allows to prepare the underlying provider', async () => {
     spyOn(nativeRecognizer, 'prepare').and.returnValue(Promise.resolve());

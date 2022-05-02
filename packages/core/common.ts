@@ -8,7 +8,12 @@ import { RecordsStore, syncedRecordsStore } from './internal/persistence/stores/
 import { enableLogging, setLoggerCreator } from './internal/utils/logger';
 
 export class CoreCommon extends Observable {
-  public async init(appTasks: Array<Task>, appTaskGraph: TaskGraph, pluginLoaders: Array<PluginLoader> = [], config: ConfigParams = {}): Promise<void> {
+  public async init(
+    appTasks: Array<Task>,
+    appTaskGraph: TaskGraph,
+    pluginLoaders: Array<PluginLoader> = [],
+    config: ConfigParams = {}
+  ): Promise<void> {
     CoreCommon.configure(config);
     const tasksInUse = [...builtInTasks, ...appTasks];
     await taskDispatcher.init(tasksInUse, appTaskGraph, config);

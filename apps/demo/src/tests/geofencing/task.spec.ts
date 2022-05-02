@@ -4,7 +4,11 @@ import { AreasOfInterestStore, GeofencingStateStore } from '@awarns/geofencing/i
 import { GeofencingChecker } from '@awarns/geofencing/internal/checker';
 import { GeofencingTask } from '@awarns/geofencing/internal/task';
 import { DispatchableEvent } from '@awarns/core/events';
-import { createAreasOfInterestStoreMock, createGeofencingCheckerMock, createGeofencingStateStoreMock } from './common.spec';
+import {
+  createAreasOfInterestStoreMock,
+  createGeofencingCheckerMock,
+  createGeofencingStateStoreMock,
+} from './common.spec';
 import { Change, KnownTypes } from '@awarns/core/entities';
 import { createEvent, listenToEventTrigger } from '@awarns/core/testing/events';
 
@@ -45,7 +49,9 @@ describe('Geofencing task', () => {
   });
 
   it('outputs a default event when no area is nearby and no area was nearby a given trajectory', async () => {
-    spyOn(checker, 'findNearbyTrajectory').withArgs([location, location], nearbyRange, offset).and.returnValue(Promise.resolve([]));
+    spyOn(checker, 'findNearbyTrajectory')
+      .withArgs([location, location], nearbyRange, offset)
+      .and.returnValue(Promise.resolve([]));
     spyOn(state, 'getKnownNearbyAreas').and.returnValue(Promise.resolve([]));
 
     const invocationEvent = createEvent('locationAcquired', {
@@ -60,13 +66,17 @@ describe('Geofencing task', () => {
 
   it("outputs a 'movedAwayFromAreaOfInterest' event when there was an area nearby but no longer it is", async () => {
     spyOn(checker, 'findNearby').withArgs(location, nearbyRange, offset).and.returnValue(Promise.resolve([]));
-    spyOn(state, 'getKnownNearbyAreas').and.returnValue(Promise.resolve([{ id: aoi1.id, proximity: GeofencingProximity.NEARBY }]));
+    spyOn(state, 'getKnownNearbyAreas').and.returnValue(
+      Promise.resolve([{ id: aoi1.id, proximity: GeofencingProximity.NEARBY }])
+    );
 
     const done = listenToEventTrigger('movedAwayFromAreaOfInterest', invocationEvent.id);
     task.run({ nearbyRange, offset }, invocationEvent);
     const aoiProximityChanges = await done;
     expect(aoiProximityChanges.length).toBe(1);
-    expect(aoiProximityChanges[0]).toEqual(aoiProximityChangeFrom(aoi1, GeofencingProximity.NEARBY, Change.END, aoiProximityChanges[0].timestamp));
+    expect(aoiProximityChanges[0]).toEqual(
+      aoiProximityChangeFrom(aoi1, GeofencingProximity.NEARBY, Change.END, aoiProximityChanges[0].timestamp)
+    );
     expect(state.updateProximity).toHaveBeenCalledWith(aoi1.id, GeofencingProximity.OUTSIDE);
   });
 
@@ -83,21 +93,29 @@ describe('Geofencing task', () => {
     task.run({ nearbyRange, offset }, invocationEvent);
     const aoiProximityChanges = await done;
     expect(aoiProximityChanges.length).toBe(2);
-    expect(aoiProximityChanges[0]).toEqual(aoiProximityChangeFrom(aoi1, GeofencingProximity.NEARBY, Change.END, aoiProximityChanges[0].timestamp));
-    expect(aoiProximityChanges[1]).toEqual(aoiProximityChangeFrom(aoi2, GeofencingProximity.NEARBY, Change.END, aoiProximityChanges[1].timestamp));
+    expect(aoiProximityChanges[0]).toEqual(
+      aoiProximityChangeFrom(aoi1, GeofencingProximity.NEARBY, Change.END, aoiProximityChanges[0].timestamp)
+    );
+    expect(aoiProximityChanges[1]).toEqual(
+      aoiProximityChangeFrom(aoi2, GeofencingProximity.NEARBY, Change.END, aoiProximityChanges[1].timestamp)
+    );
     expect(state.updateProximity).toHaveBeenCalledWith(aoi1.id, GeofencingProximity.OUTSIDE);
     expect(state.updateProximity).toHaveBeenCalledWith(aoi2.id, GeofencingProximity.OUTSIDE);
   });
 
   it("outputs a 'movedOutsideFromAreaOfInterest' event when it was inside an area but no longer it is", async () => {
     spyOn(checker, 'findNearby').withArgs(location, nearbyRange, offset).and.returnValue(Promise.resolve([]));
-    spyOn(state, 'getKnownNearbyAreas').and.returnValue(Promise.resolve([{ id: aoi1.id, proximity: GeofencingProximity.INSIDE }]));
+    spyOn(state, 'getKnownNearbyAreas').and.returnValue(
+      Promise.resolve([{ id: aoi1.id, proximity: GeofencingProximity.INSIDE }])
+    );
 
     const done = listenToEventTrigger('movedOutsideAreaOfInterest', invocationEvent.id);
     task.run({ nearbyRange, offset }, invocationEvent);
     const aoiProximityChanges = await done;
     expect(aoiProximityChanges.length).toBe(1);
-    expect(aoiProximityChanges[0]).toEqual(aoiProximityChangeFrom(aoi1, GeofencingProximity.INSIDE, Change.END, aoiProximityChanges[0].timestamp));
+    expect(aoiProximityChanges[0]).toEqual(
+      aoiProximityChangeFrom(aoi1, GeofencingProximity.INSIDE, Change.END, aoiProximityChanges[0].timestamp)
+    );
     expect(state.updateProximity).toHaveBeenCalledWith(aoi1.id, GeofencingProximity.NEARBY);
   });
 
@@ -114,8 +132,12 @@ describe('Geofencing task', () => {
     task.run({ nearbyRange, offset }, invocationEvent);
     const aoiProximityChanges = await done;
     expect(aoiProximityChanges.length).toBe(2);
-    expect(aoiProximityChanges[0]).toEqual(aoiProximityChangeFrom(aoi1, GeofencingProximity.INSIDE, Change.END, aoiProximityChanges[0].timestamp));
-    expect(aoiProximityChanges[1]).toEqual(aoiProximityChangeFrom(aoi2, GeofencingProximity.INSIDE, Change.END, aoiProximityChanges[1].timestamp));
+    expect(aoiProximityChanges[0]).toEqual(
+      aoiProximityChangeFrom(aoi1, GeofencingProximity.INSIDE, Change.END, aoiProximityChanges[0].timestamp)
+    );
+    expect(aoiProximityChanges[1]).toEqual(
+      aoiProximityChangeFrom(aoi2, GeofencingProximity.INSIDE, Change.END, aoiProximityChanges[1].timestamp)
+    );
     expect(state.updateProximity).toHaveBeenCalledWith(aoi1.id, GeofencingProximity.NEARBY);
     expect(state.updateProximity).toHaveBeenCalledWith(aoi2.id, GeofencingProximity.NEARBY);
   });
@@ -133,7 +155,9 @@ describe('Geofencing task', () => {
     task.run({ nearbyRange, offset }, invocationEvent);
     const aoiProximityChanges = await done;
     expect(aoiProximityChanges.length).toBe(1);
-    expect(aoiProximityChanges[0]).toEqual(aoiProximityChangeFrom(aoi1, GeofencingProximity.INSIDE, Change.END, aoiProximityChanges[0].timestamp));
+    expect(aoiProximityChanges[0]).toEqual(
+      aoiProximityChangeFrom(aoi1, GeofencingProximity.INSIDE, Change.END, aoiProximityChanges[0].timestamp)
+    );
     expect(state.updateProximity).toHaveBeenCalledWith(aoi1.id, GeofencingProximity.NEARBY);
     expect(state.updateProximity).not.toHaveBeenCalledWith(aoi2.id, jasmine.anything());
   });
@@ -153,7 +177,9 @@ describe('Geofencing task', () => {
     task.run({ nearbyRange, offset }, invocationEvent);
     const aoiProximityChanges = await done;
     expect(aoiProximityChanges.length).toBe(1);
-    expect(aoiProximityChanges[0]).toEqual(aoiProximityChangeFrom(aoi1, GeofencingProximity.NEARBY, Change.START, aoiProximityChanges[0].timestamp));
+    expect(aoiProximityChanges[0]).toEqual(
+      aoiProximityChangeFrom(aoi1, GeofencingProximity.NEARBY, Change.START, aoiProximityChanges[0].timestamp)
+    );
     expect(state.updateProximity).toHaveBeenCalledWith(aoi1.id, GeofencingProximity.NEARBY);
   });
 
@@ -180,8 +206,12 @@ describe('Geofencing task', () => {
     task.run({ nearbyRange, offset }, invocationEvent);
     const aoiProximityChanges = await done;
     expect(aoiProximityChanges.length).toBe(2);
-    expect(aoiProximityChanges[0]).toEqual(aoiProximityChangeFrom(aoi1, GeofencingProximity.NEARBY, Change.START, aoiProximityChanges[0].timestamp));
-    expect(aoiProximityChanges[1]).toEqual(aoiProximityChangeFrom(aoi2, GeofencingProximity.NEARBY, Change.START, aoiProximityChanges[1].timestamp));
+    expect(aoiProximityChanges[0]).toEqual(
+      aoiProximityChangeFrom(aoi1, GeofencingProximity.NEARBY, Change.START, aoiProximityChanges[0].timestamp)
+    );
+    expect(aoiProximityChanges[1]).toEqual(
+      aoiProximityChangeFrom(aoi2, GeofencingProximity.NEARBY, Change.START, aoiProximityChanges[1].timestamp)
+    );
     expect(state.updateProximity).toHaveBeenCalledWith(aoi1.id, GeofencingProximity.NEARBY);
     expect(state.updateProximity).toHaveBeenCalledWith(aoi2.id, GeofencingProximity.NEARBY);
   });
@@ -201,7 +231,9 @@ describe('Geofencing task', () => {
     task.run({ nearbyRange, offset }, invocationEvent);
     const aoiProximityChanges = await done;
     expect(aoiProximityChanges.length).toBe(1);
-    expect(aoiProximityChanges[0]).toEqual(aoiProximityChangeFrom(aoi1, GeofencingProximity.INSIDE, Change.START, aoiProximityChanges[0].timestamp));
+    expect(aoiProximityChanges[0]).toEqual(
+      aoiProximityChangeFrom(aoi1, GeofencingProximity.INSIDE, Change.START, aoiProximityChanges[0].timestamp)
+    );
     expect(state.updateProximity).toHaveBeenCalledWith(aoi1.id, GeofencingProximity.INSIDE);
   });
 
@@ -228,8 +260,12 @@ describe('Geofencing task', () => {
     task.run({ nearbyRange, offset }, invocationEvent);
     const aoiProximityChanges = await done;
     expect(aoiProximityChanges.length).toBe(2);
-    expect(aoiProximityChanges[0]).toEqual(aoiProximityChangeFrom(aoi1, GeofencingProximity.INSIDE, Change.START, aoiProximityChanges[0].timestamp));
-    expect(aoiProximityChanges[1]).toEqual(aoiProximityChangeFrom(aoi2, GeofencingProximity.INSIDE, Change.START, aoiProximityChanges[1].timestamp));
+    expect(aoiProximityChanges[0]).toEqual(
+      aoiProximityChangeFrom(aoi1, GeofencingProximity.INSIDE, Change.START, aoiProximityChanges[0].timestamp)
+    );
+    expect(aoiProximityChanges[1]).toEqual(
+      aoiProximityChangeFrom(aoi2, GeofencingProximity.INSIDE, Change.START, aoiProximityChanges[1].timestamp)
+    );
     expect(state.updateProximity).toHaveBeenCalledWith(aoi1.id, GeofencingProximity.INSIDE);
     expect(state.updateProximity).toHaveBeenCalledWith(aoi2.id, GeofencingProximity.INSIDE);
   });
@@ -257,7 +293,9 @@ describe('Geofencing task', () => {
     task.run({ nearbyRange, offset }, invocationEvent);
     const aoiProximityChanges = await done;
     expect(aoiProximityChanges.length).toBe(1);
-    expect(aoiProximityChanges[0]).toEqual(aoiProximityChangeFrom(aoi1, GeofencingProximity.INSIDE, Change.START, aoiProximityChanges[0].timestamp));
+    expect(aoiProximityChanges[0]).toEqual(
+      aoiProximityChangeFrom(aoi1, GeofencingProximity.INSIDE, Change.START, aoiProximityChanges[0].timestamp)
+    );
     expect(state.updateProximity).toHaveBeenCalledWith(aoi1.id, GeofencingProximity.INSIDE);
     expect(state.updateProximity).not.toHaveBeenCalledWith(aoi2.id, GeofencingProximity.NEARBY);
   });
@@ -277,7 +315,9 @@ describe('Geofencing task', () => {
     task.run({ nearbyRange, offset }, invocationEvent);
     const aoiProximityChanges = await done;
     expect(aoiProximityChanges.length).toBe(1);
-    expect(aoiProximityChanges[0]).toEqual(aoiProximityChangeFrom(aoi1, GeofencingProximity.INSIDE, Change.END, aoiProximityChanges[0].timestamp));
+    expect(aoiProximityChanges[0]).toEqual(
+      aoiProximityChangeFrom(aoi1, GeofencingProximity.INSIDE, Change.END, aoiProximityChanges[0].timestamp)
+    );
     expect(state.updateProximity).toHaveBeenCalledWith(aoi1.id, GeofencingProximity.NEARBY);
   });
 
@@ -304,8 +344,12 @@ describe('Geofencing task', () => {
     task.run({ nearbyRange, offset }, invocationEvent);
     const aoiProximityChanges = await done;
     expect(aoiProximityChanges.length).toBe(2);
-    expect(aoiProximityChanges[0]).toEqual(aoiProximityChangeFrom(aoi1, GeofencingProximity.INSIDE, Change.END, aoiProximityChanges[0].timestamp));
-    expect(aoiProximityChanges[1]).toEqual(aoiProximityChangeFrom(aoi2, GeofencingProximity.INSIDE, Change.END, aoiProximityChanges[1].timestamp));
+    expect(aoiProximityChanges[0]).toEqual(
+      aoiProximityChangeFrom(aoi1, GeofencingProximity.INSIDE, Change.END, aoiProximityChanges[0].timestamp)
+    );
+    expect(aoiProximityChanges[1]).toEqual(
+      aoiProximityChangeFrom(aoi2, GeofencingProximity.INSIDE, Change.END, aoiProximityChanges[1].timestamp)
+    );
     expect(state.updateProximity).toHaveBeenCalledWith(aoi1.id, GeofencingProximity.NEARBY);
     expect(state.updateProximity).toHaveBeenCalledWith(aoi2.id, GeofencingProximity.NEARBY);
   });
@@ -333,7 +377,9 @@ describe('Geofencing task', () => {
     task.run({ nearbyRange, offset }, invocationEvent);
     const aoiProximityChanges = await done;
     expect(aoiProximityChanges.length).toBe(1);
-    expect(aoiProximityChanges[0]).toEqual(aoiProximityChangeFrom(aoi1, GeofencingProximity.INSIDE, Change.END, aoiProximityChanges[0].timestamp));
+    expect(aoiProximityChanges[0]).toEqual(
+      aoiProximityChangeFrom(aoi1, GeofencingProximity.INSIDE, Change.END, aoiProximityChanges[0].timestamp)
+    );
     expect(state.updateProximity).toHaveBeenCalledWith(aoi1.id, GeofencingProximity.NEARBY);
     expect(state.updateProximity).not.toHaveBeenCalledWith(aoi2.id, GeofencingProximity.NEARBY);
   });
@@ -385,7 +431,12 @@ function createAreaOfInterest(id: string): AreaOfInterest {
   };
 }
 
-function aoiProximityChangeFrom(aoi: AreaOfInterest, proximity: GeofencingProximity, change: Change, timestamp: Date): AoIProximityChange {
+function aoiProximityChangeFrom(
+  aoi: AreaOfInterest,
+  proximity: GeofencingProximity,
+  change: Change,
+  timestamp: Date
+): AoIProximityChange {
   return {
     type: KnownTypes.AoIProximityChange,
     timestamp,

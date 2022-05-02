@@ -2,7 +2,11 @@ import { PullProvider, ProviderInterrupter, ProviderInterruption } from '@awarns
 import { KnownTypes } from '@awarns/core/entities';
 import { Geolocation } from './geolocation';
 
-import { GeolocationProvider as NativeProvider, Geolocation as NativeGeolocation, getGeolocationProvider as getNativeProvider } from 'nativescript-context-apis/geolocation';
+import {
+  GeolocationProvider as NativeProvider,
+  Geolocation as NativeGeolocation,
+  getGeolocationProvider as getNativeProvider,
+} from 'nativescript-context-apis/geolocation';
 
 import { firstValueFrom, from, Observable, of, Subject, throwError, timeout } from 'rxjs';
 import { map, mergeMap, take, takeUntil, toArray } from 'rxjs/operators';
@@ -12,7 +16,11 @@ export class GeolocationProvider implements PullProvider {
     return KnownTypes.Geolocation;
   }
 
-  constructor(private bestOf: number, private timeout: number, private nativeProvider: () => NativeProvider = getNativeProvider) {}
+  constructor(
+    private bestOf: number,
+    private timeout: number,
+    private nativeProvider: () => NativeProvider = getNativeProvider
+  ) {}
 
   async checkIfIsReady(): Promise<void> {
     const isReady = await this.nativeProvider().isReady();
@@ -77,11 +85,17 @@ export class GeolocationProvider implements PullProvider {
   }
 }
 
-export const geolocationProviderNotReadyErr = new Error("Geolocation provider is not ready. Perhaps permissions haven't been granted or location services have been disabled");
+export const geolocationProviderNotReadyErr = new Error(
+  "Geolocation provider is not ready. Perhaps permissions haven't been granted or location services have been disabled"
+);
 
 function pickBest(locations: Array<NativeGeolocation>): NativeGeolocation {
   const now = Date.now();
-  return locations.reduce((previous, current) => (current && (!previous || calculateScore(current, now) > calculateScore(previous, now)) ? current : previous), null);
+  return locations.reduce(
+    (previous, current) =>
+      current && (!previous || calculateScore(current, now) > calculateScore(previous, now)) ? current : previous,
+    null
+  );
 }
 
 function calculateScore(location: NativeGeolocation, now: number): number {
@@ -98,5 +112,14 @@ function calculateScore(location: NativeGeolocation, now: number): number {
 }
 
 function toGeolocation(nativeGeolocation: NativeGeolocation): Geolocation {
-  return new Geolocation(nativeGeolocation.latitude, nativeGeolocation.longitude, nativeGeolocation.altitude, nativeGeolocation.horizontalAccuracy, nativeGeolocation.verticalAccuracy, nativeGeolocation.speed, nativeGeolocation.direction, nativeGeolocation.timestamp);
+  return new Geolocation(
+    nativeGeolocation.latitude,
+    nativeGeolocation.longitude,
+    nativeGeolocation.altitude,
+    nativeGeolocation.horizontalAccuracy,
+    nativeGeolocation.verticalAccuracy,
+    nativeGeolocation.speed,
+    nativeGeolocation.direction,
+    nativeGeolocation.timestamp
+  );
 }

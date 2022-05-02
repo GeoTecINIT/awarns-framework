@@ -104,7 +104,9 @@ function notificationFrom(doc: NotificationDoc): Notification {
     tapAction: {
       type: tapActionType,
       id: tapActionId,
-      ...(tapActionMetadata !== null && { metadata: deserialize(tapActionMetadata) }),
+      ...(tapActionMetadata !== null && {
+        metadata: deserialize(tapActionMetadata),
+      }),
     },
     body,
     timestamp: new Date(timestamp),

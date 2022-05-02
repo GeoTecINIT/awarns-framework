@@ -39,7 +39,11 @@ export function createGeofencingCheckerMock(): GeofencingChecker {
     findNearby(_location: Geolocation, _nearbyRange: number, _offset: number): Promise<Array<GeofencingResult>> {
       return Promise.resolve([]);
     },
-    findNearbyTrajectory(_locations: Array<Geolocation>, _nearbyRange: number, _offset: number): Promise<Array<GeofencingResult>> {
+    findNearbyTrajectory(
+      _locations: Array<Geolocation>,
+      _nearbyRange: number,
+      _offset: number
+    ): Promise<Array<GeofencingResult>> {
       return Promise.resolve([]);
     },
   } as GeofencingChecker;
