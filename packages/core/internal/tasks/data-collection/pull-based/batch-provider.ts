@@ -1,15 +1,14 @@
 import { SinglePullProviderTask } from './single-provider';
 import { PullProvider, Record } from '../../../providers';
-import { TracerConfig } from '../../tracing';
-import { TaskOutcome, TaskParams } from 'nativescript-task-dispatcher/tasks';
+import { TaskConfig, TaskOutcome, TaskParams } from 'nativescript-task-dispatcher/tasks';
 import { DispatchableEvent } from 'nativescript-task-dispatcher/events';
 
 export class BatchPullProviderTask extends SinglePullProviderTask {
-  constructor(provider: PullProvider, recordPrefix = '', taskConfig?: TracerConfig) {
+  constructor(provider: PullProvider, recordPrefix = '', taskConfig?: TaskConfig) {
     super(provider, `Multiple${recordPrefix}`, taskConfig);
   }
 
-  protected async onTracedRun(taskParams: TaskParams, invocationEvent: DispatchableEvent): Promise<TaskOutcome> {
+  protected async onRun(taskParams: TaskParams, invocationEvent: DispatchableEvent): Promise<TaskOutcome> {
     const records: Array<Record> = [];
     const executionTimes = [];
     while (this.remainingTime() > 0 && (executionTimes.length === 0 || average(executionTimes) < this.remainingTime())) {
@@ -30,7 +29,7 @@ export class BatchPullProviderTask extends SinglePullProviderTask {
     const start = Date.now();
     let record: Record;
     try {
-      const taskOutcome = await super.onTracedRun(taskParams, invocationEvent);
+      const taskOutcome = await super.onRun(taskParams, invocationEvent);
       record = taskOutcome.result;
       if (maxInterval && Date.now() - start < maxInterval) {
         await this.doNothingDuring(maxInterval - (Date.now() - start));

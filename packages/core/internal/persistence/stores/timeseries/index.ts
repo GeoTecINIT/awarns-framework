@@ -1,16 +1,14 @@
 import { TimeSeriesSyncedStore } from './synchronizer';
-import { TimeSeriesStore } from './common';
+import { TimeSeriesEntity as TSE, TimeSeriesStore as TSS, TimeSeriesDoc as TSD } from './common';
+export type TimeSeriesEntity = TSE;
+export type TimeSeriesStore<T extends TimeSeriesEntity> = TSS<T>;
+export type TimeSeriesDoc = TSD;
 
 import { Record } from '../../../providers';
 import { localRecordsStore } from './records';
 
-import { Trace } from '../../../tasks/tracing';
-import { localTracesStore } from './traces';
-
 export type RecordsStore = TimeSeriesStore<Record>;
-
 export const syncedRecordsStore = new TimeSeriesSyncedStore('RecordsStore', localRecordsStore);
 
-export type TracesStore = TimeSeriesStore<Trace>;
-
-export const syncedTracesStore = new TimeSeriesSyncedStore('TracesStore', localTracesStore);
+export { TimeSeriesSyncedStore };
+export { AbstractTimeSeriesStore } from './common';
