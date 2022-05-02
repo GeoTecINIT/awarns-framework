@@ -1,4 +1,4 @@
-import { TraceableTask, TracerConfig, TaskOutcome, TaskParams } from '@awarns/core/tasks';
+import { Task, TaskConfig, TaskOutcome, TaskParams } from '@awarns/core/tasks';
 import { DispatchableEvent } from '@awarns/core/events';
 import { AreasOfInterestStore, areasOfInterestStoreDB, GeofencingStateStore, geofencingStateStoreDB, NearbyArea } from './persistence';
 import { GeofencingChecker, GeofencingResult } from './checker';
@@ -14,15 +14,15 @@ const MOVED_INSIDE = 'movedInsideAreaOfInterest';
 const MOVED_OUTSIDE = 'movedOutsideAreaOfInterest';
 const MOVED_AWAY = 'movedAwayFromAreaOfInterest';
 
-export class GeofencingTask extends TraceableTask {
-  constructor(name: string, taskConfig: TracerConfig = {}, private state: GeofencingStateStore = geofencingStateStoreDB, private checker = new GeofencingChecker(), private aois: AreasOfInterestStore = areasOfInterestStoreDB) {
+export class GeofencingTask extends Task {
+  constructor(name: string, taskConfig: TaskConfig = {}, private state: GeofencingStateStore = geofencingStateStoreDB, private checker = new GeofencingChecker(), private aois: AreasOfInterestStore = areasOfInterestStoreDB) {
     super(name, {
       ...taskConfig,
       outputEventNames: [`${name}Finished`, MOVED_CLOSE, MOVED_INSIDE, MOVED_OUTSIDE, MOVED_AWAY],
     });
   }
 
-  protected async onTracedRun(taskParams: TaskParams, invocationEvent: DispatchableEvent): Promise<TaskOutcome> {
+  protected async onRun(taskParams: TaskParams, invocationEvent: DispatchableEvent): Promise<TaskOutcome> {
     const nearbyAreas = await this.queryNearbyAreasWith(invocationEvent, taskParams);
 
     if (nearbyAreas.length === 0) {
