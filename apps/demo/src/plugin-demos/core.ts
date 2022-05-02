@@ -37,7 +37,7 @@ function showNotificationModal(notification: Notification, page: Page) {
   const animated = true;
 
   try {
-    page.showModal('notification-handler/notification-handler-root', {
+    page.showModal('plugin-demos/notification-handler/notification-handler-root', {
       context,
       closeCallback,
       fullscreen,
