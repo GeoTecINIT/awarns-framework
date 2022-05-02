@@ -3,7 +3,7 @@ import { Trace, TraceResult, TraceType } from '@awarns/tracing';
 import { localTracesStore as store } from '@awarns/tracing/internal/stores/store';
 import { firstValueFrom, lastValueFrom } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { uuid } from 'nativescript-task-dispatcher/internal/utils/uuid';
+import { uuid } from '@awarns/core/utils/uuid';
 
 describe('Traces store', () => {
   const createFakeTrace = fakeTraceCreator();

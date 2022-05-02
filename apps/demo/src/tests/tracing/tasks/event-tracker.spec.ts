@@ -1,5 +1,5 @@
 import { EventTrackerTask } from '@awarns/tracing/internal/tasks/event-tracker';
-import { DispatchableEvent } from 'nativescript-task-dispatcher/events';
+import { DispatchableEvent } from '@awarns/core/events';
 import { TracesStore, TraceResult, TraceType } from '@awarns/tracing';
 import { createTracesStoreMock } from './common.spec';
 import { createEvent, listenToEventTrigger } from '@awarns/core/testing/events';

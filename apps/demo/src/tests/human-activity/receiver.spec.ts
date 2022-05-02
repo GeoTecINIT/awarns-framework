@@ -1,5 +1,5 @@
 import { HumanActivityChangeReceiver } from '@awarns/human-activity/internal/receiver';
-import { EventData } from 'nativescript-task-dispatcher/internal/events';
+import { EventData } from '@awarns/core/events';
 
 import { ActivityChange, HumanActivity, Transition } from 'nativescript-context-apis/internal/activity-recognition';
 import { HumanActivityChange } from '@awarns/human-activity';

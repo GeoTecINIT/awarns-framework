@@ -3,10 +3,10 @@ import { AoIProximityChange, AreaOfInterest, GeofencingProximity } from '@awarns
 import { AreasOfInterestStore, GeofencingStateStore } from '@awarns/geofencing/internal/persistence';
 import { GeofencingChecker } from '@awarns/geofencing/internal/checker';
 import { GeofencingTask } from '@awarns/geofencing/internal/task';
-import { DispatchableEvent } from 'nativescript-task-dispatcher/events';
+import { DispatchableEvent } from '@awarns/core/events';
 import { createAreasOfInterestStoreMock, createGeofencingCheckerMock, createGeofencingStateStoreMock } from './common.spec';
 import { Change, KnownTypes } from '@awarns/core/entities';
-import { createEvent, listenToEventTrigger } from 'nativescript-task-dispatcher/testing/events';
+import { createEvent, listenToEventTrigger } from '@awarns/core/testing/events';
 
 describe('Geofencing task', () => {
   const location = createFakeLocation();

@@ -36,7 +36,7 @@ class ProviderChecker extends ProviderTask<BaseProvider> {
     super('', provider, {});
   }
 
-  protected onTracedRun(_taskParams: TaskParams, _invocationEvent: DispatchableEvent): Promise<void | TaskOutcome> {
+  protected onRun(_taskParams: TaskParams, _invocationEvent: DispatchableEvent): Promise<void | TaskOutcome> {
     throw new Error('Method not implemented.');
   }
 }
