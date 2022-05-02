@@ -1,3 +1,7 @@
-import { NotificationsCommon } from './common';
+import { PluginLoader } from '@awarns/core';
 
-export declare class Notifications extends NotificationsCommon {}
+export * from './entities';
+export * from './managers';
+export * from './tasks';
+
+export function registerNotificationsPlugin(notificationsChannelName?: string): PluginLoader;
