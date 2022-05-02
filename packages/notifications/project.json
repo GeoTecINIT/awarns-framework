@@ -1,0 +1,64 @@
+{
+  "root": "packages/notifications",
+  "projectType": "library",
+  "sourceRoot": "packages/notifications",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "options": {
+        "outputPath": "dist/packages/notifications",
+        "tsConfig": "packages/notifications/tsconfig.json",
+        "packageJson": "packages/notifications/package.json",
+        "main": "packages/notifications/index.d.ts",
+        "assets": [
+          "packages/notifications/*.md",
+          "packages/notifications/index.d.ts",
+          "LICENSE",
+          {
+            "glob": "**/*",
+            "input": "packages/notifications/platforms/",
+            "output": "./platforms/"
+          }
+        ],
+        "dependsOn": [
+          {
+            "target": "build.all",
+            "projects": "dependencies"
+          }
+        ]
+      }
+    },
+    "build.all": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["node tools/scripts/build-finish.ts notifications"],
+        "parallel": false
+      },
+      "outputs": ["dist/packages/notifications"],
+      "dependsOn": [
+        {
+          "target": "build.all",
+          "projects": "dependencies"
+        },
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ]
+    },
+    "focus": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["nx g @nativescript/plugin-tools:focus-packages notifications"],
+        "parallel": false
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["packages/notifications/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}

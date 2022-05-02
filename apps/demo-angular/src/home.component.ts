@@ -18,5 +18,8 @@ export class HomeComponent {
     {
       name: 'human-activity',
     },
+    {
+      name: 'notifications',
+    },
   ];
 }

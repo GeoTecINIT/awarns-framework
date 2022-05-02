@@ -9,7 +9,8 @@
     "@awarns/core": "file:../../packages/core",
     "@awarns/geolocation": "file:../../packages/geolocation",
     "@awarns/geofencing": "file:../../packages/geofencing",
-    "@awarns/human-activity": "file:../../packages/human-activity"
+    "@awarns/human-activity": "file:../../packages/human-activity",
+    "@awarns/notifications": "file:../../packages/notifications"
   },
   "devDependencies": {
     "@jsdevtools/coverage-istanbul-loader": "3.0.5",

@@ -109,6 +109,13 @@ module.exports = {
           description: '@awarns/human-activity: Build',
         },
       },
+      // @awarns/notifications
+      notifications: {
+        build: {
+          script: 'nx run notifications:build.all',
+          description: '@awarns/notifications: Build',
+        },
+      },
       'build-all': {
         script: 'nx run-many --target=build.all --all --parallel=1',
         description: 'Build all packages',
@@ -134,6 +141,10 @@ module.exports = {
       'human-activity': {
         script: 'nx run human-activity:focus',
         description: 'Focus on @awarns/human-activity',
+      },
+      notifications: {
+        script: 'nx run notifications:focus',
+        description: 'Focus on @awarns/notifications',
       },
       reset: {
         script: 'nx g @awarns/plugin-tools:focus-packages',
