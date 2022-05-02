@@ -1,5 +1,3 @@
-import { TaskConfig } from 'nativescript-task-dispatcher/tasks';
-
-export interface TracerConfig extends TaskConfig {
+export interface TracerConfig {
   sensitiveData?: boolean;
 }
