@@ -1,10 +1,8 @@
 import { Observable } from '@nativescript/core';
 import { Task } from 'nativescript-task-dispatcher/tasks';
 import { TaskGraph } from 'nativescript-task-dispatcher/tasks/graph';
-import { taskDispatcher, ConfigParams as TDConfigParams } from 'nativescript-task-dispatcher';
-import { builtInTasks } from './internal/tasks';
+import { taskDispatcher, ConfigParams } from 'nativescript-task-dispatcher';
 import { EventData } from 'nativescript-task-dispatcher/events';
-import { RecordsStore, syncedRecordsStore } from './internal/persistence/stores/timeseries';
 import { enableLogging, setLoggerCreator } from './internal/utils/logger';
 
 export class CoreCommon extends Observable {
@@ -15,13 +13,10 @@ export class CoreCommon extends Observable {
     config: ConfigParams = {}
   ): Promise<void> {
     CoreCommon.configure(config);
-    const tasksInUse = [...builtInTasks, ...appTasks];
-    await taskDispatcher.init(tasksInUse, appTaskGraph, config);
+    await taskDispatcher.init(appTasks, appTaskGraph, config);
     for (const pluginLoader of pluginLoaders) {
-      await pluginLoader(tasksInUse);
+      await pluginLoader(appTasks);
     }
-    await CoreCommon.syncStores();
-    await CoreCommon.clearOldData();
   }
 
   public isReady(): Promise<boolean> {
@@ -40,14 +35,6 @@ export class CoreCommon extends Observable {
     taskDispatcher.emitEvent(eventName, eventData);
   }
 
-  private static async syncStores() {
-    await syncedRecordsStore.sync();
-  }
-
-  private static async clearOldData() {
-    await syncedRecordsStore.clearOld();
-  }
-
   private static configure(config: ConfigParams) {
     if (config.customLogger) {
       setLoggerCreator(config.customLogger);
@@ -55,18 +42,7 @@ export class CoreCommon extends Observable {
     if (config.enableLogging || config.customLogger) {
       enableLogging();
     }
-    if (config.externalRecordsStore) {
-      syncedRecordsStore.setExternalStore(config.externalRecordsStore);
-    }
-    if (config.oldRecordsMaxAgeHours) {
-      syncedRecordsStore.setClearOldThreshold(config.oldRecordsMaxAgeHours);
-    }
   }
 }
 
 export type PluginLoader = (tasksInUse?: Array<Task>) => Promise<void> | void;
-
-export interface ConfigParams extends TDConfigParams {
-  externalRecordsStore?: RecordsStore;
-  oldRecordsMaxAgeHours?: number;
-}

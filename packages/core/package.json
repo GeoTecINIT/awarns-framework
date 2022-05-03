@@ -33,8 +33,6 @@
   "readmeFilename": "README.md",
   "bootstrapper": "@nativescript/plugin-seed",
   "dependencies": {
-    "@triniwiz/nativescript-couchbase": "^1.3.1",
-    "nativescript-task-dispatcher": "^3.1.1",
-    "rxjs": "^7.5.5"
+    "nativescript-task-dispatcher": "^3.1.1"
   }
 }

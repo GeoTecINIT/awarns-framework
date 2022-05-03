@@ -3,8 +3,8 @@ import {
   LocalTimeSeriesStore,
   TimeSeriesEntity,
   TimeSeriesStore,
-} from '@awarns/core/internal/persistence/stores/timeseries/common';
-import { TimeSeriesSyncedStore } from '@awarns/core/internal/persistence/stores/timeseries/synchronizer';
+} from '@awarns/persistence/internal/stores/timeseries/common';
+import { TimeSeriesSyncedStore } from '@awarns/persistence/internal/stores/timeseries/synchronizer';
 
 describe('Time series synced store', () => {
   let localStoreMock: LocalTimeSeriesStore<TimeSeriesEntity>;

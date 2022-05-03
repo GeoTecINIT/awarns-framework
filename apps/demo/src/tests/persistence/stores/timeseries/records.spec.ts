@@ -1,4 +1,4 @@
-import { localRecordsStore as store } from '@awarns/core/internal/persistence/stores/timeseries/records';
+import { localRecordsStore as store } from '@awarns/persistence/internal/stores/timeseries/records/store';
 import { Record, Change } from '@awarns/core/internal/providers';
 
 import { Geolocation } from '@awarns/geolocation';
