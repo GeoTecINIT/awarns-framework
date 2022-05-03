@@ -3,6 +3,7 @@
   "dependencies": {
     "@nativescript/core": "file:../../node_modules/@nativescript/core",
     "@awarns/core": "file:../../dist/packages/core",
+    "@awarns/persistence": "file:../../dist/packages/persistence",
     "@awarns/tracing": "file:../../dist/packages/tracing",
     "@awarns/geolocation": "file:../../dist/packages/geolocation",
     "@awarns/geofencing": "file:../../dist/packages/geofencing",

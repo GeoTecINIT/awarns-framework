@@ -8,6 +8,7 @@
     "geolocation": "packages/geolocation",
     "human-activity": "packages/human-activity",
     "notifications": "packages/notifications",
+    "persistence": "packages/persistence",
     "tracing": "packages/tracing"
   }
 }

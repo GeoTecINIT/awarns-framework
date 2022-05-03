@@ -1,4 +1,5 @@
 - [@awarns/core](packages/core/README.md)
+- [@awarns/persistence](packages/persistence/README.md)
 - [@awarns/tracing](packages/tracing/README.md)
 - [@awarns/geolocation](packages/geolocation/README.md)
 - [@awarns/geofencing](packages/geofencing/README.md)

@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: () => import('./plugin-demos/core.module').then((m) => m.CoreModule),
   },
   {
+    path: 'persistence',
+    loadChildren: () => import('./plugin-demos/persistence.module').then((m) => m.PersistenceModule),
+  },
+  {
     path: 'tracing',
     loadChildren: () => import('./plugin-demos/tracing.module').then((m) => m.TracingModule),
   },

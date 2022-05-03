@@ -88,6 +88,13 @@ module.exports = {
           description: '@awarns/core: Build',
         },
       },
+      // @awarns/persistence
+      persistence: {
+        build: {
+          script: 'nx run persistence:build.all',
+          description: '@awarns/persistence: Build',
+        },
+      },
       // @awarns/tracing
       tracing: {
         build: {
@@ -156,6 +163,10 @@ module.exports = {
       tracing: {
         script: 'nx run tracing:focus',
         description: 'Focus on @awarns/tracing',
+      },
+      persistence: {
+        script: 'nx run persistence:focus',
+        description: 'Focus on @awarns/persistence',
       },
       reset: {
         script: 'nx g @awarns/plugin-tools:focus-packages',
