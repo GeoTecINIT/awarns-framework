@@ -91,7 +91,7 @@ module.exports = {
       // @awarns/persistence
       persistence: {
         build: {
-          script: 'nx run persistence:build.all',
+          script: 'nx run persistence:build.all --parallel=false',
           description: '@awarns/persistence: Build',
         },
       },
