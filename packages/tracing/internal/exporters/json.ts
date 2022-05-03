@@ -1,6 +1,6 @@
 import { Folder } from '@nativescript/core';
 
-import { JSONExporter } from '@awarns/core/internal/persistence/file/exporters';
+import { JSONExporter } from '@awarns/persistence/exporters';
 import { Trace } from '../entities';
 import { TracesStore, syncedTracesStore } from '../stores';
 

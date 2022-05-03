@@ -1,4 +1,4 @@
-import { TimeSeriesStore, TimeSeriesSyncedStore } from '@awarns/core/internal/persistence/stores/timeseries';
+import { TimeSeriesStore, TimeSeriesSyncedStore } from '@awarns/persistence/stores/timeseries';
 import { Trace } from '../entities';
 import { localTracesStore } from './store';
 
