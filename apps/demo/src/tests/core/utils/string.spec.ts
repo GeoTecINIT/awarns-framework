@@ -1,4 +1,4 @@
-import { pascalCase, camelCase } from './string';
+import { pascalCase, camelCase } from '@awarns/core/internal/utils/string';
 
 describe('String utils', () => {
   it('allows to turn a sentence into pascal case', () => {

@@ -1,4 +1,4 @@
-import { jsonDateReplacer } from './date';
+import { jsonDateReplacer } from '@awarns/core/internal/utils/date';
 
 describe('Date utils', function () {
   it('jsonDateReplacer allows to stringify a date with timestamp and timezone offset format', () => {
