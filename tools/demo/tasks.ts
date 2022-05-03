@@ -11,12 +11,15 @@ import { writeRecordsTask } from '@awarns/persistence';
 
 export const demoTasks: Array<Task> = [
   ...makeTraceable([startDetectingCoarseHumanActivityChangesTask(), stopDetectingCoarseHumanActivityChangesTask()]),
-  ...makeTraceable([
-    acquirePhoneGeolocationTask(/* optional */ { bestOf: 3, timeout: 10000 }),
-    acquireMultiplePhoneGeolocationTask(/* optional */ { bestOf: 1, timeout: 15000 }),
-    checkAreaOfInterestProximityTask(),
-    sendNotificationTask(),
-  ]),
+  ...makeTraceable(
+    [
+      acquirePhoneGeolocationTask(/* optional */ { bestOf: 3, timeout: 10000 }),
+      acquireMultiplePhoneGeolocationTask(/* optional */ { bestOf: 1, timeout: 15000 }),
+      checkAreaOfInterestProximityTask(),
+      sendNotificationTask(),
+    ],
+    { outputsSensitiveData: true }
+  ),
   writeRecordsTask(),
   trackEventTask(),
 ];
