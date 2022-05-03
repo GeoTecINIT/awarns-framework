@@ -6,7 +6,8 @@
     "paths": {
       "@awarns/core/*": ["packages/core/*"],
       "@awarns/geolocation": ["packages/geolocation/index.d.ts"],
-      "@awarns/geolocation/*": ["packages/geolocation/*"]
+      "@awarns/geolocation/*": ["packages/geolocation/*"],
+      "@awarns/persistence": ["packages/persistence/index.d.ts"]
     }
   },
   "exclude": ["**/*.spec.ts", "**/*.test.ts", "angular"],
