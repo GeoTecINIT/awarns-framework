@@ -1,4 +1,4 @@
-import { AreaOfInterest, areasOfInterest } from '@awarns/core/entities/aois';
+import { AreaOfInterest, areasOfInterest } from '@awarns/geofencing';
 import { awarns } from '@awarns/core';
 
 export async function setupAreasOfInterest() {

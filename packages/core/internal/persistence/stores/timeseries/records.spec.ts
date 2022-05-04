@@ -3,8 +3,7 @@ import { Record, Change } from '../../../providers';
 
 import { Geolocation } from '../../../providers/geolocation/geolocation';
 import { HumanActivity, HumanActivityChange } from '../../../providers/activity-recognition/human-activity-change';
-import { AoIProximityChange } from '../../../tasks/geofencing/aoi';
-import { GeofencingProximity } from '../../../tasks/geofencing/geofencing-state';
+import { AoIProximityChange, GeofencingProximity } from './sample-records.spec';
 import { QuestionnaireAnswers, QuestionnaireAnswer } from '../../../tasks/notifications/questionnaire-answers';
 
 import { firstValueFrom, lastValueFrom } from 'rxjs';

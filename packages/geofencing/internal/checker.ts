@@ -1,7 +1,6 @@
-import { AreasOfInterestStore, areasOfInterestStoreDB } from '../../persistence/stores/geofencing/aois';
-import { AreaOfInterest } from './aoi';
-import { GeofencingProximity } from './geofencing-state';
-import { Geolocation } from '../../providers/geolocation/geolocation';
+import { AreasOfInterestStore, areasOfInterestStoreDB } from './persistence';
+import { AreaOfInterest, GeofencingProximity } from './entities';
+import { Geolocation } from '@awarns/core/entities/geolocation';
 import { point } from '@turf/helpers';
 import { default as distance } from '@turf/distance';
 

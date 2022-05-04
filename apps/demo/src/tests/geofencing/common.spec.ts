@@ -1,9 +1,7 @@
-import { AreasOfInterestStore } from '../../persistence/stores/geofencing/aois';
-import { AreaOfInterest } from './aoi';
-import { GeofencingStateStore, NearbyArea } from '../../persistence/stores/geofencing/state';
-import { GeofencingProximity } from './geofencing-state';
-import { GeofencingChecker, GeofencingResult } from './checker';
-import { Geolocation } from '../../providers/geolocation/geolocation';
+import { AreasOfInterestStore, GeofencingStateStore, NearbyArea } from '@awarns/geofencing/internal/persistence';
+import { AreaOfInterest, GeofencingProximity } from '@awarns/geofencing/internal/entities';
+import { GeofencingChecker, GeofencingResult } from '@awarns/geofencing/internal/checker';
+import { Geolocation } from '@awarns/core/entities/geolocation';
 
 export function createAreasOfInterestStoreMock(): AreasOfInterestStore {
   return {

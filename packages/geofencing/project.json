@@ -1,0 +1,64 @@
+{
+  "root": "packages/geofencing",
+  "projectType": "library",
+  "sourceRoot": "packages/geofencing",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "options": {
+        "outputPath": "dist/packages/geofencing",
+        "tsConfig": "packages/geofencing/tsconfig.json",
+        "packageJson": "packages/geofencing/package.json",
+        "main": "packages/geofencing/index.d.ts",
+        "assets": [
+          "packages/geofencing/*.md",
+          "packages/geofencing/index.d.ts",
+          "LICENSE",
+          {
+            "glob": "**/*",
+            "input": "packages/geofencing/platforms/",
+            "output": "./platforms/"
+          }
+        ],
+        "dependsOn": [
+          {
+            "target": "build.all",
+            "projects": "dependencies"
+          }
+        ]
+      }
+    },
+    "build.all": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["node tools/scripts/build-finish.ts geofencing"],
+        "parallel": false
+      },
+      "outputs": ["dist/packages/geofencing"],
+      "dependsOn": [
+        {
+          "target": "build.all",
+          "projects": "dependencies"
+        },
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ]
+    },
+    "focus": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["nx g @nativescript/plugin-tools:focus-packages geofencing"],
+        "parallel": false
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["packages/geofencing/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}

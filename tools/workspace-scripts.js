@@ -88,6 +88,13 @@ module.exports = {
           description: '@awarns/core: Build',
         },
       },
+      // @awarns/geofencing
+      geofencing: {
+        build: {
+          script: 'nx run geofencing:build.all',
+          description: '@awarns/geofencing: Build',
+        },
+      },
       'build-all': {
         script: 'nx run-many --target=build.all --all',
         description: 'Build all packages',
@@ -101,6 +108,10 @@ module.exports = {
       core: {
         script: 'nx run core:focus',
         description: 'Focus on @awarns/core',
+      },
+      geofencing: {
+        script: 'nx run geofencing:focus',
+        description: 'Focus on @awarns/geofencing',
       },
       reset: {
         script: 'nx g @awarns/plugin-tools:focus-packages',

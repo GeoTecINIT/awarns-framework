@@ -1,5 +1,5 @@
-import { AreaOfInterest } from '../../../tasks/geofencing/aoi';
-import { EMAIStore } from '../emai-store';
+import { AreaOfInterest } from '../entities';
+import { EMAIStore } from '@awarns/core/storage';
 
 export interface AreasOfInterestStore {
   insert(aois: Array<AreaOfInterest>): Promise<void>;

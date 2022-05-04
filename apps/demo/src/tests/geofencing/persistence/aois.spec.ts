@@ -1,5 +1,5 @@
-import { AreasOfInterestStore, areasOfInterestStoreDB } from './aois';
-import { AreaOfInterest } from '../../../tasks/geofencing/aoi';
+import { AreasOfInterestStore, areasOfInterestStoreDB } from '@awarns/geofencing/internal/persistence';
+import { AreaOfInterest } from '@awarns/geofencing/internal/entities';
 
 describe('Areas of interest store', () => {
   const store: AreasOfInterestStore = areasOfInterestStoreDB;

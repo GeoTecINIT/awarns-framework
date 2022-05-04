@@ -1,5 +1,5 @@
-import { GeofencingStateStore, geofencingStateStoreDB } from './state';
-import { GeofencingProximity } from '../../../tasks/geofencing/geofencing-state';
+import { GeofencingStateStore, geofencingStateStoreDB } from '@awarns/geofencing/internal/persistence';
+import { GeofencingProximity } from '@awarns/geofencing/internal/entities';
 
 describe('Geofencing state store', () => {
   const store: GeofencingStateStore = geofencingStateStoreDB;

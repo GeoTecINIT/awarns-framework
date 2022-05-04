@@ -1,5 +1,5 @@
-import { GeofencingProximity } from '../../../tasks/geofencing/geofencing-state';
-import { EMAIStore } from '../emai-store';
+import { GeofencingProximity } from '../entities';
+import { EMAIStore } from '@awarns/core/storage';
 
 export interface GeofencingStateStore {
   updateProximity(id: string, proximity: GeofencingProximity): Promise<void>;

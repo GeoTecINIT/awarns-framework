@@ -22,6 +22,7 @@
     "paths": {
       "@awarns/*": ["packages/*"],
       "@awarns/core": ["packages/core/index.d.ts"],
+      "@awarns/geofencing": ["packages/geofencing/index.d.ts"],
       "@demo/shared": ["tools/demo/index.ts"]
     }
   },

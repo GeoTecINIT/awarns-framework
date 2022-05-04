@@ -1,13 +1,10 @@
-import { TraceableTask, TracerConfig } from '../tracing';
-import { TaskOutcome, TaskParams } from 'nativescript-task-dispatcher/tasks';
-import { DispatchableEvent } from 'nativescript-task-dispatcher/events';
-import { GeofencingStateStore, geofencingStateStoreDB, NearbyArea } from '../../persistence/stores/geofencing/state';
+import { TraceableTask, TracerConfig, TaskOutcome, TaskParams } from '@awarns/core/tasks';
+import { DispatchableEvent } from '@awarns/core/events';
+import { AreasOfInterestStore, areasOfInterestStoreDB, GeofencingStateStore, geofencingStateStoreDB, NearbyArea } from './persistence';
 import { GeofencingChecker, GeofencingResult } from './checker';
-import { AreasOfInterestStore, areasOfInterestStoreDB } from '../../persistence/stores/geofencing/aois';
-import { Geolocation } from '../../providers/geolocation/geolocation';
-import { GeofencingProximity } from './geofencing-state';
-import { AoIProximityChange, AreaOfInterest } from './aoi';
-import { Change } from '../../providers';
+import { Geolocation } from '@awarns/core/entities/geolocation';
+import { AoIProximityChange, AreaOfInterest, GeofencingProximity } from './entities';
+import { Change } from '@awarns/core/entities';
 
 const DEFAULT_NEARBY_RANGE = 100;
 const DEFAULT_OFFSET = 0;
