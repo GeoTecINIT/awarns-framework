@@ -6,6 +6,7 @@ import { deserialize, serialize } from 'nativescript-task-dispatcher/internal/ut
 export interface NotificationsStore {
   insert(notification: Notification): Promise<void>;
   get(id: number): Promise<Notification>;
+  list(): Observable<Array<Notification>>;
   delete(id: number): Promise<void>;
 }
 
