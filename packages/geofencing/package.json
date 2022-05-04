@@ -1,6 +1,6 @@
 {
   "name": "@awarns/geofencing",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "Add a plugin description",
   "main": "index",
   "typings": "index.d.ts",
@@ -33,8 +33,8 @@
   "readmeFilename": "README.md",
   "bootstrapper": "@nativescript/plugin-seed",
   "dependencies": {
-    "@awarns/core": "^1.0.0-alpha.2",
-    "@awarns/geolocation": "^1.0.0-alpha.2",
+    "@awarns/core": "^1.0.0-alpha.3",
+    "@awarns/geolocation": "^1.0.0-alpha.3",
     "@turf/distance": "^6.5.0",
     "@turf/helpers": "^6.5.0"
   }
