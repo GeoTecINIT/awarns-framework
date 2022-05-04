@@ -4,7 +4,8 @@
     "@nativescript/core": "file:../../node_modules/@nativescript/core",
     "@awarns/core": "file:../../dist/packages/core",
     "@awarns/geolocation": "file:../../dist/packages/geolocation",
-    "@awarns/geofencing": "file:../../dist/packages/geofencing"
+    "@awarns/geofencing": "file:../../dist/packages/geofencing",
+    "@awarns/human-activity": "file:../../dist/packages/human-activity"
   },
   "devDependencies": {
     "@nativescript/android": "~8.2.0",

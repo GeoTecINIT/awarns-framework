@@ -1,4 +1,4 @@
-import { PullProvider, ProviderInterrupter, ProviderInterruption } from '@awarns/core/data-sources';
+import { PullProvider, ProviderInterrupter, ProviderInterruption } from '@awarns/core/providers';
 import { KnownTypes } from '@awarns/core/entities';
 import { Geolocation } from './geolocation';
 

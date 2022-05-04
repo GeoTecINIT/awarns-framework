@@ -1,6 +1,7 @@
 - [@awarns/core](packages/core/README.md)
 - [@awarns/geolocation](packages/geolocation/README.md)
 - [@awarns/geofencing](packages/geofencing/README.md)
+- [@awarns/human-activity](packages/human-activity/README.md)
 
 # How to use?
 

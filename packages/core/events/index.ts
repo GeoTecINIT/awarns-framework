@@ -1,1 +1,1 @@
-export { DispatchableEvent, EventData, TaskDispatcherEvent } from 'nativescript-task-dispatcher/events';
+export * from 'nativescript-task-dispatcher/events';

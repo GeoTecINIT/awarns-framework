@@ -17,9 +17,6 @@
 	<uses-permission android:name="android.permission.INTERNET"/>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-  <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION"/>
-  <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION"/>
-
 	<application
 		android:name="com.tns.NativeScriptApplication"
 		android:allowBackup="true"

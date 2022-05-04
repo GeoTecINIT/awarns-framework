@@ -32,9 +32,6 @@ steps:
 
   - script: |
       npm run setup
-      cd apps/demo
-      npm i
-      cd ..
     displayName: 'Setup'
 
   - script: |

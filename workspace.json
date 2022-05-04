@@ -5,6 +5,7 @@
     "demo": "apps/demo",
     "demo-angular": "apps/demo-angular",
     "geofencing": "packages/geofencing",
-    "geolocation": "packages/geolocation"
+    "geolocation": "packages/geolocation",
+    "human-activity": "packages/human-activity"
   }
 }

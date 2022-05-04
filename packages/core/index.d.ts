@@ -7,4 +7,4 @@ export declare class AwarnsCore extends CoreCommon {
 }
 
 export declare const awarns: AwarnsCore;
-export { ConfigParams } from './common';
+export { ConfigParams, PluginLoader } from './common';

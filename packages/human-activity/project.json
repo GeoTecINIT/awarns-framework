@@ -1,0 +1,64 @@
+{
+  "root": "packages/human-activity",
+  "projectType": "library",
+  "sourceRoot": "packages/human-activity",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "options": {
+        "outputPath": "dist/packages/human-activity",
+        "tsConfig": "packages/human-activity/tsconfig.json",
+        "packageJson": "packages/human-activity/package.json",
+        "main": "packages/human-activity/index.d.ts",
+        "assets": [
+          "packages/human-activity/*.md",
+          "packages/human-activity/index.d.ts",
+          "LICENSE",
+          {
+            "glob": "**/*",
+            "input": "packages/human-activity/platforms/",
+            "output": "./platforms/"
+          }
+        ],
+        "dependsOn": [
+          {
+            "target": "build.all",
+            "projects": "dependencies"
+          }
+        ]
+      }
+    },
+    "build.all": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["node tools/scripts/build-finish.ts human-activity"],
+        "parallel": false
+      },
+      "outputs": ["dist/packages/human-activity"],
+      "dependsOn": [
+        {
+          "target": "build.all",
+          "projects": "dependencies"
+        },
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ]
+    },
+    "focus": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["nx g @nativescript/plugin-tools:focus-packages human-activity"],
+        "parallel": false
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["packages/human-activity/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}
