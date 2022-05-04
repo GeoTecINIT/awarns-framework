@@ -2,6 +2,7 @@
 - [@awarns/geolocation](packages/geolocation/README.md)
 - [@awarns/geofencing](packages/geofencing/README.md)
 - [@awarns/human-activity](packages/human-activity/README.md)
+- [@awarns/notifications](packages/notifications/README.md)
 
 # How to use?
 

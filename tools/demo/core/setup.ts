@@ -2,12 +2,12 @@ import { awarns } from '@awarns/core';
 import { demoTasks } from '../tasks';
 import { demoTaskGraph } from '../graph';
 import { registerHumanActivityPlugin } from '@awarns/human-activity';
+import { registerNotificationsPlugin } from '@awarns/notifications';
 
 export function initializePlugin() {
   awarns
-    .init(demoTasks, demoTaskGraph, [registerHumanActivityPlugin()], {
+    .init(demoTasks, demoTaskGraph, [registerHumanActivityPlugin(), registerNotificationsPlugin('Intervention alerts')], {
       enableLogging: true,
-      notificationsChannelName: 'Intervention alerts',
     })
     .then(() => console.log('AwarNS framework successfully loaded'))
     .catch((err) => {

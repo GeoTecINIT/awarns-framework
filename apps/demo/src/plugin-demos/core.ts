@@ -1,6 +1,6 @@
 import { EventData, Page } from '@nativescript/core';
 import { DemoSharedCore } from '@demo/shared';
-import { Notification } from '@awarns/core/notifications';
+import { Notification } from '@awarns/notifications';
 
 export function navigatingTo(args: EventData) {
   const page = <Page>args.object;
@@ -14,8 +14,8 @@ export function navigatedTo(args: EventData) {
   const page = <Page>args.object;
 
   const vm = getDemoViewModel();
-  vm.setupNotificationTapListener((notification) => showNotificationModal(notification, page));
-  vm.setupNotificationClearedListener();
+  vm.notificationCallbacks.setupNotificationTapListener((notification) => showNotificationModal(notification, page));
+  vm.notificationCallbacks.setupNotificationClearedListener();
 }
 
 export function exportTap() {
@@ -37,7 +37,7 @@ function showNotificationModal(notification: Notification, page: Page) {
   const animated = true;
 
   try {
-    page.showModal('notification-handler/notification-handler-root', {
+    page.showModal('plugin-demos/notification-handler/notification-handler-root', {
       context,
       closeCallback,
       fullscreen,

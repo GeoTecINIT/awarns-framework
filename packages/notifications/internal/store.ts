@@ -1,5 +1,5 @@
-import { Notification } from '../../notifications';
-import { EMAIStore } from './emai-store';
+import { Notification } from './entities';
+import { EMAIStore } from '@awarns/core/storage';
 import { Observable } from 'rxjs';
 import { deserialize, serialize } from 'nativescript-task-dispatcher/internal/utils/serialization';
 

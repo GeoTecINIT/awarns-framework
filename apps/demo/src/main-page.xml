@@ -9,6 +9,7 @@
         <Button text="geolocation" tap="{{ viewDemo }}" class="btn btn-primary view-demo"/>
         <Button text="geofencing" tap="{{ viewDemo }}" class="btn btn-primary view-demo"/>
         <Button text="human-activity" tap="{{ viewDemo }}" class="btn btn-primary view-demo"/>
+        <Button text="notifications" tap="{{ viewDemo }}" class="btn btn-primary view-demo"/>
       </StackLayout>
     </ScrollView>
   </StackLayout>

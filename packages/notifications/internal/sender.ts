@@ -1,8 +1,8 @@
-import { TraceableTask, TracerConfig } from '../tracing';
-import { NotificationsManager, notificationsManager } from '../../notifications/manager';
-import { TaskOutcome, TaskParams } from 'nativescript-task-dispatcher/tasks';
-import { DispatchableEvent } from 'nativescript-task-dispatcher/events';
-import { extractIdAndActionFrom, generateNotificationId, Notification, TapActionType } from '../../notifications';
+import { TaskOutcome, TaskParams, TraceableTask, TracerConfig } from '@awarns/core/tasks';
+import { DispatchableEvent } from '@awarns/core/events';
+import { NotificationsManager, notificationsManager } from './manager';
+import { extractIdAndActionFrom, generateNotificationId } from './common';
+import { Notification, TapActionType } from './entities';
 
 export const notificationPermissionMissingErr = new Error('Notification permission has not been granted');
 

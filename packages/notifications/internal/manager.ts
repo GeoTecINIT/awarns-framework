@@ -1,14 +1,12 @@
 import { LocalNotifications, ReceivedNotification } from '@nativescript/local-notifications';
 import { Application, isAndroid } from '@nativescript/core';
-import { taskDispatcher } from 'nativescript-task-dispatcher';
+import { awarns } from '@awarns/core';
 
-import { Notification, TapActionType } from './notification';
-import { NotificationsStore, notificationsStoreDB } from '../persistence/stores/notifications';
-import { getLogger, Logger } from '../utils/logger';
+import { Notification, NotificationDiscardRecord, NotificationTapRecord, TapActionType } from './entities';
+import { NotificationsStore, notificationsStoreDB } from './store';
+import { getLogger, Logger } from '@awarns/core/utils/logger';
 import { EventData } from 'nativescript-task-dispatcher/events';
-import { extractIdAndActionFrom } from './index';
-import { NotificationTapRecord } from '../tasks/notifications/notification-tap';
-import { NotificationDiscardRecord } from '../tasks/notifications/notification-discard';
+import { extractIdAndActionFrom } from './common';
 
 const DEFAULT_CHANNEL_NAME = 'Mobile interventions';
 
@@ -125,4 +123,4 @@ class NotificationsManagerImpl implements NotificationsManager, NotificationActi
 
 export type NotificationCallback = (notification: Notification) => void;
 
-export const notificationsManager = new NotificationsManagerImpl(notificationsStoreDB, taskDispatcher.emitEvent);
+export const notificationsManager = new NotificationsManagerImpl(notificationsStoreDB, awarns.emitEvent);

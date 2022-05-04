@@ -1,5 +1,5 @@
 import { TaskGraph, EventListenerGenerator, RunnableTaskDescriptor } from '@awarns/core/tasks/graph';
-import { TapActionType } from '@awarns/core/notifications';
+import { TapActionType } from '@awarns/notifications';
 
 class DemoTaskGraph implements TaskGraph {
   async describe(on: EventListenerGenerator, run: RunnableTaskDescriptor): Promise<void> {

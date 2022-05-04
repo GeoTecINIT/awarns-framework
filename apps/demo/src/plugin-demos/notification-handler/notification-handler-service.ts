@@ -1,4 +1,4 @@
-import { Notification } from '@awarns/core/notifications';
+import { Notification } from '@awarns/notifications';
 
 class NotificationHandlerService {
   private _tappedNotification: TappedNotification;

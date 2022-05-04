@@ -4,7 +4,7 @@ import { Record, Change } from '@awarns/core/internal/providers';
 import { Geolocation } from '@awarns/geolocation';
 import { HumanActivity, HumanActivityChange } from '@awarns/human-activity';
 import { AoIProximityChange, GeofencingProximity } from '@awarns/geofencing';
-import { QuestionnaireAnswers, QuestionnaireAnswer } from '@awarns/core/entities/answers';
+import { QuestionnaireAnswers, QuestionnaireAnswer } from '@awarns/notifications';
 
 import { firstValueFrom, lastValueFrom } from 'rxjs';
 import { take } from 'rxjs/operators';

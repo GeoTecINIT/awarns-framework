@@ -1,9 +1,9 @@
-import { NotificationsManager } from '../../notifications/manager';
+import { NotificationsManager } from '@awarns/notifications/internal/manager';
 import { createNotificationsManagerMock } from './common.spec';
-import { NotificationSenderTask } from './notification-sender';
-import { DispatchableEvent } from 'nativescript-task-dispatcher/events';
-import { TapActionType } from '../../notifications';
-import { createEvent, listenToEventTrigger } from 'nativescript-task-dispatcher/testing/events';
+import { NotificationSenderTask } from '@awarns/notifications/internal/sender';
+import { DispatchableEvent } from '@awarns/core/events';
+import { TapActionType } from '@awarns/notifications';
+import { createEvent, listenToEventTrigger } from '@awarns/core/testing/events';
 
 describe('Notification sender task', () => {
   let manager: NotificationsManager;

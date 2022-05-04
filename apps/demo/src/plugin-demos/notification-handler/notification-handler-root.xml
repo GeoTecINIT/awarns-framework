@@ -1,1 +1,1 @@
-<Frame id="notification-handler" defaultPage="notification-handler/notification-handler-page" shownModally="onShownModally"/>
+<Frame id="notification-handler" defaultPage="plugin-demos/notification-handler/notification-handler-page" shownModally="onShownModally"/>

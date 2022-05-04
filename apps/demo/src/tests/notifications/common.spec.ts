@@ -1,5 +1,5 @@
-import { NotificationsManager } from '../../notifications/manager';
-import { Notification } from '../../notifications';
+import { Notification } from '@awarns/notifications';
+import { NotificationsManager } from '@awarns/notifications/internal/manager';
 
 export function createNotificationsManagerMock(): NotificationsManager {
   return {
