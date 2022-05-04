@@ -1,9 +1,9 @@
-import { Change, Record, RecordType } from '@awarns/core/entities';
+import { Change, Record, KnownTypes } from '@awarns/core/entities';
 import { GeofencingProximity } from './proximity';
 
 export class AoIProximityChange extends Record {
   constructor(public aoi: AreaOfInterest, public proximity: GeofencingProximity, change: Change, timestamp = new Date()) {
-    super(RecordType.AoIProximityChange, timestamp, change);
+    super(KnownTypes.AoIProximityChange, timestamp, change);
   }
 }
 

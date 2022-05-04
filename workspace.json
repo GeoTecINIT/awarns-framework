@@ -4,6 +4,7 @@
     "core": "packages/core",
     "demo": "apps/demo",
     "demo-angular": "apps/demo-angular",
-    "geofencing": "packages/geofencing"
+    "geofencing": "packages/geofencing",
+    "geolocation": "packages/geolocation"
   }
 }

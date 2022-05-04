@@ -1,10 +1,18 @@
 import { BaseProvider } from '../../providers/base-provider';
-import { RecordType } from '../../providers';
+import { Record } from '../../providers';
+
+export const SampleRecordType = 'sample-record';
+
+export class SampleRecord extends Record {
+  constructor() {
+    super(SampleRecordType);
+  }
+}
 
 export function createBaseProviderMock(): BaseProvider {
   return {
     get provides() {
-      return RecordType.Geolocation;
+      return SampleRecordType;
     },
     checkIfIsReady() {
       return Promise.resolve();

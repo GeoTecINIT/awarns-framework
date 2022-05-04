@@ -10,7 +10,7 @@ module.exports = {
       description: 'Execute any command with the @nrwl/cli',
     },
     format: {
-      script: 'nx format:write --base=main',
+      script: 'nx format:write',
       description: 'Format source code of the entire workspace (auto-run on precommit hook)',
     },
     lint: {
@@ -37,11 +37,11 @@ module.exports = {
           description: '⚆  Clean  🧹',
         },
         ios: {
-          script: 'nx run demo:ios',
+          script: 'nx run demo:ios --parallel=false',
           description: '⚆  Run iOS  ',
         },
         android: {
-          script: 'nx run demo:android',
+          script: 'nx run demo:android --parallel=false',
           description: '⚆  Run Android  🤖',
         },
       },
@@ -65,11 +65,11 @@ module.exports = {
           description: '⚆  Clean  🧹',
         },
         ios: {
-          script: 'nx run demo-angular:ios',
+          script: 'nx run demo-angular:ios --parallel=false',
           description: '⚆  Run iOS  ',
         },
         android: {
-          script: 'nx run demo-angular:android',
+          script: 'nx run demo-angular:android --parallel=false',
           description: '⚆  Run Android  🤖',
         },
       },
@@ -88,6 +88,13 @@ module.exports = {
           description: '@awarns/core: Build',
         },
       },
+      // @awarns/geolocation
+      geolocation: {
+        build: {
+          script: 'nx run geolocation:build.all',
+          description: '@awarns/geolocation: Build',
+        },
+      },
       // @awarns/geofencing
       geofencing: {
         build: {
@@ -96,7 +103,7 @@ module.exports = {
         },
       },
       'build-all': {
-        script: 'nx run-many --target=build.all --all',
+        script: 'nx run-many --target=build.all --all --parallel=1',
         description: 'Build all packages',
       },
     },
@@ -112,6 +119,10 @@ module.exports = {
       geofencing: {
         script: 'nx run geofencing:focus',
         description: 'Focus on @awarns/geofencing',
+      },
+      geolocation: {
+        script: 'nx run geolocation:focus',
+        description: 'Focus on @awarns/geolocation',
       },
       reset: {
         script: 'nx g @awarns/plugin-tools:focus-packages',

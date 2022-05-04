@@ -6,7 +6,8 @@
     <ScrollView class="h-full">
       <StackLayout>
         <Button text="core" tap="{{ viewDemo }}" class="btn btn-primary view-demo"/>
-<Button text="geofencing" tap="{{ viewDemo }}" class="btn btn-primary view-demo"/>
+        <Button text="geolocation" tap="{{ viewDemo }}" class="btn btn-primary view-demo"/>
+        <Button text="geofencing" tap="{{ viewDemo }}" class="btn btn-primary view-demo"/>
       </StackLayout>
     </ScrollView>
   </StackLayout>

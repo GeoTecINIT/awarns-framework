@@ -1,6 +1,6 @@
 import { AreasOfInterestStore, areasOfInterestStoreDB } from './persistence';
 import { AreaOfInterest, GeofencingProximity } from './entities';
-import { Geolocation } from '@awarns/core/entities/geolocation';
+import { Geolocation } from '@awarns/geolocation';
 import { point } from '@turf/helpers';
 import { default as distance } from '@turf/distance';
 

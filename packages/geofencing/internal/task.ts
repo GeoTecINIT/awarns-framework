@@ -2,7 +2,7 @@ import { TraceableTask, TracerConfig, TaskOutcome, TaskParams } from '@awarns/co
 import { DispatchableEvent } from '@awarns/core/events';
 import { AreasOfInterestStore, areasOfInterestStoreDB, GeofencingStateStore, geofencingStateStoreDB, NearbyArea } from './persistence';
 import { GeofencingChecker, GeofencingResult } from './checker';
-import { Geolocation } from '@awarns/core/entities/geolocation';
+import { Geolocation } from '@awarns/geolocation';
 import { AoIProximityChange, AreaOfInterest, GeofencingProximity } from './entities';
 import { Change } from '@awarns/core/entities';
 

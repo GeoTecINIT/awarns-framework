@@ -1,9 +1,12 @@
-import { PushProvider, RecordType } from '../../../providers';
+import { PushProvider } from '../../../providers';
+import { SampleRecordType } from '../common.spec';
+
+export * from '../common.spec';
 
 export function createPushProviderMock(): PushProvider {
   return {
     get provides() {
-      return RecordType.HumanActivity;
+      return SampleRecordType;
     },
     checkIfIsReady() {
       return Promise.resolve();

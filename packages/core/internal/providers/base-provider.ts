@@ -1,7 +1,5 @@
-import { RecordType } from './base-record';
-
 export interface BaseProvider {
-  provides: RecordType;
+  provides: string;
   checkIfIsReady(): Promise<void>;
   prepare(): Promise<void>;
 }

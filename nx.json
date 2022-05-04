@@ -1,7 +1,7 @@
 {
   "npmScope": "awarns",
   "affected": {
-    "defaultBase": "master"
+    "defaultBase": "main"
   },
   "implicitDependencies": {
     "workspace.json": "*",

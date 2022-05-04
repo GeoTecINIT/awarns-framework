@@ -1,9 +1,12 @@
-import { PullProvider, RecordType } from '../../../providers';
+import { PullProvider } from '../../../providers';
+import { SampleRecordType } from '../common.spec';
+
+export * from '../common.spec';
 
 export function createPullProviderMock(): PullProvider {
   return {
     get provides() {
-      return RecordType.Geolocation;
+      return SampleRecordType;
     },
     checkIfIsReady() {
       return Promise.resolve();

@@ -1,6 +1,5 @@
-import { PullProvider } from '../pull-provider';
-import { RecordType } from '../base-record';
-import { ProviderInterrupter, ProviderInterruption } from '../provider-interrupter';
+import { PullProvider, ProviderInterrupter, ProviderInterruption } from '@awarns/core/data-sources';
+import { KnownTypes } from '@awarns/core/entities';
 import { Geolocation } from './geolocation';
 
 import { GeolocationProvider as NativeProvider, Geolocation as NativeGeolocation, getGeolocationProvider as getNativeProvider } from 'nativescript-context-apis/geolocation';
@@ -9,8 +8,8 @@ import { firstValueFrom, from, Observable, of, Subject, throwError, timeout } fr
 import { map, mergeMap, take, takeUntil, toArray } from 'rxjs/operators';
 
 export class GeolocationProvider implements PullProvider {
-  get provides(): RecordType {
-    return RecordType.Geolocation;
+  get provides(): string {
+    return KnownTypes.Geolocation;
   }
 
   constructor(private bestOf: number, private timeout: number, private nativeProvider: () => NativeProvider = getNativeProvider) {}

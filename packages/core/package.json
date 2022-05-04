@@ -1,6 +1,6 @@
 {
   "name": "@awarns/core",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "AwarNS framework core package. Use this package to develop new plugins for AwarNS",
   "main": "index",
   "typings": "index.d.ts",

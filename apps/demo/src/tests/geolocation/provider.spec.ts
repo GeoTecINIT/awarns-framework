@@ -1,9 +1,7 @@
-import { GeolocationProvider as NativeProvider, Geolocation as NativeGeolocation } from 'nativescript-context-apis/geolocation';
+import { GeolocationProvider as NativeProvider, Geolocation as NativeGeolocation, AcquireOptions, Geolocation, StreamOptions } from 'nativescript-context-apis/geolocation';
 
-import { createNativeGeolocationProviderMock } from './common.spec';
-
-import { GeolocationProvider, geolocationProviderNotReadyErr } from './provider';
-import { RecordType } from '../base-record';
+import { GeolocationProvider, geolocationProviderNotReadyErr } from '@awarns/geolocation/internal/provider';
+import { KnownTypes } from '@awarns/core/entities';
 
 import { from, Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
@@ -22,7 +20,7 @@ describe('Geolocation provider', () => {
   });
 
   it('provides the appropriate record type', () => {
-    expect(provider.provides).toBe(RecordType.Geolocation);
+    expect(provider.provides).toBe(KnownTypes.Geolocation);
   });
 
   it('allows to check if the underlying provider is ready', async () => {
@@ -176,4 +174,21 @@ function createFakeLocations(): Array<NativeGeolocation> {
       timestamp: new Date('2020-01-28T15:10:03.000Z'),
     }),
   ];
+}
+
+function createNativeGeolocationProviderMock(): NativeProvider {
+  return {
+    isReady(): Promise<boolean> {
+      return Promise.resolve(false);
+    },
+    prepare(_watchAlways?: boolean, _openSettingsIfDenied?: boolean): Promise<void> {
+      return Promise.resolve();
+    },
+    acquireLocation(_options?: AcquireOptions): Promise<Geolocation> {
+      return Promise.resolve(null);
+    },
+    locationStream(_options?: StreamOptions): Observable<Geolocation> {
+      return of(null);
+    },
+  } as NativeProvider;
 }
