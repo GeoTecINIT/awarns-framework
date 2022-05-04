@@ -1,6 +1,6 @@
-import { Trace, TraceResult, TraceType } from '../../../tasks/tracing';
-import { deserialize, serialize } from 'nativescript-task-dispatcher/internal/utils/serialization';
-import { AbstractTimeSeriesStore, TimeSeriesDoc } from './common';
+import { Trace, TraceResult, TraceType } from '../entities';
+import { deserialize, serialize } from '@awarns/core/utils/serialization';
+import { AbstractTimeSeriesStore, TimeSeriesDoc } from '@awarns/core/internal/persistence/stores/timeseries';
 
 const DOC_TYPE = 'trace';
 

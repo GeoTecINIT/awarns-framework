@@ -18,10 +18,14 @@ export class NotificationCallbacks {
   }
 
   private onNotificationTap(cb: (notification: Notification) => void) {
-    notificationsManager.onNotificationTap(cb).catch((err) => console.error(`Could not subscribe to notification taps. Reason: ${err}`));
+    notificationsManager
+      .onNotificationTap(cb)
+      .catch((err) => console.error(`Could not subscribe to notification taps. Reason: ${err}`));
   }
 
   private onNotificationCleared(cb: (notification: Notification) => void) {
-    notificationsManager.onNotificationCleared(cb).catch((err) => console.error(`Could not subscribe to notification taps. Reason: ${err}`));
+    notificationsManager
+      .onNotificationCleared(cb)
+      .catch((err) => console.error(`Could not subscribe to notification taps. Reason: ${err}`));
   }
 }

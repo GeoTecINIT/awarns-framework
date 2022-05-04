@@ -1,15 +1,17 @@
-import { Trace, TraceResult, TraceType } from '@awarns/core/internal/tasks/tracing';
+import { Trace, TraceResult, TraceType } from '@awarns/tracing';
 
-import { localTracesStore as store } from '@awarns/core/internal/persistence/stores/timeseries/traces';
+import { localTracesStore as store } from '@awarns/tracing/internal/stores/store';
 import { firstValueFrom, lastValueFrom } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { uuid } from 'nativescript-task-dispatcher/internal/utils/uuid';
+import { uuid } from '@awarns/core/utils/uuid';
 
 describe('Traces store', () => {
   const createFakeTrace = fakeTraceCreator();
 
   const traces: Array<Trace> = [
-    createFakeTrace(TraceType.EVENT, 'userStartedBeingStill', TraceResult.OK, { someEvtData: "it's ok" }),
+    createFakeTrace(TraceType.EVENT, 'userStartedBeingStill', TraceResult.OK, {
+      someEvtData: "it's ok",
+    }),
     createFakeTrace(TraceType.TASK, 'acquirePhoneGeolocation', TraceResult.OK, {
       invokedBy: 'taskSchedulerRun',
       took: 15000,

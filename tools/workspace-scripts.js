@@ -84,35 +84,42 @@ module.exports = {
       // @awarns/core
       core: {
         build: {
-          script: 'nx run core:build.all',
+          script: 'nx run core:build.all --parallel=false',
           description: '@awarns/core: Build',
+        },
+      },
+      // @awarns/tracing
+      tracing: {
+        build: {
+          script: 'nx run tracing:build.all --parallel=false',
+          description: '@awarns/tracing: Build',
         },
       },
       // @awarns/geolocation
       geolocation: {
         build: {
-          script: 'nx run geolocation:build.all',
+          script: 'nx run geolocation:build.all --parallel=false',
           description: '@awarns/geolocation: Build',
         },
       },
       // @awarns/geofencing
       geofencing: {
         build: {
-          script: 'nx run geofencing:build.all',
+          script: 'nx run geofencing:build.all --parallel=false',
           description: '@awarns/geofencing: Build',
         },
       },
       // @awarns/human-activity
       'human-activity': {
         build: {
-          script: 'nx run human-activity:build.all',
+          script: 'nx run human-activity:build.all --parallel=false',
           description: '@awarns/human-activity: Build',
         },
       },
       // @awarns/notifications
       notifications: {
         build: {
-          script: 'nx run notifications:build.all',
+          script: 'nx run notifications:build.all --parallel=false',
           description: '@awarns/notifications: Build',
         },
       },
@@ -145,6 +152,10 @@ module.exports = {
       notifications: {
         script: 'nx run notifications:focus',
         description: 'Focus on @awarns/notifications',
+      },
+      tracing: {
+        script: 'nx run tracing:focus',
+        description: 'Focus on @awarns/tracing',
       },
       reset: {
         script: 'nx g @awarns/plugin-tools:focus-packages',

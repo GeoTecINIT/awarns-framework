@@ -42,10 +42,14 @@ export class NotificationViewModel extends Observable {
     const sortedAnswers = questionAnswers.sort((a, b) => a.answerTime - b.answerTime);
     const qas: Array<QuestionnaireAnswer> = sortedAnswers.map((questionAnswer, i) => ({
       title: questionAnswer.title,
-      millisecondsToAnswer: questionAnswer.answerTime - (i === 0 ? this.notification.tappingTimestamp : sortedAnswers[i - 1].answerTime),
+      millisecondsToAnswer:
+        questionAnswer.answerTime - (i === 0 ? this.notification.tappingTimestamp : sortedAnswers[i - 1].answerTime),
       answer: questionAnswer.answer,
     }));
-    awarns.emitEvent('questionnaireAnswersAcquired', new QuestionnaireAnswers(this.notification.tapAction.id, qas, this.notification.id));
+    awarns.emitEvent(
+      'questionnaireAnswersAcquired',
+      new QuestionnaireAnswers(this.notification.tapAction.id, qas, this.notification.id)
+    );
   }
 }
 
@@ -85,7 +89,11 @@ function createExampleRichText(): RichText {
   return {
     type: TapActionType.OPEN_CONTENT,
     title: 'Negative thoughts',
-    body: 'Most of us spend a lot of time inside our own mind — worrying about the future, replaying events ' + 'in the past, and generally focusing on the parts of life that leave us dissatisfied. While common, ' + 'negative or unwanted thoughts can prevent you from enjoying experiences, distract you from focusing ' + "on what's important, and drain your energy. They can also make you feel anxious and depressed.",
+    body:
+      'Most of us spend a lot of time inside our own mind — worrying about the future, replaying events ' +
+      'in the past, and generally focusing on the parts of life that leave us dissatisfied. While common, ' +
+      'negative or unwanted thoughts can prevent you from enjoying experiences, distract you from focusing ' +
+      "on what's important, and drain your energy. They can also make you feel anxious and depressed.",
   };
 }
 

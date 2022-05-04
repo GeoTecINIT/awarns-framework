@@ -1,9 +1,8 @@
-import { EventTrackerTask } from './event-tracker';
-import { DispatchableEvent } from 'nativescript-task-dispatcher/events';
-import { TracesStore } from '../../persistence/stores/timeseries';
+import { EventTrackerTask } from '@awarns/tracing/internal/tasks/event-tracker';
+import { DispatchableEvent } from '@awarns/core/events';
+import { TracesStore, TraceResult, TraceType } from '@awarns/tracing';
 import { createTracesStoreMock } from './common.spec';
-import { TraceResult, TraceType } from './index';
-import { createEvent, listenToEventTrigger } from 'nativescript-task-dispatcher/testing/events';
+import { createEvent, listenToEventTrigger } from '@awarns/core/testing/events';
 
 describe('Event tracker task', () => {
   const taskName = 'trackEvent';
@@ -45,7 +44,7 @@ describe('Event tracker task', () => {
     const eventTracker = new EventTrackerTask(
       'trackEvent',
       {
-        sensitiveData: true,
+        outputsSensitiveData: true,
       },
       tracesStore
     );

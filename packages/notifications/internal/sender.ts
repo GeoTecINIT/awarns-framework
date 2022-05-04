@@ -1,4 +1,4 @@
-import { TaskOutcome, TaskParams, TraceableTask, TracerConfig } from '@awarns/core/tasks';
+import { TaskOutcome, TaskParams, Task, TaskConfig } from '@awarns/core/tasks';
 import { DispatchableEvent } from '@awarns/core/events';
 import { NotificationsManager, notificationsManager } from './manager';
 import { extractIdAndActionFrom, generateNotificationId } from './common';
@@ -8,8 +8,8 @@ export const notificationPermissionMissingErr = new Error('Notification permissi
 
 const NOTIFICATION_DELIVERY_DELAY = 1000;
 
-export class NotificationSenderTask extends TraceableTask {
-  constructor(name: string, taskConfig?: TracerConfig, private manager: NotificationsManager = notificationsManager) {
+export class NotificationSenderTask extends Task {
+  constructor(name: string, taskConfig?: TaskConfig, private manager: NotificationsManager = notificationsManager) {
     super(name, taskConfig);
   }
 
@@ -32,7 +32,7 @@ export class NotificationSenderTask extends TraceableTask {
     }
   }
 
-  protected async onTracedRun(taskParams: TaskParams, invocationEvent: DispatchableEvent): Promise<TaskOutcome> {
+  protected async onRun(taskParams: TaskParams, invocationEvent: DispatchableEvent): Promise<TaskOutcome> {
     const notification = NotificationSenderTask.createNotificationFromParamsOrEvent(taskParams, invocationEvent);
     await this.delayNotificationDelivery();
     await this.manager.display(notification);

@@ -21,7 +21,11 @@ export class HumanActivityProvider implements PushProvider {
     });
   }
 
-  constructor(private resolution: Resolution, private detectionInterval: number = 0, private providerLoader: (resolution: Resolution) => ActivityRecognizer = getActivityRecognizer) {}
+  constructor(
+    private resolution: Resolution,
+    private detectionInterval: number = 0,
+    private providerLoader: (resolution: Resolution) => ActivityRecognizer = getActivityRecognizer
+  ) {}
 
   async checkIfIsReady(): Promise<void> {
     if (!this.activityRecognizer().isReady()) {
@@ -50,7 +54,9 @@ export class HumanActivityProvider implements PushProvider {
 
 export class HumanActivityRecognizerNotReadyErr extends Error {
   constructor(resolution: Resolution) {
-    super(`${resolution} resolution human activity recognizer. Perhaps the required permissions hadn't been granted. Be sure to call prepare() first`);
+    super(
+      `${resolution} resolution human activity recognizer. Perhaps the required permissions hadn't been granted. Be sure to call prepare() first`
+    );
   }
 }
 

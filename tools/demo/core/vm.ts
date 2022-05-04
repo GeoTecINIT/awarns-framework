@@ -6,9 +6,7 @@ import { alert, AlertOptions, confirm, ConfirmOptions, knownFolders } from '@nat
 import { Subject, Subscription } from 'rxjs';
 import { debounceTime, map, switchMap } from 'rxjs/operators';
 
-import { Trace, TracesStore, tracesStore } from '@awarns/core/storage/traces';
-
-import { ExportResult, createTracesExporter } from '@awarns/core/storage/exporters';
+import { createTracesExporter, ExportResult, Trace, TracesStore, tracesStore } from '@awarns/tracing';
 
 import { setupAreasOfInterest } from '../geofencing/setup';
 import { emitStartEvent } from './common';

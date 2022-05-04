@@ -3,7 +3,10 @@ import { NativeScriptCommonModule, NativeScriptRouterModule } from '@nativescrip
 import { HumanActivityComponent } from './human-activity.component';
 
 @NgModule({
-  imports: [NativeScriptCommonModule, NativeScriptRouterModule.forChild([{ path: '', component: HumanActivityComponent }])],
+  imports: [
+    NativeScriptCommonModule,
+    NativeScriptRouterModule.forChild([{ path: '', component: HumanActivityComponent }]),
+  ],
   declarations: [HumanActivityComponent],
   schemas: [NO_ERRORS_SCHEMA],
 })

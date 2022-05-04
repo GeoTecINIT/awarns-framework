@@ -1,5 +1,9 @@
 import { Observable } from 'rxjs';
-import { LocalTimeSeriesStore, TimeSeriesEntity, TimeSeriesStore } from '@awarns/core/internal/persistence/stores/timeseries/common';
+import {
+  LocalTimeSeriesStore,
+  TimeSeriesEntity,
+  TimeSeriesStore,
+} from '@awarns/core/internal/persistence/stores/timeseries/common';
 import { TimeSeriesSyncedStore } from '@awarns/core/internal/persistence/stores/timeseries/synchronizer';
 
 describe('Time series synced store', () => {

@@ -1,5 +1,5 @@
 import { HumanActivityChangeReceiver } from '@awarns/human-activity/internal/receiver';
-import { EventData } from 'nativescript-task-dispatcher/internal/events';
+import { EventData } from '@awarns/core/events';
 
 import { ActivityChange, HumanActivity, Transition } from 'nativescript-context-apis/internal/activity-recognition';
 import { HumanActivityChange } from '@awarns/human-activity';
@@ -23,7 +23,12 @@ describe('Human activity change receiver', () => {
       confidence: 1,
     };
 
-    const expectedChange = new HumanActivityChange(activityChange.type, Change.END, activityChange.timestamp, activityChange.confidence);
+    const expectedChange = new HumanActivityChange(
+      activityChange.type,
+      Change.END,
+      activityChange.timestamp,
+      activityChange.confidence
+    );
 
     receiver.onReceive(activityChange);
     expect(eventEmitter).toHaveBeenCalledWith('userActivityChanged', expectedChange);
@@ -38,7 +43,12 @@ describe('Human activity change receiver', () => {
       confidence: 1,
     };
 
-    const expectedChange = new HumanActivityChange(activityChange.type, Change.START, activityChange.timestamp, activityChange.confidence);
+    const expectedChange = new HumanActivityChange(
+      activityChange.type,
+      Change.START,
+      activityChange.timestamp,
+      activityChange.confidence
+    );
 
     receiver.onReceive(activityChange);
     expect(eventEmitter).toHaveBeenCalledWith('userActivityChanged', expectedChange);

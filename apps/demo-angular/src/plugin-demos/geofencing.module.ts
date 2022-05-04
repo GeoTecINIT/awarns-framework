@@ -3,7 +3,10 @@ import { NativeScriptCommonModule, NativeScriptRouterModule } from '@nativescrip
 import { GeofencingComponent } from './geofencing.component';
 
 @NgModule({
-  imports: [NativeScriptCommonModule, NativeScriptRouterModule.forChild([{ path: '', component: GeofencingComponent }])],
+  imports: [
+    NativeScriptCommonModule,
+    NativeScriptRouterModule.forChild([{ path: '', component: GeofencingComponent }]),
+  ],
   declarations: [GeofencingComponent],
   schemas: [NO_ERRORS_SCHEMA],
 })

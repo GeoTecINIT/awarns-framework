@@ -1,5 +1,4 @@
-import { TracesStore } from '../../persistence/stores/timeseries';
-import { Trace } from './index';
+import { Trace, TracesStore } from '@awarns/tracing';
 import { Observable, of } from 'rxjs';
 
 export function createTracesStoreMock(): TracesStore {

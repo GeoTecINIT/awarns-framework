@@ -105,40 +105,87 @@ describe('Geofencing checker', () => {
   });
 
   it('returns an empty list when the given trajectory does not match any aoi', async () => {
-    const result = await checker.findNearbyTrajectory([createGeolocation(39.994198168578016, -0.07218897342681885), createGeolocation(39.99419816857802, -0.072188973426819), createGeolocation(39.99419816857801, -0.07218897342681)], nearbyRange, offset);
+    const result = await checker.findNearbyTrajectory(
+      [
+        createGeolocation(39.994198168578016, -0.07218897342681885),
+        createGeolocation(39.99419816857802, -0.072188973426819),
+        createGeolocation(39.99419816857801, -0.07218897342681),
+      ],
+      nearbyRange,
+      offset
+    );
     expect(result.length).toBe(0);
   });
 
   it('returns a list with one item when trajectory is detailed and leaving one place', async () => {
-    const result = await checker.findNearbyTrajectory([createGeolocation(39.994041998592294, -0.07409602403640747), createGeolocation(39.99411186415638, -0.07409065961837769), createGeolocation(39.994173510182975, -0.07411748170852661), createGeolocation(39.994212552637705, -0.07416039705276488), createGeolocation(39.9942495402058, -0.07421404123306274)], nearbyRange, offset);
+    const result = await checker.findNearbyTrajectory(
+      [
+        createGeolocation(39.994041998592294, -0.07409602403640747),
+        createGeolocation(39.99411186415638, -0.07409065961837769),
+        createGeolocation(39.994173510182975, -0.07411748170852661),
+        createGeolocation(39.994212552637705, -0.07416039705276488),
+        createGeolocation(39.9942495402058, -0.07421404123306274),
+      ],
+      nearbyRange,
+      offset
+    );
     expect(result.length).toBe(1);
     expect(result[0].proximity).toEqual(GeofencingProximity.NEARBY);
     expect(result[0].aoi.id).toEqual(aoi1.id);
   });
 
   it('returns a list with one item when trajectory is limited and leaving one place', async () => {
-    const result = await checker.findNearbyTrajectory([createGeolocation(39.994041998592294, -0.07409602403640747), createGeolocation(39.99411186415638, -0.07409065961837769), createGeolocation(39.994173510182975, -0.07411748170852661)], nearbyRange, offset);
+    const result = await checker.findNearbyTrajectory(
+      [
+        createGeolocation(39.994041998592294, -0.07409602403640747),
+        createGeolocation(39.99411186415638, -0.07409065961837769),
+        createGeolocation(39.994173510182975, -0.07411748170852661),
+      ],
+      nearbyRange,
+      offset
+    );
     expect(result.length).toBe(1);
     expect(result[0].proximity).toEqual(GeofencingProximity.NEARBY);
     expect(result[0].aoi.id).toEqual(aoi1.id);
   });
 
   it('returns a list with one item when trajectory is insufficient, taking last value as truthy', async () => {
-    const result = await checker.findNearbyTrajectory([createGeolocation(39.99411186415638, -0.07409065961837769), createGeolocation(39.994173510182975, -0.07411748170852661)], nearbyRange, offset);
+    const result = await checker.findNearbyTrajectory(
+      [
+        createGeolocation(39.99411186415638, -0.07409065961837769),
+        createGeolocation(39.994173510182975, -0.07411748170852661),
+      ],
+      nearbyRange,
+      offset
+    );
     expect(result.length).toBe(1);
     expect(result[0].proximity).toEqual(GeofencingProximity.NEARBY);
     expect(result[0].aoi.id).toEqual(aoi1.id);
   });
 
   it('returns a list with one item when trajectory is lacking, taking unique as truthy', async () => {
-    const result = await checker.findNearbyTrajectory([createGeolocation(39.994173510182975, -0.07411748170852661)], nearbyRange, offset);
+    const result = await checker.findNearbyTrajectory(
+      [createGeolocation(39.994173510182975, -0.07411748170852661)],
+      nearbyRange,
+      offset
+    );
     expect(result.length).toBe(1);
     expect(result[0].proximity).toEqual(GeofencingProximity.NEARBY);
     expect(result[0].aoi.id).toEqual(aoi1.id);
   });
 
   it('returns a list with two items when trajectory is mostly fine, staying inside a place and nearby another', async () => {
-    const result = await checker.findNearbyTrajectory([createGeolocation(39.99394130985953, -0.07405847311019897), createGeolocation(39.993926925742734, -0.0740504264831543), createGeolocation(39.99394336473311, -0.07402360439300536), createGeolocation(39.99393103549069, -0.07402360439300536), createGeolocation(39.99417556504956, -0.07413893938064575)], nearbyRange, offset);
+    const result = await checker.findNearbyTrajectory(
+      [
+        createGeolocation(39.99394130985953, -0.07405847311019897),
+        createGeolocation(39.993926925742734, -0.0740504264831543),
+        createGeolocation(39.99394336473311, -0.07402360439300536),
+        createGeolocation(39.99393103549069, -0.07402360439300536),
+        createGeolocation(39.99417556504956, -0.07413893938064575),
+      ],
+      nearbyRange,
+      offset
+    );
     expect(result.length).toBe(2);
     expect(result[0].proximity).toEqual(GeofencingProximity.INSIDE);
     expect(result[0].aoi.id).toEqual(aoi1.id);
@@ -147,7 +194,17 @@ describe('Geofencing checker', () => {
   });
 
   it('returns a list with two items when trajectory presents one outlier, staying inside a place and nearby another', async () => {
-    const result = await checker.findNearbyTrajectory([createGeolocation(39.99394130985953, -0.07405847311019897), createGeolocation(39.993926925742734, -0.0740504264831543), createGeolocation(39.99417556504956, -0.07413893938064575), createGeolocation(39.99394336473311, -0.07402360439300536), createGeolocation(39.99393103549069, -0.07402360439300536)], nearbyRange, offset);
+    const result = await checker.findNearbyTrajectory(
+      [
+        createGeolocation(39.99394130985953, -0.07405847311019897),
+        createGeolocation(39.993926925742734, -0.0740504264831543),
+        createGeolocation(39.99417556504956, -0.07413893938064575),
+        createGeolocation(39.99394336473311, -0.07402360439300536),
+        createGeolocation(39.99393103549069, -0.07402360439300536),
+      ],
+      nearbyRange,
+      offset
+    );
     expect(result.length).toBe(2);
     expect(result[0].proximity).toEqual(GeofencingProximity.INSIDE);
     expect(result[0].aoi.id).toEqual(aoi1.id);
@@ -156,7 +213,17 @@ describe('Geofencing checker', () => {
   });
 
   it('returns a list with two items when trajectory presents two outliers, staying inside a place and nearby another', async () => {
-    const result = await checker.findNearbyTrajectory([createGeolocation(39.994105699550666, -0.07404237985610962), createGeolocation(39.99418994911401, -0.07410138845443726), createGeolocation(39.99416529071597, -0.07414966821670532), createGeolocation(39.99409953494437, -0.0741201639175415), createGeolocation(39.99406254729503, -0.07409870624542236)], nearbyRange, offset);
+    const result = await checker.findNearbyTrajectory(
+      [
+        createGeolocation(39.994105699550666, -0.07404237985610962),
+        createGeolocation(39.99418994911401, -0.07410138845443726),
+        createGeolocation(39.99416529071597, -0.07414966821670532),
+        createGeolocation(39.99409953494437, -0.0741201639175415),
+        createGeolocation(39.99406254729503, -0.07409870624542236),
+      ],
+      nearbyRange,
+      offset
+    );
     expect(result.length).toBe(2);
     expect(result[0].proximity).toEqual(GeofencingProximity.INSIDE);
     expect(result[0].aoi.id).toEqual(aoi1.id);

@@ -17,7 +17,11 @@ export class GeofencingChecker {
     return results.filter((result) => result.proximity !== GeofencingProximity.OUTSIDE);
   }
 
-  async findNearbyTrajectory(locations: Array<Geolocation>, nearbyRange: number, offset: number): Promise<Array<GeofencingResult>> {
+  async findNearbyTrajectory(
+    locations: Array<Geolocation>,
+    nearbyRange: number,
+    offset: number
+  ): Promise<Array<GeofencingResult>> {
     if (locations.length === 0) {
       return [];
     }
@@ -42,7 +46,12 @@ export class GeofencingChecker {
     return results;
   }
 
-  private static calculateProximity(location: Geolocation, aoi: AreaOfInterest, nearbyRange: number, offset: number): GeofencingProximity {
+  private static calculateProximity(
+    location: Geolocation,
+    aoi: AreaOfInterest,
+    nearbyRange: number,
+    offset: number
+  ): GeofencingProximity {
     const loc = point([location.longitude, location.latitude]);
     const aoiCentroid = point([aoi.longitude, aoi.latitude]);
     const dst = distance(loc, aoiCentroid, { units: 'kilometers' }) * 1000;
@@ -56,7 +65,9 @@ export class GeofencingChecker {
     return GeofencingProximity.OUTSIDE;
   }
 
-  private static createProximityDict(sometimeNearby: Array<Array<GeofencingResult>>): Map<AreaOfInterest, Array<GeofencingProximity>> {
+  private static createProximityDict(
+    sometimeNearby: Array<Array<GeofencingResult>>
+  ): Map<AreaOfInterest, Array<GeofencingProximity>> {
     // Cannot be merged in one map, because of identical AoIs are not understood as the same key for the map
     const nearnessAlongTime = new Map<string, Array<GeofencingProximity>>();
     const aois = new Map<string, AreaOfInterest>();

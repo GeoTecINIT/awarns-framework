@@ -10,6 +10,9 @@ export class HomeComponent {
       name: 'core',
     },
     {
+      name: 'tracing',
+    },
+    {
       name: 'geolocation',
     },
     {

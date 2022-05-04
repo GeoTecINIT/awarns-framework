@@ -1,8 +1,8 @@
 import { Folder } from '@nativescript/core';
 
-import { JSONExporter } from '../json-exporter';
-import { Trace } from '../../../../tasks/tracing';
-import { TracesStore, syncedTracesStore } from '../../../stores/timeseries';
+import { JSONExporter } from '@awarns/core/internal/persistence/file/exporters';
+import { Trace } from '../entities';
+import { TracesStore, syncedTracesStore } from '../stores';
 
 export class JSONTracesExporter extends JSONExporter<Trace> {
   constructor(folder: Folder, fileName?: string, private tracesStore: TracesStore = syncedTracesStore) {

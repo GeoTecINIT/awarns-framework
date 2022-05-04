@@ -7,7 +7,7 @@ export * from './stores';
 export * from './tasks';
 
 export function registerNotificationsPlugin(notificationsChannelName?: string): PluginLoader {
-  return async () => {
+  return () => {
     if (notificationsChannelName != undefined) {
       notificationsManager.setChannelName(notificationsChannelName);
     }

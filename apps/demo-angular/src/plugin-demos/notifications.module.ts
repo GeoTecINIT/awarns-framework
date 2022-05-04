@@ -3,7 +3,10 @@ import { NativeScriptCommonModule, NativeScriptRouterModule } from '@nativescrip
 import { NotificationsComponent } from './notifications.component';
 
 @NgModule({
-  imports: [NativeScriptCommonModule, NativeScriptRouterModule.forChild([{ path: '', component: NotificationsComponent }])],
+  imports: [
+    NativeScriptCommonModule,
+    NativeScriptRouterModule.forChild([{ path: '', component: NotificationsComponent }]),
+  ],
   declarations: [NotificationsComponent],
   schemas: [NO_ERRORS_SCHEMA],
 })

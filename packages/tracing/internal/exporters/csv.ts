@@ -1,9 +1,9 @@
 import { Folder } from '@nativescript/core';
 
-import { CSVExporter } from '../csv-exporter';
-import { Trace } from '../../../../tasks/tracing';
-import { TracesStore, syncedTracesStore } from '../../../stores/timeseries';
-import { toTimestampWithTimezoneOffset, jsonDateReplacer } from '../../../../utils/date';
+import { CSVExporter } from '@awarns/core/internal/persistence/file/exporters';
+import { Trace } from '../entities';
+import { TracesStore, syncedTracesStore } from '../stores';
+import { toTimestampWithTimezoneOffset, jsonDateReplacer } from '@awarns/core/utils/date';
 
 export class CSVTracesExporter extends CSVExporter<Trace> {
   constructor(folder: Folder, fileName?: string, private tracesStore: TracesStore = syncedTracesStore) {

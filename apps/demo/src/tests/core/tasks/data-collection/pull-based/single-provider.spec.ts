@@ -31,7 +31,10 @@ describe('Single pull-based provider task', () => {
 
   it('indicates the underlying provider to stop collecting data on cancel', async () => {
     const interrupter = jasmine.createSpy();
-    spyOn(provider, 'next').and.returnValue([new Promise((resolve) => setTimeout(() => resolve(null), 2000)), interrupter]);
+    spyOn(provider, 'next').and.returnValue([
+      new Promise((resolve) => setTimeout(() => resolve(null), 2000)),
+      interrupter,
+    ]);
 
     const runPromise = task.run({}, createEvent('fake'));
     const cancelPromise = new Promise<void>((resolve) =>
