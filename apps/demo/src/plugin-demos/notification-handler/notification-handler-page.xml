@@ -5,11 +5,11 @@
     <ActionBar title="{{ content.title }}" class="action-bar"/>
 
     <StackLayout>
-        <StackLayout class="m-8 p-x-12" visibility="{{ content.type === 'rich-text' ? 'visible' : 'collapsed' }}">
+        <StackLayout class="m-8 p-x-12" visibility="{{ content.type === 'open-content' ? 'visible' : 'collapsed' }}">
             <Label text="{{ content.body }}" textWrap="true" class="body"/>
             <Button class="btn btn-primary" text="Close" tap="closeModal"/>
         </StackLayout>
-        <StackLayout class="m-8 p-x-12" visibility="{{ content.type === 'questions' ? 'visible' : 'collapsed' }}">
+        <StackLayout class="m-8 p-x-12" visibility="{{ content.type === 'deliver-questions' ? 'visible' : 'collapsed' }}">
             <Label text="{{ content.description }}" textWrap="true" class="body"/>
             <ListView items="{{ questions }}" rowHeight="200">
                 <ListView.itemTemplate>
