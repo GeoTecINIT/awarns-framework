@@ -1,6 +1,6 @@
 import { Folder } from '@nativescript/core';
 
-import { CSVExporter } from '@awarns/core/internal/persistence/file/exporters';
+import { CSVExporter } from '@awarns/persistence/exporters';
 import { Trace } from '../entities';
 import { TracesStore, syncedTracesStore } from '../stores';
 import { toTimestampWithTimezoneOffset, jsonDateReplacer } from '@awarns/core/utils/date';

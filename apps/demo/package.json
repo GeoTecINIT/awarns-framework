@@ -7,6 +7,7 @@
     "@nativescript/core": "file:../../node_modules/@nativescript/core",
     "@nativescript/unit-test-runner": "^3.0.3",
     "@awarns/core": "file:../../packages/core",
+    "@awarns/persistence": "file:../../packages/persistence",
     "@awarns/tracing": "file:../../packages/tracing",
     "@awarns/geolocation": "file:../../packages/geolocation",
     "@awarns/geofencing": "file:../../packages/geofencing",

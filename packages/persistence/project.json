@@ -1,0 +1,64 @@
+{
+  "root": "packages/persistence",
+  "projectType": "library",
+  "sourceRoot": "packages/persistence",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "options": {
+        "outputPath": "dist/packages/persistence",
+        "tsConfig": "packages/persistence/tsconfig.json",
+        "packageJson": "packages/persistence/package.json",
+        "main": "packages/persistence/index.d.ts",
+        "assets": [
+          "packages/persistence/*.md",
+          "packages/persistence/index.d.ts",
+          "LICENSE",
+          {
+            "glob": "**/*",
+            "input": "packages/persistence/platforms/",
+            "output": "./platforms/"
+          }
+        ],
+        "dependsOn": [
+          {
+            "target": "build.all",
+            "projects": "dependencies"
+          }
+        ]
+      }
+    },
+    "build.all": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["node tools/scripts/build-finish.ts persistence"],
+        "parallel": false
+      },
+      "outputs": ["dist/packages/persistence"],
+      "dependsOn": [
+        {
+          "target": "build.all",
+          "projects": "dependencies"
+        },
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ]
+    },
+    "focus": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["nx g @nativescript/plugin-tools:focus-packages persistence"],
+        "parallel": false
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["packages/persistence/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}

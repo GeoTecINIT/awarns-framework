@@ -1,5 +1,5 @@
 import { GeofencingProximity } from '../entities';
-import { EMAIStore } from '@awarns/core/storage';
+import { AwarnsStore } from '@awarns/persistence';
 
 export interface GeofencingStateStore {
   updateProximity(id: string, proximity: GeofencingProximity): Promise<void>;
@@ -11,10 +11,10 @@ export interface GeofencingStateStore {
 const DOC_TYPE = 'geofencing-state';
 
 class GeofencingStateStoreDB implements GeofencingStateStore {
-  private readonly store: EMAIStore<NearbyArea>;
+  private readonly store: AwarnsStore<NearbyArea>;
 
   constructor() {
-    this.store = new EMAIStore<NearbyArea>(DOC_TYPE, docFrom, nearbyAreaFrom);
+    this.store = new AwarnsStore<NearbyArea>(DOC_TYPE, docFrom, nearbyAreaFrom);
   }
 
   async updateProximity(id: string, proximity: GeofencingProximity): Promise<void> {

@@ -1,6 +1,6 @@
 {
   "name": "@awarns/core",
-  "version": "1.0.0-alpha.7",
+  "version": "1.0.0-alpha.8",
   "description": "AwarNS framework core package. Use this package to develop new plugins for AwarNS",
   "main": "index",
   "typings": "index.d.ts",
@@ -33,8 +33,6 @@
   "readmeFilename": "README.md",
   "bootstrapper": "@nativescript/plugin-seed",
   "dependencies": {
-    "@triniwiz/nativescript-couchbase": "^1.3.1",
-    "nativescript-task-dispatcher": "^3.1.1",
-    "rxjs": "^7.5.5"
+    "nativescript-task-dispatcher": "^3.1.1"
   }
 }

@@ -1,7 +1,7 @@
 import { Notification } from './entities';
-import { EMAIStore } from '@awarns/core/storage';
+import { AwarnsStore } from '@awarns/persistence';
 import { Observable } from 'rxjs';
-import { deserialize, serialize } from 'nativescript-task-dispatcher/internal/utils/serialization';
+import { deserialize, serialize } from '@awarns/core/utils/serialization';
 
 export interface NotificationsStore {
   insert(notification: Notification): Promise<void>;
@@ -13,10 +13,10 @@ export interface NotificationsStore {
 const DOC_TYPE = 'notification';
 
 class NotificationsStoreDB implements NotificationsStore {
-  private readonly store: EMAIStore<Notification>;
+  private readonly store: AwarnsStore<Notification>;
 
   constructor() {
-    this.store = new EMAIStore<Notification>(DOC_TYPE, docFrom, notificationFrom);
+    this.store = new AwarnsStore<Notification>(DOC_TYPE, docFrom, notificationFrom);
   }
 
   async insert(notification: Notification): Promise<void> {

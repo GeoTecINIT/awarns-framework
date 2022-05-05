@@ -1,4 +1,5 @@
 import { Task } from 'nativescript-task-dispatcher/tasks';
+import { makeTraceable, trackEventTask } from '@awarns/tracing';
 import {
   startDetectingCoarseHumanActivityChangesTask,
   stopDetectingCoarseHumanActivityChangesTask,
@@ -6,7 +7,7 @@ import {
 import { acquireMultiplePhoneGeolocationTask, acquirePhoneGeolocationTask } from '@awarns/geolocation';
 import { checkAreaOfInterestProximityTask } from '@awarns/geofencing';
 import { sendNotificationTask } from '@awarns/notifications';
-import { makeTraceable, trackEventTask } from '@awarns/tracing';
+import { writeRecordsTask } from '@awarns/persistence';
 
 export const demoTasks: Array<Task> = [
   ...makeTraceable([startDetectingCoarseHumanActivityChangesTask(), stopDetectingCoarseHumanActivityChangesTask()]),
@@ -19,5 +20,6 @@ export const demoTasks: Array<Task> = [
     ],
     { outputsSensitiveData: true }
   ),
+  writeRecordsTask(),
   trackEventTask(),
 ];

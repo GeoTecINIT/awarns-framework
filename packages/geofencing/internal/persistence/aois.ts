@@ -1,5 +1,5 @@
 import { AreaOfInterest } from '../entities';
-import { EMAIStore } from '@awarns/core/storage';
+import { AwarnsStore } from '@awarns/persistence';
 
 export interface AreasOfInterestStore {
   insert(aois: Array<AreaOfInterest>): Promise<void>;
@@ -10,10 +10,10 @@ export interface AreasOfInterestStore {
 const DOC_TYPE = 'area-of-interest';
 
 class AreasOfInterestStoreDB implements AreasOfInterestStore {
-  private readonly store: EMAIStore<AreaOfInterest>;
+  private readonly store: AwarnsStore<AreaOfInterest>;
 
   constructor() {
-    this.store = new EMAIStore<AreaOfInterest>(DOC_TYPE, docFrom, aoiFrom);
+    this.store = new AwarnsStore<AreaOfInterest>(DOC_TYPE, docFrom, aoiFrom);
   }
 
   async insert(aois: Array<AreaOfInterest>): Promise<void> {

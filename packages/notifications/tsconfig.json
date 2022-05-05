@@ -5,7 +5,8 @@
     "rootDirs": [".", "../.."],
     "paths": {
       "@awarns/core": ["packages/core/index.d.ts"],
-      "@awarns/core/*": ["packages/core/*"]
+      "@awarns/core/*": ["packages/core/*"],
+      "@awarns/persistence": ["packages/persistence/index.d.ts"]
     }
   },
   "exclude": ["**/*.spec.ts", "**/*.test.ts", "angular"],

@@ -1,5 +1,6 @@
 export * from './utils';
 export * from './core';
+export * from './persistence';
 export * from './tracing';
 export * from './geolocation';
 export * from './geofencing';

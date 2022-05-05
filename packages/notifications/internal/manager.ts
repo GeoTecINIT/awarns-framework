@@ -5,7 +5,7 @@ import { awarns } from '@awarns/core';
 import { Notification, NotificationDiscardRecord, NotificationTapRecord, TapActionType } from './entities';
 import { NotificationsStore, notificationsStoreDB } from './store';
 import { getLogger, Logger } from '@awarns/core/utils/logger';
-import { EventData } from 'nativescript-task-dispatcher/events';
+import { EventData } from '@awarns/core/events';
 import { extractIdAndActionFrom } from './common';
 
 const DEFAULT_CHANNEL_NAME = 'Mobile interventions';

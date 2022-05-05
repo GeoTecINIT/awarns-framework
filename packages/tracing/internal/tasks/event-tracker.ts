@@ -1,5 +1,5 @@
-import { Task, TaskParams } from 'nativescript-task-dispatcher/tasks';
-import { DispatchableEvent } from 'nativescript-task-dispatcher/events';
+import { Task, TaskParams } from '@awarns/core/tasks';
+import { DispatchableEvent } from '@awarns/core/events';
 import { TracerConfig } from './tracer-config';
 import { TracesStore, syncedTracesStore } from '../stores';
 import { Trace, TraceResult, TraceType } from '../entities';
