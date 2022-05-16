@@ -130,6 +130,13 @@ module.exports = {
           description: '@awarns/notifications: Build',
         },
       },
+      // @awarns/battery
+      battery: {
+        build: {
+          script: 'nx run battery:build.all --parallel=false',
+          description: '@awarns/battery: Build',
+        },
+      },
       'build-all': {
         script: 'nx run-many --target=build.all --all --parallel=1',
         description: 'Build all packages',
@@ -167,6 +174,10 @@ module.exports = {
       persistence: {
         script: 'nx run persistence:focus',
         description: 'Focus on @awarns/persistence',
+      },
+      battery: {
+        script: 'nx run battery:focus',
+        description: 'Focus on @awarns/battery',
       },
       reset: {
         script: 'nx g @awarns/plugin-tools:focus-packages',
