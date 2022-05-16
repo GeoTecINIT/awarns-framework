@@ -95,6 +95,7 @@ class NotificationsManagerImpl implements NotificationsManager, NotificationActi
   }
 
   public async markAsSeen(notificationId: number): Promise<void> {
+    await LocalNotifications.cancel(notificationId);
     await this.store.delete(notificationId);
   }
 
