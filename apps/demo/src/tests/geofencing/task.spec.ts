@@ -1,5 +1,10 @@
 import { Geolocation } from '@awarns/geolocation';
-import { AoIProximityChange, AreaOfInterest, GeofencingProximity } from '@awarns/geofencing/internal/entities';
+import {
+  AoIProximityChange,
+  AoIProximityChangeType,
+  AreaOfInterest,
+  GeofencingProximity,
+} from '@awarns/geofencing/internal/entities';
 import { AreasOfInterestStore, GeofencingStateStore } from '@awarns/geofencing/internal/persistence';
 import { GeofencingChecker } from '@awarns/geofencing/internal/checker';
 import { GeofencingTask } from '@awarns/geofencing/internal/task';
@@ -9,7 +14,7 @@ import {
   createGeofencingCheckerMock,
   createGeofencingStateStoreMock,
 } from './common.spec';
-import { Change, KnownTypes } from '@awarns/core/entities';
+import { Change } from '@awarns/core/entities';
 import { createEvent, listenToEventTrigger } from '@awarns/core/testing/events';
 
 describe('Geofencing task', () => {
@@ -438,7 +443,7 @@ function aoiProximityChangeFrom(
   timestamp: Date
 ): AoIProximityChange {
   return {
-    type: KnownTypes.AoIProximityChange,
+    type: AoIProximityChangeType,
     timestamp,
     change,
     aoi,
