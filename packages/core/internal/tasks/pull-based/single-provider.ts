@@ -1,7 +1,7 @@
 import { ProviderTask } from '../provider-task';
-import { PullProvider } from '../../../providers';
+import { PullProvider } from '../../providers';
 
-import { camelCase, pascalCase } from '../../../utils/string';
+import { camelCase, pascalCase } from '../../utils/string';
 import { TaskConfig, TaskOutcome, TaskParams } from 'nativescript-task-dispatcher/tasks';
 import { DispatchableEvent } from 'nativescript-task-dispatcher/events';
 

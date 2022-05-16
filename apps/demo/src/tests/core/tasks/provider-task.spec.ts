@@ -1,5 +1,5 @@
 import { BaseProvider } from '@awarns/core/internal/providers/base-provider';
-import { ProviderTask } from '@awarns/core/internal/tasks/data-collection/provider-task';
+import { ProviderTask } from '@awarns/core/internal/tasks/provider-task';
 import { createBaseProviderMock } from './common.spec';
 import { TaskOutcome, TaskParams } from 'nativescript-task-dispatcher/tasks';
 import { DispatchableEvent } from 'nativescript-task-dispatcher/events';

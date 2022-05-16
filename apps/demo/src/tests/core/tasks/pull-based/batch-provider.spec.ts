@@ -1,5 +1,5 @@
 import { PullProvider, ProviderInterrupter } from '@awarns/core/providers';
-import { BatchPullProviderTask } from '@awarns/core/internal/tasks/data-collection/pull-based';
+import { BatchPullProviderTask } from '@awarns/core/internal/tasks/pull-based';
 import { createPullProviderMock, SampleRecord, SampleRecordType } from './common.spec';
 import { createEvent, listenToEventTrigger } from '@awarns/core/testing/events';
 import { TaskDispatcherEvent } from '@awarns/core/events';
