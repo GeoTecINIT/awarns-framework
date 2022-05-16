@@ -10,6 +10,18 @@ class DemoTaskGraph implements TaskGraph {
 
     on('stopEvent', run('stopDetectingCoarseHumanActivityChanges'));
 
+    on(
+      'startEvent',
+      run('sendRandomNotification', {
+        options: [
+          { title: '#1 App started 1 minute ago' },
+          { title: '#2 One minute has passed', body: 'since you opened the app' },
+        ],
+      })
+        .in(1, 'minutes')
+        .cancelOn('stopEvent')
+    );
+
     on('startEvent', run('acquirePhoneGeolocation').every(5, 'minutes').cancelOn('userFinishedBeingStill'));
     on('userStartedBeingStill', run('acquirePhoneGeolocation').every(5, 'minutes').cancelOn('userFinishedBeingStill'));
 
