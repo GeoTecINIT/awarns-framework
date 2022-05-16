@@ -1,5 +1,3 @@
-export * from './base-record';
-
 export * from './pull-provider';
 export * from './push-provider';
 
