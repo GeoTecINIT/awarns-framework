@@ -1,10 +1,12 @@
 import { AreaOfInterest } from '../entities';
 import { AwarnsStore } from '@awarns/persistence';
+import { Observable } from 'rxjs';
 
 export interface AreasOfInterestStore {
   insert(aois: Array<AreaOfInterest>): Promise<void>;
   getById(id: string): Promise<AreaOfInterest>;
   getAll(): Promise<Array<AreaOfInterest>>;
+  list(): Observable<Array<AreaOfInterest>>;
   deleteAll(): Promise<void>;
 }
 
@@ -27,6 +29,26 @@ class AreasOfInterestStoreDB implements AreasOfInterestStore {
 
   async getAll(): Promise<Array<AreaOfInterest>> {
     return this.store.fetch();
+  }
+
+  list(): Observable<Array<AreaOfInterest>> {
+    return new Observable<Array<AreaOfInterest>>((subscriber) => {
+      const pushUpdatedAoIs = () => {
+        this.store
+          .fetch()
+          .then((aois) => subscriber.next(aois))
+          .catch((err) => subscriber.error(err));
+      };
+
+      pushUpdatedAoIs();
+      const subscription = this.store.changes.subscribe(() => {
+        pushUpdatedAoIs();
+      });
+
+      return () => {
+        subscription.unsubscribe();
+      };
+    });
   }
 
   async deleteAll(): Promise<void> {

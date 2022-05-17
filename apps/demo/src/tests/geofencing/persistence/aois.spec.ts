@@ -1,5 +1,7 @@
 import { AreasOfInterestStore, areasOfInterestStoreDB } from '@awarns/geofencing/internal/persistence';
 import { AreaOfInterest } from '@awarns/geofencing/internal/entities';
+import { firstValueFrom, toArray } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 describe('Areas of interest store', () => {
   const store: AreasOfInterestStore = areasOfInterestStoreDB;
@@ -62,6 +64,24 @@ describe('Areas of interest store', () => {
     expect(aois.find((aoi) => aoi.id === aoi1.id)).not.toBeUndefined();
     expect(aois.find((aoi) => aoi.id === aoi2.id)).not.toBeUndefined();
     expect(aois.find((aoi) => aoi.id === aoi3.id)).not.toBeUndefined();
+  });
+
+  it('allows to subscribe to changes in the areas of interest', async () => {
+    await store.insert([aoi1]);
+    const updatesPromise = firstValueFrom(store.list().pipe(take(3), toArray()));
+    await store.deleteAll();
+    await store.insert([aoi1, aoi2]);
+
+    const updates = await updatesPromise;
+
+    expect(updates.length).toBe(3);
+    expect(updates[0].length).toBe(1);
+    expect(updates[1].length).toBe(0);
+    expect(updates[2].length).toBe(2);
+
+    expect(updates[0][0].id).toEqual(aoi1.id);
+    expect(updates[2][0].id).toEqual(aoi1.id);
+    expect(updates[2][1].id).toEqual(aoi2.id);
   });
 
   afterEach(async () => {
