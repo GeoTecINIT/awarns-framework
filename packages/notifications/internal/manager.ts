@@ -3,7 +3,7 @@ import { Application, isAndroid } from '@nativescript/core';
 import { awarns } from '@awarns/core';
 
 import { Notification, NotificationDiscardRecord, NotificationTapRecord, TapActionType } from './entities';
-import { NotificationsStore, notificationsStoreDB } from './store';
+import { InternalNotificationsStore, notificationsStoreDB } from './store';
 import { getLogger, Logger } from '@awarns/core/utils/logger';
 import { EventData } from '@awarns/core/events';
 import { extractIdAndActionFrom } from './common';
@@ -29,7 +29,7 @@ class NotificationsManagerImpl implements NotificationsManager, NotificationActi
   private logger: Logger;
 
   constructor(
-    private store: NotificationsStore,
+    private store: InternalNotificationsStore,
     private emitEvent: (eventName: string, eventData?: EventData) => void
   ) {
     this.logger = getLogger('NotificationsManager');
