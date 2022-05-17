@@ -15,12 +15,12 @@ export class CSVTracesExporter extends CSVExporter<Trace> {
   }
 
   protected formatHeaders(): Array<string> {
-    return ['timestamp', 'timezoneOffset', 'chainId', 'type', 'name', 'result', 'content'];
+    return ['id', 'timestamp', 'timezoneOffset', 'chainId', 'type', 'name', 'result', 'content'];
   }
 
   protected formatRow(trace: Trace): Array<number | string | boolean> {
-    const { timestamp, chainId, type, name, result, content } = trace;
+    const { id, timestamp, chainId, type, name, result, content } = trace;
     const { value, offset } = toTimestampWithTimezoneOffset(timestamp);
-    return [value, offset, chainId, type, name, result, JSON.stringify(content, jsonDateReplacer)];
+    return [id, value, offset, chainId, type, name, result, JSON.stringify(content, jsonDateReplacer)];
   }
 }
