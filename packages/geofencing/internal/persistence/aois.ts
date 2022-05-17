@@ -3,6 +3,7 @@ import { AwarnsStore } from '@awarns/persistence';
 
 export interface AreasOfInterestStore {
   insert(aois: Array<AreaOfInterest>): Promise<void>;
+  getById(id: string): Promise<AreaOfInterest>;
   getAll(): Promise<Array<AreaOfInterest>>;
   deleteAll(): Promise<void>;
 }
@@ -18,6 +19,10 @@ class AreasOfInterestStoreDB implements AreasOfInterestStore {
 
   async insert(aois: Array<AreaOfInterest>): Promise<void> {
     await this.store.insert(aois);
+  }
+
+  async getById(id: string): Promise<AreaOfInterest> {
+    return await this.store.get(id);
   }
 
   async getAll(): Promise<Array<AreaOfInterest>> {

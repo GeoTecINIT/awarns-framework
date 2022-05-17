@@ -48,6 +48,12 @@ describe('Areas of interest store', () => {
     await store.insert(expectedAoIs);
   });
 
+  it('allows to retrieve one area of interest by its id', async () => {
+    await store.insert([aoi1]);
+    const result = await store.getById(aoi1.id);
+    expect(result.id).toEqual(aoi1.id);
+  });
+
   it('allows to get all the stored areas of interest', async () => {
     await store.insert(expectedAoIs);
     const aois = await store.getAll();
