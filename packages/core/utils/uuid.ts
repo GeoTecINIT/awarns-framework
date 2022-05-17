@@ -1,1 +1,1 @@
-export * from 'nativescript-task-dispatcher/internal/utils/uuid';
+export * from '../internal/utils/uuid';
