@@ -6,12 +6,11 @@ const DOC_TYPE = 'record';
 
 class RecordsStoreDB extends AbstractTimeSeriesStore<Record> {
   constructor() {
-    super(DOC_TYPE, docFrom, recordFrom, true);
+    super(DOC_TYPE, docFrom, recordFrom);
   }
 }
 
 interface RecordDoc extends TimeSeriesDoc {
-  id: string;
   timestamp: number;
   type: string;
   change: Change;
