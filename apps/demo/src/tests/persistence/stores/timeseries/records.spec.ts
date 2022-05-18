@@ -1,12 +1,12 @@
 import { localRecordsStore as store } from '@awarns/persistence/internal/stores/timeseries/records/store';
-import { Record, Change } from '@awarns/core/entities';
+import { Change, Record } from '@awarns/core/entities';
 
 import { Geolocation } from '@awarns/geolocation';
 import { HumanActivity, HumanActivityChange } from '@awarns/human-activity';
-import { AoIProximityChange, GeofencingProximity } from '@awarns/geofencing';
-import { QuestionnaireAnswers, QuestionnaireAnswer } from '@awarns/notifications';
+import { AoIProximityChange, AoIProximityChangeType, GeofencingProximity } from '@awarns/geofencing';
+import { QuestionnaireAnswer, QuestionnaireAnswers } from '@awarns/notifications';
 
-import { firstValueFrom, lastValueFrom } from 'rxjs';
+import { firstValueFrom, lastValueFrom, takeUntil, timeout, timer, toArray } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 describe('Records store', () => {
@@ -30,11 +30,23 @@ describe('Records store', () => {
         longitude: -0.2,
         radius: 20,
       },
-      GeofencingProximity.INSIDE,
-      Change.START,
+      GeofencingProximity.NEARBY,
+      Change.END,
       nowMinus(2)
     ),
     new QuestionnaireAnswers('qs1', answers, 53, nowMinus(1)),
+    new AoIProximityChange(
+      {
+        id: 'aoi2',
+        name: 'Area of Interest 2',
+        latitude: 40.7,
+        longitude: -0.4,
+        radius: 30,
+      },
+      GeofencingProximity.INSIDE,
+      Change.START,
+      nowMinus(0)
+    ),
   ];
 
   beforeAll(async () => {
@@ -52,12 +64,13 @@ describe('Records store', () => {
 
     const storedRecords = await firstValueFrom(store.list());
 
-    expect(storedRecords.length).toBe(5);
-    expect({ ...storedRecords[0] }).toEqual({ ...records[4] });
-    expect({ ...storedRecords[1] }).toEqual({ ...records[3] });
-    expect({ ...storedRecords[2] }).toEqual({ ...records[2] });
-    expect({ ...storedRecords[3] }).toEqual({ ...records[1] });
-    expect({ ...storedRecords[4] }).toEqual({ ...records[0] });
+    expect(storedRecords.length).toBe(6);
+    expect({ ...storedRecords[0] }).toEqual({ ...records[5] });
+    expect({ ...storedRecords[1] }).toEqual({ ...records[4] });
+    expect({ ...storedRecords[2] }).toEqual({ ...records[3] });
+    expect({ ...storedRecords[3] }).toEqual({ ...records[2] });
+    expect({ ...storedRecords[4] }).toEqual({ ...records[1] });
+    expect({ ...storedRecords[5] }).toEqual({ ...records[0] });
   });
 
   it('allows to listen to stored records changes', async () => {
@@ -92,12 +105,100 @@ describe('Records store', () => {
 
     const storedRecords = await store.getAll();
 
-    expect(storedRecords.length).toBe(5);
+    expect(storedRecords.length).toBe(6);
     expect({ ...storedRecords[0] }).toEqual({ ...records[0] });
     expect({ ...storedRecords[1] }).toEqual({ ...records[1] });
     expect({ ...storedRecords[2] }).toEqual({ ...records[2] });
     expect({ ...storedRecords[3] }).toEqual({ ...records[3] });
     expect({ ...storedRecords[4] }).toEqual({ ...records[4] });
+    expect({ ...storedRecords[5] }).toEqual({ ...records[5] });
+  });
+
+  it('allows to query the latest record of a type', async () => {
+    await store.insert(records[3]);
+    await store.insert(records[4]);
+
+    const lastAoIChange = await firstValueFrom(store.listLast(AoIProximityChangeType));
+
+    expect({ ...lastAoIChange }).toEqual({ ...records[3] });
+  });
+
+  it('returns undefined when querying for a latest record and none meets the condition', async () => {
+    await store.insert(records[4]);
+
+    const lastAoIChange = await firstValueFrom(store.listLast(AoIProximityChangeType));
+
+    expect(lastAoIChange).toBeUndefined();
+  });
+
+  it('allows to query changes in the latest record of a type', async () => {
+    await store.insert(records[3]);
+    await store.insert(records[4]);
+
+    const changesPromise = firstValueFrom(store.listLast(AoIProximityChangeType).pipe(take(2), toArray()));
+    await store.insert(records[5]);
+    const changes = await changesPromise;
+
+    expect(changes.length).toBe(2);
+    expect({ ...changes[0] }).toEqual({ ...records[3] });
+    expect({ ...changes[1] }).toEqual({ ...records[5] });
+  });
+
+  it('allows to query the latest record of a type filtering by a top level property value', async () => {
+    await store.insert(records[3]);
+    await store.insert(records[4]);
+    await store.insert(records[5]);
+
+    const lastAoIChange = await firstValueFrom(
+      store.listLast(AoIProximityChangeType, [
+        {
+          property: 'proximity',
+          comparison: '=',
+          value: GeofencingProximity.NEARBY,
+        },
+      ])
+    );
+
+    expect({ ...lastAoIChange }).toEqual({ ...records[3] });
+  });
+
+  it('allows to query the latest record of a type filtering by a nested property value', async () => {
+    await store.insert(records[3]);
+    await store.insert(records[4]);
+    await store.insert(records[5]);
+
+    const lastAoIChange = await firstValueFrom(
+      store.listLast(AoIProximityChangeType, [
+        {
+          property: 'aoi.id',
+          comparison: '=',
+          value: 'aoi1',
+        },
+      ])
+    );
+
+    expect({ ...lastAoIChange }).toEqual({ ...records[3] });
+  });
+
+  it('querying the latest record of a type does not propagate duplicated entries', async () => {
+    await store.insert(records[3]);
+    const changePromise = firstValueFrom(
+      store
+        .listLast(AoIProximityChangeType, [
+          {
+            property: 'aoi.id',
+            comparison: '=',
+            value: 'aoi1',
+          },
+        ])
+        .pipe(takeUntil(timer(100)), toArray())
+    );
+    await store.insert(records[4]);
+    await store.insert(records[5]);
+
+    const changes = await changePromise;
+    expect(changes.length).toBe(1);
+    expect({ ...changes[0] }).toEqual({ ...records[3] });
   });
 
   it('allows to query unsynced records sorted by ascending timestamp', async () => {
@@ -127,12 +228,13 @@ describe('Records store', () => {
 
     const storedRecords = await store.getAll();
 
-    expect(storedRecords.length).toBe(5);
+    expect(storedRecords.length).toBe(6);
     expect({ ...storedRecords[0] }).toEqual({ ...records[0] });
     expect({ ...storedRecords[1] }).toEqual({ ...records[1] });
     expect({ ...storedRecords[2] }).toEqual({ ...records[2] });
     expect({ ...storedRecords[3] }).toEqual({ ...records[3] });
     expect({ ...storedRecords[4] }).toEqual({ ...records[4] });
+    expect({ ...storedRecords[5] }).toEqual({ ...records[5] });
   });
 
   it('allows to clear old records given a min age', async () => {
@@ -164,4 +266,24 @@ describe('Records store', () => {
 function nowMinus(seconds: number) {
   const millis = seconds * 1000;
   return new Date(Date.now() - millis);
+}
+
+async function bulkInsertRecords(amount: number): Promise<void> {
+  const start = Date.now();
+  for (let i = 0; i < amount; i++) {
+    await store.insert(
+      new AoIProximityChange(
+        {
+          id: 'aoi3',
+          radius: 10,
+          longitude: 0,
+          latitude: 0,
+          name: 'nothing',
+        },
+        GeofencingProximity.INSIDE,
+        Change.NONE
+      )
+    );
+  }
+  console.log('**DEBUG bulk insert**', Date.now() - start);
 }
