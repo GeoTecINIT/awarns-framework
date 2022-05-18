@@ -6,7 +6,7 @@ import { HumanActivity, HumanActivityChange } from '@awarns/human-activity';
 import { AoIProximityChange, AoIProximityChangeType, GeofencingProximity } from '@awarns/geofencing';
 import { QuestionnaireAnswer, QuestionnaireAnswers } from '@awarns/notifications';
 
-import { firstValueFrom, lastValueFrom, takeUntil, timer, toArray } from 'rxjs';
+import { firstValueFrom, lastValueFrom, toArray } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 describe('Records store', () => {
@@ -133,9 +133,9 @@ describe('Records store', () => {
 
   it('allows to query changes in the latest record of a type', async () => {
     await store.insert(records[3]);
-    await store.insert(records[4]);
 
     const changesPromise = firstValueFrom(store.listLast(AoIProximityChangeType).pipe(take(2), toArray()));
+    await store.insert(records[4]);
     await store.insert(records[5]);
     const changes = await changesPromise;
 
@@ -180,25 +180,65 @@ describe('Records store', () => {
     expect({ ...lastAoIChange }).toEqual({ ...records[3] });
   });
 
-  it('querying the latest record of a type does not propagate duplicated entries', async () => {
-    await store.insert(records[3]);
-    const changePromise = firstValueFrom(
-      store
-        .listLast(AoIProximityChangeType, [
-          {
-            property: 'aoi.id',
-            comparison: '=',
-            value: 'aoi1',
-          },
-        ])
-        .pipe(takeUntil(timer(200)), toArray())
+  it('allows to list all records of a given type from the newest to the oldest', async () => {
+    for (const record of records) {
+      await store.insert(record);
+    }
+
+    const aoiChanges = await firstValueFrom(store.listBy(AoIProximityChangeType));
+
+    expect(aoiChanges.length).toBe(2);
+    expect({ ...aoiChanges[0] }).toEqual({ ...records[5] });
+    expect({ ...aoiChanges[1] }).toEqual({ ...records[3] });
+  });
+
+  it('allows to list all records of a given type from the oldest to the newest', async () => {
+    for (const record of records) {
+      await store.insert(record);
+    }
+
+    const aoiChanges = await firstValueFrom(store.listBy(AoIProximityChangeType, 'asc'));
+
+    expect(aoiChanges.length).toBe(2);
+    expect({ ...aoiChanges[0] }).toEqual({ ...records[3] });
+    expect({ ...aoiChanges[1] }).toEqual({ ...records[5] });
+  });
+
+  it('allows to list all records of a given type filtered by a certain condition', async () => {
+    for (const record of records) {
+      await store.insert(record);
+    }
+
+    const aoiChanges = await firstValueFrom(
+      store.listBy(AoIProximityChangeType, 'asc', [
+        {
+          property: 'change',
+          comparison: '=',
+          value: Change.END,
+        },
+      ])
     );
+
+    expect(aoiChanges.length).toBe(1);
+    expect({ ...aoiChanges[0] }).toEqual({ ...records[3] });
+  });
+
+  it('allows to listen to updates of records of a given type', async () => {
+    const changesPromise = firstValueFrom(store.listBy(AoIProximityChangeType).pipe(take(3), toArray()));
+    await store.insert(records[3]);
     await store.insert(records[4]);
     await store.insert(records[5]);
+    const changes = await changesPromise;
 
-    const changes = await changePromise;
-    expect(changes.length).toBe(1);
-    expect({ ...changes[0] }).toEqual({ ...records[3] });
+    expect(changes.length).toBe(3);
+    expect(changes[0].length).toBe(0);
+    expect(changes[1].length).toBe(1);
+    expect(changes[2].length).toBe(2);
+
+    expect({ ...changes[1][0] }).toEqual({ ...records[3] });
+
+    expect({ ...changes[2][0] }).toEqual({ ...records[5] });
+    expect({ ...changes[2][1] }).toEqual({ ...records[3] });
   });
 
   it('allows to query unsynced records sorted by ascending timestamp', async () => {

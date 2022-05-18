@@ -12,12 +12,16 @@ import { QueryMeta } from '@triniwiz/nativescript-couchbase';
 import { FetchCondition, meetsConditions } from './filters';
 import { Query } from '../../db';
 
+export type ResultsOder = 'asc' | 'desc';
+
 export interface RecordsStore extends TimeSeriesStore<Record> {
   listLast(recordType: string, conditions?: Array<FetchCondition>): Observable<Record>;
+  listBy(recordType: string, order?: ResultsOder, conditions?: Array<FetchCondition>): Observable<Array<Record>>;
 }
 
 export interface LocalRecordsStore extends LocalTimeSeriesStore<Record> {
   listLast(recordType: string, conditions?: Array<FetchCondition>): Observable<Record>;
+  listBy(recordType: string, order?: ResultsOder, conditions?: Array<FetchCondition>): Observable<Array<Record>>;
 }
 
 const DOC_TYPE = 'record';
@@ -30,17 +34,7 @@ class RecordsStoreDB extends AbstractTimeSeriesStore<Record> implements RecordsS
   listLast(recordType: string, conditions: Array<FetchCondition> = []): Observable<Record> {
     return new Observable<Record>((subscriber) => {
       const pushLatest = () => {
-        const query: Query = {
-          select: [QueryMeta.ALL, QueryMeta.ID],
-          where: [
-            {
-              property: 'type',
-              comparison: 'equalTo',
-              value: recordType,
-            },
-          ],
-          order: [{ property: 'timestamp', direction: 'desc' }],
-        };
+        const query = recordTypeQueryFilter(recordType, 'desc');
         if (conditions.length === 0) query.limit = 1;
 
         this.store
@@ -70,6 +64,40 @@ class RecordsStoreDB extends AbstractTimeSeriesStore<Record> implements RecordsS
         subscription.unsubscribe();
       };
     }).pipe(distinctUntilKeyChanged('id'));
+  }
+
+  listBy(
+    recordType: string,
+    order: ResultsOder = 'desc',
+    conditions: Array<FetchCondition> = []
+  ): Observable<Array<Record>> {
+    return new Observable<Array<Record>>((subscriber) => {
+      const pushMatching = () => {
+        const query = recordTypeQueryFilter(recordType, order);
+
+        this.store
+          .fetch(query)
+          .then((results) => {
+            if (results.length === 0) {
+              subscriber.next([]);
+              return;
+            }
+            findAllMeetingConditions(results, conditions)
+              .then((matches) => subscriber.next(this.removeDBEntityPropsFromAll(matches)))
+              .catch((err) => subscriber.error(err));
+          })
+          .catch((err) => subscriber.error(err));
+      };
+      pushMatching();
+
+      const subscription = this.store.changes.subscribe(() => {
+        pushMatching();
+      });
+
+      return () => {
+        subscription.unsubscribe();
+      };
+    }).pipe(distinctUntilKeyChanged('length'));
   }
 }
 
@@ -106,6 +134,20 @@ function recordFrom(doc: RecordDoc): Record {
   return dbRecord as Record;
 }
 
+function recordTypeQueryFilter(recordType: string, order: ResultsOder): Query {
+  return {
+    select: [QueryMeta.ALL, QueryMeta.ID],
+    where: [
+      {
+        property: 'type',
+        comparison: 'equalTo',
+        value: recordType,
+      },
+    ],
+    order: [{ property: 'timestamp', direction: order }],
+  };
+}
+
 type RecordEntity = Record & DBEntityProps;
 
 async function findFirstMeetingConditions(
@@ -123,6 +165,24 @@ async function findFirstMeetingConditions(
     end = start + chunkSize;
   }
   return undefined;
+}
+
+async function findAllMeetingConditions(
+  records: Array<RecordEntity>,
+  conditions: Array<FetchCondition>
+): Promise<Array<RecordEntity>> {
+  const chunkSize = 10;
+  let start = 0;
+  let end = 10;
+  // Avoid long-running operations by splitting records array in chunks
+  const allMatches = [];
+  while (start < records.length) {
+    const matches = await findMatches(records.slice(start, end), conditions);
+    allMatches.push(...matches);
+    start = end;
+    end = start + chunkSize;
+  }
+  return allMatches;
 }
 
 function findMatches(records: Array<RecordEntity>, conditions: Array<FetchCondition>): Promise<Array<RecordEntity>> {
