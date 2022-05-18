@@ -1,11 +1,13 @@
 import {
   CouchBase,
   Query as Q,
+  QueryComparisonOperator as QCO,
   QueryLogicalOperator,
   QueryMeta,
   QueryWhereItem as QWI,
 } from '@triniwiz/nativescript-couchbase';
 
+export type QueryComparisonOperator = QCO;
 export type Query = Q;
 export type QueryWhereItem = QWI;
 export { QueryLogicalOperator };
