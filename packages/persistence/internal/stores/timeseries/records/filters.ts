@@ -4,7 +4,7 @@ export interface FetchCondition {
   value: unknown;
 }
 
-export function meetsConditions(record: any, conditions: Array<FetchCondition>): boolean {
+export function meetsConditions(record: unknown, conditions: Array<FetchCondition>): boolean {
   for (const condition of conditions) {
     const propertyValue = getPropertyValue(record, condition.property);
     if (propertyValue === undefined) {
@@ -25,11 +25,13 @@ export function meetsConditions(record: any, conditions: Array<FetchCondition>):
   return true;
 }
 
-function getPropertyValue(object: any, path: string) {
+export function getPropertyValue(object: unknown, path: string) {
+  if (object === undefined) return undefined;
   const segments = path.split('.');
   let property = object;
   for (const segment of segments) {
     property = property[segment];
+    if (property === undefined) return undefined;
   }
 
   return property;
