@@ -6,7 +6,7 @@ import { HumanActivity, HumanActivityChange } from '@awarns/human-activity';
 import { AoIProximityChange, AoIProximityChangeType, GeofencingProximity } from '@awarns/geofencing';
 import { QuestionnaireAnswer, QuestionnaireAnswers } from '@awarns/notifications';
 
-import { firstValueFrom, lastValueFrom, takeUntil, timeout, timer, toArray } from 'rxjs';
+import { firstValueFrom, lastValueFrom, takeUntil, timer, toArray } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 describe('Records store', () => {
@@ -191,7 +191,7 @@ describe('Records store', () => {
             value: 'aoi1',
           },
         ])
-        .pipe(takeUntil(timer(100)), toArray())
+        .pipe(takeUntil(timer(200)), toArray())
     );
     await store.insert(records[4]);
     await store.insert(records[5]);
