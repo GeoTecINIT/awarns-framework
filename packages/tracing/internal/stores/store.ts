@@ -1,10 +1,18 @@
 import { Trace, TraceResult, TraceType } from '../entities';
 import { deserialize, serialize } from '@awarns/core/utils/serialization';
-import { AbstractTimeSeriesStore, TimeSeriesDoc } from '@awarns/persistence/stores/timeseries';
+import {
+  AbstractTimeSeriesStore,
+  LocalTimeSeriesStore,
+  TimeSeriesDoc,
+  TimeSeriesStore,
+} from '@awarns/persistence/stores/timeseries';
 
 const DOC_TYPE = 'trace';
 
-class TracesStoreDB extends AbstractTimeSeriesStore<Trace> {
+export type TracesStore = TimeSeriesStore<Trace>;
+export type LocalTracesStore = LocalTimeSeriesStore<Trace>;
+
+class TracesStoreDB extends AbstractTimeSeriesStore<Trace> implements TracesStore, LocalTracesStore {
   constructor() {
     super(DOC_TYPE, docFrom, traceFrom);
   }
