@@ -3,7 +3,7 @@ import { Change, Record } from '@awarns/core/entities';
 
 import { Geolocation } from '@awarns/geolocation';
 import { HumanActivity, HumanActivityChange } from '@awarns/human-activity';
-import { AoIProximityChange, AoIProximityChangeType, GeofencingProximity } from '@awarns/geofencing';
+import { AoIProximityChange, AoIProximityChangeType, AreaOfInterest, GeofencingProximity } from '@awarns/geofencing';
 import { QuestionnaireAnswer, QuestionnaireAnswers } from '@awarns/notifications';
 
 import { firstValueFrom, lastValueFrom, toArray } from 'rxjs';
@@ -18,35 +18,29 @@ describe('Records store', () => {
     },
   ];
 
+  const aoi1: AreaOfInterest = {
+    id: 'aoi1',
+    name: 'Area of Interest 1',
+    latitude: 39.2,
+    longitude: -0.2,
+    radius: 20,
+  };
+
+  const aoi2: AreaOfInterest = {
+    id: 'aoi2',
+    name: 'Area of Interest 2',
+    latitude: 40.7,
+    longitude: -0.4,
+    radius: 30,
+  };
+
   const records: Array<Record> = [
     new Geolocation(39.1, -0.1, 122, 10.1, 10.1, 12.4, 175.9, nowMinus(5)),
     new HumanActivityChange(HumanActivity.STILL, Change.START, nowMinus(4)),
     new Geolocation(39.2, -0.2, 120, 13.1, 13.1, 10.4, 60.7, nowMinus(3)),
-    new AoIProximityChange(
-      {
-        id: 'aoi1',
-        name: 'Area of Interest 1',
-        latitude: 39.2,
-        longitude: -0.2,
-        radius: 20,
-      },
-      GeofencingProximity.NEARBY,
-      Change.END,
-      nowMinus(2)
-    ),
+    new AoIProximityChange(aoi1, GeofencingProximity.NEARBY, Change.END, nowMinus(2)),
     new QuestionnaireAnswers('qs1', answers, 53, nowMinus(1)),
-    new AoIProximityChange(
-      {
-        id: 'aoi2',
-        name: 'Area of Interest 2',
-        latitude: 40.7,
-        longitude: -0.4,
-        radius: 30,
-      },
-      GeofencingProximity.INSIDE,
-      Change.START,
-      nowMinus(0)
-    ),
+    new AoIProximityChange(aoi2, GeofencingProximity.INSIDE, Change.START, nowMinus(0)),
   ];
 
   beforeAll(async () => {
@@ -180,6 +174,43 @@ describe('Records store', () => {
     expect({ ...lastAoIChange }).toEqual({ ...records[3] });
   });
 
+  it('allows to list the last records of a type by their unique property values', async () => {
+    for (const record of records) {
+      await store.insert(record);
+    }
+    const newAoIChange = new AoIProximityChange(aoi1, GeofencingProximity.NEARBY, Change.START);
+    await store.insert(newAoIChange);
+
+    const lastGrouped = await firstValueFrom(store.listLastGroupedBy(AoIProximityChangeType, 'aoi.id'));
+
+    expect(lastGrouped.length).toBe(2);
+    expect({ ...lastGrouped[0] }).toEqual({ ...newAoIChange });
+    expect({ ...lastGrouped[1] }).toEqual({ ...records[5] });
+  });
+
+  it('allows to list the last records of a type by their unique property values, conditionally filtered', async () => {
+    for (const record of records) {
+      await store.insert(record);
+    }
+    await store.insert(new AoIProximityChange(aoi2, GeofencingProximity.INSIDE, Change.END));
+    const newAoIChange = new AoIProximityChange(aoi2, GeofencingProximity.NEARBY, Change.START);
+    await store.insert(newAoIChange);
+
+    const lastGrouped = await firstValueFrom(
+      store.listLastGroupedBy(AoIProximityChangeType, 'aoi.id', [
+        {
+          property: 'proximity',
+          comparison: '=',
+          value: GeofencingProximity.NEARBY,
+        },
+      ])
+    );
+
+    expect(lastGrouped.length).toBe(2);
+    expect({ ...lastGrouped[0] }).toEqual({ ...newAoIChange });
+    expect({ ...lastGrouped[1] }).toEqual({ ...records[3] });
+  });
+
   it('allows to list all records of a given type from the newest to the oldest', async () => {
     for (const record of records) {
       await store.insert(record);
@@ -306,24 +337,4 @@ describe('Records store', () => {
 function nowMinus(seconds: number) {
   const millis = seconds * 1000;
   return new Date(Date.now() - millis);
-}
-
-async function bulkInsertRecords(amount: number): Promise<void> {
-  const start = Date.now();
-  for (let i = 0; i < amount; i++) {
-    await store.insert(
-      new AoIProximityChange(
-        {
-          id: 'aoi3',
-          radius: 10,
-          longitude: 0,
-          latitude: 0,
-          name: 'nothing',
-        },
-        GeofencingProximity.INSIDE,
-        Change.NONE
-      )
-    );
-  }
-  console.log('**DEBUG bulk insert**', Date.now() - start);
 }

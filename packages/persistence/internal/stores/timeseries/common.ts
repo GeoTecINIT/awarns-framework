@@ -181,7 +181,7 @@ export interface TimeSeriesDoc {
   synchronized?: boolean;
 }
 
-export interface DBEntityProps {
+interface DBEntityProps {
   id: string;
   synchronized: boolean;
 }

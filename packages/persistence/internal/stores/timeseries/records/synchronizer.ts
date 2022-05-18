@@ -13,6 +13,14 @@ export class SyncedRecordsStore extends TimeSeriesSyncedStore<Record, LocalRecor
     return this.localStore.listLast(recordType, conditions);
   }
 
+  listLastGroupedBy(
+    recordType: string,
+    groupByProperty: string,
+    conditions: Array<FetchCondition> = []
+  ): Observable<Array<Record>> {
+    return this.localStore.listLastGroupedBy(recordType, groupByProperty, conditions);
+  }
+
   listBy(
     recordType: string,
     order: ResultsOder = 'desc',

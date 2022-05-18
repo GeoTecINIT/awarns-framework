@@ -1,26 +1,30 @@
 import { Change, Record } from '@awarns/core/entities';
 import { deserialize, serialize } from '@awarns/core/utils/serialization';
-import {
-  AbstractTimeSeriesStore,
-  DBEntityProps,
-  LocalTimeSeriesStore,
-  TimeSeriesDoc,
-  TimeSeriesStore,
-} from '../common';
-import { distinctUntilKeyChanged, Observable } from 'rxjs';
+import { AbstractTimeSeriesStore, LocalTimeSeriesStore, TimeSeriesDoc, TimeSeriesStore } from '../common';
+import { distinctUntilKeyChanged, Observable, switchMap } from 'rxjs';
 import { QueryMeta } from '@triniwiz/nativescript-couchbase';
-import { FetchCondition, meetsConditions } from './filters';
+import { FetchCondition, getPropertyValue, meetsConditions } from './filters';
 import { Query } from '../../db';
 
 export type ResultsOder = 'asc' | 'desc';
 
 export interface RecordsStore extends TimeSeriesStore<Record> {
   listLast(recordType: string, conditions?: Array<FetchCondition>): Observable<Record>;
+  listLastGroupedBy(
+    recordType: string,
+    groupByProperty: string,
+    conditions?: Array<FetchCondition>
+  ): Observable<Array<Record>>;
   listBy(recordType: string, order?: ResultsOder, conditions?: Array<FetchCondition>): Observable<Array<Record>>;
 }
 
 export interface LocalRecordsStore extends LocalTimeSeriesStore<Record> {
   listLast(recordType: string, conditions?: Array<FetchCondition>): Observable<Record>;
+  listLastGroupedBy(
+    recordType: string,
+    groupByProperty: string,
+    conditions?: Array<FetchCondition>
+  ): Observable<Array<Record>>;
   listBy(recordType: string, order?: ResultsOder, conditions?: Array<FetchCondition>): Observable<Array<Record>>;
 }
 
@@ -64,6 +68,31 @@ class RecordsStoreDB extends AbstractTimeSeriesStore<Record> implements RecordsS
         subscription.unsubscribe();
       };
     }).pipe(distinctUntilKeyChanged('id'));
+  }
+
+  listLastGroupedBy(
+    recordType: string,
+    groupByProperty: string,
+    conditions: Array<FetchCondition> = []
+  ): Observable<Array<Record>> {
+    return this.listBy(recordType, 'desc', conditions).pipe(
+      switchMap((records) =>
+        findAllUniquePropertyValues(records, groupByProperty).then((uniqueProperties) => [records, uniqueProperties])
+      ),
+      switchMap(([records, uniquePropertyValues]) =>
+        Promise.all(
+          uniquePropertyValues.map((propertyValue) =>
+            findFirstMeetingConditions(records as Array<Record>, [
+              {
+                property: groupByProperty,
+                comparison: '=',
+                value: propertyValue,
+              },
+            ])
+          )
+        )
+      )
+    );
   }
 
   listBy(
@@ -148,12 +177,10 @@ function recordTypeQueryFilter(recordType: string, order: ResultsOder): Query {
   };
 }
 
-type RecordEntity = Record & DBEntityProps;
-
-async function findFirstMeetingConditions(
-  records: Array<RecordEntity>,
+async function findFirstMeetingConditions<T extends Record>(
+  records: Array<T>,
   conditions: Array<FetchCondition>
-): Promise<RecordEntity> {
+): Promise<T> {
   const chunkSize = 10;
   let start = 0;
   let end = 10;
@@ -167,10 +194,10 @@ async function findFirstMeetingConditions(
   return undefined;
 }
 
-async function findAllMeetingConditions(
-  records: Array<RecordEntity>,
+async function findAllMeetingConditions<T extends Record>(
+  records: Array<T>,
   conditions: Array<FetchCondition>
-): Promise<Array<RecordEntity>> {
+): Promise<Array<T>> {
   const chunkSize = 10;
   let start = 0;
   let end = 10;
@@ -185,10 +212,35 @@ async function findAllMeetingConditions(
   return allMatches;
 }
 
-function findMatches(records: Array<RecordEntity>, conditions: Array<FetchCondition>): Promise<Array<RecordEntity>> {
-  return new Promise<Array<RecordEntity>>((resolve) => {
+function findMatches<T extends Record>(records: Array<T>, conditions: Array<FetchCondition>): Promise<Array<T>> {
+  return new Promise<Array<T>>((resolve) => {
     setTimeout(() => {
       resolve(records.reduce((prev, curr) => (meetsConditions(curr, conditions) ? [...prev, curr] : prev), []));
+    });
+  });
+}
+
+async function findAllUniquePropertyValues(records: Array<Record>, propertyPath: string): Promise<Array<unknown>> {
+  const chunkSize = 10;
+  let start = 0;
+  let end = 10;
+  // Avoid long-running operations by splitting records array in chunks
+  const allValues = new Set<unknown>();
+  while (start < records.length) {
+    const matches = await findPropertyValues(records.slice(start, end), propertyPath);
+    for (const match of matches) {
+      allValues.add(match);
+    }
+    start = end;
+    end = start + chunkSize;
+  }
+  return [...allValues];
+}
+
+function findPropertyValues(records: Array<Record>, propertyPath: string): Promise<Array<unknown>> {
+  return new Promise<Array<unknown>>((resolve) => {
+    setTimeout(() => {
+      resolve(records.map((record) => getPropertyValue(record, propertyPath)).filter((value) => value !== undefined));
     });
   });
 }
