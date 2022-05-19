@@ -1,6 +1,6 @@
 {
   "name": "@awarns/notifications",
-  "version": "1.0.0-alpha.9",
+  "version": "1.0.0-alpha.10",
   "description": "Add a plugin description",
   "main": "index",
   "typings": "index.d.ts",
