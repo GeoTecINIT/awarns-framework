@@ -7,7 +7,7 @@ import {
 import { acquireBatteryLevel } from '@awarns/battery';
 import { acquireMultiplePhoneGeolocationTask, acquirePhoneGeolocationTask } from '@awarns/geolocation';
 import { checkAreaOfInterestProximityTask } from '@awarns/geofencing';
-import { sendNotificationTask } from '@awarns/notifications';
+import { sendNotificationTask, sendRandomNotificationTask } from '@awarns/notifications';
 import { writeRecordsTask } from '@awarns/persistence';
 
 export const demoTasks: Array<Task> = [
@@ -22,6 +22,7 @@ export const demoTasks: Array<Task> = [
       acquireMultiplePhoneGeolocationTask(/* optional */ { bestOf: 1, timeout: 15000 }),
       checkAreaOfInterestProximityTask(),
       sendNotificationTask(),
+      sendRandomNotificationTask(),
     ],
     { outputsSensitiveData: true }
   ),
