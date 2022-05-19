@@ -9,6 +9,8 @@ export type Query = Q;
 export type QueryWhereItem = QWI;
 export { clearAwarnsDB, AwarnsStore, QueryLogicalOperator };
 
-import { RecordsStore as RS, syncedRecordsStore } from '../internal/stores';
+import { FetchCondition as FC, ResultsOrder as RO, RecordsStore as RS, syncedRecordsStore } from '../internal/stores';
+export type FetchCondition = FC;
+export type ResultsOrder = RO;
 export type RecordsStore = RS;
 export const recordsStore: RecordsStore = syncedRecordsStore;
