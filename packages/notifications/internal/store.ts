@@ -4,15 +4,19 @@ import { Observable } from 'rxjs';
 import { deserialize, serialize } from '@awarns/core/utils/serialization';
 
 export interface NotificationsStore {
-  insert(notification: Notification): Promise<void>;
   get(id: number): Promise<Notification>;
   list(): Observable<Array<Notification>>;
+}
+
+export interface InternalNotificationsStore extends NotificationsStore {
+  insert(notification: Notification): Promise<void>;
   delete(id: number): Promise<void>;
+  clear(): Promise<void>;
 }
 
 const DOC_TYPE = 'notification';
 
-class NotificationsStoreDB implements NotificationsStore {
+class NotificationsStoreDB implements InternalNotificationsStore {
   private readonly store: AwarnsStore<Notification>;
 
   constructor() {
@@ -72,6 +76,10 @@ class NotificationsStoreDB implements NotificationsStore {
 
   async delete(id: number): Promise<void> {
     await this.store.delete(`${id}`);
+  }
+
+  async clear(): Promise<void> {
+    await this.store.clear();
   }
 }
 

@@ -33,6 +33,10 @@ describe('Notifications store', () => {
   };
   const store = notificationsStoreDB;
 
+  beforeAll(async () => {
+    await notificationsStoreDB.clear();
+  });
+
   it('allows to persist a notification without error', async () => {
     await store.insert(expectedNotification1);
   });
