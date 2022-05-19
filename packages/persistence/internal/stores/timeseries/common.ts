@@ -3,7 +3,7 @@ import { AwarnsStore } from '../store';
 import { QueryLogicalOperator, QueryWhereItem } from '../db';
 
 export interface TimeSeriesEntity {
-  id?: string;
+  id: string;
   timestamp: Date;
 }
 
@@ -27,8 +27,7 @@ export abstract class AbstractTimeSeriesStore<T extends TimeSeriesEntity> implem
   protected constructor(
     docType: string,
     private serialize: (entity: T) => TimeSeriesDoc,
-    deserialize: (doc: TimeSeriesDoc) => T,
-    private keepId = false
+    deserialize: (doc: TimeSeriesDoc) => T
   ) {
     const serializer = (entity: T & DBEntityProps) => {
       const serializedEntity = serialize(this.removeDBEntityProps(entity));
@@ -171,9 +170,6 @@ export abstract class AbstractTimeSeriesStore<T extends TimeSeriesEntity> implem
   private removeDBEntityProps(dbEntity: T & DBEntityProps): T {
     const copy = { ...dbEntity };
 
-    if (!this.keepId) {
-      delete copy['id'];
-    }
     delete copy['synchronized'];
 
     return copy;
@@ -181,11 +177,11 @@ export abstract class AbstractTimeSeriesStore<T extends TimeSeriesEntity> implem
 }
 
 export interface TimeSeriesDoc {
-  id?: string;
+  id: string;
   synchronized?: boolean;
 }
 
 interface DBEntityProps {
-  id?: string;
+  id: string;
   synchronized: boolean;
 }

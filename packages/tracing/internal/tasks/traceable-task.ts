@@ -1,6 +1,6 @@
 import { Task, TaskOutcome, TaskParams } from '@awarns/core/tasks';
 import { TracerConfig } from './tracer-config';
-import { TracesStore, syncedTracesStore } from '../stores';
+import { syncedTracesStore, TracesStore } from '../stores';
 import { DispatchableEvent } from '@awarns/core/events';
 import { Trace, TraceResult, TraceType } from '../entities';
 import { flatten } from '@awarns/core/utils/serialization';
@@ -34,14 +34,7 @@ export class TraceableTask extends Task {
 
   protected async onRun(taskParams: TaskParams, invocationEvent: DispatchableEvent): Promise<void | TaskOutcome> {
     const { id, name } = invocationEvent;
-    const trace: Trace = {
-      timestamp: new Date(),
-      chainId: id,
-      type: TraceType.TASK,
-      result: TraceResult.OK,
-      name: this.name,
-      content: { invokedBy: name },
-    };
+    const trace = new Trace(id, TraceType.TASK, this.name, TraceResult.OK, { invokedBy: name });
 
     let taskOutcome: void | TaskOutcome;
     let execError: Error;

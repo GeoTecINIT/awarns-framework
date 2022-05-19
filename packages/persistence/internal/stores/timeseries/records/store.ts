@@ -18,10 +18,11 @@ interface RecordDoc extends TimeSeriesDoc {
 }
 
 function docFrom(record: Record): RecordDoc {
-  const { timestamp, type, change, ...extraProperties } = record;
+  const { id, timestamp, type, change, ...extraProperties } = record;
   const serializedProperties = serialize(extraProperties);
 
   return {
+    id,
     timestamp: timestamp.getTime(),
     type,
     change,
@@ -30,9 +31,10 @@ function docFrom(record: Record): RecordDoc {
 }
 
 function recordFrom(doc: RecordDoc): Record {
-  const { timestamp, type, change, serializedProperties } = doc;
+  const { id, timestamp, type, change, serializedProperties } = doc;
   const dbRecord = {
     ...deserialize(serializedProperties),
+    id,
     timestamp: new Date(timestamp),
     type,
     change,
