@@ -10,6 +10,8 @@ class DemoTaskGraph implements TaskGraph {
 
     on('stopEvent', run('stopDetectingCoarseHumanActivityChanges'));
 
+    on('startEvent', run('acquirePhoneBatteryLevel').every(1, 'minutes').cancelOn('stopEvent'));
+
     on(
       'startEvent',
       run('sendRandomNotification', {

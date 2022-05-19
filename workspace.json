@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
+    "battery": "packages/battery",
     "core": "packages/core",
     "demo": "apps/demo",
     "demo-angular": "apps/demo-angular",

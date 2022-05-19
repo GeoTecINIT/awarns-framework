@@ -1,5 +1,5 @@
 {
-  "name": "@awarns/geolocation",
+  "name": "@awarns/battery",
   "version": "1.0.0-alpha.9",
   "description": "Add a plugin description",
   "main": "index",
@@ -33,8 +33,6 @@
   "readmeFilename": "README.md",
   "bootstrapper": "@nativescript/plugin-seed",
   "dependencies": {
-    "@awarns/core": "^1.0.0-alpha.9",
-    "nativescript-context-apis": "^4.0.0",
-    "rxjs": "^7.5.5"
+    "@awarns/core": "^1.0.0-alpha.9"
   }
 }

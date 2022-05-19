@@ -1,0 +1,64 @@
+{
+  "root": "packages/battery",
+  "projectType": "library",
+  "sourceRoot": "packages/battery",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "options": {
+        "outputPath": "dist/packages/battery",
+        "tsConfig": "packages/battery/tsconfig.json",
+        "packageJson": "packages/battery/package.json",
+        "main": "packages/battery/index.d.ts",
+        "assets": [
+          "packages/battery/*.md",
+          "packages/battery/index.d.ts",
+          "LICENSE",
+          {
+            "glob": "**/*",
+            "input": "packages/battery/platforms/",
+            "output": "./platforms/"
+          }
+        ],
+        "dependsOn": [
+          {
+            "target": "build.all",
+            "projects": "dependencies"
+          }
+        ]
+      }
+    },
+    "build.all": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["node tools/scripts/build-finish.ts battery"],
+        "parallel": false
+      },
+      "outputs": ["dist/packages/battery"],
+      "dependsOn": [
+        {
+          "target": "build.all",
+          "projects": "dependencies"
+        },
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ]
+    },
+    "focus": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["nx g @nativescript/plugin-tools:focus-packages battery"],
+        "parallel": false
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["packages/battery/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}
