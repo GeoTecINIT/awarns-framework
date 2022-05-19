@@ -1,6 +1,6 @@
 {
   "name": "@awarns/persistence",
-  "version": "1.0.0-alpha.14",
+  "version": "1.0.0-alpha.15",
   "description": "Add a plugin description",
   "main": "index",
   "typings": "index.d.ts",
