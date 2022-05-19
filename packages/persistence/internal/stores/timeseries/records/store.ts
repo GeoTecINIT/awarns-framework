@@ -6,7 +6,7 @@ import { QueryMeta } from '@triniwiz/nativescript-couchbase';
 import { FetchCondition, getPropertyValue, meetsConditions } from './filters';
 import { Query } from '../../db';
 
-export type ResultsOder = 'asc' | 'desc';
+export type ResultsOrder = 'asc' | 'desc';
 
 export interface RecordsStore extends TimeSeriesStore<Record> {
   listLast(recordType: string, conditions?: Array<FetchCondition>): Observable<Record>;
@@ -15,7 +15,7 @@ export interface RecordsStore extends TimeSeriesStore<Record> {
     groupByProperty: string,
     conditions?: Array<FetchCondition>
   ): Observable<Array<Record>>;
-  listBy(recordType: string, order?: ResultsOder, conditions?: Array<FetchCondition>): Observable<Array<Record>>;
+  listBy(recordType: string, order?: ResultsOrder, conditions?: Array<FetchCondition>): Observable<Array<Record>>;
 }
 
 export interface LocalRecordsStore extends LocalTimeSeriesStore<Record> {
@@ -25,7 +25,7 @@ export interface LocalRecordsStore extends LocalTimeSeriesStore<Record> {
     groupByProperty: string,
     conditions?: Array<FetchCondition>
   ): Observable<Array<Record>>;
-  listBy(recordType: string, order?: ResultsOder, conditions?: Array<FetchCondition>): Observable<Array<Record>>;
+  listBy(recordType: string, order?: ResultsOrder, conditions?: Array<FetchCondition>): Observable<Array<Record>>;
 }
 
 const DOC_TYPE = 'record';
@@ -97,7 +97,7 @@ class RecordsStoreDB extends AbstractTimeSeriesStore<Record> implements RecordsS
 
   listBy(
     recordType: string,
-    order: ResultsOder = 'desc',
+    order: ResultsOrder = 'desc',
     conditions: Array<FetchCondition> = []
   ): Observable<Array<Record>> {
     return new Observable<Array<Record>>((subscriber) => {
@@ -163,7 +163,7 @@ function recordFrom(doc: RecordDoc): Record {
   return dbRecord as Record;
 }
 
-function recordTypeQueryFilter(recordType: string, order: ResultsOder): Query {
+function recordTypeQueryFilter(recordType: string, order: ResultsOrder): Query {
   return {
     select: [QueryMeta.ALL, QueryMeta.ID],
     where: [

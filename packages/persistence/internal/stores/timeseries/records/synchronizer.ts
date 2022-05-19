@@ -1,6 +1,6 @@
 import { TimeSeriesSyncedStore } from '../synchronizer';
 import { Record } from '@awarns/core/entities';
-import { localRecordsStore, LocalRecordsStore, RecordsStore, ResultsOder } from './store';
+import { localRecordsStore, LocalRecordsStore, RecordsStore, ResultsOrder } from './store';
 import { Observable } from 'rxjs';
 import { FetchCondition } from './filters';
 
@@ -23,7 +23,7 @@ export class SyncedRecordsStore extends TimeSeriesSyncedStore<Record, LocalRecor
 
   listBy(
     recordType: string,
-    order: ResultsOder = 'desc',
+    order: ResultsOrder = 'desc',
     conditions: Array<FetchCondition> = []
   ): Observable<Array<Record>> {
     return this.localStore.listBy(recordType, order, conditions);
