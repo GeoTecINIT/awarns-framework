@@ -1,1 +1,1 @@
-export * from '../internal/providers/base-record';
+export * from '../internal/entities';

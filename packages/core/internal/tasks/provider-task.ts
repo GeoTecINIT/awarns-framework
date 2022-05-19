@@ -1,5 +1,5 @@
 import { Task, TaskConfig } from 'nativescript-task-dispatcher/tasks';
-import { BaseProvider } from '../../providers/base-provider';
+import { BaseProvider } from '../providers/base-provider';
 
 export abstract class ProviderTask<T extends BaseProvider> extends Task {
   protected constructor(name: string, protected provider: T, taskConfig: TaskConfig) {

@@ -1,5 +1,5 @@
 import { PushProvider } from '@awarns/core/providers';
-import { StartPushProviderTask } from '@awarns/core/internal/tasks/data-collection/push-based';
+import { StartPushProviderTask } from '@awarns/core/internal/tasks/push-based';
 import { createPushProviderMock } from './common.spec';
 import { createEvent } from '@awarns/core/testing/events';
 

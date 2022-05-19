@@ -1,7 +1,7 @@
 import { PushProvider } from '@awarns/core/providers';
 import { ActivityRecognizer, getActivityRecognizer, Resolution } from 'nativescript-context-apis/activity-recognition';
 
-import { KnownTypes } from '@awarns/core/entities';
+import { HumanActivityChangeType } from './human-activity-change';
 import { getLogger } from '@awarns/core/utils/logger';
 import { getHumanActivityChangeReceiver } from './receiver';
 
@@ -9,7 +9,7 @@ const possibleResolutions: Array<Resolution> = [Resolution.LOW, Resolution.MEDIU
 
 export class HumanActivityProvider implements PushProvider {
   get provides() {
-    return KnownTypes.HumanActivity;
+    return HumanActivityChangeType;
   }
 
   static setup() {

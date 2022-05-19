@@ -1,5 +1,5 @@
 import { localRecordsStore as store } from '@awarns/persistence/internal/stores/timeseries/records/store';
-import { Record, Change } from '@awarns/core/internal/providers';
+import { Record, Change } from '@awarns/core/entities';
 
 import { Geolocation } from '@awarns/geolocation';
 import { HumanActivity, HumanActivityChange } from '@awarns/human-activity';

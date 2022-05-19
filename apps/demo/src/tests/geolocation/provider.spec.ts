@@ -7,7 +7,8 @@ import {
 } from 'nativescript-context-apis/geolocation';
 
 import { GeolocationProvider, geolocationProviderNotReadyErr } from '@awarns/geolocation/internal/provider';
-import { KnownTypes } from '@awarns/core/entities';
+
+import { GeolocationType } from '@awarns/geolocation/entities';
 
 import { from, Observable, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
@@ -26,7 +27,7 @@ describe('Geolocation provider', () => {
   });
 
   it('provides the appropriate record type', () => {
-    expect(provider.provides).toBe(KnownTypes.Geolocation);
+    expect(provider.provides).toBe(GeolocationType);
   });
 
   it('allows to check if the underlying provider is ready', async () => {

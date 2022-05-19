@@ -1,4 +1,4 @@
-import { Record } from './base-record';
+import { Record } from '../entities';
 import { ProviderInterruption } from './provider-interrupter';
 import { BaseProvider } from './base-provider';
 

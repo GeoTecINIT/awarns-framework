@@ -1,4 +1,6 @@
-import { Record, KnownTypes } from '@awarns/core/entities';
+import { Record } from '@awarns/core/entities';
+
+export const QuestionnaireAnswersType = 'questionnaire-answers';
 
 export class QuestionnaireAnswers extends Record {
   constructor(
@@ -7,7 +9,7 @@ export class QuestionnaireAnswers extends Record {
     public notificationId?: number,
     answeredAt = new Date()
   ) {
-    super(KnownTypes.QuestionnaireAnswers, answeredAt);
+    super(QuestionnaireAnswersType, answeredAt);
   }
 }
 

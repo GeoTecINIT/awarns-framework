@@ -1,6 +1,5 @@
 import { PullProvider, ProviderInterrupter, ProviderInterruption } from '@awarns/core/providers';
-import { KnownTypes } from '@awarns/core/entities';
-import { Geolocation } from './geolocation';
+import { Geolocation, GeolocationType } from './geolocation';
 
 import {
   GeolocationProvider as NativeProvider,
@@ -13,7 +12,7 @@ import { map, mergeMap, take, takeUntil, toArray } from 'rxjs/operators';
 
 export class GeolocationProvider implements PullProvider {
   get provides(): string {
-    return KnownTypes.Geolocation;
+    return GeolocationType;
   }
 
   constructor(

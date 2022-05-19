@@ -1,5 +1,6 @@
 import { SinglePullProviderTask } from './single-provider';
-import { PullProvider, Record } from '../../../providers';
+import { PullProvider } from '../../providers';
+import { Record } from '../../entities';
 import { TaskConfig, TaskOutcome, TaskParams } from 'nativescript-task-dispatcher/tasks';
 import { DispatchableEvent } from 'nativescript-task-dispatcher/events';
 
