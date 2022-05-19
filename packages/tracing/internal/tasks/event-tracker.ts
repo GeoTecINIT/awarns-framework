@@ -1,7 +1,7 @@
 import { Task, TaskParams } from '@awarns/core/tasks';
 import { DispatchableEvent } from '@awarns/core/events';
 import { TracerConfig } from './tracer-config';
-import { TracesStore, syncedTracesStore } from '../stores';
+import { syncedTracesStore, TracesStore } from '../stores';
 import { Trace, TraceResult, TraceType } from '../entities';
 
 export class EventTrackerTask extends Task {
@@ -15,14 +15,7 @@ export class EventTrackerTask extends Task {
   protected async onRun(taskParams: TaskParams, invocationEvent: DispatchableEvent): Promise<void> {
     const { id, name, data } = invocationEvent;
 
-    const trace: Trace = {
-      timestamp: new Date(),
-      chainId: id,
-      type: TraceType.EVENT,
-      name,
-      result: TraceResult.OK,
-      content: this.sensitiveData ? {} : data,
-    };
+    const trace = new Trace(id, TraceType.EVENT, name, TraceResult.OK, this.sensitiveData ? {} : data);
 
     await this.tracesStore.insert(trace);
     this.log(`Event trace recorded: ${JSON.stringify(trace)}`);

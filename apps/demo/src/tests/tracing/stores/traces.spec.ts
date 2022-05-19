@@ -149,14 +149,7 @@ describe('Traces store', () => {
 function fakeTraceCreator() {
   let recordCount = 0;
   return (type: TraceType, name: string, result: TraceResult, content: { [key: string]: unknown }): Trace => {
-    return {
-      timestamp: new Date(Date.now() + recordCount++ * 1000),
-      chainId: uuid(),
-      type,
-      name,
-      result,
-      content,
-    };
+    return { ...new Trace(uuid(), type, name, result, content, new Date(Date.now() + recordCount++ * 1000)) };
   };
 }
 

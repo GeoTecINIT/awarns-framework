@@ -20,9 +20,10 @@ interface TraceDoc extends TimeSeriesDoc {
 }
 
 function docFrom(trace: Trace): TraceDoc {
-  const { timestamp, chainId, type, name, result, content } = trace;
+  const { id, timestamp, chainId, type, name, result, content } = trace;
   const stringifiedContent = serialize(content);
   return {
+    id,
     timestamp: timestamp.getTime(),
     chainId,
     type,
@@ -33,9 +34,10 @@ function docFrom(trace: Trace): TraceDoc {
 }
 
 function traceFrom(doc: TraceDoc): Trace {
-  const { timestamp, chainId, type, name, result, stringifiedContent } = doc;
+  const { id, timestamp, chainId, type, name, result, stringifiedContent } = doc;
   const content = deserialize(stringifiedContent);
   return {
+    id,
     timestamp: new Date(timestamp),
     chainId,
     type,

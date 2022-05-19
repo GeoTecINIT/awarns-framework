@@ -30,9 +30,11 @@ describe('Human activity change receiver', () => {
       activityChange.confidence
     );
 
+    const { id, ...expectedProperties } = expectedChange;
+
     receiver.onReceive(activityChange);
-    expect(eventEmitter).toHaveBeenCalledWith('userActivityChanged', expectedChange);
-    expect(eventEmitter).toHaveBeenCalledWith('userFinishedBeingStill', expectedChange);
+    expect(eventEmitter).toHaveBeenCalledWith('userActivityChanged', jasmine.objectContaining(expectedProperties));
+    expect(eventEmitter).toHaveBeenCalledWith('userFinishedBeingStill', jasmine.objectContaining(expectedProperties));
   });
 
   it('receives a starting human activity change and generates two events', () => {
@@ -50,8 +52,10 @@ describe('Human activity change receiver', () => {
       activityChange.confidence
     );
 
+    const { id, ...expectedProperties } = expectedChange;
+
     receiver.onReceive(activityChange);
-    expect(eventEmitter).toHaveBeenCalledWith('userActivityChanged', expectedChange);
-    expect(eventEmitter).toHaveBeenCalledWith('userStartedStandingUp', expectedChange);
+    expect(eventEmitter).toHaveBeenCalledWith('userActivityChanged', jasmine.objectContaining(expectedProperties));
+    expect(eventEmitter).toHaveBeenCalledWith('userStartedStandingUp', jasmine.objectContaining(expectedProperties));
   });
 });
