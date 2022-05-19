@@ -1,6 +1,6 @@
 {
   "name": "@awarns/battery",
-  "version": "1.0.0-alpha.9",
+  "version": "1.0.0-alpha.11",
   "description": "Add a plugin description",
   "main": "index",
   "typings": "index.d.ts",
@@ -33,6 +33,6 @@
   "readmeFilename": "README.md",
   "bootstrapper": "@nativescript/plugin-seed",
   "dependencies": {
-    "@awarns/core": "^1.0.0-alpha.9"
+    "@awarns/core": "^1.0.0-alpha.11"
   }
 }
