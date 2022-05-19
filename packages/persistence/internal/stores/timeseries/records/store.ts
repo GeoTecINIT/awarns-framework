@@ -1,7 +1,7 @@
 import { Change, Record } from '@awarns/core/entities';
 import { deserialize, serialize } from '@awarns/core/utils/serialization';
 import { AbstractTimeSeriesStore, LocalTimeSeriesStore, TimeSeriesDoc, TimeSeriesStore } from '../common';
-import { distinctUntilKeyChanged, Observable, switchMap } from 'rxjs';
+import { distinctUntilChanged, distinctUntilKeyChanged, Observable, switchMap } from 'rxjs';
 import { QueryMeta } from '@triniwiz/nativescript-couchbase';
 import { FetchCondition, getPropertyValue, meetsConditions } from './filters';
 import { Query } from '../../db';
@@ -67,7 +67,13 @@ class RecordsStoreDB extends AbstractTimeSeriesStore<Record> implements RecordsS
       return () => {
         subscription.unsubscribe();
       };
-    }).pipe(distinctUntilKeyChanged('id'));
+    }).pipe(
+      distinctUntilChanged((prev, curr) => {
+        if (prev === curr) return true;
+        if ((!prev && curr) || (prev && !curr)) return false;
+        return prev.id === curr.id;
+      })
+    );
   }
 
   listLastGroupedBy(
