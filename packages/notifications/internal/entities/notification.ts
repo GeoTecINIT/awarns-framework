@@ -23,4 +23,5 @@ export enum TapActionType {
   OPEN_CONTENT = 'open-content',
   DELIVER_QUESTIONS = 'deliver-questions',
   ASK_FEEDBACK = 'ask-feedback',
+  ASK_CONFIRMATION = 'ask-confirmation',
 }
