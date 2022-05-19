@@ -2,6 +2,7 @@ export * from './utils';
 export * from './core';
 export * from './persistence';
 export * from './tracing';
+export * from './battery';
 export * from './geolocation';
 export * from './geofencing';
 export * from './human-activity';

@@ -20,6 +20,10 @@ const routes: Routes = [
     loadChildren: () => import('./plugin-demos/tracing.module').then((m) => m.TracingModule),
   },
   {
+    path: 'battery',
+    loadChildren: () => import('./plugin-demos/battery.module').then((m) => m.BatteryModule),
+  },
+  {
     path: 'geolocation',
     loadChildren: () => import('./plugin-demos/geolocation.module').then((m) => m.GeolocationModule),
   },

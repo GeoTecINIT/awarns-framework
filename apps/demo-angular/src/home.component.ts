@@ -16,6 +16,9 @@ export class HomeComponent {
       name: 'tracing',
     },
     {
+      name: 'battery',
+    },
+    {
       name: 'geolocation',
     },
     {
