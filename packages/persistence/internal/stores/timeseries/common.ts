@@ -22,7 +22,7 @@ export interface LocalTimeSeriesStore<T extends TimeSeriesEntity> extends TimeSe
 }
 
 export abstract class AbstractTimeSeriesStore<T extends TimeSeriesEntity> implements LocalTimeSeriesStore<T> {
-  private readonly store: AwarnsStore<T & DBEntityProps>;
+  protected readonly store: AwarnsStore<T & DBEntityProps>;
 
   protected constructor(
     docType: string,
@@ -163,11 +163,11 @@ export abstract class AbstractTimeSeriesStore<T extends TimeSeriesEntity> implem
     return dbEntities[0];
   }
 
-  private removeDBEntityPropsFromAll(dbEntities: Array<T & DBEntityProps>): Array<T> {
+  protected removeDBEntityPropsFromAll(dbEntities: Array<T & DBEntityProps>): Array<T> {
     return dbEntities.map((entity) => this.removeDBEntityProps(entity));
   }
 
-  private removeDBEntityProps(dbEntity: T & DBEntityProps): T {
+  protected removeDBEntityProps(dbEntity: T & DBEntityProps): T {
     const copy = { ...dbEntity };
 
     delete copy['synchronized'];

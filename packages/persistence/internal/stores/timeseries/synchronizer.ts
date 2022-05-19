@@ -2,12 +2,14 @@ import { LocalTimeSeriesStore, TimeSeriesEntity, TimeSeriesStore } from './commo
 import { Observable } from 'rxjs';
 import { getLogger, Logger } from '@awarns/core/utils/logger';
 
-export class TimeSeriesSyncedStore<T extends TimeSeriesEntity> implements TimeSeriesStore<T> {
-  private externalStore?: TimeSeriesStore<T>;
+export class TimeSeriesSyncedStore<T extends TimeSeriesEntity, LS extends LocalTimeSeriesStore<T>>
+  implements TimeSeriesStore<T>
+{
+  protected externalStore?: TimeSeriesStore<T>;
   private clearOldThreshold = -1;
   private logger: Logger;
 
-  constructor(name: string, private localStore: LocalTimeSeriesStore<T>) {
+  constructor(name: string, protected localStore: LS) {
     this.logger = getLogger(name);
   }
 

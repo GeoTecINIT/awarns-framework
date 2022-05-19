@@ -1,7 +1,7 @@
-import { Record } from '@awarns/core/entities';
-import { localRecordsStore } from './store';
-import { TimeSeriesStore } from '../common';
-import { TimeSeriesSyncedStore } from '../synchronizer';
+import { FetchCondition as FC } from './filters';
+import { RecordsStore as RS } from './store';
+import { SyncedRecordsStore } from './synchronizer';
 
-export type RecordsStore = TimeSeriesStore<Record>;
-export const syncedRecordsStore = new TimeSeriesSyncedStore('RecordsStore', localRecordsStore);
+export type FetchCondition = FC;
+export type RecordsStore = RS;
+export const syncedRecordsStore = new SyncedRecordsStore();

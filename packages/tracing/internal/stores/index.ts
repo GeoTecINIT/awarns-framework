@@ -1,6 +1,5 @@
-import { TimeSeriesStore, TimeSeriesSyncedStore } from '@awarns/persistence/stores/timeseries';
-import { Trace } from '../entities';
-import { localTracesStore } from './store';
+import { TracesStore as TS } from './store';
+import { SyncedTracesStore } from './syncronizer';
 
-export type TracesStore = TimeSeriesStore<Trace>;
-export const syncedTracesStore = new TimeSeriesSyncedStore('TracesStore', localTracesStore);
+export type TracesStore = TS;
+export const syncedTracesStore = new SyncedTracesStore();
