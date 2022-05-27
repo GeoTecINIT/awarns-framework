@@ -25,6 +25,8 @@ steps:
     displayName: 'Install JDK'
 
   - script: |
+      python -m pip install --upgrade pip
+      python -m pip install six
       echo no | npm install -g nativescript
       ns usage-reporting disable
       ns error-reporting disable
