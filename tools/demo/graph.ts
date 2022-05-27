@@ -60,6 +60,14 @@ class DemoTaskGraph implements TaskGraph {
 
     on(
       'movedInsideAreaOfInterest',
+      run('acquireMultiplePhoneWifiScan', { maxInterval: 25000 })
+        .every(1, 'minutes')
+        .cancelOn('movedAwayFromAreaOfInterest')
+    );
+    on('wifiScanAcquired', run('writeRecords'));
+
+    on(
+      'movedInsideAreaOfInterest',
       run('sendNotification', {
         title: 'May I ask you some questions?',
         body: 'This will allow me know better what you feel',
