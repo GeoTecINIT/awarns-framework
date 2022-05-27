@@ -1,0 +1,16 @@
+allprojects {
+    repositories {
+        jcenter()
+        maven {
+            url "https://maven.google.com"
+        }
+    }
+}
+
+android {
+
+}
+
+dependencies {
+    implementation 'no.nordicsemi.android.support.v18:scanner:1.6.0'
+}
