@@ -68,6 +68,14 @@ class DemoTaskGraph implements TaskGraph {
 
     on(
       'movedInsideAreaOfInterest',
+      run('acquireMultiplePhoneBleScan', { maxInterval: 10000 })
+        .every(1, 'minutes')
+        .cancelOn('movedAwayFromAreaOfInterest')
+    );
+    on('bleScanAcquired', run('writeRecords'));
+
+    on(
+      'movedInsideAreaOfInterest',
       run('sendNotification', {
         title: 'May I ask you some questions?',
         body: 'This will allow me know better what you feel',
