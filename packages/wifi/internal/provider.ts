@@ -33,7 +33,7 @@ export class WifiScanProvider implements PullProvider {
   next(): [Promise<WifiScan>, ProviderInterruption] {
     const interrupter = new ProviderInterrupter();
     const scanResult = this.obtainWifiScan(interrupter);
-    return [scanResult.then((fingerprint) => scanFromFingerprint(fingerprint)), () => undefined];
+    return [scanResult, () => interrupter.interrupt()];
   }
 
   private obtainWifiScan(interrupter: ProviderInterrupter): Promise<WifiScan> {
