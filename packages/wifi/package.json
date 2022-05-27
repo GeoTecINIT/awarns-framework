@@ -1,0 +1,35 @@
+{
+  "name": "@awarns/wifi",
+  "version": "1.0.0",
+  "description": "Add a plugin description",
+  "main": "index",
+  "typings": "index.d.ts",
+  "nativescript": {
+    "platforms": {
+      "ios": "6.0.0",
+      "android": "6.0.0"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/GeoTecINIT/awarns-framework.git"
+  },
+  "keywords": [
+    "NativeScript",
+    "JavaScript",
+    "TypeScript",
+    "iOS",
+    "Android"
+  ],
+  "author": {
+    "name": "Alberto González Pérez",
+    "email": "algonzal@uji.es"
+  },
+  "bugs": {
+    "url": "http://github.com/GeoTecINIT/awarns-framework/issues"
+  },
+  "license": "Apache-2.0",
+  "homepage": "http://github.com/GeoTecINIT/awarns-framework",
+  "readmeFilename": "README.md",
+  "bootstrapper": "@nativescript/plugin-seed"
+}

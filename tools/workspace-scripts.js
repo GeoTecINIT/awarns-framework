@@ -137,6 +137,13 @@ module.exports = {
           description: '@awarns/battery: Build',
         },
       },
+      // @awarns/wifi
+      wifi: {
+        build: {
+          script: 'nx run wifi:build.all --parallel=false',
+          description: '@awarns/wifi: Build',
+        },
+      },
       'build-all': {
         script: 'nx run-many --target=build.all --all --parallel=1',
         description: 'Build all packages',
@@ -178,6 +185,10 @@ module.exports = {
       battery: {
         script: 'nx run battery:focus',
         description: 'Focus on @awarns/battery',
+      },
+      wifi: {
+        script: 'nx run wifi:focus',
+        description: 'Focus on @awarns/wifi',
       },
       reset: {
         script: 'nx g @awarns/plugin-tools:focus-packages',

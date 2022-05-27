@@ -10,6 +10,7 @@
         <Button text="tracing" tap="{{ viewDemo }}" class="btn btn-primary view-demo"/>
         <Button text="battery" tap="{{ viewDemo }}" class="btn btn-primary view-demo"/>
         <Button text="geolocation" tap="{{ viewDemo }}" class="btn btn-primary view-demo"/>
+        <Button text="wifi" tap="{{ viewDemo }}" class="btn btn-primary view-demo"/>
         <Button text="geofencing" tap="{{ viewDemo }}" class="btn btn-primary view-demo"/>
         <Button text="human-activity" tap="{{ viewDemo }}" class="btn btn-primary view-demo"/>
         <Button text="notifications" tap="{{ viewDemo }}" class="btn btn-primary view-demo"/>

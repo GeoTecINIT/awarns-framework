@@ -10,6 +10,7 @@
     "human-activity": "packages/human-activity",
     "notifications": "packages/notifications",
     "persistence": "packages/persistence",
-    "tracing": "packages/tracing"
+    "tracing": "packages/tracing",
+    "wifi": "packages/wifi"
   }
 }
