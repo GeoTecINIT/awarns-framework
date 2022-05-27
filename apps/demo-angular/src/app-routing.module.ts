@@ -32,6 +32,10 @@ const routes: Routes = [
     loadChildren: () => import('./plugin-demos/wifi.module').then((m) => m.WifiModule),
   },
   {
+    path: 'ble',
+    loadChildren: () => import('./plugin-demos/ble.module').then((m) => m.BleModule),
+  },
+  {
     path: 'geofencing',
     loadChildren: () => import('./plugin-demos/geofencing.module').then((m) => m.GeofencingModule),
   },

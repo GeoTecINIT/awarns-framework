@@ -102,11 +102,32 @@ module.exports = {
           description: '@awarns/tracing: Build',
         },
       },
+      // @awarns/battery
+      battery: {
+        build: {
+          script: 'nx run battery:build.all --parallel=false',
+          description: '@awarns/battery: Build',
+        },
+      },
       // @awarns/geolocation
       geolocation: {
         build: {
           script: 'nx run geolocation:build.all --parallel=false',
           description: '@awarns/geolocation: Build',
+        },
+      },
+      // @awarns/wifi
+      wifi: {
+        build: {
+          script: 'nx run wifi:build.all --parallel=false',
+          description: '@awarns/wifi: Build',
+        },
+      },
+      // @awarns/ble
+      ble: {
+        build: {
+          script: 'nx run ble:build.all  --parallel=false',
+          description: '@awarns/ble: Build',
         },
       },
       // @awarns/geofencing
@@ -128,20 +149,6 @@ module.exports = {
         build: {
           script: 'nx run notifications:build.all --parallel=false',
           description: '@awarns/notifications: Build',
-        },
-      },
-      // @awarns/battery
-      battery: {
-        build: {
-          script: 'nx run battery:build.all --parallel=false',
-          description: '@awarns/battery: Build',
-        },
-      },
-      // @awarns/wifi
-      wifi: {
-        build: {
-          script: 'nx run wifi:build.all --parallel=false',
-          description: '@awarns/wifi: Build',
         },
       },
       'build-all': {
@@ -189,6 +196,10 @@ module.exports = {
       wifi: {
         script: 'nx run wifi:focus',
         description: 'Focus on @awarns/wifi',
+      },
+      ble: {
+        script: 'nx run ble:focus',
+        description: 'Focus on @awarns/ble',
       },
       reset: {
         script: 'nx g @awarns/plugin-tools:focus-packages',

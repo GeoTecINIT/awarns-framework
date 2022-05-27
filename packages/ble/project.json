@@ -1,0 +1,64 @@
+{
+  "root": "packages/ble",
+  "projectType": "library",
+  "sourceRoot": "packages/ble",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "options": {
+        "outputPath": "dist/packages/ble",
+        "tsConfig": "packages/ble/tsconfig.json",
+        "packageJson": "packages/ble/package.json",
+        "main": "packages/ble/index.d.ts",
+        "assets": [
+          "packages/ble/*.md",
+          "packages/ble/index.d.ts",
+          "LICENSE",
+          {
+            "glob": "**/*",
+            "input": "packages/ble/platforms/",
+            "output": "./platforms/"
+          }
+        ],
+        "dependsOn": [
+          {
+            "target": "build.all",
+            "projects": "dependencies"
+          }
+        ]
+      }
+    },
+    "build.all": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["node tools/scripts/build-finish.ts ble"],
+        "parallel": false
+      },
+      "outputs": ["dist/packages/ble"],
+      "dependsOn": [
+        {
+          "target": "build.all",
+          "projects": "dependencies"
+        },
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ]
+    },
+    "focus": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["nx g @nativescript/plugin-tools:focus-packages ble"],
+        "parallel": false
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["packages/ble/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}

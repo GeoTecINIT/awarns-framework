@@ -12,6 +12,7 @@
     "@awarns/battery": "file:../../packages/battery",
     "@awarns/geolocation": "file:../../packages/geolocation",
     "@awarns/wifi": "file:../../packages/wifi",
+    "@awarns/ble": "file:../../packages/ble",
     "@awarns/geofencing": "file:../../packages/geofencing",
     "@awarns/human-activity": "file:../../packages/human-activity",
     "@awarns/notifications": "file:../../packages/notifications"
