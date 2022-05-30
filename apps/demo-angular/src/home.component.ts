@@ -25,6 +25,9 @@ export class HomeComponent {
       name: 'wifi',
     },
     {
+      name: 'ble',
+    },
+    {
       name: 'geofencing',
     },
     {

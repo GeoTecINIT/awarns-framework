@@ -5,6 +5,7 @@ export * from './tracing';
 export * from './battery';
 export * from './geolocation';
 export * from './wifi';
+export * from './ble';
 export * from './geofencing';
 export * from './human-activity';
 export * from './notifications';

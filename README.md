@@ -4,6 +4,7 @@
 - [@awarns/battery](packages/battery/README.md)
 - [@awarns/geolocation](packages/geolocation/README.md)
 - [@awarns/wifi](packages/wifi/README.md)
+- [@awarns/ble](packages/ble/README.md)
 - [@awarns/geofencing](packages/geofencing/README.md)
 - [@awarns/human-activity](packages/human-activity/README.md)
 - [@awarns/notifications](packages/notifications/README.md)

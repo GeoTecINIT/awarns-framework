@@ -27,6 +27,7 @@
       "@awarns/battery": ["packages/battery/index.d.ts"],
       "@awarns/geolocation": ["packages/geolocation/index.d.ts"],
       "@awarns/wifi": ["packages/wifi/index.d.ts"],
+      "@awarns/ble": ["packages/ble/index.d.ts"],
       "@awarns/geofencing": ["packages/geofencing/index.d.ts"],
       "@awarns/human-activity": ["packages/human-activity/index.d.ts"],
       "@awarns/notifications": ["packages/notifications/index.d.ts"],
