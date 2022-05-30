@@ -9,6 +9,7 @@ import { acquireMultiplePhoneGeolocationTask, acquirePhoneGeolocationTask } from
 import { checkAreaOfInterestProximityTask } from '@awarns/geofencing';
 import { sendNotificationTask, sendRandomNotificationTask } from '@awarns/notifications';
 import { writeRecordsTask } from '@awarns/persistence';
+import { acquireMultiplePhoneWifiScanTask } from '@awarns/wifi';
 
 export const demoTasks: Array<Task> = [
   ...makeTraceable([
@@ -20,6 +21,7 @@ export const demoTasks: Array<Task> = [
     [
       acquirePhoneGeolocationTask(/* optional */ { bestOf: 3, timeout: 10000 }),
       acquireMultiplePhoneGeolocationTask(/* optional */ { bestOf: 1, timeout: 15000 }),
+      acquireMultiplePhoneWifiScanTask(/* optional */ { ensureIsNew: true, timeout: 15000 }),
       checkAreaOfInterestProximityTask(),
       sendNotificationTask(),
       sendRandomNotificationTask(),

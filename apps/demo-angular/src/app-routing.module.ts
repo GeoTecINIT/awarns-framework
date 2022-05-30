@@ -28,6 +28,10 @@ const routes: Routes = [
     loadChildren: () => import('./plugin-demos/geolocation.module').then((m) => m.GeolocationModule),
   },
   {
+    path: 'wifi',
+    loadChildren: () => import('./plugin-demos/wifi.module').then((m) => m.WifiModule),
+  },
+  {
     path: 'geofencing',
     loadChildren: () => import('./plugin-demos/geofencing.module').then((m) => m.GeofencingModule),
   },

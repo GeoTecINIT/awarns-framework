@@ -22,6 +22,9 @@ export class HomeComponent {
       name: 'geolocation',
     },
     {
+      name: 'wifi',
+    },
+    {
       name: 'geofencing',
     },
     {

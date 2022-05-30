@@ -7,6 +7,7 @@
     "@awarns/tracing": "file:../../dist/packages/tracing",
     "@awarns/battery": "file:../../dist/packages/battery",
     "@awarns/geolocation": "file:../../dist/packages/geolocation",
+    "@awarns/wifi": "file:../../dist/packages/wifi",
     "@awarns/geofencing": "file:../../dist/packages/geofencing",
     "@awarns/human-activity": "file:../../dist/packages/human-activity",
     "@awarns/notifications": "file:../../dist/packages/notifications"

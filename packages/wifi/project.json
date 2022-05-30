@@ -1,0 +1,64 @@
+{
+  "root": "packages/wifi",
+  "projectType": "library",
+  "sourceRoot": "packages/wifi",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "options": {
+        "outputPath": "dist/packages/wifi",
+        "tsConfig": "packages/wifi/tsconfig.json",
+        "packageJson": "packages/wifi/package.json",
+        "main": "packages/wifi/index.d.ts",
+        "assets": [
+          "packages/wifi/*.md",
+          "packages/wifi/index.d.ts",
+          "LICENSE",
+          {
+            "glob": "**/*",
+            "input": "packages/wifi/platforms/",
+            "output": "./platforms/"
+          }
+        ],
+        "dependsOn": [
+          {
+            "target": "build.all",
+            "projects": "dependencies"
+          }
+        ]
+      }
+    },
+    "build.all": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["node tools/scripts/build-finish.ts wifi"],
+        "parallel": false
+      },
+      "outputs": ["dist/packages/wifi"],
+      "dependsOn": [
+        {
+          "target": "build.all",
+          "projects": "dependencies"
+        },
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ]
+    },
+    "focus": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["nx g @nativescript/plugin-tools:focus-packages wifi"],
+        "parallel": false
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["packages/wifi/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}
