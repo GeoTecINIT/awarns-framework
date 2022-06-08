@@ -58,18 +58,23 @@ For specific usage and extension instructions, please read [core](packages/core/
 
 ### Setting up the development environment
 
-```
+What you'll need:
+- NodeJS 16+
+- NativeScript 8+
+- Yarn package manager [installed/enabled](https://yarnpkg.com/getting-started/install)
+
+Upon meeting these requirements, run:
+
+```bash
 npm run setup
 npm start
 ```
 
-This workspace manages the suite of plugins listed above.
-
 In general, when in doubt with what to do, just `npm start`.
 
-## How to add a new package to workspace?
+### How to add a new package to workspace?
 
-```
+```bash
 npm run add
 ```
 
@@ -82,11 +87,14 @@ At the prompt, enter the name of the new package.
 - Updates the `npm start` interactive display
 - Updates the README here to list the new package
 
-## How to add Angular compatibility to a package
+**Very important**, after generating the new package, do the following:
 
-```
-npm run add-angular
-```
+- Make sure the order of the packages in the [`tsconfig.base.json`](tsconfig.base.json) remains unchanged with respect to its previous state. **Do not place** your plugin in alphabetic order, **place it** right after all its dependencies. This is important, otherwise the demo app won't compile.
+- Check the tables from above where the different plugins of the framework are classified in the four categories. Pick a plugin from there which is conceptually similar (feature-wise) to the plugin you want to develop.
+- Follow the same internal structure defined by the plugin you've picked.
+- If you need to depend on one or more framework plugins update your plugin's `tsconfig.json` file to include the reference(s) to the framework dependencies. Check the `tsconfig.json` file of existing plugins when in doubt. A good example with many dependencies is the geofencing's plugin [tsconfig.json](packages/geofencing/tsconfig.json).
+- Move the new entry that the plugin generation tool will have generated in this README to the most apropiate table above.
+- Open a PR.
 
 ### How to focus on just 1 package to develop in isolation
 
