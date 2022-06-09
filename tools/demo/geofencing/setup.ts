@@ -5,13 +5,6 @@ export async function setupAreasOfInterest() {
   const aois = await areasOfInterest.getAll();
 
   const newAoIs: Array<AreaOfInterest> = [
-    {
-      id: 'uminho-1',
-      name: 'DSI',
-      latitude: 41.453299426593915,
-      longitude: -8.289187252521515,
-      radius: 100,
-    },
     // Add your areas of interest here
   ];
   if (aois.length === newAoIs.length) {

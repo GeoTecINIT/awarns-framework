@@ -1,4 +1,4 @@
-import { TaskGraph, EventListenerGenerator, RunnableTaskDescriptor } from '@awarns/core/tasks/graph';
+import { TaskGraph, EventListenerGenerator, RunnableTaskDescriptor } from '@awarns/core/tasks';
 import { TapActionType } from '@awarns/notifications';
 
 class DemoTaskGraph implements TaskGraph {
