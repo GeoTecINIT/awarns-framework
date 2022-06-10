@@ -187,7 +187,456 @@ Similarly, additional examples exist in the Wi-Fi ([WifiScan](../wifi/internal/s
 
 ### Developing your own data providers
 
-// TODO
+The most important aspect of a context-awareness framework is to be able to sense the environment. The first step to achieve that is to model what will be sensed. We have done that before by extending the Record class. Now we need a way to define how to sense / acquire these data.
+
+Here it is important to make a distinction. We understand that there are two ways to obtain data: actively and passively. This means, we can manually *pull* the data, or we can subscribe to obtain data *pushes* once the updates become available.
+
+#### Pull data providers
+
+The most common case to obtain data is to ask for it and, sometimes, after a short delay, obtain it. This is the case of, for example, the location of the phone, its battery level, the list of nearby bluetooth devices or Wi-Fi access points. The list is not limited to what the phone can provide. For example, we pull data when we perform a network request (e.g., to obtain the current weather).
+
+To develop data providers like this. We need to be able to code mechanisms to do the following things: (1) know if all the conditions are met to obtain the data (this means, all the permissions have been granted, the specific system capabilities are enabled, etc.), (2) in case not all the conditions are met, what needs to be done to meet them (i.e., ask permission, enable system services, etc.) and (3) determine how the next data update will be obtained. This last thing is needed because pull-based data providers work like iterators. Internally, the framework will ask them for the next value to be obtained, when specified in the background execution workflow of your app.  
+
+With that said, the best way to learn how to implement pull-based data providers is to see some examples already implemented in the framework. When implementing a new data provider, we advise to start using one of the followings as a template. From the simplest to the most complex:
+
+<details>
+
+<summary>Battery</summary>
+
+The [BatteryProvider](../ble/internal/provider.ts):
+
+```ts
+import { BatteryLevel, BatteryLevelType } from './battery-level';
+import { Application, isAndroid } from '@nativescript/core';
+import { PullProvider, ProviderInterruption } from '@awarns/core/providers';
+
+export class BatteryProvider implements PullProvider {
+  get provides() {
+    return BatteryLevelType;
+  }
+
+  constructor(private sdkVersion?: number) {
+    if (isAndroid && !this.sdkVersion) {
+      this.sdkVersion = android.os.Build.VERSION.SDK_INT;
+    }
+  }
+
+  next(): [Promise<BatteryLevel>, ProviderInterruption] {
+    const value = this.getBatteryPercentage();
+    const batteryLevel = BatteryLevel.fromPercentage(value);
+
+    return [Promise.resolve(batteryLevel), () => null];
+  }
+
+  checkIfIsReady(): Promise<void> {
+    return Promise.resolve();
+  }
+
+  prepare(): Promise<void> {
+    return Promise.resolve();
+  }
+
+  private getBatteryPercentage(): number {
+    if (!isAndroid) {
+      return -1;
+    }
+    if (this.sdkVersion >= 21) {
+      const batteryManager: android.os.BatteryManager = Application.android.context.getSystemService(
+        android.content.Context.BATTERY_SERVICE
+      );
+
+      return batteryManager.getIntProperty(android.os.BatteryManager.BATTERY_PROPERTY_CAPACITY);
+    }
+    const intentFilter = new android.content.IntentFilter(android.content.Intent.ACTION_BATTERY_CHANGED);
+    const batteryStatus = Application.android.context.registerReceiver(null, intentFilter);
+
+    const level = batteryStatus ? batteryStatus.getIntExtra(android.os.BatteryManager.EXTRA_LEVEL, -1) : -1;
+    const scale = batteryStatus ? batteryStatus.getIntExtra(android.os.BatteryManager.EXTRA_SCALE, -1) : -1;
+
+    const batteryPercentage = level / scale;
+
+    return Math.trunc(batteryPercentage * 100);
+  }
+}
+```
+
+</details>
+
+<details>
+
+<summary>Wi-Fi</summary>
+
+The [WifiScanProvider](../wifi/internal/provider.ts):
+
+```ts
+import { ProviderInterrupter, ProviderInterruption, PullProvider } from '@awarns/core/providers';
+import { WifiScan, WifiScanType } from './scan';
+import {
+  FingerprintGrouping,
+  getWifiScanProvider as getNativeProvider,
+  WifiFingerprint,
+  WifiScanProvider as NativeProvider,
+} from 'nativescript-context-apis/wifi';
+import { firstValueFrom, map, of, Subject, takeUntil, timeout } from 'rxjs';
+
+export class WifiScanProvider implements PullProvider {
+  get provides(): string {
+    return WifiScanType;
+  }
+
+  constructor(
+    private ensureIsNew: boolean,
+    private timeout: number,
+    private nativeProvider: () => NativeProvider = getNativeProvider
+  ) {}
+
+  async checkIfIsReady(): Promise<void> {
+    const isReady = await this.nativeProvider().isReady();
+    if (!isReady) {
+      throw wifiScanProviderNotReadyErr;
+    }
+  }
+
+  async prepare(): Promise<void> {
+    return this.nativeProvider().prepare();
+  }
+
+  next(): [Promise<WifiScan>, ProviderInterruption] {
+    const interrupter = new ProviderInterrupter();
+    const scanResult = this.obtainWifiScan(interrupter);
+    return [scanResult, () => interrupter.interrupt()];
+  }
+
+  private obtainWifiScan(interrupter: ProviderInterrupter): Promise<WifiScan> {
+    const interrupted$ = new Subject<void>();
+    interrupter.interruption = () => {
+      interrupted$.next();
+      interrupted$.complete();
+    };
+
+    return firstValueFrom(
+      this.nativeProvider()
+        .wifiFingerprintStream({
+          ensureAlwaysNew: this.ensureIsNew,
+          grouping: FingerprintGrouping.NONE,
+          continueOnFailure: false,
+        })
+        .pipe(
+          takeUntil(interrupted$),
+          timeout({ each: this.timeout, with: () => of(null) }),
+          map((fingerprint) => scanFromFingerprint(fingerprint))
+        )
+    );
+  }
+}
+
+function scanFromFingerprint(fingerprint: WifiFingerprint): WifiScan {
+  const { seen, isNew, timestamp } = fingerprint;
+  return new WifiScan(seen, isNew, timestamp);
+}
+
+export const wifiScanProviderNotReadyErr = new Error(
+  "Wifi scan provider is not ready. Perhaps permissions haven't been granted, location services have been disabled or wifi is turn off"
+);
+```
+
+</details>
+
+<details>
+
+<summary>BLE</summary>
+
+The [BleScanProvider](../ble/internal/provider.ts):
+
+```ts
+import { ProviderInterrupter, ProviderInterruption, PullProvider } from '@awarns/core/providers';
+import { BleScan, BleScanType } from './scan';
+import {
+  getBleScanProvider as getNativeProvider,
+  BleScanProvider as NativeProvider,
+  BleScanMode,
+  BleScanResult,
+} from 'nativescript-context-apis/ble';
+import { firstValueFrom, map, Subject, takeUntil, timer, toArray } from 'rxjs';
+
+export class BleScanProvider implements PullProvider {
+  get provides(): string {
+    return BleScanType;
+  }
+
+  constructor(
+    private scanTime: number,
+    private scanMode: BleScanMode,
+    private iBeaconUuids: Array<string>,
+    private nativeProvider: () => NativeProvider = getNativeProvider
+  ) {}
+
+  async checkIfIsReady(): Promise<void> {
+    const isReady = await this.nativeProvider().isReady();
+    if (!isReady) {
+      throw bleScanProviderNotReadyErr;
+    }
+  }
+
+  async prepare(): Promise<void> {
+    return this.nativeProvider().prepare();
+  }
+
+  next(): [Promise<BleScan>, ProviderInterruption] {
+    const interrupter = new ProviderInterrupter();
+    const scanResult = this.obtainBleScan(interrupter);
+    return [scanResult, () => interrupter.interrupt()];
+  }
+
+  private obtainBleScan(interrupter: ProviderInterrupter): Promise<BleScan> {
+    const interrupted$ = new Subject<void>();
+    interrupter.interruption = () => {
+      interrupted$.next();
+      interrupted$.complete();
+    };
+
+    return firstValueFrom(
+      this.nativeProvider()
+        .bleScanStream({
+          reportInterval: 100 /* Lower report intervals don't seem to report anything in background*/,
+          scanMode: this.scanMode,
+          iBeaconUuids: this.iBeaconUuids,
+        })
+        .pipe(
+          takeUntil(timer(this.scanTime)),
+          toArray(),
+          map((results) => scanFromResults(results))
+        )
+    );
+  }
+}
+
+function scanFromResults(results: Array<BleScanResult>): BleScan {
+  if (results.length === 0) {
+    throw new Error('No BLE devices were found nearby!');
+  }
+  return new BleScan(
+    results.reduce((prev, curr) => [...prev, ...curr.seen], []),
+    results[results.length - 1].timestamp
+  );
+}
+
+const bleScanProviderNotReadyErr = new Error(
+  "BLE scan provider is not ready. Perhaps permissions haven't been granted, location services have been disabled or Bluetooth is turn off"
+);
+```
+
+</details>
+
+<details>
+
+<summary>Geolocation</summary>
+
+The [GeolocationProvider](../geolocation/internal/provider.ts):
+
+```ts
+import { PullProvider, ProviderInterrupter, ProviderInterruption } from '@awarns/core/providers';
+import { Geolocation, GeolocationType } from './geolocation';
+
+import {
+  GeolocationProvider as NativeProvider,
+  Geolocation as NativeGeolocation,
+  getGeolocationProvider as getNativeProvider,
+} from 'nativescript-context-apis/geolocation';
+
+import { firstValueFrom, from, Observable, of, Subject, throwError, timeout } from 'rxjs';
+import { map, mergeMap, take, takeUntil, toArray } from 'rxjs/operators';
+
+export class GeolocationProvider implements PullProvider {
+  get provides(): string {
+    return GeolocationType;
+  }
+
+  constructor(
+    private bestOf: number,
+    private timeout: number,
+    private nativeProvider: () => NativeProvider = getNativeProvider
+  ) {}
+
+  async checkIfIsReady(): Promise<void> {
+    const isReady = await this.nativeProvider().isReady();
+    if (!isReady) {
+      throw geolocationProviderNotReadyErr;
+    }
+  }
+
+  prepare(): Promise<void> {
+    return this.nativeProvider().prepare(false, true);
+  }
+
+  next(): [Promise<Geolocation>, ProviderInterruption] {
+    const interrupter = new ProviderInterrupter();
+    const bestLocation = this.obtainBestLocationAmongNext(this.bestOf, interrupter);
+    return [bestLocation, () => interrupter.interrupt()];
+  }
+
+  private obtainBestLocationAmongNext(amount: number, interrupter: ProviderInterrupter): Promise<Geolocation> {
+    const interrupted = new Subject<void>();
+    interrupter.interruption = () => {
+      interrupted.next();
+      interrupted.complete();
+    };
+
+    return firstValueFrom(
+      this.nativeProvider()
+        .locationStream({
+          highAccuracy: true,
+          stdInterval: 1000,
+          minInterval: 100,
+          maxAge: 60000,
+          saveBattery: false,
+        })
+        .pipe(
+          takeUntil(interrupted),
+          take(amount),
+          timeout({ each: this.timeout, with: () => of(null) }),
+          toArray(),
+          map(pickBest),
+          mergeMap((location) => this.ensureItGetsAtLeastOne(location)),
+          map(toGeolocation)
+        )
+    );
+  }
+
+  private ensureItGetsAtLeastOne(location: NativeGeolocation): Observable<NativeGeolocation> {
+    if (!location) {
+      return from(
+        this.nativeProvider().acquireLocation({
+          highAccuracy: true,
+          allowBackground: true,
+        })
+      ).pipe(
+        timeout({
+          each: this.timeout,
+          with: () => throwError(() => new Error('Could not acquire location')),
+        })
+      );
+    }
+    return of(location);
+  }
+}
+
+export const geolocationProviderNotReadyErr = new Error(
+  "Geolocation provider is not ready. Perhaps permissions haven't been granted or location services have been disabled"
+);
+
+function pickBest(locations: Array<NativeGeolocation>): NativeGeolocation {
+  const now = Date.now();
+  return locations.reduce(
+    (previous, current) =>
+      current && (!previous || calculateScore(current, now) > calculateScore(previous, now)) ? current : previous,
+    null
+  );
+}
+
+function calculateScore(location: NativeGeolocation, now: number): number {
+  const { horizontalAccuracy, timestamp } = location;
+  const timeDiff = (now - timestamp.getTime()) / 1000;
+
+  const limitedAccuracy = Math.min(horizontalAccuracy, 65);
+  const limitedTimeDiff = Math.min(Math.max(timeDiff, 0), 60);
+
+  const accuracyScore = 1 - limitedAccuracy / 65;
+  const timeDiffScore = 1 - limitedTimeDiff / 60;
+
+  return ((accuracyScore + timeDiffScore) / 2) * 10;
+}
+
+function toGeolocation(nativeGeolocation: NativeGeolocation): Geolocation {
+  return new Geolocation(
+    nativeGeolocation.latitude,
+    nativeGeolocation.longitude,
+    nativeGeolocation.altitude,
+    nativeGeolocation.horizontalAccuracy,
+    nativeGeolocation.verticalAccuracy,
+    nativeGeolocation.speed,
+    nativeGeolocation.direction,
+    nativeGeolocation.timestamp
+  );
+}
+
+```
+
+</details>
+
+#### Push data providers
+
+Sometimes we want to obtain data, but we don't know when that data will come. In those cases we will want to instruct a third party to notify us regarding data updates. This is the case, for example, of human activity recognition, where updates will come only after the device starts being moved.
+
+The implementation of a push-based data provider has things in common with the pull-based data provider. Both need to know if they'll be able to obtain data and, if not, know what needs to be done to overcome this situation. The key difference is that instead of asking for the next value to be obtained (and wait for it), here we'll need two mechanisms to state that: (1) we are interested in obtaining data updates and (2) we are no longer interested in those updates. Like a subscribe / unsubscribe mechanism, but that persists after application shutdowns and phone reboots.
+
+A complete example implementation of a push-based provider can be seen in the human activity package (the [HumanActivityProvider](../human-activity/internal/provider.ts)):
+
+```ts
+import { PushProvider } from '@awarns/core/providers';
+import { ActivityRecognizer, getActivityRecognizer, Resolution } from 'nativescript-context-apis/activity-recognition';
+
+import { HumanActivityChangeType } from './human-activity-change';
+import { getLogger } from '@awarns/core/utils/logger';
+import { getHumanActivityChangeReceiver } from './receiver';
+
+const possibleResolutions: Array<Resolution> = [Resolution.LOW, Resolution.MEDIUM];
+
+export class HumanActivityProvider implements PushProvider {
+  get provides() {
+    return HumanActivityChangeType;
+  }
+
+  static setup() {
+    possibleResolutions.forEach((resolution) => {
+      getActivityRecognizer(resolution).listenActivityChanges((activityChange) => {
+        getLogger('HumanActivityProvider').debug(`Got an activity change!: ${JSON.stringify(activityChange)}`);
+        getHumanActivityChangeReceiver().onReceive(activityChange);
+      });
+    });
+  }
+
+  constructor(
+    private resolution: Resolution,
+    private detectionInterval: number = 0,
+    private providerLoader: (resolution: Resolution) => ActivityRecognizer = getActivityRecognizer
+  ) {}
+
+  async checkIfIsReady(): Promise<void> {
+    if (!this.activityRecognizer().isReady()) {
+      throw new HumanActivityRecognizerNotReadyErr(this.resolution);
+    }
+  }
+
+  async prepare(): Promise<void> {
+    await this.activityRecognizer().prepare();
+  }
+
+  async startProviding(): Promise<void> {
+    await this.activityRecognizer().startRecognizing({
+      detectionInterval: this.detectionInterval,
+    });
+  }
+
+  async stopProviding(): Promise<void> {
+    await this.activityRecognizer().stopRecognizing();
+  }
+
+  private activityRecognizer(): ActivityRecognizer {
+    return this.providerLoader(this.resolution);
+  }
+}
+
+export class HumanActivityRecognizerNotReadyErr extends Error {
+  constructor(resolution: Resolution) {
+    super(
+      `${resolution} resolution human activity recognizer. Perhaps the required permissions hadn't been granted. Be sure to call prepare() first`
+    );
+  }
+}
+
+export { Resolution } from 'nativescript-context-apis/activity-recognition';
+```
 
 ### Using your data providers with the built-in tasks
 
