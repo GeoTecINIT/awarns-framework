@@ -60,12 +60,12 @@ Create a new NativeScript project with the UI framework of your choice. If this 
 
 Once your application project has been set up, install the following plugins:
 ```bash
-ns add @awarns/core
-ns add @awarns/human-activity
-ns add @awarns/geolocation
-ns add @awarns/geofencing
-ns add @awarns/notifications
-ns add @awarns/persistence
+ns plugin add @awarns/core
+ns plugin add @awarns/human-activity
+ns plugin add @awarns/geolocation
+ns plugin add @awarns/geofencing
+ns plugin add @awarns/notifications
+ns plugin add @awarns/persistence
 ```
 
 >**Why do we need all these plugins?**
