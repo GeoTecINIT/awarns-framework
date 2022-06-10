@@ -2,7 +2,7 @@
 ![npm (scoped)](https://img.shields.io/npm/v/@awarns/core)
 ![npm](https://img.shields.io/npm/dm/@awarns/core)
 
->**This is the only plugin required for the other plugins to work.** 
+>**This is the only plugin required for the rest of the plugins to work.** 
 
 This plugin comes as a wrapper on top of the [NativeScript Task Dispatcher](https://github.com/GeoTecINIT/nativescript-task-dispatcher) (NTD), extending it with utilities which ease the development of context-aware applications in several ways:
 - A common model to represent entities which represent changes over time, the [Record](internal/entities/record.ts) class. This is meant to be extended and used to encapsulate the information produced by the built-in framework tasks and the developer-defined tasks created using the framework.
@@ -21,12 +21,17 @@ ns plugin add @awarns/core
 
 ## Usage
 
-The core package can be directly used from your application (or plugins) in many circumstances: 
+You'll need to install and configure the core package the first time you integrate the framework in your app.
+
+Additionally, the core package can be directly used from your application (or plugins) in many circumstances:
 - When you want to create your own class (which extends the Record model) for its persistence.
 - When you want to develop your own data provider.
 - When you want to incorporate your providers to a workflow using the built-in tasks.
-- When you want to use the underlying NTD plugin.
 - In more advanced use cases, when you want to use the built-in utilities.
+
+### Basic usage
+
+// TODO
 
 ### Extending the [Record](internal/entities/record.ts) class
 
@@ -640,11 +645,156 @@ export { Resolution } from 'nativescript-context-apis/activity-recognition';
 
 ### Using your data providers with the built-in tasks
 
-// TODO
+Once we have developed our own data providers, integrating them in the framework to use them in our background workflows is quite straight forward.
 
-### Using the exposed [NativeScript Task Dispatcher](https://github.com/GeoTecINIT/nativescript-task-dispatcher) API
+For this aim, we have created a set of tasks which understand the API of the data providers and are able to obtain data from them.
 
-// TODO
+#### Instantiating pull-based data provider tasks
+
+The framework comes with two mechanisms to acquire data from a pull-based data provider: a single data provider and a batch data provider. Both do what their name indicates. The former reads one value from the data provider, whereas the latter can accumulate multiple values before returning them.
+
+These tasks are always used in the same way, although their behaviour can be configured. As an example, this is how both are used with the GeolocationProvider:
+
+```ts
+import { Task, SinglePullProviderTask, BatchPullProviderTask } from '@awarns/core/tasks';
+import { GeolocationProvider } from './provider';
+
+const DEFAULT_SINGLE_BEST_OF = 3;
+const DEFAULT_SINGLE_TIMEOUT = 10000;
+
+const DEFAULT_BATCH_BEST_OF = 1;
+const DEFAULT_BATCH_TIMEOUT = 15000;
+
+export function acquirePhoneGeolocationTask(config: GeolocationTaskConfig = {}): Task {
+  return new SinglePullProviderTask(
+    new GeolocationProvider(config.bestOf ?? DEFAULT_SINGLE_BEST_OF, config.timeout ?? DEFAULT_SINGLE_TIMEOUT),
+    'Phone',
+    { foreground: true }
+  );
+}
+
+export function acquireMultiplePhoneGeolocationTask(config: GeolocationTaskConfig = {}): Task {
+  return new BatchPullProviderTask(
+    new GeolocationProvider(config.bestOf ?? DEFAULT_BATCH_BEST_OF, config.timeout ?? DEFAULT_BATCH_TIMEOUT),
+    'Phone',
+    { foreground: true }
+  );
+}
+
+export interface GeolocationTaskConfig {
+  bestOf?: number;
+  timeout?: number;
+}
+```
+
+Both tasks have been carefully crafted to create predictable outputs. Instances of the SinglePullProviderTask will be named: `acquire{prefix?}{record-type}`, where the prefix is the second optional parameter to the task and the record-type is obtained by asking the provider what does it provide. On the other hand, instances of the BatchPullProviderTask will be named: `acquireMultiple{prefix?}{record-type}`, where the placeholders are populated in the same way. The event produced by the two is in both cases the same: `{record-type}Acquired`. The only difference is that the single provider task outputs just one record, whereas the batch provider tasks outputs an array of them.
+
+These tasks allow some configuration. During their instantiation time, it is possible to indicate if they are required to run in the foreground or not, as seen above. This is required when collecting sensitive data. The foreground notification can be configured following the [specific NTD instructions](https://github.com/GeoTecINIT/nativescript-task-dispatcher#running-tasks-in-foreground). In addition, while defining a workflow the batch provider task can be configured to limit the maximum frequency at which new records can be collected, as it can be seen [here](../../tools/demo/graph.ts), by using the `maxInterval` configuration option.
+
+> **Note:** One big difference between the single provider task and the batch provider task, is that the latter will not finish until all the available time for running the task has been consumed. This is, if the batch task has been scheduled to run every minute, it will try to collect as many samples as possible during that minute before reporting. Keep this in mind for not to schedule long-lived tasks after a batch data collection, otherwise, they might not run at all. This task is intended for an exhaustive data collection with very little post-processing.
+
+#### Instantiating push-based data provider tasks
+
+Push-based data provider tasks are easier to instantiate, but a bit more difficult to integrate. Unlike the pull-based tasks, the process to set up push-based tasks requires of multiple steps.
+
+The first thing to do, is to instantiate the provider start and stop tasks. We have examples for that using HumanActivityProviders:
+
+```ts
+import { Task, StartPushProviderTask, StopPushProviderTask } from '@awarns/core/tasks';
+
+import { HumanActivityProvider, Resolution } from './provider';
+
+export function startDetectingCoarseHumanActivityChangesTask(): Task {
+  return new StartPushProviderTask(new HumanActivityProvider(Resolution.LOW), 'Coarse');
+}
+
+export function stopDetectingCoarseHumanActivityChangesTask(): Task {
+  return new StopPushProviderTask(new HumanActivityProvider(Resolution.LOW), 'Coarse');
+}
+
+export function startDetectingIntermediateHumanActivityChangesTask(): Task {
+  return new StartPushProviderTask(new HumanActivityProvider(Resolution.MEDIUM), 'Intermediate');
+}
+
+export function stopDetectingIntermediateHumanActivityChangesTask(): Task {
+  return new StopPushProviderTask(new HumanActivityProvider(Resolution.MEDIUM), 'Intermediate');
+}
+```
+
+In a similar way to the SingleProvider and BatchProvider tasks, the naming of the tasks has been standardized. For the start task, the name always follows this pattern: `startDetecting{prefix?}{record-type}Changes`, whereas for the stop task, it is always like this: `stopDetecting{prefix?}{record-type}Changes`.
+
+The key difference with the pull-based tasks is that, additionally, we also need to register a listener to receive the updates from the provider and emit them as framework events. Following with the example of the human activity recognition:
+
+```ts
+import { awarns } from '@awarns/core';
+import { EventData } from '@awarns/core/events';
+
+import { ActivityChange, HumanActivity, Transition } from 'nativescript-context-apis/activity-recognition';
+import { HumanActivityChange } from './human-activity-change';
+import { Change } from '@awarns/core/entities';
+
+const DEFAULT_EVENT = 'userActivityChanged';
+
+export class HumanActivityChangeReceiver {
+  constructor(private emitEvent: (eventName: string, eventData?: EventData) => void) {}
+
+  onReceive(activityChange: ActivityChange) {
+    const { type, timestamp, confidence } = activityChange;
+    const change = activityChange.transition === Transition.STARTED ? Change.START : Change.END;
+    const record = new HumanActivityChange(type, change, timestamp, confidence);
+    this.emitEvent(DEFAULT_EVENT, record);
+    this.emitEvent(generateEventNameFromActivityChange(record), record);
+  }
+}
+
+function generateEventNameFromActivityChange(activityChange: HumanActivityChange) {
+  const transition = activityChange.change === Change.START ? 'Started' : 'Finished';
+  return `user${transition}${actionFromActivityType(activityChange.activity)}`;
+}
+
+function actionFromActivityType(type: HumanActivity) {
+  switch (type) {
+    case HumanActivity.STILL:
+      return 'BeingStill';
+    case HumanActivity.TILTING:
+      return 'StandingUp';
+    case HumanActivity.WALKING:
+      return 'Walking';
+    case HumanActivity.RUNNING:
+      return 'Running';
+    case HumanActivity.ON_BICYCLE:
+      return 'RidingABicycle';
+    case HumanActivity.IN_VEHICLE:
+      return 'BeingInAVehicle';
+  }
+}
+
+let _receiver: HumanActivityChangeReceiver;
+export function getHumanActivityChangeReceiver(): HumanActivityChangeReceiver {
+  if (!_receiver) {
+    _receiver = new HumanActivityChangeReceiver(awarns.emitEvent);
+  }
+  return _receiver;
+}
+```
+
+The last thing to do is to register this listener at application startup. The best place to do it is by encapsulating the listener registration inside a function and invoke it at plugin registration time, as seen in the [Basic usage](#basic-usage) section.
+
+This is how the aforementioned function has been implemented in the human activity recognition plugin:
+
+```ts
+import { PluginLoader } from '@awarns/core';
+import { Task } from '@awarns/core/tasks';
+import { HumanActivityProvider } from './internal/provider';
+
+
+export function registerHumanActivityPlugin(): PluginLoader {
+  return async (_tasksInUse: Array<Task>) => {
+    HumanActivityProvider.setup();
+    // ...
+  };
+}
+```
 
 ### A brief note on logging and the rest of the utilities
 
