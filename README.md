@@ -595,7 +595,7 @@ export const appTaskGraph = new AppTaskGraph();
 
 And that makes it. With this example, we have seen how it is possible to extend and use many framework features to offer more advanced experiences to our application users.
 
-> **Note:** This example could be greatly simplified, by reducing it to just the persistence mechanism and the definition of one task to do all the work. We have decided to show the extended version for you to see how easy it can be to create decoupled functionalities using the AwarNS Framework. And also the hidden power of extending the Record class.
+> **Note**: This example could be greatly simplified, by reducing it to just the persistence mechanism and the definition of one task to do all the work. We have decided to show the extended version for you to see how easy it can be to create decoupled functionalities using the AwarNS Framework. And also the hidden power of extending the Record class.
 >
 > For more concrete usage and extension instructions, please read the [core](packages/core/README.md)'s package README file. For more specific usage instructions of each one of the plugin modules, please, refer to the corresponding module README file (use the links from the tables [above](#framework-modules)).
 
@@ -650,7 +650,7 @@ npm start
 - Choose the focus commands for the package you wish to focus on and hit enter.
 - All the demo app's will be updated to isolate that 1 package and for supported IDE's (currently VS Code), the source code will also become isolated in the workspace.
 
-Note: _good to always clean the demo you plan to run after focusing. (You can clean any demo from `npm start` as well)_
+> **Note**: _good to always clean the demo you plan to run after focusing. (You can clean any demo from `npm start` as well)_
 
 ### How to publish packages?
 
