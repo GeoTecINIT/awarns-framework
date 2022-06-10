@@ -353,6 +353,7 @@ To do this, first we'll need a way to keep the state of the visit counters for e
 // visit-couters.ts
 import { AwarnsStore } from '@awarns/persistence';
 
+// (Optional) Declare the interface that your persistence component will have
 export interface VisitCountersStore {
   increase(id: string): Promise<void>;
   get(id: string): Promise<number>;
@@ -360,12 +361,18 @@ export interface VisitCountersStore {
   clear(): Promise<void>;
 }
 
+// Required to distinguish different entity types inside the framework store
 const DOC_TYPE = 'visit-counter';
 
 class VisitCountersStoreDB implements VisitCountersStore {
   private readonly store: AwarnsStore<VisitCounter>;
 
   constructor() {
+    // Creating a new store requires:
+    // - The type that the store will work with
+    // - A string to uniquely identify the entities being managed
+    // - A function to transform (serialize) entities into DB documents
+    // - A function to reverse the transform (deserialize) DB documents back into entities
     this.store = new AwarnsStore<VisitCounter>(DOC_TYPE, docFrom, nearbyAreaFrom);
   }
 
@@ -396,17 +403,24 @@ class VisitCountersStoreDB implements VisitCountersStore {
   }
 }
 
+// Typically you'll want to have a external entity representation
 interface VisitCounter {
   id: string;
   visits: number;
 }
 
+// And an internal representation (DB document)
 type VisitCounterDoc = VisitCounter;
+// In this case the two are identical, but sometimes you might want to: 
+// - Change the type of certain properties (for example, Dates, into UNIX timestamp numbers)
+// - Collapse multiple properties into a single JSON string
 
+// The serialize function
 function docFrom(counter: VisitCounter): VisitCounterDoc {
   return { ...counter };
 }
 
+// The deserialize function
 function visitCounterFrom(doc: VisitCounterDoc): VisitCounter {
   return { ...doc };
 }
