@@ -31,7 +31,77 @@ Additionally, the core package can be directly used from your application (or pl
 
 ### Basic usage
 
-// TODO
+#### Initialization
+
+For the AwarNS framework to work properly it must be initialized during the application startup. The code must be executed no matter if the application UI is going to be bootstrapped or not. The place to do this is the `app.ts` file inside the application `src` folder (`main.ts` for Angular apps).  
+
+Framework initialization implies multiple aspects: **(1)** determining which built-in and/or custom tasks will be in use, **(2)** defining how these tasks will be invoked by the results of other tasks or isolated application events, **(3)** registering plugins that need to be initialized at application startup and **(4)** configuring behavioural aspects of the framework. This can be seen in more detal in the following code excerpt adapted from the demo application source code:
+
+```ts
+// app.ts / main.ts
+// TypeScript App:
+import { Application } from '@nativescript/core';
+// or Angular App:
+import { runNativeScriptAngularApp, platformNativeScript } from '@nativescript/angular';
+import { AppModule } from './app/app.module';
+
+// AwarNS Framework imports
+// (always between esential imports and app initialization)
+import { awarns } from '@awarns/core';
+import { demoTasks } from '../tasks'; // An array, containing the lists of tasks that the application will use
+import { demoTaskGraph } from '../graph'; // The background workflow definition (task graph instance)
+import { registerHumanActivityPlugin } from '@awarns/human-activity';
+import { registerNotificationsPlugin } from '@awarns/notifications';
+import { registerTracingPlugin } from '@awarns/tracing';
+import { registerPersistencePlugin } from '@awarns/persistence';
+
+awarns
+  .init(
+    demoTasks, // (1)
+    demoTaskGraph, // (2)
+    [ // (3)
+      // See bellow for more information regarding the items that this array can contain
+      // See each plugin docs to learn more about their registration-time options
+      registerHumanActivityPlugin(),
+      registerNotificationsPlugin('Intervention alerts'),
+      registerPersistencePlugin(),
+      registerTracingPlugin(),
+    ],
+    { // (4)
+      // See bellow for a description of the rest of the options
+      enableLogging: true,
+    }
+  )
+  .then(() => console.log('AwarNS framework successfully loaded'))
+  .catch((err) => {
+    console.error(`Could not load AwarNS framework: ${err.stack ? err.stack : err}`);
+  });
+
+// TypeScript App:
+Application.run({ moduleName: 'app-root' });
+// Angular App:
+runNativeScriptAngularApp({
+  appModuleBootstrap: () => platformNativeScript().bootstrapModule(AppModule),
+});
+```
+
+> In **(3)**, along with the built-in plugin registration functions it is also possible to register custom loaders to run code during the framework initialization phase. You can do this by creating a function which must return another function compatible with the [PluginLoader](common.ts) API. Example implementations of this can be found in this document (see [Instantiating push-based data provider tasks](#instantiating-push-based-data-provider-tasks)) and in the source the [human-activity](../human-activity/index.ts), the [notifications](../notifications/index.ts), the [persistence](../persistence/index.ts) and the [tracing](../tracing/index.ts) plugins.
+> 
+> **Important:** we advise you to register here only short-lived functions, to ensure all the functionalities of the framework are ready before starting executing tasks. If you need to start a long process here, you can do it, but be sure that the main function does not wait for it to finish its execution (for example, using `then/catch` instead of `await`).
+
+> In **(4)**, aside from indicating if the logging must be enabled or not, it is also possible to pass by a custom logger implementation to get more control over what is being logged. And also be able to store or send the log traces locally or remotely. More details in: [A brief note on logging and the rest of the utilities](#a-brief-note-on-logging-and-the-rest-of-the-utilities).
+
+#### Managing tasks' readiness and emitting events from UI
+
+In the application UI you can interact with the framework to check if certain tasks are lacking some permissions or system features to be enabled. This can be done using the `awarns` singleton object seen in the previous example, which shares API with the NTD's [`taskDispatcher`](https://github.com/GeoTecINIT/nativescript-task-dispatcher#taskdispatcher---methods) object:
+
+| Name                                        | Return type            | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+|---------------------------------------------|------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `isReady()`                                 | `Promise<boolean>`     | Allows to check (and wait for) framework initialization status. It also iterates over your app's tasks to check if they are [ready](https://github.com/GeoTecINIT/nativescript-task-dispatcher/blob/master/src/internal/tasks/task.ts#L107) for their execution. You should call this method before emitting any external event. The promise is stored internally, it is safe to call this method as many times as needed.                                                                                |
+| `tasksNotReady` _(property)_                | `Promise<Array<Task>>` | Method to be called if isReady() returns false. Here you can check the tasks that did not pass the ready check. Useful in case you want to customize te UI before calling prepare(). For example, to give an explanation to your users of why you are asking their consent                                                                                                                                                                                                                                |
+| `prepare()`                                 | `Promise<void>`        | Method to be called if isReady() returns false. If your app has one or more tasks that have reported not to be ready, it will call their [prepare()](https://github.com/GeoTecINIT/nativescript-task-dispatcher/blob/master/src/internal/tasks/task.ts#L114) method (e.g. to ask for missing permissions or enable disabled capabilities). **WARNING! This method is only meant to be called while the UI is visible.** Follow this guideline to foster the creation of a consistent task ecosystem.      |
+| `emitEvent(name: string, data?: EventData)` | `void`                 | A fire and forget method. Call this method whenever you want to propagate an external event towards the plugin. Dependant tasks will be executed inside a background environment. User can safely navigate to another app, we bootstrap an independent background execution context to ensure it completes its life-cycle (we guarantee a maximum of 3 minutes execution time). Optionally, You can provide an additional key-value data dictionary that will be delivered to the task handling the event |
+
 
 ### Extending the [Record](internal/entities/record.ts) class
 
