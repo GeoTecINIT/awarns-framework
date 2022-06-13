@@ -1,5 +1,5 @@
 import { BatteryLevel, BatteryLevelType } from './battery-level';
-import { Application, isAndroid } from '@nativescript/core';
+import { isAndroid, Utils } from '@nativescript/core';
 import { PullProvider, ProviderInterruption } from '@awarns/core/providers';
 
 export class BatteryProvider implements PullProvider {
@@ -7,7 +7,7 @@ export class BatteryProvider implements PullProvider {
     return BatteryLevelType;
   }
 
-  constructor(private sdkVersion?: number) {
+  constructor(private readonly sdkVersion?: number) {
     if (isAndroid && !this.sdkVersion) {
       this.sdkVersion = android.os.Build.VERSION.SDK_INT;
     }
@@ -33,14 +33,14 @@ export class BatteryProvider implements PullProvider {
       return -1;
     }
     if (this.sdkVersion >= 21) {
-      const batteryManager: android.os.BatteryManager = Application.android.context.getSystemService(
-        android.content.Context.BATTERY_SERVICE
-      );
+      const batteryManager: android.os.BatteryManager = Utils.android
+        .getApplicationContext()
+        .getSystemService(android.content.Context.BATTERY_SERVICE);
 
       return batteryManager.getIntProperty(android.os.BatteryManager.BATTERY_PROPERTY_CAPACITY);
     }
     const intentFilter = new android.content.IntentFilter(android.content.Intent.ACTION_BATTERY_CHANGED);
-    const batteryStatus = Application.android.context.registerReceiver(null, intentFilter);
+    const batteryStatus = Utils.android.getApplicationContext().registerReceiver(null, intentFilter);
 
     const level = batteryStatus ? batteryStatus.getIntExtra(android.os.BatteryManager.EXTRA_LEVEL, -1) : -1;
     const scale = batteryStatus ? batteryStatus.getIntExtra(android.os.BatteryManager.EXTRA_SCALE, -1) : -1;
