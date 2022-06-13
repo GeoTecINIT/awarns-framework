@@ -4,7 +4,7 @@
 
 This framework module includes a task that allows to access phone's battery level on demand.
 
-Install the plugin using the following command line instruction.
+Install the plugin using the following command line instruction:
 
 ```bash
 ns plugin add @awarns/battery
@@ -12,11 +12,15 @@ ns plugin add @awarns/battery
 
 ## Usage
 
-After installing and setting up this plugin, you'll have access to a task to acquire the current phone's battery level and the battery level record that it will output on demand.
+After installing and setting up this plugin, you'll have access to a task that allows to acquire the current phone's battery level and the battery level record that it will output on demand.
 
-### Acquire battery level task
+### Tasks
+
+#### Acquire phone's battery level
 
 > **Task name**: `acquirePhoneBatteryLevel`
+> 
+> **Description**: Acquires phone's current battery level
 
 To register this task for its use, you just need to import it and call its generator function inside your application's task list:
 
@@ -30,23 +34,36 @@ export const demoTasks: Array<Task> = [
   // ...
 ];
 ```
-> The task generator takes no arguments. 
+
+Task generator parameters:
+
+> The task generator takes no parameters. 
 
 Task event output:
 
-| Name                   | Payload                                                             | Description                                                            |
-|------------------------|---------------------------------------------------------------------|------------------------------------------------------------------------|
-| `batteryLevelAcquired` | [`BatteryLevel`](#battery-level-record-codeinternalbattery-levelts) | Indicates that a new battery level snapshot (record) has been acquired |
+| Name                   | Payload                          | Description                                                            |
+|------------------------|----------------------------------|------------------------------------------------------------------------|
+| `batteryLevelAcquired` | [`BatteryLevel`](#battery-level) | Indicates that a new battery level snapshot (record) has been acquired |
 
-### Battery level record ([code](internal/battery-level.ts))
+> Example usage in the application task graph:
+> ```ts
+> on('startEvent', run('acquirePhoneBatteryLevel')
+>   .every(1, 'minutes')
+>   .cancelOn('stopEvent'));
+> 
+> on('batteryLevelAcquired', run('writeRecords'))
+> ```
 
+### Records
+
+#### Battery level
 
 | Property    | Type     | Description                                                |
 |-------------|----------|------------------------------------------------------------|
-| `id`        | `string` | Record unique id                                           |
-| `type`      | `string` | It is always `battery-level`                               |
-| `change`    | `Change` | It is always `none`. Never starts or ends, always exists   |
-| `timestamp` | `Date`   | The time when the battery level was acquired               |
+| `id`        | `string` | Record's unique id                                         |
+| `type`      | `string` | Always `battery-level`                                     |
+| `change`    | `Change` | Always `none`. Never starts or ends, always exists         |
+| `timestamp` | `Date`   | The local time when the battery level was acquired         |
 | `value`     | `number` | The battery level. Always an integer. Ranges from 0 to 100 |
 
 
