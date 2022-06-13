@@ -868,7 +868,118 @@ export function registerHumanActivityPlugin(): PluginLoader {
 
 ### A brief note on logging and the rest of the utilities
 
-// TODO
+In addition to all the aforementioned features, the core package comes with a small set of tools consisting of typical reusable functionality pieces. These are classified in 4 different domains: logging, testing, unique identifiers and data serialization.
+
+#### Logging
+
+The AwarNS framework comes with a built-in console logger. However, it is possible to inject a custom logger during the framework initialization (see [Basic usage - Initialization](#initialization)). 
+
+Custom loggers can be used even for submitting crashes, event in the context of the framework, to a remote server. The following code fragment shows an example with a logger that submits errors to Firebase Crashlytics:
+```ts
+import {
+  Logger,
+  AbstractLogger,
+} from "@awarns/core/utils/logger";
+import { FirebaseManager, firebaseManager } from "../firebase";
+import { DevLogger } from "./dev";
+import { isAndroid } from "@nativescript/core";
+
+export class ProdLogger extends AbstractLogger {
+    constructor(
+        tag: string,
+        private firebase: FirebaseManager = firebaseManager,
+        private auxLogger: Logger = new DevLogger(tag)
+    ) {
+        super(tag);
+    }
+
+    protected logDebug(message: string): void {
+        return; // Do not print or send debug messages in production
+    }
+
+    protected async logInfo(message: string): Promise<void> {
+        const crashlytics = await this.firebase.crashlytics();
+        if (crashlytics) {
+            crashlytics.log(message);
+        } else {
+            this.auxLogger.info(message);
+        }
+    }
+
+    protected async logWarning(message: string): Promise<void> {
+        const crashlytics = await this.firebase.crashlytics();
+        if (crashlytics) {
+            crashlytics.log(message);
+        } else {
+            this.auxLogger.warn(message);
+        }
+    }
+
+    protected async logError(message: string): Promise<void> {
+        const crashlytics = await this.firebase.crashlytics();
+        if (!crashlytics) {
+            this.auxLogger.error(message);
+            return;
+        }
+        
+        crashlytics.sendCrashLog(new java.lang.Exception(message));
+    }
+}
+```
+
+Instances of logger clases similar to the one above declare the following public API:
+
+| Name                    | Return type | Description                                                                                                                                                                                                                                                         |
+|-------------------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `debug(message: any)`   | `void`      | Allows to display messages that are only useful during the development. Typically you'll want to have two separate loggers, one for development and another one for production. The production logger can simply ignore calls to this method, like it happens above |
+| `info(message: any)`    | `void`      | Allows to display regular information messages which might be useful to see while debugging log traces. This is used by each task's `log()` method                                                                                                                  |
+| `warning(message: any)` | `void`      | Allows to log non-critical errors                                                                                                                                                                                                                                   |
+| `error(message: any)`   | `void`      | Allows to log fatal application failures                                                                                                                                                                                                                            |
+
+With all the information from this section, if you want to use this optional framework feature, we advise you to implement a function to instantiate one or even different loggers (based on the current environment type) with a scope tag. Then inject this new function to the framework configuration options object, using the `customLogger(tag: string)` property. 
+
+#### Testing
+
+Inside the `@awarns/core/testing/events` folder you'll find some functions to facilitate testing your own tasks in isolation from the rest of the framework:
+
+| Name                                                       | Return type          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+|------------------------------------------------------------|----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `createEvent(name: string, params?: CreateEventParams)`    | `DispatchableEvent`  | Allows to create a new NTD event, useful to invoke the execution of a task. The name of the event is mandatory. For the second optional parameter, see the CreateEventParams object API bellow.                                                                                                                                                                                                                                                                                                           |
+| `emit(dispatchableEvent: DispatchableEvent)`               | `void`               | Emits a newly created event. Typically you won't want to use this one unless you're testing complete background workflows.                                                                                                                                                                                                                                                                                                                                                                                |
+| `listenToEventTrigger(eventName: string, eventId: string)` | `Promise<EventData>` | Listens and waits for a type of event (eventName) with a specific id (eventId, obtained from `DispatchableEvent.id`) to be emitted. Returns a promise containing the payload of the received event.                                                                                                                                                                                                                                                                                                       |
+
+This is the shape of the CreateEventParams object:
+
+| Property                                    | Type        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+|---------------------------------------------|-------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `data`                                      | `EventData` | A key-value object containing the payload of the event. If not present it will default to `{}` during the creation of the event.                                                                                                                                                                                                                                                                                                                                                                          |
+| `id`                                        | `string`    | A string uniquely identifying this instance of the event (must be unique for each task invoke). Defaults to a new UUID during the creation of the task.                                                                                                                                                                                                                                                                                                                                                   |
+| `expirationTimestamp`                       | `number`    | Indicates when the tasks handling this event should finish their execution. Defaults to nothing. If provided, must be a UNIX timestamp.                                                                                                                                                                                                                                                                                                                                                                   |
+
+> For more information on how to use these APIs in your tests, you can see how we have implemented our own tests. Some examples are the [SinglePullProvider Spec](../../apps/demo/src/tests/core/tasks/pull-based/single-provider.spec.ts), the [BatchPullProvider Spec](../../apps/demo/src/tests/core/tasks/pull-based/batch-provider.spec.ts), the [StartPushProvider Spec](../../apps/demo/src/tests/core/tasks/push-based/start-provider.spec.ts) and the [StopPushProvider Spec](../../apps/demo/src/tests/core/tasks/push-based/stop-provider.spec.ts). 
+
+#### Unique identifiers
+
+Sometimes you'll need to create your own universally unique identifiers (UUIDs). Given we extensively use them throughout the framework, we have thought that it could be useful to expose a function to generate them, either for creating new plugins or features on top of the framework.
+
+Inside the `@awarns/core/utils/uuid` folder you'll find a function with the following signature:
+
+| Name   | Return type | Description                                                                                                                                                                                                                                                                      |
+|--------|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `uuid` | `string`    | Uses the built-in mechanism in the underlying OS to generate a new UUID. In Android, it uses the [UUID.randomUUID()](https://docs.oracle.com/javase/7/docs/api/java/util/UUID.html#randomUUID()) method which generates an UUID v4. No other external dependencies are involved. |
+
+#### Data serialization
+
+In certain cases you might need to convert complex object structures to strings and get back the original object somewhere else. In other cases, you might simply want to convert objects with a mix of properties containing plain objects and class instances.
+
+For these situations, you can use the built-in serialization functions that we extensively use throughout the framework, and which you can find inside the `@awarns/core/utils/serialization` folder:
+
+| Name                                 | Return type | Description                                                                                                                                                                                                |
+|--------------------------------------|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `serialize(data: any)`               | `string`    | Converts any complex JavaScript object, class instance or array into a string which can be back-recovered. Works with objects containing `Date` properties.                                                |
+| `deserialize(serializeData: string)` | `any`       | The reverse process to calling the serialize method. Please, note that class instances will be recovered as plain JavaScript objects, loosing their original nature.                                       |
+| `flatten(data: any)`                 | `any`       | Identical to chaining a serialize and a deserialize method calls. Takes the advantage of the deserialize side-effect of turning class instances into plain objects to normalize complex object structures. |
+
 
 ## License
 
