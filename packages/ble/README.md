@@ -2,7 +2,7 @@
 ![npm (scoped)](https://img.shields.io/npm/v/@awarns/ble)
 ![npm](https://img.shields.io/npm/dm/@awarns/ble)
 
-This module includes tasks to obtain information regarding nearby Bluetooth Low Energy (BLE) devices. This is useful to assess the existence of concrete devices nearby. Also, to build custom indoor localization and positioning systems. Supports the iBeacon standard.
+This module includes tasks to obtain information regarding nearby Bluetooth Low Energy (BLE) devices. This is useful to assess the existence of concrete devices nearby. Also, to build custom indoor localization and positioning systems based on BLE. Supports the iBeacon standard.
 
 This plugin acts as a wrapper on top of the [nativescript-context-apis](https://github.com/GeoTecINIT/nativescript-context-apis) plugin (from the same authors), offering BLE scanning tasks. Scan for nearby BLE devices even in background.
 
@@ -13,11 +13,11 @@ ns plugin add @awarns/ble
 ```
 ## Usage
 
-After installing and setting up this plugin, you'll have access to two different tasks to scan for Bluetooth Low Energy (BLE) devices seen nearby. The result, will be a [BleScan](#ble-scan) record, described below.
+After installing and setting up this plugin, you'll have access to two different tasks to scan for Bluetooth Low Energy (BLE) devices seen nearby. The result, will be a [BleScan](#blescan) record, described below.
 
 ### Tasks
 
-#### Acquire a single ble scan
+#### Acquire a single BLE scan
 
 > **Task name**: `acquirePhoneBleScan`
 >
@@ -39,15 +39,15 @@ Task generator parameters:
 
 | Name           | Type                                                                         | Description                                                                                                                                                    |
 |----------------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `scanTime`     | `number`                                                                     | The amount of time (in milliseconds) to be spent scanning. Defaults to 5000 (5s)                                                                               |
+| `scanTime`     | `number`                                                                     | The amount of time (in milliseconds) to be spent scanning. Defaults to `5000` (5s)                                                                             |
 | `scanMode`     | [`BleScanMode`](https://github.com/GeoTecINIT/nativescript-context-apis#api) | The BLE scan mode to use, see [context-apis docs API](https://github.com/GeoTecINIT/nativescript-context-apis#api) section on BLE. Defaults to `balanced` mode |
 | `iBeaconUuids` | `Array<String>`                                                              | Filters the scan results to only show devices broadcasting one of the given iBeacon UUID(s)                                                                    |
 
 Task event output:
 
-| Name              | Payload                | Description                                            |
-|-------------------|------------------------|--------------------------------------------------------|
-| `bleScanAcquired` | [`BleScan`](#ble-scan) | Indicates that a new ble scan result has been acquired |
+| Name              | Payload               | Description                                            |
+|-------------------|-----------------------|--------------------------------------------------------|
+| `bleScanAcquired` | [`BleScan`](#blescan) | Indicates that a new BLE scan result has been acquired |
 
 > Example usage in the application task graph:
 > ```ts
@@ -62,7 +62,7 @@ Task event output:
 >```
 > **Note**: To use the `writeRecords` task, the persistence package must be installed and configured. See [persistence package docs](../persistence/README.md).
 
-#### Acquire ble scans in batch
+#### Acquire BLE scans in batch
 
 > **Task name**: `acquireMultiplePhoneBleScan`
 > 
@@ -84,15 +84,15 @@ Task generator parameters:
 
 | Name           | Type                                                                         | Description                                                                                                                                                    |
 |----------------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `scanTime`     | `number`                                                                     | The amount of time (in milliseconds) to be spent scanning. Defaults to 5000 (5s)                                                                               |
+| `scanTime`     | `number`                                                                     | The amount of time (in milliseconds) to be spent scanning. Defaults to `5000` (5s)                                                                             |
 | `scanMode`     | [`BleScanMode`](https://github.com/GeoTecINIT/nativescript-context-apis#api) | The BLE scan mode to use, see [context-apis docs API](https://github.com/GeoTecINIT/nativescript-context-apis#api) section on BLE. Defaults to `balanced` mode |
 | `iBeaconUuids` | `Array<String>`                                                              | Filters the scan results to only show devices broadcasting one of the given iBeacon UUID(s)                                                                    |
 
 Task event output:
 
-| Name              | Payload                       | Description                                                        |
-|-------------------|-------------------------------|--------------------------------------------------------------------|
-| `bleScanAcquired` | [`Array<BleScan>`](#ble-scan) | Indicates that one or more new ble scan results have been acquired |
+| Name              | Payload                      | Description                                                        |
+|-------------------|------------------------------|--------------------------------------------------------------------|
+| `bleScanAcquired` | [`Array<BleScan>`](#blescan) | Indicates that one or more new BLE scan results have been acquired |
 
 > Example usage in the application task graph:
 > ```ts
@@ -109,7 +109,7 @@ Task event output:
 
 ### Records
 
-#### Ble scan
+#### BleScan
 
 | Property    | Type                                                                                  | Description                                                                                                                                                                                                                 |
 |-------------|---------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
