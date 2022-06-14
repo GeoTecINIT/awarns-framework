@@ -60,6 +60,7 @@ Task event output:
 > 
 > on('bleScanAcquired', run('writeRecords'));
 >```
+> **Note**: To use the `writeRecords` task, the persistence package must be installed and configured. See [persistence package docs](../persistence/README.md).
 
 #### Acquire ble scans in batch
 
@@ -104,6 +105,7 @@ Task event output:
 > 
 > on('bleScanAcquired', run('writeRecords'));
 >```
+> **Note**: To use the `writeRecords` task, the persistence package must be installed and configured. See [persistence package docs](../persistence/README.md).
 
 ### Records
 
