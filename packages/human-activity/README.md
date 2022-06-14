@@ -2,7 +2,7 @@
 ![npm (scoped)](https://img.shields.io/npm/v/@awarns/human-activity)
 ![npm](https://img.shields.io/npm/dm/@awarns/human-activity)
 
-This module allows to detect and react to the changes in the activity being performed by the user (or object) carrying the phone: standing still, walking, running, riding a bicycle or being inside a vehicle. Depending on the granularity of the detection mechanism being used it can detect user stand-ups too.
+This module allows to detect and react to the changes in the activity being performed by the user (or object) carrying the phone: standing still, walking, running, riding a bicycle or being inside a vehicle. Depending on the granularity of the detection mechanism being used it can even detect user stand-ups too.
 
 This plugin acts as a wrapper on top of the [nativescript-context-apis](https://github.com/GeoTecINIT/nativescript-context-apis) plugin (from the same authors), offering human activity change detection tasks. Obtain human activity updates even in background.
 
@@ -23,14 +23,14 @@ This plugin requires you to register its loader during the framework initializat
 ```ts
 // ... platform imports
 import { awarns } from '@awarns/core';
-import { appTasks } from '../tasks';
-import { appTaskGraph } from '../graph';
+import { demoTasks } from '../tasks';
+import { demoTaskGraph } from '../graph';
 import { registerHumanActivityPlugin } from '@awarns/human-activity';
 
 awarns
   .init(
-    appTasks,
-    appTaskGraph,
+    demoTasks,
+    demoTaskGraph,
     [
       registerHumanActivityPlugin(),
     ]
@@ -48,7 +48,7 @@ Plugin loader parameters:
 
 > **Task name**: `startDetectingCoarseHumanActivityChanges`
 >
-> **Description**: Allows to start detecting human activity changes at a coarse granularity level. This level of granularity means that activity changes will be reported no sooner than 1 minute after the activity started. In contrast, the detection mechanism will be more robust against in-between activity stops. This means, for example, that if the user is walking and stops for a few seconds, or is inside a vehicle and stops at traffic light, these subtle changes won't be detected at this change detection level.
+> **Description**: Allows to start detecting human activity changes at a coarse granularity level. This level of granularity means that activity changes will be reported no sooner than 1 minute after the activity started. In contrast, the detection mechanism will be more robust against in-between activity stops. This means, for example, that if the user is walking and stops for a few seconds, or is inside a vehicle and stops at traffic light, these subtle changes won't be detected at this granularity level.
 
 > **Task name**: `stopDetectingCoarseHumanActivityChanges`
 >
@@ -117,7 +117,7 @@ Task event output:
 
 > **Task name**: `startDetectingIntermediateHumanActivityChanges`
 >
-> **Description**: Allows to start detecting human activity changes at an intermediate granularity level. This level of granularity means that activity changes will be reported as soon as they are detected. In contrast, the detection mechanism will be more sensitive to in-between activity stops. This means, for example, that if the user is walking and stops for a few seconds, or is inside a vehicle and stops at traffic light, these subtle changes will be detected as transitions to being still. Due to this extra of granularity, this activity detection mechanism is able to detect user stand up actions (phone tilts abruptly).
+> **Description**: Allows to start detecting human activity changes at an intermediate granularity level. This level of granularity means that activity changes will be reported as soon as they are detected. In contrast, the detection mechanism will be more sensitive to in-between activity stops. This means, for example, that if the user is walking and stops for a few seconds, or is inside a vehicle and stops at traffic light, these subtle changes will be detected as transitions to becoming still. Due to this extra of granularity, this activity detection mechanism is able to detect user stand-up actions (phone tilts abruptly).
 
 > **Task name**: `stopDetectingIntermediateHumanActivityChanges`
 >
@@ -198,7 +198,7 @@ Task event output:
 | `id`         | `string`                                                                       | Record's unique id                                                                                                                                                                                                                         |
 | `type`       | `string`                                                                       | Always `human-activity`                                                                                                                                                                                                                    |
 | `change`     | `Change`                                                                       | Can be either `start` or `end`. Indicates if the change reflects the activity starting or finishing                                                                                                                                        |
-| `timestamp`  | `Date`                                                                         | The local time when the scan was completed                                                                                                                                                                                                 |
+| `timestamp`  | `Date`                                                                         | The local time when the change was detected                                                                                                                                                                                                |
 | `activity`   | [`HumanActivity`](https://github.com/GeoTecINIT/nativescript-context-apis#api) | The activity which was detected. Can be any of the ones supported by the context-apis plugin (see [context-apis API docs](https://github.com/GeoTecINIT/nativescript-context-apis#api) section on human activity, to obtain the full list) |
 | `confidence` | `number`                                                                       | Probability value of the detected action reported by the activity detection mechanism. Ranges from 0 to 1. This field will contain an undefined value in records reported by the coarse detection mechanism                                |
 
