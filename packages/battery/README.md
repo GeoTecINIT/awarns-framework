@@ -12,7 +12,7 @@ ns plugin add @awarns/battery
 
 ## Usage
 
-After installing and setting up this plugin, you'll have access to a task that allows to acquire the current phone's battery level and the battery level record that it will output on demand.
+After installing and setting up this plugin, you'll have access to a task that allows to acquire the current phone's battery level and the [BatteryLevel](#batterylevel) record that it will output on demand.
 
 ### Tasks
 
@@ -41,9 +41,9 @@ Task generator parameters:
 
 Task event output:
 
-| Name                   | Payload                          | Description                                                            |
-|------------------------|----------------------------------|------------------------------------------------------------------------|
-| `batteryLevelAcquired` | [`BatteryLevel`](#battery-level) | Indicates that a new battery level snapshot (record) has been acquired |
+| Name                   | Payload                         | Description                                                            |
+|------------------------|---------------------------------|------------------------------------------------------------------------|
+| `batteryLevelAcquired` | [`BatteryLevel`](#batterylevel) | Indicates that a new battery level snapshot (record) has been acquired |
 
 > Example usage in the application task graph:
 > ```ts
@@ -57,7 +57,7 @@ Task event output:
 
 ### Records
 
-#### Battery level
+#### BatteryLevel
 
 | Property    | Type     | Description                                                |
 |-------------|----------|------------------------------------------------------------|
