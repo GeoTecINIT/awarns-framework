@@ -2,7 +2,7 @@
 ![npm (scoped)](https://img.shields.io/npm/v/@awarns/human-activity)
 ![npm](https://img.shields.io/npm/dm/@awarns/human-activity)
 
-This module allows to detect and react to the changes in the activity being performed by the user (or object) carrying the phone: standing still, walking, running, riding a bicycle or being inside a vehicle. Depending on the granularity of the detection mechanism being used it can even detect user stand-ups too.
+This module allows to detect and react to the changes in the activity being performed by the user (or object) carrying the phone: standing still, walking, running, riding a bicycle or being inside a vehicle. Depending on the granularity of the detection mechanism being used, it can even detect user stand-ups too.
 
 This plugin acts as a wrapper on top of the [nativescript-context-apis](https://github.com/GeoTecINIT/nativescript-context-apis) plugin (from the same authors), offering human activity change detection tasks. Obtain human activity updates even in background.
 
