@@ -13,7 +13,7 @@ ns plugin add @awarns/wifi
 ```
 ## Usage
 
-After installing and setting up this plugin, you'll have access to two different tasks to scan for Wi-Fi APs seen nearby. The result, will be a [WifiScan](#wifi-scan) record, described below.
+After installing and setting up this plugin, you'll have access to two different tasks to scan for Wi-Fi APs seen nearby. The result, will be a [WifiScan](#wifiscan) record, described below.
 
 ### Tasks
 
@@ -42,9 +42,9 @@ Task generator parameters:
 
 Task event output:
 
-| Name               | Payload                  | Description                                              |
-|--------------------|--------------------------|----------------------------------------------------------|
-| `wifiScanAcquired` | [`WifiScan`](#wifi-scan) | Indicates that a new Wi-Fi scan result has been acquired |
+| Name               | Payload                 | Description                                              |
+|--------------------|-------------------------|----------------------------------------------------------|
+| `wifiScanAcquired` | [`WifiScan`](#wifiscan) | Indicates that a new Wi-Fi scan result has been acquired |
 
 > Example usage in the application task graph:
 > ```ts
@@ -86,7 +86,7 @@ Task event output:
 
 | Name               | Payload                        | Description                                                          |
 |--------------------|--------------------------------|----------------------------------------------------------------------|
-| `wifiScanAcquired` | [`Array<WifiScan>`](#ble-scan) | Indicates that one or more new Wi-Fi scan results have been acquired |
+| `wifiScanAcquired` | [`Array<WifiScan>`](#wifiscan) | Indicates that one or more new Wi-Fi scan results have been acquired |
 
 > Example usage in the application task graph:
 > ```ts
