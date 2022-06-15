@@ -21,6 +21,8 @@ After installing and setting up this plugin, you'll have access to a task that a
 > **Task name**: `acquirePhoneBatteryLevel`
 > 
 > **Description**: Acquires phone's current battery level
+> 
+> **Execution requirements:** None
 
 To register this task for its use, you just need to import it and call its generator function inside your application's task list:
 

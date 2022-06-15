@@ -22,6 +22,8 @@ After installing and setting up this plugin, you'll have access to two different
 > **Task name**: `acquirePhoneBleScan`
 >
 > **Description**: Allows to perform single BLE scans for a given amount of time
+>
+> **Execution requirements:** Fine location permission, bluetooth scanning permission, active location services and active bluetooth adapter. The task will automatically request what is missing during framework's preparation.
 
 To register this task for its use, you just need to import it and call its generator function inside your application's task list:
 
@@ -67,6 +69,8 @@ Task event output:
 > **Task name**: `acquireMultiplePhoneBleScan`
 > 
 > **Description**: Allows to repeatedly perform BLE scans. The duration of each scan can be controlled. Scans will happen for as long as there is execution time remaining (3 minutes max. or shortly before the next time-scheduled task execution, whatever occurs earlier).
+>
+> **Execution requirements:** Fine location permission, bluetooth scanning permission, active location services and active bluetooth adapter. The task will automatically request what is missing during framework's preparation.
 
 To register this task for its use, you just need to import it and call its generator function inside your application's task list:
 

@@ -23,6 +23,8 @@ After installing and setting up this plugin, you'll have access to two different
 > **Task name**: `acquirePhoneGeolocation`
 >
 > **Description**: Allows to acquire the most accurate location available, obtained from the phone, among a few, on demand. The amount of locations to be collected and decide on is configurable.
+>
+> **Execution requirements:** Fine location permission and active location services. The task will automatically request what is missing during framework's preparation.
 
 To register this task for its use, you just need to import it and call its generator function inside your application's task list:
 
@@ -65,6 +67,8 @@ Task event output:
 > **Task name**: `acquireMultiplePhoneGeolocation`
 >
 > **Description**: Allows to repeatedly acquire phone locations. Similarly to the single acquisition task, each reported value can be chosen among a few acquired values. Scans will happen for as long as there is execution time remaining (3 minutes max. or shortly before the next time-scheduled task execution, whatever occurs earlier).
+>
+> **Execution requirements:** Fine location permission and active location services. The task will automatically request what is missing during framework's preparation.
 
 To register this task for its use, you just need to import it and call its generator function inside your application's task list:
 

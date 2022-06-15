@@ -49,10 +49,14 @@ Plugin loader parameters:
 > **Task name**: `startDetectingCoarseHumanActivityChanges`
 >
 > **Description**: Allows to start detecting human activity changes at a coarse granularity level. This level of granularity means that activity changes will be reported no sooner than 1 minute after the activity started. In contrast, the detection mechanism will be more robust against in-between activity stops. This means, for example, that if the user is walking and stops for a few seconds, or is inside a vehicle and stops at traffic light, these subtle changes won't be detected at this granularity level.
+>
+> **Execution requirements:** Physical activity permission. The task will automatically request what is missing during framework's preparation.
 
 > **Task name**: `stopDetectingCoarseHumanActivityChanges`
 >
 > **Description**: The complement to the previous task. Allows to stop receiving coarse activity updates on demand.
+>
+> **Execution requirements:** Physical activity permission. The task will automatically request what is missing during framework's preparation.
 
 To register these tasks for their use, you just need to import them and call their generator functions inside your application's task list:
 
@@ -118,10 +122,14 @@ Task event output:
 > **Task name**: `startDetectingIntermediateHumanActivityChanges`
 >
 > **Description**: Allows to start detecting human activity changes at an intermediate granularity level. This level of granularity means that activity changes will be reported as soon as they are detected. In contrast, the detection mechanism will be more sensitive to in-between activity stops. This means, for example, that if the user is walking and stops for a few seconds, or is inside a vehicle and stops at traffic light, these subtle changes will be detected as transitions to becoming still. Due to this extra of granularity, this activity detection mechanism is able to detect user stand-up actions (phone tilts abruptly).
+>
+> **Execution requirements:** Physical activity permission. The task will automatically request what is missing during framework's preparation.
 
 > **Task name**: `stopDetectingIntermediateHumanActivityChanges`
 >
 > **Description**: The complement to the previous task. Allows to stop receiving intermediate activity updates on demand.
+>
+> **Execution requirements:** Physical activity permission. The task will automatically request what is missing during framework's preparation.
 
 To register these tasks for their use, you just need to import them and call their generator functions inside your application's task list:
 

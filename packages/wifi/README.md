@@ -22,6 +22,8 @@ After installing and setting up this plugin, you'll have access to two different
 > **Task name**: `acquirePhoneWifiScan`
 >
 > **Description**: Allows to perform a single Wi-Fi scan for a given amount of time
+>
+> **Execution requirements:** Fine location permission and active Wi-Fi radio. The task will automatically request what is missing during framework's preparation.
 
 To register this task for its use, you just need to import it and call its generator function inside your application's task list:
 
@@ -64,6 +66,8 @@ Task event output:
 > **Task name**: `acquireMultiplePhoneWifiScan`
 >
 > **Description**: Allows to repeatedly perform Wi-Fi scans. Scans will happen for as long as there is execution time remaining (3 minutes max. or shortly before the next time-scheduled task execution, whatever occurs earlier).
+>
+> **Execution requirements:** Fine location permission and active Wi-Fi radio. The task will automatically request what is missing during framework's preparation.
 
 To register this task for its use, you just need to import it and call its generator function inside your application's task list:
 
