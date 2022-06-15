@@ -4,6 +4,8 @@
 
 This module allows to deliver notifications to the user when an event occurs. It also defines some primitives (in form of framework records) to hold possible reactions and interactions of the user with the notification.
 
+This plugin acs as a wrapper of EddyVerbruggen's [NativeScript Local Notifications](https://github.com/NativeScript/plugins/tree/main/packages/local-notifications) plugin, adapted to work with the AwarNS Framework task model.
+
 Install the plugin using the following command line instruction:
 
 ```bash
