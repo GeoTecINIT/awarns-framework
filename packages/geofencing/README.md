@@ -52,6 +52,8 @@ The `areasOfInterest` singleton object is the main plugin entrypoint. Through it
 > **Task name**: `checkAreaOfInterestProximity`
 >
 > **Description**: Given one or more locations included in the payload of the event invoking the task, this task checks their proximity towards a set of registered areas of interest
+>
+> **Execution requirements:** None
 
 To register this task for its use, you just need to import it and call its generator function inside your application's task list:
 
