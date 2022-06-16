@@ -543,4 +543,4 @@ export const appTaskGraph = new AppTaskGraph();
 
 And that makes it. With this example, we have seen how it is possible to extend and use many framework features to offer more advanced experiences to our application users.
 
-> **Note:** This example could be greatly simplified, by reducing it to just the persistence mechanism and the definition of one task to do all the work. We have decided to show the extended version for you to see how easy it can be to create decoupled functionalities using the AwarNS Framework. And also the hidden power of extending the Record class.
+> **Note**: This example could be greatly simplified, by reducing it to just the persistence mechanism and the definition of one task to do all the work. We have decided to show the extended version for you to see how easy it can be to create decoupled functionalities using the AwarNS Framework. And also the hidden power of extending the Record class.
