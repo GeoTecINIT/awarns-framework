@@ -57,8 +57,8 @@ export class TimeSeriesSyncedStore<T extends TimeSeriesEntity, LS extends LocalT
     await this.localStore.clearOld(this.clearOldThreshold);
   }
 
-  getAll(): Promise<Array<T>> {
-    return this.localStore.getAll();
+  getAll(reverseOrder?: boolean, limitSize?: number): Promise<Array<T>> {
+    return this.localStore.getAll(reverseOrder, limitSize);
   }
 
   list(size?: number): Observable<Array<T>> {
