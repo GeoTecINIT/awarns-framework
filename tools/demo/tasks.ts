@@ -1,4 +1,4 @@
-import { Task } from 'nativescript-task-dispatcher/tasks';
+import { Task } from '@awarns/core/tasks';
 import { makeTraceable, trackEventTask } from '@awarns/tracing';
 import {
   startDetectingCoarseHumanActivityChangesTask,
