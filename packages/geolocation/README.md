@@ -44,11 +44,9 @@ Task generator parameters:
 | `bestOf`       | `number`        | The number of locations to be collected, to pick the one that is the most accurate. The more locations being requested, the more the task will take to run. The default value is `3` |
 | `timeout`      | `number`        | Limit the maximum time to be spent collecting locations, in milliseconds. The default value is `10000` (10s).                                                                        |
 
-Task event output:
+Task output events:
 
-| Name                 | Payload                       | Description                                          |
-|----------------------|-------------------------------|------------------------------------------------------|
-| `gelocationAcquired` | [`Geolocation`](#geolocation) | Indicates that a new GNSS location has been acquired |
+- [`geolocationAcquired`](#events)
 
 > Example usage in the application task graph:
 > ```ts
@@ -82,11 +80,9 @@ Task generator parameters:
 | `bestOf`       | `number`        | The number of locations to be collected for each final record being reported, to pick the one that is the most accurate from a subset. The more locations being requested, the lower total amount of locations being reported. This means, in the hypothetical case where there's time to collect 6 locations, with a `bestOf` value of 1, the 6 locations will be reported, whereas with a `bestOf` value of 3, in the same situation, only 2 locations will be reported, being these 2 the most accurate among the 2 subsets of 3 locations. The default value is `1` (each location being collected ends being reported) |
 | `timeout`      | `number`        | Limit the maximum time to be spent collecting each location, in milliseconds. The default value is `15000` (15s).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 
-Task event output:
+Task output events:
 
-| Name                  | Payload                              | Description                                                      |
-|-----------------------|--------------------------------------|------------------------------------------------------------------|
-| `geolocationAcquired` | [`Array<Geolocation>`](#geolocation) | Indicates that one or more new GNSS locations have been acquired |
+- [`geolocationAcquired`](#events)
 
 > Example usage in the application task graph:
 > ```ts
@@ -100,6 +96,13 @@ Task event output:
 > on('geolocationAcquired', run('writeRecords'));
 >```
 > **Note**: To use the `writeRecords` task, the persistence package must be installed and configured. See [persistence package docs](../persistence/README.md).
+
+### Events
+
+| Name                  | Payload                                                 | Description                                                      |
+|-----------------------|---------------------------------------------------------|------------------------------------------------------------------|
+| `geolocationAcquired` | [`Geolocation &vert; Array<Geolocation>`](#geolocation) | Indicates that one or more new GNSS locations have been acquired |
+
 
 ### Records
 

@@ -71,15 +71,13 @@ Task generator parameters:
 
 > The task generator takes no parameters.
 
-Task event output:
+Task output events:
 
-| Name                                   | Payload                                            | Description                                                                                                                                                                                                                                               |
-|----------------------------------------|----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `movedCloseToAreaOfInterest`           | [`Array<AoIProximityChange>`](#aoiproximitychange) | Detected that one or more of the given locations represent an approximation towards the surroundings of one or more registered areas of interest. The approximation radius can be configured in the application workflow. See an example below this table |
-| `movedInsideAreaOfInterest`            | [`Array<AoIProximityChange>`](#aoiproximitychange) | Detected that one or more of the given locations have just fallen between the center of one or more registered areas and their radii                                                                                                                      |
-| `movedOutsideAreaOfInterest`           | [`Array<AoIProximityChange>`](#aoiproximitychange) | Detected that one or more of the given locations have just fallen outside one or more area radii, but are still within their approximation radii. This event won't fire while there's still a location that falls inside an area                          |
-| `movedAwayFromAreaOfInterest`          | [`Array<AoIProximityChange>`](#aoiproximitychange) | Detected that one or more of the given locations have just fallen completely outside one or more area approximation radii. This event won't fire while there's still a location that falls inside the approximation radius of an area                     |
-| `checkAreaOfInterestProximityFinished` | None                                               | The task finished analyzing the given location(s) and no proximity change was detected                                                                                                                                                                    |
+- [`checkAreaOfInterestProximityFinished`](#events) _(default, no content)_
+- [`movedCloseToAreaOfInterest`](#events)
+- [`movedInsideAreaOfInterest`](#events)
+- [`movedOutsideAreaOfInterest`](#events)
+- [`movedAwayFromAreaOfInterest`](#events)
 
 > Example usage in the application task graph:
 > ```ts
@@ -104,6 +102,16 @@ Task event output:
 > on('movedAwayFromAreaOfInterest', run('writeRecords'));
 > ```
 > **Note**: To use the `acquirePhoneGeolocation` and `writeRecords` tasks, the geolocation and persistence packages must be installed and configured. See [geolocation package](../geolocation/README.md) and [persistence package](../persistence/README.md) docs.
+
+### Events
+
+| Name                                   | Payload                                            | Description                                                                                                                                                                                                                                               |
+|----------------------------------------|----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `movedCloseToAreaOfInterest`           | [`Array<AoIProximityChange>`](#aoiproximitychange) | Detected that one or more of the given locations represent an approximation towards the surroundings of one or more registered areas of interest. The approximation radius can be configured in the application workflow. See an example below this table |
+| `movedInsideAreaOfInterest`            | [`Array<AoIProximityChange>`](#aoiproximitychange) | Detected that one or more of the given locations have just fallen between the center of one or more registered areas and their radii                                                                                                                      |
+| `movedOutsideAreaOfInterest`           | [`Array<AoIProximityChange>`](#aoiproximitychange) | Detected that one or more of the given locations have just fallen outside one or more area radii, but are still within their approximation radii. This event won't fire while there's still a location that falls inside an area                          |
+| `movedAwayFromAreaOfInterest`          | [`Array<AoIProximityChange>`](#aoiproximitychange) | Detected that one or more of the given locations have just fallen completely outside one or more area approximation radii. This event won't fire while there's still a location that falls inside the approximation radius of an area                     |
+
 
 ### Records
 

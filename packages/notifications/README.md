@@ -123,16 +123,14 @@ Task generator parameters:
 
 > The task generator takes no parameters.
 
-Task event output:
+Task output events:
 
 > This task doesn't produce significant events after it completes its execution, aside from the regular `{task-name}Finished` event: `sendNotificationFinished`.
 >
 > However, once it has finished running, relevant events will be emitted by the internal listeners. These are listed below.
 
-| Name                    | Payload                               | Description                                                                                                                                                     |
-|-------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `notificationTapped`    | [NotificationTapRecord](#records)     | Emitted once a notification has been tapped by the user via the system's tray. This event is only emitted if a notification tap callback has been set up        |
-| `notificationDiscarded` | [NotificationDiscardRecord](#records) | Emitted once a notification has been discarded by the user via the system's tray. This event is only emitted if a notification discard callback has been set up |
+- [`notificationTapped`](#events)
+- [`notificationDiscarded`](#events)
 
 > Example usage in the application task graph:
 > ```ts
@@ -179,16 +177,14 @@ Task generator parameters:
 
 > The task generator takes no parameters.
 
-Task event output:
+Task output events:
 
 > This task doesn't produce significant events after it completes its execution, aside from the regular `{task-name}Finished` event: `sendNotificationFinished`.
 >
 > However, once it has finished running, relevant events will be emitted by the internal listeners. These are listed below.
 
-| Name                    | Payload                               | Description                                                                                                                                                     |
-|-------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `notificationTapped`    | [NotificationTapRecord](#records)     | Emitted once a notification has been tapped by the user via the system's tray. This event is only emitted if a notification tap callback has been set up        |
-| `notificationDiscarded` | [NotificationDiscardRecord](#records) | Emitted once a notification has been discarded by the user via the system's tray. This event is only emitted if a notification discard callback has been set up |
+- [`notificationTapped`](#events)
+- [`notificationDiscarded`](#events)
 
 > Example usage in the application task graph:
 > ```ts
@@ -224,6 +220,13 @@ Task event output:
 > on('notificationCleared', run('writeRecords'));
 > ```
 > **Note**: To use the `writeRecords` task, the persistence package must be installed and configured. See [persistence package docs](../persistence/README.md).
+
+### Events
+
+| Name                    | Payload                               | Description                                                                                                                                                     |
+|-------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `notificationTapped`    | [NotificationTapRecord](#records)     | Emitted once a notification has been tapped by the user via the system's tray. This event is only emitted if a notification tap callback has been set up        |
+| `notificationDiscarded` | [NotificationDiscardRecord](#records) | Emitted once a notification has been discarded by the user via the system's tray. This event is only emitted if a notification discard callback has been set up |
 
 
 ### Records
