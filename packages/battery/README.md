@@ -16,23 +16,21 @@ After installing and setting up this plugin, you'll have access to a task that a
 
 ### Tasks
 
-#### Acquire phone's battery level
+| Task name                                                   | Description                            |
+|-------------------------------------------------------------|----------------------------------------|
+| [`acquirePhoneBatteryLevel`](#acquire-phones-battery-level) | Acquires phone's current battery level |
 
-> **Task name**: `acquirePhoneBatteryLevel`
-> 
-> **Description**: Acquires phone's current battery level
-> 
-> **Execution requirements:** None
+#### Acquire phone's battery level
 
 To register this task for its use, you just need to import it and call its generator function inside your application's task list:
 
 ```ts
 import { Task } from '@awarns/core/tasks';
-import { acquireBatteryLevel } from '@awarns/battery';
+import { acquireBatteryLevelTask } from '@awarns/battery';
 
 export const demoTasks: Array<Task> = [
   // ... other tasks
-  acquireBatteryLevel(),
+  acquireBatteryLevelTask(),
   // ...
 ];
 ```

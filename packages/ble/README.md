@@ -17,13 +17,14 @@ After installing and setting up this plugin, you'll have access to two different
 
 ### Tasks
 
-#### Acquire a single BLE scan
+| Task name                                                    | Description                                                                                                                                                                                                                                                |
+|--------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [`acquirePhoneBleScan`](#acquire-a-single-ble-scan)          | Allows to perform single BLE scans for a given amount of time                                                                                                                                                                                              |
+| [`acquireMultiplePhoneBleScan`](#acquire-ble-scans-in-batch) | Allows to repeatedly perform BLE scans. The duration of each scan can be controlled. Scans will happen for as long as there is execution time remaining (3 minutes max. or shortly before the next time-scheduled task execution, whatever occurs earlier) |
 
-> **Task name**: `acquirePhoneBleScan`
->
-> **Description**: Allows to perform single BLE scans for a given amount of time
->
-> **Execution requirements:** Fine location permission, bluetooth scanning permission, active location services and active bluetooth adapter. The task will automatically request what is missing during framework's preparation.
+> **Note**: All the tasks require **fine location permission, bluetooth scanning permission, active location services and active bluetooth adapter** for their execution. Each task will automatically request what is missing during framework's initialization
+
+#### Acquire a single BLE scan
 
 To register this task for its use, you just need to import it and call its generator function inside your application's task list:
 
@@ -65,12 +66,6 @@ Task event output:
 > **Note**: To use the `writeRecords` task, the persistence package must be installed and configured. See [persistence package docs](../persistence/README.md).
 
 #### Acquire BLE scans in batch
-
-> **Task name**: `acquireMultiplePhoneBleScan`
-> 
-> **Description**: Allows to repeatedly perform BLE scans. The duration of each scan can be controlled. Scans will happen for as long as there is execution time remaining (3 minutes max. or shortly before the next time-scheduled task execution, whatever occurs earlier).
->
-> **Execution requirements:** Fine location permission, bluetooth scanning permission, active location services and active bluetooth adapter. The task will automatically request what is missing during framework's preparation.
 
 To register this task for its use, you just need to import it and call its generator function inside your application's task list:
 
