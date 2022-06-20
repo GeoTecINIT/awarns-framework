@@ -35,7 +35,7 @@ Additionally, the core package might be optionally used from your application (o
 
 For the AwarNS framework to work properly, it must be initialized during the application startup. The code must be executed no matter if the application UI is going to be bootstrapped or not. The place to do this is the `app.ts` file inside the application `src` folder (`main.ts` for Angular apps).  
 
-Framework initialization implies multiple aspects: **(1)** determining which built-in and/or custom tasks will be in use, **(2)** defining how these tasks will be invoked by the results of other tasks or isolated application events, **(3)** registering plugins that need to be initialized at application startup and **(4)** configuring behavioural aspects of the framework. This can be seen in more detal in the following code excerpt adapted from the demo application source code:
+Framework initialization implies multiple aspects: **(1)** determining which built-in and/or custom tasks will be in use, **(2)** defining how these tasks will be invoked by the results of other tasks or isolated application events, **(3)** registering plugins that need to be initialized at application startup and **(4)** configuring behavioural aspects of the framework. This can be seen in more detail in the following code excerpt adapted from the demo application source code:
 
 ```ts
 // app.ts / main.ts
@@ -97,15 +97,15 @@ In the application UI you can interact with the framework to check if certain ta
 
 | Name                                        | Return type            | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 |---------------------------------------------|------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `isReady()`                                 | `Promise<boolean>`     | Allows to check (and wait for) framework initialization status. It also iterates over your app's tasks to check if they are [ready](https://github.com/GeoTecINIT/nativescript-task-dispatcher/blob/master/src/internal/tasks/task.ts#L107) for their execution. You should call this method before emitting any external event. The promise is stored internally, it is safe to call this method as many times as needed.                                                                                |
+| `isReady()`                                 | `Promise<boolean>`     | Allows to check (and wait for) framework initialization status. It also iterates over your app's tasks to check if they are ready for their execution, by calling their `checkIfCanRunMethod()`. You should call this method before emitting any external event. The promise is stored internally, it is safe to call this method as many times as needed.                                                                                                                                                |
 | `tasksNotReady` _(property)_                | `Promise<Array<Task>>` | Method to be called if isReady() returns false. Here you can check the tasks that did not pass the ready check. Useful in case you want to customize te UI before calling prepare(). For example, to give an explanation to your users of why you are asking their consent                                                                                                                                                                                                                                |
-| `prepare()`                                 | `Promise<void>`        | Method to be called if isReady() returns false. If your app has one or more tasks that have reported not to be ready, it will call their [prepare()](https://github.com/GeoTecINIT/nativescript-task-dispatcher/blob/master/src/internal/tasks/task.ts#L114) method (e.g. to ask for missing permissions or enable disabled capabilities). **WARNING! This method is only meant to be called while the UI is visible.** Follow this guideline to foster the creation of a consistent task ecosystem.      |
+| `prepare()`                                 | `Promise<void>`        | Method to be called if isReady() returns false. If your app has one or more tasks that have reported not to be ready, it will call their `prepare()` method (e.g. to ask for missing permissions or enable disabled capabilities). **WARNING! This method is only meant to be called while the UI is visible.** Follow this guideline to foster the creation of a consistent task ecosystem.                                                                                                              |
 | `emitEvent(name: string, data?: EventData)` | `void`                 | A fire and forget method. Call this method whenever you want to propagate an external event towards the plugin. Dependant tasks will be executed inside a background environment. User can safely navigate to another app, we bootstrap an independent background execution context to ensure it completes its life-cycle (we guarantee a maximum of 3 minutes execution time). Optionally, You can provide an additional key-value data dictionary that will be delivered to the task handling the event |
 
 
 ### Extending the [Record](internal/entities/record.ts) class
 
-The Record class is central to the AwarNS framework. Extending it in your entities means that they will speak the framework's common language regarding data sharing. This will greatly simplify certain operations like, for example, persistence and data exporting, to name a few.
+The Record class is central to the AwarNS framework. Extending it in your entities, means that they will speak the framework's common language regarding data sharing. This will greatly simplify certain operations like, for example, persistence and data exporting, to name a few.
 
 This class is ideal for representing things that change over time. Each children Record class must hold its type, which is a string. This string uniquely identifies each record entity type, required later on, for example, to persist and query each type of entity individually. Records must hold a timestamp too, indicating when they were generated. Optionally, they can state a change, which can be: a start, an end or nothing (no change).
 
@@ -258,7 +258,7 @@ More examples inside this package are the [QuestionnaireAnswers](../notification
 
 </details>
 
-Similarly, additional examples exist in the Wi-Fi ([WifiScan](../wifi/internal/scan.ts)), the BLE ([BleScan](../ble/internal/scan.ts)) and the battery ([BatteryLevel](../battery/internal/battery-level.ts)) packages. And in the framework README too (see [Detailed usage and extension](../../README.md#detailed-usage-and-extension) section).
+Similarly, additional examples exist in the Wi-Fi ([WifiScan](../wifi/internal/scan.ts)), the BLE ([BleScan](../ble/internal/scan.ts)) and the battery ([BatteryLevel](../battery/internal/battery-level.ts)) packages. And in the framework README too (see [Detailed usage and extension](../../TUTORIALS.md#detailed-usage-and-extension) section).
 
 ### Developing your own data providers
 
@@ -974,7 +974,7 @@ Inside the `@awarns/core/utils/uuid` folder, you'll find a function with the fol
 
 #### Data serialization
 
-In certain cases, you might need to convert complex object structures to strings and get back the original object somewhere else. In other cases, you might simply want to convert objects with a mix of properties containing plain objects and class instances.
+In certain cases, you might need to convert complex object structures to a string, and get back the original object somewhere else. In other cases, you might simply want to convert objects with a mix of properties containing plain objects and class instances.
 
 For these situations, you can use the built-in serialization functions that we extensively use throughout the framework, and that you can find inside the `@awarns/core/utils/serialization` folder:
 
