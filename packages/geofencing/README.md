@@ -2,7 +2,7 @@
 ![npm (scoped)](https://img.shields.io/npm/v/@awarns/geofencing)
 ![npm](https://img.shields.io/npm/dm/@awarns/geofencing)
 
-This module allows to perform basic geofencing analysis based on the locations obtained by the tasks declared in the [@awarns/geolocation](../geolocation/README.md) package. It is also compatible with any other custom entity matching the [`GeolocationLike`](https://github.com/GeoTecINIT/nativescript-context-apis/blob/6368f3fc480ea476c7dd39279cf4eea3d4410786/src/internal/geolocation/geolocation.ts#L36-L45) interface (for example, an entity produced by a custom indoor positioning system). 
+This module allows to perform basic geofencing analysis based on the locations obtained by the tasks declared in the [@awarns/geolocation](../geolocation) package. It is also compatible with any other custom entity matching the [`GeolocationLike`](https://github.com/GeoTecINIT/nativescript-context-apis/blob/6368f3fc480ea476c7dd39279cf4eea3d4410786/src/internal/geolocation/geolocation.ts#L36-L45) interface (for example, an entity produced by a custom indoor positioning system). 
 
 The geofencing mechanism inside this package allows to detect multiple degrees of nearness towards the registered areas of interest.
 
@@ -25,13 +25,13 @@ After installing and configuring this plugin, you'll be granted with two interac
 
 The `areasOfInterest` singleton object is the main plugin entrypoint. Through it, you can set up and manage areas of interest. This is the complete API:
 
-| Method                                | Return type                         | Description                                                                                                                                                                        |
-|---------------------------------------|-------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `insert(aois: Array<AreaOfInterest>)` | `Promise<void>`                     | Inserts the given list of areas of interest into the local database. More details on the [AreaOfInterest](#areaofinterest) interface right after this table                        |
-| `getById(id: string)`                 | `Promise<AreaOfInterest>`           | Allows to retrieve a stored area of interest by its id                                                                                                                             |
-| `getAll()`                            | `Promise<Array<AreaOfInterest>>`    | Allows to retrieve all the stored areas of interest at once                                                                                                                        |
-| `list()`                              | `Observable<Array<AreaOfInterest>>` | Allows to observe changes in all the stored areas of interest. It is recommended to install the [´RxJS´](https://rxjs.dev/) package too, to operate with the output of this method |
-| `deleteAll()`                         | `Promise<void>`                     | Allows to clear all the stored areas of interest at once                                                                                                                           |
+| Method                                | Return type                         | Description                                                                                                                                                                      |
+|---------------------------------------|-------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `insert(aois: Array<AreaOfInterest>)` | `Promise<void>`                     | Inserts the given list of areas of interest into the local database. More details on the [AreaOfInterest](#areaofinterest) interface right after this table                      |
+| `getById(id: string)`                 | `Promise<AreaOfInterest>`           | Allows to retrieve a stored area of interest by its id                                                                                                                           |
+| `getAll()`                            | `Promise<Array<AreaOfInterest>>`    | Allows to retrieve all the stored areas of interest at once                                                                                                                      |
+| `list()`                              | `Observable<Array<AreaOfInterest>>` | Allows to observe changes in all the stored areas of interest. It is recommended to install the [RxJS](https://rxjs.dev/) package too, to operate with the output of this method |
+| `deleteAll()`                         | `Promise<void>`                     | Allows to clear all the stored areas of interest at once                                                                                                                         |
 
 #### AreaOfInterest
 
