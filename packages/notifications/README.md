@@ -17,7 +17,7 @@ ns plugin add @awarns/notifications
 After installing and configuring this plugin, you'll be granted with two interaction mechanisms to work with it:
 
 1. **The plugin API**. Through it, you'll be able to manage the notifications which have been delivered and the possible reactions to them.
-2. **The notification delivery tasks**, which allow to locally display notifications to your users using system's services. Users can tap or discard the notifications. The plugin comes with specific records for direct reactions: the [NotificationTap](#notificationtaprecord) and the [NotificationDiscard](#notificationdiscardrecord). It also comes with definitions of [records](#records) for more specific notification tap actions.
+2. **The notification delivery tasks**, which allow to locally display notifications to your users using system's services. Users can tap or discard the notifications. The plugin comes with specific records for direct reactions: the [NotificationTap](#records) and the [NotificationDiscard](#records). It also comes with definitions of [records](#records) for more specific notification tap actions.
 
 ### Setup
 
@@ -64,10 +64,10 @@ The `notificationsManager` singleton object allows to manage reactions to notifi
 
 The `notifications` singleton object allows to access the notifications that have been delivered but not yet handled / read. It offers the following actions:
 
-| Method            | Return type                         | Description                                                                                                                                    |
-|-------------------|-------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
-| `list()`          | `Observable<Array<Notification>>`   | Allows to observe changes in all the unread notifications. More details on the [Notification](#notification) interface, right after this table |
-| `get(id: string)` | `Promise<Notification>`             | Allows to retrieve a stored notification by its id                                                                                             |
+| Method            | Return type                         | Description                                                                                                                                                                                                                                       |
+|-------------------|-------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `list()`          | `Observable<Array<Notification>>`   | Allows to observe changes in all the unread notifications. More details on the [Notification](#notification) interface, right after this table. It is recommended to install [RxJS](https://rxjs.dev/), to operate with the output of this method |
+| `get(id: string)` | `Promise<Notification>`             | Allows to retrieve a stored notification by its id                                                                                                                                                                                                |
 
 #### Notification
 
@@ -89,13 +89,13 @@ The `notifications` singleton object allows to access the notifications that hav
 
 #### TapActionType
 
-| Option              | Description                                                                                                                                                                         |
-|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `OPEN_APP`          | Default action, when none is specified. It just opens the app. The notification tap callback does not get invoked when this action type is provided                                 |
-| `OPEN_CONTENT`      | Can be used to indicate that the app must display some content for the user to see it. Check out the related [UserReadContent](#userreadcontent) record type                        |
-| `DELIVER_QUESTIONS` | Can be used to indicate that the app must deliver some questions for the user to answer. Check out the related [QuestionnaireAnswers](#questionnaireanswers) record type            |
-| `ASK_FEEDBACK`      | Can be used to indicate that the app must deliver some quick feedback for the user to answer (single question). Check out the related [UserFeedback](#userfeedback) record type     |
-| `ASK_CONFIRMATION`  | Can be used to indicate that the app must deliver some yes/no confirmation question for the user to answer. Check out the related [UserConfirmation](#userconfirmation) record type |
+| Option              | Description                                                                                                                                                                |
+|---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `OPEN_APP`          | Default action, when none is specified. It just opens the app. The notification tap callback does not get invoked when this action type is provided                        |
+| `OPEN_CONTENT`      | Can be used to indicate that the app must display some content for the user to see it. Check out the related [UserReadContent](#records) record type                       |
+| `DELIVER_QUESTIONS` | Can be used to indicate that the app must deliver some questions for the user to answer. Check out the related [QuestionnaireAnswers](#records) record type                |
+| `ASK_FEEDBACK`      | Can be used to indicate that the app must deliver some quick feedback for the user to answer (single question). Check out the related [UserFeedback](#records) record type |
+| `ASK_CONFIRMATION`  | Can be used to indicate that the app must deliver some yes/no confirmation question for the user to answer. Check out the related [UserConfirmation](#records) record type |
 
 ### Tasks
 
@@ -129,10 +129,10 @@ Task event output:
 >
 > However, once it has finished running, relevant events will be emitted by the internal listeners. These are listed below.
 
-| Name                    | Payload                                                 | Description                                                                                                                                                     |
-|-------------------------|---------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `notificationTapped`    | [NotificationTapRecord](#notificationtaprecord)         | Emitted once a notification has been tapped by the user via the system's tray. This event is only emitted if a notification tap callback has been set up        |
-| `notificationDiscarded` | [NotificationDiscardRecord](#notificationdiscardrecord) | Emitted once a notification has been discarded by the user via the system's tray. This event is only emitted if a notification discard callback has been set up |
+| Name                    | Payload                               | Description                                                                                                                                                     |
+|-------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `notificationTapped`    | [NotificationTapRecord](#records)     | Emitted once a notification has been tapped by the user via the system's tray. This event is only emitted if a notification tap callback has been set up        |
+| `notificationDiscarded` | [NotificationDiscardRecord](#records) | Emitted once a notification has been discarded by the user via the system's tray. This event is only emitted if a notification discard callback has been set up |
 
 > Example usage in the application task graph:
 > ```ts
@@ -153,7 +153,7 @@ Task event output:
 > on('notificationTapped', run('writeRecords'));
 > on('notificationCleared', run('writeRecords'));
 > ```
-> **Note**: To use the `writeRecords` task, the persistence packages must be installed and configured. See [persistence package docs](../persistence/README.md).
+> **Note**: To use the `writeRecords` task, the persistence package must be installed and configured. See [persistence package docs](../persistence/README.md).
 
 #### Send a random notification among a set of options
 
@@ -185,10 +185,10 @@ Task event output:
 >
 > However, once it has finished running, relevant events will be emitted by the internal listeners. These are listed below.
 
-| Name                    | Payload                                                 | Description                                                                                                                                                     |
-|-------------------------|---------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `notificationTapped`    | [NotificationTapRecord](#notificationtaprecord)         | Emitted once a notification has been tapped by the user via the system's tray. This event is only emitted if a notification tap callback has been set up        |
-| `notificationDiscarded` | [NotificationDiscardRecord](#notificationdiscardrecord) | Emitted once a notification has been discarded by the user via the system's tray. This event is only emitted if a notification discard callback has been set up |
+| Name                    | Payload                               | Description                                                                                                                                                     |
+|-------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `notificationTapped`    | [NotificationTapRecord](#records)     | Emitted once a notification has been tapped by the user via the system's tray. This event is only emitted if a notification tap callback has been set up        |
+| `notificationDiscarded` | [NotificationDiscardRecord](#records) | Emitted once a notification has been discarded by the user via the system's tray. This event is only emitted if a notification discard callback has been set up |
 
 > Example usage in the application task graph:
 > ```ts
@@ -223,14 +223,18 @@ Task event output:
 > on('notificationTapped', run('writeRecords'));
 > on('notificationCleared', run('writeRecords'));
 > ```
-> **Note**: To use the `writeRecords` task, the persistence packages must be installed and configured. See [persistence package docs](../persistence/README.md).
+> **Note**: To use the `writeRecords` task, the persistence package must be installed and configured. See [persistence package docs](../persistence/README.md).
 
 
 ### Records
 
 This plugin includes records which can be classified into two categories: user reactions and user interactions.
 
-The first category, user reactions, includes the NotificationTapRecord and the NotificationDiscardRecord.
+<details>
+
+<summary>User reactions</summary>
+
+User reactions include the `NotificationTapRecord` and the `NotificationDiscardRecord`.
 
 #### NotificationTapRecord
 
@@ -254,7 +258,13 @@ The first category, user reactions, includes the NotificationTapRecord and the N
 | `notificationId` | `number`                  | The id of the notification that has been discarded                       |
 | `tapAction`      | [`TapAction`](#tapaction) | The tap action of the notification that has been discarded               |
 
-The second category, user interactions, includes the UserReadContent, QuestionnaireAnswers, UserFeedback and UserConfirmation records.
+</details>
+
+<details>
+
+<summary>User interactions</summary>
+
+User interactions include the `UserReadContent`, `QuestionnaireAnswers`, `UserFeedback` and `UserConfirmation` records.
 
 #### UserReadContent
 
@@ -274,15 +284,15 @@ This record is meant to be manually created (and optionally emitted, using `awar
 
 This record is meant to be manually created (and optionally emitted, using `awarns.emit()`), after users submit a set of questions delivered when handling a `DELIVER_QUESTIONS` tap action.
 
-| Property          | Type                                                | Description                                                                                                                                                                                       |
-|-------------------|-----------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `id`              | `string`                                            | Record's unique id                                                                                                                                                                                |
-| `type`            | `string`                                            | Always `questionnaire-answers`                                                                                                                                                                    |
-| `change`          | `Change`                                            | Always `none`. This record is meant to be used after the user finishes answering the delivered questions. The start is reflected by the NotificationTapRecord                                     |
-| `timestamp`       | `Date`                                              | The local time when the questions were answered                                                                                                                                                   |
-| `questionnaireId` | `string`                                            | The id of the questionnaire answered by the user                                                                                                                                                  |
-| `answers`         | [`Array<QuestionnaireAnswer`](#questionnaireanswer) | Includes each of the user's answers to the questions that have been delivered. The table bellow describes each one of the properties in the [QuestionnaireAnswer](#questionnaireanswer) interface |
-| `notificationId`  | `number`                                            | (Optional) The id of the notification that lead to this questionnaire being delivered                                                                                                             |
+| Property          | Type                        | Description                                                                                                                                                               |
+|-------------------|-----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `id`              | `string`                    | Record's unique id                                                                                                                                                        |
+| `type`            | `string`                    | Always `questionnaire-answers`                                                                                                                                            |
+| `change`          | `Change`                    | Always `none`. This record is meant to be used after the user finishes answering the delivered questions. The start is reflected by the NotificationTapRecord             |
+| `timestamp`       | `Date`                      | The local time when the questions were answered                                                                                                                           |
+| `questionnaireId` | `string`                    | The id of the questionnaire answered by the user                                                                                                                          |
+| `answers`         | `Array<QuestionnaireAnswer` | Includes each of the user's answers to the questions that have been delivered. The table bellow describes each one of the properties of the QuestionnaireAnswer interface |
+| `notificationId`  | `number`                    | (Optional) The id of the notification that lead to this questionnaire being delivered                                                                                     |
 
 ##### QuestionnaireAnswer
 
@@ -321,6 +331,9 @@ This record is meant to be manually created (and optionally emitted, using `awar
 | `question`       | `string`  | The confirmation the user has been asked for                                                                                                       |
 | `confirmed`      | `boolean` | Indicates if the user has confirmed the statement or not                                                                                           |
 | `notificationId` | `number`  | (Optional) The id of the notification that lead to this confirmation being requested                                                               |
+
+
+</details>
 
 ## License
 
