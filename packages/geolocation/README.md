@@ -18,11 +18,14 @@ After installing and setting up this plugin, you'll have access to two different
 
 ### Tasks
 
-#### Acquire a single GNSS location
+| Task name                                                             | Description                                                                                                                                                                                                                                                                                                                  |
+|-----------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [`acquirePhoneGeolocation`](#acquire-a-single-gnss-location)          | Allows to acquire the most accurate location available, obtained from the phone, among a few, on demand. The amount of locations to be collected and decide on is configurable                                                                                                                                               |
+| [`acquireMultiplePhoneGeolocation`](#acquire-gnss-locations-in-batch) | Allows to repeatedly acquire phone locations. Similarly to the single acquisition task, each reported value can be chosen among a few acquired values. Scans will happen for as long as there is execution time remaining (3 minutes max. or shortly before the next time-scheduled task execution, whatever occurs earlier) |
 
-> **Task name**: `acquirePhoneGeolocation`
->
-> **Description**: Allows to acquire the most accurate location available, obtained from the phone, among a few, on demand. The amount of locations to be collected and decide on is configurable.
+> **Note**: All the tasks require **fine location permission and active location services** for their execution. Each task will automatically request what is missing during framework's initialization
+
+#### Acquire a single GNSS location
 
 To register this task for its use, you just need to import it and call its generator function inside your application's task list:
 
@@ -61,10 +64,6 @@ Task event output:
 > **Note**: To use the `writeRecords`, task the persistence package must be installed and configured. See [persistence package docs](../persistence/README.md).
 
 #### Acquire GNSS locations in batch
-
-> **Task name**: `acquireMultiplePhoneGeolocation`
->
-> **Description**: Allows to repeatedly acquire phone locations. Similarly to the single acquisition task, each reported value can be chosen among a few acquired values. Scans will happen for as long as there is execution time remaining (3 minutes max. or shortly before the next time-scheduled task execution, whatever occurs earlier).
 
 To register this task for its use, you just need to import it and call its generator function inside your application's task list:
 

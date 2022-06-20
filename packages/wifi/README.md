@@ -17,11 +17,14 @@ After installing and setting up this plugin, you'll have access to two different
 
 ### Tasks
 
-#### Acquire a single Wi-Fi scan
+| Task name                                                       | Description                                                                                                                                                                                                     |
+|-----------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [`acquirePhoneWifiScan`](#acquire-a-single-wi-fi-scan)          | Allows to perform a single Wi-Fi scan for a given amount of time                                                                                                                                                |
+| [`acquireMultiplePhoneWifiScan`](#acquire-wi-fi-scans-in-batch) | Allows to repeatedly perform Wi-Fi scans. Scans will happen for as long as there is execution time remaining (3 minutes max. or shortly before the next time-scheduled task execution, whatever occurs earlier) |
 
-> **Task name**: `acquirePhoneWifiScan`
->
-> **Description**: Allows to perform a single Wi-Fi scan for a given amount of time
+> **Note**: All the tasks require **fine location permission and active Wi-Fi radio** for their execution. Each task will automatically request what is missing during framework's initialization
+
+#### Acquire a single Wi-Fi scan
 
 To register this task for its use, you just need to import it and call its generator function inside your application's task list:
 
@@ -60,10 +63,6 @@ Task event output:
 > **Note**: To use the `writeRecords` task, the persistence package must be installed and configured. See [persistence package docs](../persistence/README.md).
 
 #### Acquire Wi-Fi scans in batch
-
-> **Task name**: `acquireMultiplePhoneWifiScan`
->
-> **Description**: Allows to repeatedly perform Wi-Fi scans. Scans will happen for as long as there is execution time remaining (3 minutes max. or shortly before the next time-scheduled task execution, whatever occurs earlier).
 
 To register this task for its use, you just need to import it and call its generator function inside your application's task list:
 
@@ -107,7 +106,7 @@ Task event output:
 >     .cancelOn('stopEvent')
 > );
 > 
-> on('bleScanAcquired', run('writeRecords'));
+> on('wifiScanAcquired', run('writeRecords'));
 >```
 > **Note**: To use the `writeRecords` task, the persistence package must be installed and configured. See [persistence package docs](../persistence/README.md).
 

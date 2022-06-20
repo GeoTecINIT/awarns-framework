@@ -12,25 +12,25 @@ ns plugin add @awarns/battery
 
 ## Usage
 
-After installing and setting up this plugin, you'll have access to a task that allows to acquire the current phone's battery level and the battery level record that it will output on demand.
+After installing and setting up this plugin, you'll have access to a task that allows to acquire the current phone's battery level and the [BatteryLevel](#batterylevel) record that it will output on demand.
 
 ### Tasks
 
-#### Acquire phone's battery level
+| Task name                                                   | Description                            |
+|-------------------------------------------------------------|----------------------------------------|
+| [`acquirePhoneBatteryLevel`](#acquire-phones-battery-level) | Acquires phone's current battery level |
 
-> **Task name**: `acquirePhoneBatteryLevel`
-> 
-> **Description**: Acquires phone's current battery level
+#### Acquire phone's battery level
 
 To register this task for its use, you just need to import it and call its generator function inside your application's task list:
 
 ```ts
 import { Task } from '@awarns/core/tasks';
-import { acquireBatteryLevel } from '@awarns/battery';
+import { acquireBatteryLevelTask } from '@awarns/battery';
 
 export const demoTasks: Array<Task> = [
   // ... other tasks
-  acquireBatteryLevel(),
+  acquireBatteryLevelTask(),
   // ...
 ];
 ```
@@ -41,9 +41,9 @@ Task generator parameters:
 
 Task event output:
 
-| Name                   | Payload                          | Description                                                            |
-|------------------------|----------------------------------|------------------------------------------------------------------------|
-| `batteryLevelAcquired` | [`BatteryLevel`](#battery-level) | Indicates that a new battery level snapshot (record) has been acquired |
+| Name                   | Payload                         | Description                                                            |
+|------------------------|---------------------------------|------------------------------------------------------------------------|
+| `batteryLevelAcquired` | [`BatteryLevel`](#batterylevel) | Indicates that a new battery level snapshot (record) has been acquired |
 
 > Example usage in the application task graph:
 > ```ts
@@ -57,7 +57,7 @@ Task event output:
 
 ### Records
 
-#### Battery level
+#### BatteryLevel
 
 | Property    | Type     | Description                                                |
 |-------------|----------|------------------------------------------------------------|

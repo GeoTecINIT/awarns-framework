@@ -4,7 +4,7 @@ import {
   startDetectingCoarseHumanActivityChangesTask,
   stopDetectingCoarseHumanActivityChangesTask,
 } from '@awarns/human-activity';
-import { acquireBatteryLevel } from '@awarns/battery';
+import { acquireBatteryLevelTask } from '@awarns/battery';
 import { acquireMultiplePhoneGeolocationTask, acquirePhoneGeolocationTask } from '@awarns/geolocation';
 import { acquireMultiplePhoneWifiScanTask } from '@awarns/wifi';
 import { acquireMultiplePhoneBleScanTask, BleScanMode } from '@awarns/ble';
@@ -16,7 +16,7 @@ export const demoTasks: Array<Task> = [
   ...makeTraceable([
     startDetectingCoarseHumanActivityChangesTask(),
     stopDetectingCoarseHumanActivityChangesTask(),
-    acquireBatteryLevel(),
+    acquireBatteryLevelTask(),
   ]),
   ...makeTraceable(
     [
