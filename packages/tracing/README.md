@@ -123,11 +123,11 @@ In the traces' storage group, there is the `tracesStore` singleton object, with 
 
 In the final group, the data exporters group, there is the `createTracesExporter()` function, with the following parameters:
 
-| Parameter  | Type                   | Description                                                                                                                                                               |
-|------------|------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `folder`   | `Folder`               | System folder object. Use [NativeScript FileSystem API](https://v7.docs.nativescript.org/ns-framework-modules/file-system) to define where the exports file will be saved |
-| `format`   | `'csv' &vert; 'json' ` | Select the information exchange format to use. Defaults to `csv`                                                                                                          |
-| `fileName` | `string`               | (Optional) Specify the file name to use for the exports file (without extension). Defaults to current date and time                                                       |
+| Parameter  | Type                             | Description                                                                                                                                                               |
+|------------|----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `folder`   | `Folder`                         | System folder object. Use [NativeScript FileSystem API](https://v7.docs.nativescript.org/ns-framework-modules/file-system) to define where the exports file will be saved |
+| `format`   | <code>'csv' &vert; 'json'</code> | Select the information exchange format to use. Defaults to `csv`                                                                                                          |
+| `fileName` | `string`                         | (Optional) Specify the file name to use for the exports file (without extension). Defaults to current date and time                                                       |
 
 The `createRecordsExporter()` returns an `Exporter` object with the following API:
 
