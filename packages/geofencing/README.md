@@ -1,6 +1,6 @@
 # @awarns/geofencing
-![npm (scoped)](https://img.shields.io/npm/v/@awarns/geofencing)
-![npm](https://img.shields.io/npm/dm/@awarns/geofencing)
+[![npm (scoped)](https://img.shields.io/npm/v/@awarns/geofencing)](https://www.npmjs.com/package/@awarns/geofencing)
+[![npm](https://img.shields.io/npm/dm/@awarns/geofencing)](https://www.npmjs.com/package/@awarns/geofencing)
 
 This module allows to perform basic geofencing analysis based on the locations obtained by the tasks declared in the [@awarns/geolocation](../geolocation) package. It is also compatible with any other custom entity matching the [`GeolocationLike`](https://github.com/GeoTecINIT/nativescript-context-apis/blob/6368f3fc480ea476c7dd39279cf4eea3d4410786/src/internal/geolocation/geolocation.ts#L36-L45) interface (for example, an entity produced by a custom indoor positioning system). 
 

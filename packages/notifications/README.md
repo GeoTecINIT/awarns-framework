@@ -1,6 +1,6 @@
 # @awarns/notifications
-![npm (scoped)](https://img.shields.io/npm/v/@awarns/notifications)
-![npm](https://img.shields.io/npm/dm/@awarns/notifications)
+[![npm (scoped)](https://img.shields.io/npm/v/@awarns/notifications)](https://www.npmjs.com/package/@awarns/notifications)
+[![npm](https://img.shields.io/npm/dm/@awarns/notifications)](https://www.npmjs.com/package/@awarns/notifications)
 
 This module allows to deliver notifications to the user when an event occurs. It also defines some primitives (in form of framework records) to hold possible reactions and interactions of the user with the notification.
 

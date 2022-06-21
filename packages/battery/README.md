@@ -1,6 +1,6 @@
 # @awarns/battery
-![npm (scoped)](https://img.shields.io/npm/v/@awarns/battery)
-![npm](https://img.shields.io/npm/dm/@awarns/battery)
+[![npm (scoped)](https://img.shields.io/npm/v/@awarns/battery)](https://www.npmjs.com/package/@awarns/battery)
+[![npm](https://img.shields.io/npm/dm/@awarns/battery)](https://www.npmjs.com/package/@awarns/battery)
 
 This framework module includes a task that allows to access phone's battery level on demand.
 

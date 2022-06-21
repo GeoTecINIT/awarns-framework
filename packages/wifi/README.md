@@ -1,6 +1,6 @@
 # @awarns/wifi
-![npm (scoped)](https://img.shields.io/npm/v/@awarns/wifi)
-![npm](https://img.shields.io/npm/dm/@awarns/wifi)
+[![npm (scoped)](https://img.shields.io/npm/v/@awarns/wifi)](https://www.npmjs.com/package/@awarns/wifi)
+[![npm](https://img.shields.io/npm/dm/@awarns/wifi)](https://www.npmjs.com/package/@awarns/wifi)
 
 This module includes tasks to obtain information regarding nearby Wi-Fi access points (APs). This is useful to assess the existence of concrete access points nearby. Also, to build custom indoor localization and positioning systems based on Wi-Fi.
 

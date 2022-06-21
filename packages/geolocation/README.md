@@ -1,6 +1,6 @@
 # @awarns/geolocation
-![npm (scoped)](https://img.shields.io/npm/v/@awarns/geolocation)
-![npm](https://img.shields.io/npm/dm/@awarns/geolocation)
+[![npm (scoped)](https://img.shields.io/npm/v/@awarns/geolocation)](https://www.npmjs.com/package/@awarns/geolocation)
+[![npm](https://img.shields.io/npm/dm/@awarns/geolocation)](https://www.npmjs.com/package/@awarns/geolocation)
 
 This module includes tasks to regularly obtain the location of the phone.
 

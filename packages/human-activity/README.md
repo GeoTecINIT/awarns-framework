@@ -1,6 +1,6 @@
 # @awarns/human-activity
-![npm (scoped)](https://img.shields.io/npm/v/@awarns/human-activity)
-![npm](https://img.shields.io/npm/dm/@awarns/human-activity)
+[![npm (scoped)](https://img.shields.io/npm/v/@awarns/human-activity)](https://www.npmjs.com/package/@awarns/human-activity)
+[![npm](https://img.shields.io/npm/dm/@awarns/human-activity)](https://www.npmjs.com/package/@awarns/human-activity)
 
 This module allows to detect and react to the changes in the activity being performed by the user (or object) carrying the phone: standing still, walking, running, riding a bicycle or being inside a vehicle. Depending on the granularity of the detection mechanism being used, it can even detect user stand-ups too.
 

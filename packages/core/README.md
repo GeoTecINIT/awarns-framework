@@ -1,6 +1,6 @@
 # @awarns/core
-![npm (scoped)](https://img.shields.io/npm/v/@awarns/core)
-![npm](https://img.shields.io/npm/dm/@awarns/core)
+[![npm (scoped)](https://img.shields.io/npm/v/@awarns/core)](https://www.npmjs.com/package/@awarns/core)
+[![npm](https://img.shields.io/npm/dm/@awarns/core)](https://www.npmjs.com/package/@awarns/core)
 
 >**This is the only plugin required for the rest of the plugins to work.** 
 

@@ -1,6 +1,6 @@
 # @awarns/ble
-![npm (scoped)](https://img.shields.io/npm/v/@awarns/ble)
-![npm](https://img.shields.io/npm/dm/@awarns/ble)
+[![npm (scoped)](https://img.shields.io/npm/v/@awarns/ble)](https://www.npmjs.com/package/@awarns/ble)
+[![npm](https://img.shields.io/npm/dm/@awarns/ble)](https://www.npmjs.com/package/@awarns/ble)
 
 This module includes tasks to obtain information regarding nearby Bluetooth Low Energy (BLE) devices. This is useful to assess the existence of concrete devices nearby. Also, to build custom indoor localization and positioning systems based on BLE. Supports the iBeacon standard.
 

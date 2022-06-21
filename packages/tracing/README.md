@@ -1,6 +1,6 @@
 # @awarns/tracing
-![npm (scoped)](https://img.shields.io/npm/v/@awarns/tracing)
-![npm](https://img.shields.io/npm/dm/@awarns/tracing)
+[![npm (scoped)](https://img.shields.io/npm/v/@awarns/tracing)](https://www.npmjs.com/package/@awarns/tracing)
+[![npm](https://img.shields.io/npm/dm/@awarns/tracing)](https://www.npmjs.com/package/@awarns/tracing)
 
 Background execution flows can become quite complex when using the AwarNS Framework, which is not necessarily a bad thing. This module aids at debugging such workflows, thanks to a set of decorators and tasks which allow to keep track of task executions and the raise of certain events. The recorded traces can later be queried and exported to a local file. Optionally, it is possible to automatically store the recorded traces in an external data store (e.g., a backend). 
 

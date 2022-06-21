@@ -1,6 +1,6 @@
 # @awarns/persistence
-![npm (scoped)](https://img.shields.io/npm/v/@awarns/persistence)
-![npm](https://img.shields.io/npm/dm/@awarns/persistence)
+[![npm (scoped)](https://img.shields.io/npm/v/@awarns/persistence)](https://www.npmjs.com/package/@awarns/persistence)
+[![npm](https://img.shields.io/npm/dm/@awarns/persistence)](https://www.npmjs.com/package/@awarns/persistence)
 
 This module defines tasks to persist the output of other tasks (namely, entities extending the base Record model). Concretely, it includes:
 - A local, document-based store for entities meeting the [Record](../core/README.md#extending-the-record-class) interface.
