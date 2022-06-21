@@ -108,9 +108,9 @@ Task output events:
 
 ### Events
 
-| Name               | Payload                                        | Description                                                          |
-|--------------------|------------------------------------------------|----------------------------------------------------------------------|
-| `wifiScanAcquired` | [`WifiScan &vert; Array<WifiScan>`](#wifiscan) | Indicates that one or more new Wi-Fi scan results have been acquired |
+| Name               | Payload                                                    | Description                                                          |
+|--------------------|------------------------------------------------------------|----------------------------------------------------------------------|
+| `wifiScanAcquired` | [<code>WifiScan &vert; Array\<WifiScan></code>](#wifiscan) | Indicates that one or more new Wi-Fi scan results have been acquired |
 
 ### Records
 

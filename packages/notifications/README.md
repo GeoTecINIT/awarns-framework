@@ -81,11 +81,11 @@ The `notifications` singleton object allows to access the notifications that hav
 
 #### TapAction
 
-| Property   | Type                                            | Description                                                                                                                           |
-|------------|-------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
-| `type`     | [`TapActionType &vert; string`](#tapactiontype) | The type of action to conduct after the notification tap. See table below, to see some examples                                       |
-| `id`       | `string`                                        | The specific id of the action inside its type                                                                                         |
-| `metadata` | `object`                                        | Automatically populated. Contains the payload (data) of the event that triggered the execution of the task that sent the notification |
+| Property   | Type                                                       | Description                                                                                                                           |
+|------------|------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| `type`     | [<code>TapActionType &vert; string</code>](#tapactiontype) | The type of action to conduct after the notification tap. See table below, to see some examples                                       |
+| `id`       | `string`                                                   | The specific id of the action inside its type                                                                                         |
+| `metadata` | `object`                                                   | Automatically populated. Contains the payload (data) of the event that triggered the execution of the task that sent the notification |
 
 #### TapActionType
 
@@ -299,11 +299,11 @@ This record is meant to be manually created (and optionally emitted, using `awar
 
 ##### QuestionnaireAnswer
 
-| Property               | Type                                  | Description                                                                     |
-|------------------------|---------------------------------------|---------------------------------------------------------------------------------|
-| `title`                | `string`                              | The title of the question                                                       |
-| `answer`               | `number &vert; string &vert; boolean` | The answer provided by the user                                                 |
-| `millisecondsToAnswer` | `number`                              | (Optional) The amount of milliseconds that took the user to answer the question |
+| Property               | Type                                             | Description                                                                     |
+|------------------------|--------------------------------------------------|---------------------------------------------------------------------------------|
+| `title`                | `string`                                         | The title of the question                                                       |
+| `answer`               | <code>number &vert; string &vert; boolean</code> | The answer provided by the user                                                 |
+| `millisecondsToAnswer` | `number`                                         | (Optional) The amount of milliseconds that took the user to answer the question |
 
 #### UserFeedback
 

@@ -104,9 +104,9 @@ Task output events:
 
 ### Events
 
-| Name              | Payload                                     | Description                                                        |
-|-------------------|---------------------------------------------|--------------------------------------------------------------------|
-| `bleScanAcquired` | [`BleScan &vert; Array<BleScan>`](#blescan) | Indicates that one or more new BLE scan results have been acquired |
+| Name              | Payload                                                 | Description                                                        |
+|-------------------|---------------------------------------------------------|--------------------------------------------------------------------|
+| `bleScanAcquired` | [<code>BleScan &vert; Array\<BleScan></code>](#blescan) | Indicates that one or more new BLE scan results have been acquired |
 
 ### Records
 

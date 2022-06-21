@@ -99,9 +99,9 @@ Task output events:
 
 ### Events
 
-| Name                  | Payload                                                 | Description                                                      |
-|-----------------------|---------------------------------------------------------|------------------------------------------------------------------|
-| `geolocationAcquired` | [`Geolocation &vert; Array<Geolocation>`](#geolocation) | Indicates that one or more new GNSS locations have been acquired |
+| Name                  | Payload                                                             | Description                                                      |
+|-----------------------|---------------------------------------------------------------------|------------------------------------------------------------------|
+| `geolocationAcquired` | [<code>Geolocation &vert; Array\<Geolocation></code>](#geolocation) | Indicates that one or more new GNSS locations have been acquired |
 
 
 ### Records
