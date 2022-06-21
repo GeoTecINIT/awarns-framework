@@ -96,6 +96,8 @@ In the traces' storage group, there is the `tracesStore` singleton object, with 
 | `clear()`                                            | `Promise<void>`                   | Allows to clear all the stored traces from the local database. **Note:** to only remove old traces, configure the `oldTracesMaxAgeHours` option during plugin initialization |
 | `changes` _(property)_                               | `Observable<Array<string>>`       | Listen to this observable property to know when a trace has been created. It propagates updates on the ids of the traces that have been recently stored                      |
 
+> **Note**: It is recommended to install [RxJS](https://rxjs.dev/), to operate with the methods that return an `Observable`.
+
 ##### Trace
 
 | Property    | Type          | Description                                                                                                                                                                                                                                                                                                                                     |

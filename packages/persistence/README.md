@@ -87,6 +87,8 @@ In the records' storage group, there is the `recordsStore` singleton object, wit
 | `clear()`                                                                                               | `Promise<void>`             | Allows to clear all the stored records from the local database. **Use with care!** To only remove old records, configure the `oldRecordsMaxAgeHours` option during plugin initialization                                                                                                                                            |
 | `changes` _(property)_                                                                                  | `Observable<Array<string>>` | Listen to this observable property to know when a record has been created. It propagates updates on the ids of the records that have been recently stored                                                                                                                                                                           |
 
+> **Note**: It is recommended to install [RxJS](https://rxjs.dev/), to operate with the methods that return an `Observable`.
+
 ##### FetchCondition
 
 | Property     | Type      | Description                                                                                                                                                        |
