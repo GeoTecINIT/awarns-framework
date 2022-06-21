@@ -1,6 +1,7 @@
 # @AwarNS Framework
-
 [![Build Status](https://dev.azure.com/GeoTecINIT/nativescript-plugins/_apis/build/status/GeoTecINIT.awarns-framework?branchName=main)](https://dev.azure.com/GeoTecINIT/nativescript-plugins/_build/latest?definitionId=5&branchName=main)
+[![DOI](https://zenodo.org/badge/486252963.svg)](https://zenodo.org/badge/latestdoi/486252963)
+
 
 The AwarNS Framework (reads like Awareness *[əˈwernəs]* Framework), is a [NativeScript](https://nativescript.org/)-based application development framework created to simplify the development of mobile applications that need to react to the changes in the context of the phone, even when the app is not visible. 
 
