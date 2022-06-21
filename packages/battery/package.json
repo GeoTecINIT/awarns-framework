@@ -1,7 +1,7 @@
 {
   "name": "@awarns/battery",
-  "version": "1.0.0-alpha.11",
-  "description": "Add a plugin description",
+  "version": "1.0.1",
+  "description": "AwarNS Framework package that gives access to the current battery level",
   "main": "index",
   "typings": "index.d.ts",
   "nativescript": {
@@ -18,13 +18,22 @@
     "NativeScript",
     "JavaScript",
     "TypeScript",
-    "iOS",
-    "Android"
+    "Android",
+    "Context",
+    "Awareness",
+    "AwarNS",
+    "Battery"
   ],
-  "author": {
-    "name": "Alberto González Pérez",
-    "email": "algonzal@uji.es"
-  },
+  "authors": [
+    {
+      "name": "Alberto González Pérez",
+      "email": "algonzal@uji.es"
+    },
+    {
+      "name": "Miguel Matey Sanz",
+      "email": "matey@uji.es"
+    }
+  ],
   "bugs": {
     "url": "http://github.com/GeoTecINIT/awarns-framework/issues"
   },
@@ -33,6 +42,6 @@
   "readmeFilename": "README.md",
   "bootstrapper": "@nativescript/plugin-seed",
   "dependencies": {
-    "@awarns/core": "^1.0.0-alpha.11"
+    "@awarns/core": "^1.0.0"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@awarns/core",
-  "version": "1.0.0-alpha.11",
+  "version": "1.0.0",
   "description": "AwarNS framework core package. Use this package to develop new plugins for AwarNS",
   "main": "index",
   "typings": "index.d.ts",
@@ -18,13 +18,21 @@
     "NativeScript",
     "JavaScript",
     "TypeScript",
-    "iOS",
-    "Android"
+    "Android",
+    "Context",
+    "Awareness",
+    "AwarNS"
   ],
-  "author": {
-    "name": "Alberto González Pérez",
-    "email": "algonzal@uji.es"
-  },
+  "authors": [
+    {
+      "name": "Alberto González Pérez",
+      "email": "algonzal@uji.es"
+    },
+    {
+      "name": "Miguel Matey Sanz",
+      "email": "matey@uji.es"
+    }
+  ],
   "bugs": {
     "url": "http://github.com/GeoTecINIT/awarns-framework/issues"
   },

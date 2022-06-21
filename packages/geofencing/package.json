@@ -1,7 +1,7 @@
 {
   "name": "@awarns/geofencing",
-  "version": "1.0.0-alpha.13",
-  "description": "Add a plugin description",
+  "version": "1.0.0",
+  "description": "AwarNS Framework package that enables geofence proximity detection",
   "main": "index",
   "typings": "index.d.ts",
   "nativescript": {
@@ -18,13 +18,22 @@
     "NativeScript",
     "JavaScript",
     "TypeScript",
-    "iOS",
-    "Android"
+    "Android",
+    "Context",
+    "Awareness",
+    "AwarNS",
+    "Geofencing"
   ],
-  "author": {
-    "name": "Alberto González Pérez",
-    "email": "algonzal@uji.es"
-  },
+  "authors": [
+    {
+      "name": "Alberto González Pérez",
+      "email": "algonzal@uji.es"
+    },
+    {
+      "name": "Miguel Matey Sanz",
+      "email": "matey@uji.es"
+    }
+  ],
   "bugs": {
     "url": "http://github.com/GeoTecINIT/awarns-framework/issues"
   },
@@ -33,9 +42,9 @@
   "readmeFilename": "README.md",
   "bootstrapper": "@nativescript/plugin-seed",
   "dependencies": {
-    "@awarns/core": "^1.0.0-alpha.11",
-    "@awarns/persistence": "^1.0.0-alpha.13",
-    "@awarns/geolocation": "^1.0.0-alpha.11",
+    "@awarns/core": "^1.0.0",
+    "@awarns/persistence": "^1.0.0",
+    "@awarns/geolocation": "^1.0.0",
     "@turf/distance": "^6.5.0",
     "@turf/helpers": "^6.5.0"
   }

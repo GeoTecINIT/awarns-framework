@@ -1,7 +1,7 @@
 {
   "name": "@awarns/notifications",
-  "version": "1.0.0-alpha.13",
-  "description": "Add a plugin description",
+  "version": "1.0.0",
+  "description": "AwarNS Framework package that allows to deliver notifications on demand",
   "main": "index",
   "typings": "index.d.ts",
   "nativescript": {
@@ -18,13 +18,25 @@
     "NativeScript",
     "JavaScript",
     "TypeScript",
-    "iOS",
-    "Android"
+    "Android",
+    "Context",
+    "Awareness",
+    "AwarNS",
+    "Notifications",
+    "EMA",
+    "EMI",
+    "ESM"
   ],
-  "author": {
-    "name": "Alberto González Pérez",
-    "email": "algonzal@uji.es"
-  },
+  "authors": [
+    {
+      "name": "Alberto González Pérez",
+      "email": "algonzal@uji.es"
+    },
+    {
+      "name": "Miguel Matey Sanz",
+      "email": "matey@uji.es"
+    }
+  ],
   "bugs": {
     "url": "http://github.com/GeoTecINIT/awarns-framework/issues"
   },
@@ -33,8 +45,8 @@
   "readmeFilename": "README.md",
   "bootstrapper": "@nativescript/plugin-seed",
   "dependencies": {
-    "@awarns/core": "^1.0.0-alpha.11",
-    "@awarns/persistence": "^1.0.0-alpha.13",
+    "@awarns/core": "^1.0.0",
+    "@awarns/persistence": "^1.0.0",
     "@nativescript/local-notifications": "^6.0.0",
     "rxjs": "^7.5.5"
   }

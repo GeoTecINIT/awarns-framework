@@ -1,7 +1,7 @@
 {
   "name": "@awarns/human-activity",
-  "version": "1.0.0-alpha.11",
-  "description": "Add a plugin description",
+  "version": "1.0.0",
+  "description": "AwarNS Framework package that allows to detect and react to physical activity changes",
   "main": "index",
   "typings": "index.d.ts",
   "nativescript": {
@@ -18,13 +18,24 @@
     "NativeScript",
     "JavaScript",
     "TypeScript",
-    "iOS",
-    "Android"
+    "Android",
+    "Context",
+    "Awareness",
+    "AwarNS",
+    "Activity Recognition",
+    "Human Activity",
+    "Physical Activity"
   ],
-  "author": {
-    "name": "Alberto González Pérez",
-    "email": "algonzal@uji.es"
-  },
+  "authors": [
+    {
+      "name": "Alberto González Pérez",
+      "email": "algonzal@uji.es"
+    },
+    {
+      "name": "Miguel Matey Sanz",
+      "email": "matey@uji.es"
+    }
+  ],
   "bugs": {
     "url": "http://github.com/GeoTecINIT/awarns-framework/issues"
   },
@@ -33,7 +44,7 @@
   "readmeFilename": "README.md",
   "bootstrapper": "@nativescript/plugin-seed",
   "dependencies": {
-    "@awarns/core": "^1.0.0-alpha.11",
-    "nativescript-context-apis": "^4.0.0"
+    "@awarns/core": "^1.0.0",
+    "nativescript-context-apis": "^4.1.0"
   }
 }
