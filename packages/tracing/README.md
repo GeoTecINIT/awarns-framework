@@ -146,13 +146,13 @@ The `createRecordsExporter()` returns an `Exporter` object with the following AP
 
 ### Tasks
 
-#### Track regular events
+| Task name                                                               | Description                                                                                                                                                                                           |
+|-------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [`trackEvent`](#track-regular-events)                                   | Generates an event trace containing the information regarding the event that invoked its execution                                                                                                    |
+| [`trackSensitiveEvent`](#track-events-containing-sensitive-information) | Generates an event trace containing the information regarding the event that invoked its execution. The payload of the event will be ignored, since it is considered to contain sensitive information |
 
-> **Task name**: `trackEvent`
->
-> **Description**: Generates an event trace containing the information regarding the event that invoked its execution
->
-> **Execution requirements:** None
+
+#### Track regular events
 
 To register this task for its use, you just need to import it and call its generator function inside your application's task list:
 
@@ -169,22 +169,17 @@ Task generator parameters:
 
 > The task generator takes no parameters.
 
-Task event output:
+Task output events:
 
-> This task doesn't produce significant events after it completes its execution, aside from the regular `{task-name}Finished` event: `trackEventFinished`.
+- `trackEventFinished` _(default, no content)_
 
 > Example usage in the application task graph:
 > ```ts
-> on('startEvent', run('trackEvent')); // Include some payload data in your start event, to see how it becomes recorded too
+> on('startEvent', run('trackEvent')); // Include some payload data in your start event, 
+>                                      // to see how it becomes recorded too
 > ```
 
 #### Track events containing sensitive information
-
-> **Task name**: `trackSensitiveEvent`
->
-> **Description**: Generates an event trace containing the information regarding the event that invoked its execution. The payload of the event will be ignored, since it is considered to contain sensitive information
->
-> **Execution requirements:** None
 
 To register this task for its use, you just need to import it and call its generator function inside your application's task list:
 
@@ -201,13 +196,14 @@ Task generator parameters:
 
 > The task generator takes no parameters.
 
-Task event output:
+Task output events:
 
-> This task doesn't produce significant events after it completes its execution, aside from the regular `{task-name}Finished` event: `trackSensitiveEventFinished`.
+- `trackSensitiveEventFinished` _(default, no content)_
 
 > Example usage in the application task graph:
 > ```ts
-> on('startEvent', run('trackSensitiveEvent')); // Include some payload data in your start event, to see how it does not appear in the event trace
+> on('startEvent', run('trackSensitiveEvent')); // Include some payload data in your start event, 
+>                                               // to see how it does not appear in the event trace
 > ```
 
 ## License
