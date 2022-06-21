@@ -43,11 +43,9 @@ Task generator parameters:
 | `ensureIsNew`  | `boolean`       | Make sure that the resulting Wi-Fi scan is up-to-date. A value of `true` ensures [Android Wi-Fi scanning restrictions](https://developer.android.com/guide/topics/connectivity/wifi-scan#wifi-scan-throttling) are met, thus the reported value is always new. The default value is `true` |
 | `timeout`      | `number`        | The maximum time, in milliseconds, to be spent scanning for nearby Wi-Fi APs. The default value is `15000` (15s)                                                                                                                                                                           |
 
-Task event output:
+Task output events:
 
-| Name               | Payload                 | Description                                              |
-|--------------------|-------------------------|----------------------------------------------------------|
-| `wifiScanAcquired` | [`WifiScan`](#wifiscan) | Indicates that a new Wi-Fi scan result has been acquired |
+- [`wifiScanAcquired`](#events)
 
 > Example usage in the application task graph:
 > ```ts
@@ -81,11 +79,9 @@ Task generator parameters:
 | `ensureIsNew` | `boolean` | Make sure that the resulting Wi-Fi scans are up-to-date. A value of `true` ensures [Android Wi-Fi scanning restrictions](https://developer.android.com/guide/topics/connectivity/wifi-scan#wifi-scan-throttling) are met, thus the reported values are always new. The default value is `true` |
 | `timeout`     | `number`  | The maximum time to be spent performing each individual Wi-Fi scan. The default value is `15000` (15s)                                                                                                                                                                                         |
 
-Task event output:
+Task output events:
 
-| Name               | Payload                        | Description                                                          |
-|--------------------|--------------------------------|----------------------------------------------------------------------|
-| `wifiScanAcquired` | [`Array<WifiScan>`](#wifiscan) | Indicates that one or more new Wi-Fi scan results have been acquired |
+- [`wifiScanAcquired`](#events)
 
 > Example usage in the application task graph:
 > ```ts
@@ -109,6 +105,12 @@ Task event output:
 > on('wifiScanAcquired', run('writeRecords'));
 >```
 > **Note**: To use the `writeRecords` task, the persistence package must be installed and configured. See [persistence package docs](../persistence/README.md).
+
+### Events
+
+| Name               | Payload                                                    | Description                                                          |
+|--------------------|------------------------------------------------------------|----------------------------------------------------------------------|
+| `wifiScanAcquired` | [<code>WifiScan &vert; Array\<WifiScan></code>](#wifiscan) | Indicates that one or more new Wi-Fi scan results have been acquired |
 
 ### Records
 

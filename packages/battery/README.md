@@ -39,11 +39,9 @@ Task generator parameters:
 
 > The task generator takes no parameters. 
 
-Task event output:
+Task output events:
 
-| Name                   | Payload                         | Description                                                            |
-|------------------------|---------------------------------|------------------------------------------------------------------------|
-| `batteryLevelAcquired` | [`BatteryLevel`](#batterylevel) | Indicates that a new battery level snapshot (record) has been acquired |
+- [`batteryLevelAcquired`](#events)
 
 > Example usage in the application task graph:
 > ```ts
@@ -54,6 +52,13 @@ Task event output:
 > on('batteryLevelAcquired', run('writeRecords'))
 > ```
 > **Note**: To use the `writeRecords` task, the persistence package must be installed and configured. See [persistence package docs](../persistence/README.md).
+
+### Events
+
+| Name                   | Payload                         | Description                                                            |
+|------------------------|---------------------------------|------------------------------------------------------------------------|
+| `batteryLevelAcquired` | [`BatteryLevel`](#batterylevel) | Indicates that a new battery level snapshot (record) has been acquired |
+
 
 ### Records
 

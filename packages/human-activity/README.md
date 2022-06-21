@@ -73,24 +73,22 @@ Task generator parameters:
 
 > These task generators take no parameters
 
-Task event output:
+Task output events:
 
 > These tasks don't produce significant events after they complete their execution aside from the regular `{task-name}Finished` events, which are: `startDetectingCoarseHumanActivityChangesFinished` and `stopDetectingCoarseHumanActivityChangesFinished`. 
 > 
 > However, once the start task has finished running, relevant events will be emitted by the internal listeners once the corresponding action has been detected. These are listed below.
 
-| Name                          | Payload                                       | Description                                                         |
-|-------------------------------|-----------------------------------------------|---------------------------------------------------------------------|
-| `userStartedBeingStill`       | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has stopped moving             |
-| `userFinishedBeingStill`      | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has started moving             |
-| `userStartedWalking`          | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has started to walk            |
-| `userFinishedWalking`         | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has stopped walking            |
-| `userStartedRunning`          | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has started to run             |
-| `userFinishedRunning`         | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has stopped running            |
-| `userStartedRidingABicycle`   | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has started riding a bicycle   |
-| `userFinishedRidingABicycle`  | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has stopped riding a bicycle   |
-| `userStartedBeingInAVehicle`  | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has started being in a vehicle |
-| `userFinishedBeingInAVehicle` | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has stopped being in a vehicle |
+- [`userStartedBeingStill`](#events)
+- [`userFinishedBeingStill`](#events)
+- [`userStartedWalking`](#events)
+- [`userFinishedWalking`](#events)
+- [`userStartedRunning`](#events)
+- [`userFinishedRunning`](#events)
+- [`userStartedRidingABicycle`](#events)
+- [`userFinishedRidingABicycle`](#events)
+- [`userStartedBeingInAVehicle`](#events)
+- [`userFinishedBeingInAVehicle`](#events)
 
 > Example usage in the application task graph:
 > ```ts
@@ -134,26 +132,24 @@ Task generator parameters:
 
 > These task generators take no parameters
 
-Task event output:
+Task output events:
 
 > These tasks don't produce significant events after they complete their execution aside from the regular `{task-name}Finished` events, which are: `startDetectingIntermediateHumanActivityChangesFinished` and `stopDetectingIntermediateHumanActivityChangesFinished`.
 >
 > However, once the start task has finished running, relevant events will be emitted by the internal listeners once the corresponding action has been detected. These are listed below.
 
-| Name                          | Payload                                       | Description                                                         |
-|-------------------------------|-----------------------------------------------|---------------------------------------------------------------------|
-| `userStartedBeingStill`       | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has stopped moving             |
-| `userFinishedBeingStill`      | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has started moving             |
-| `userStartedStandingUp`       | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has started standing up        |
-| `userFinishedStandingUp`      | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has finished standing up       |
-| `userStartedWalking`          | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has started to walk            |
-| `userFinishedWalking`         | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has stopped walking            |
-| `userStartedRunning`          | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has started to run             |
-| `userFinishedRunning`         | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has stopped running            |
-| `userStartedRidingABicycle`   | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has started riding a bicycle   |
-| `userFinishedRidingABicycle`  | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has stopped riding a bicycle   |
-| `userStartedBeingInAVehicle`  | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has started being in a vehicle |
-| `userFinishedBeingInAVehicle` | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has stopped being in a vehicle |
+- [`userStartedBeingStill`](#events)
+- [`userFinishedBeingStill`](#events)
+- [`userStartedStandingUp`](#events)
+- [`userFinishedStandingUp`](#events)
+- [`userStartedWalking`](#events)
+- [`userFinishedWalking`](#events)
+- [`userStartedRunning`](#events)
+- [`userFinishedRunning`](#events)
+- [`userStartedRidingABicycle`](#events)
+- [`userFinishedRidingABicycle`](#events)
+- [`userStartedBeingInAVehicle`](#events)
+- [`userFinishedBeingInAVehicle`](#events)
 
 > Example usage in the application task graph:
 > ```ts
@@ -179,6 +175,24 @@ Task event output:
 > on('userFinishedBeingInAVehicle', run('writeRecords'));
 >```
 > **Note**: To use the `writeRecords` task, the persistence package must be installed and configured. See [persistence package docs](../persistence/README.md).
+
+### Events
+
+| Name                          | Payload                                       | Description                                                         |
+|-------------------------------|-----------------------------------------------|---------------------------------------------------------------------|
+| `userStartedBeingStill`       | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has stopped moving             |
+| `userFinishedBeingStill`      | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has started moving             |
+| `userStartedStandingUp`       | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has started standing up        |
+| `userFinishedStandingUp`      | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has finished standing up       |
+| `userStartedWalking`          | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has started to walk            |
+| `userFinishedWalking`         | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has stopped walking            |
+| `userStartedRunning`          | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has started to run             |
+| `userFinishedRunning`         | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has stopped running            |
+| `userStartedRidingABicycle`   | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has started riding a bicycle   |
+| `userFinishedRidingABicycle`  | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has stopped riding a bicycle   |
+| `userStartedBeingInAVehicle`  | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has started being in a vehicle |
+| `userFinishedBeingInAVehicle` | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has stopped being in a vehicle |
+
 
 ### Records
 

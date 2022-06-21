@@ -15,6 +15,6 @@ export class QuestionnaireAnswers extends Record {
 
 export interface QuestionnaireAnswer {
   title: string;
-  millisecondsToAnswer: number;
   answer: number | string | boolean;
+  millisecondsToAnswer?: number;
 }

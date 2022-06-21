@@ -46,11 +46,9 @@ Task generator parameters:
 | `scanMode`     | [`BleScanMode`](https://github.com/GeoTecINIT/nativescript-context-apis#api) | The BLE scan mode to use, see [context-apis docs API](https://github.com/GeoTecINIT/nativescript-context-apis#api) section on BLE. Defaults to `balanced` mode |
 | `iBeaconUuids` | `Array<String>`                                                              | Filters the scan results to only show devices broadcasting one of the given iBeacon UUID(s)                                                                    |
 
-Task event output:
+Task output events:
 
-| Name              | Payload               | Description                                            |
-|-------------------|-----------------------|--------------------------------------------------------|
-| `bleScanAcquired` | [`BleScan`](#blescan) | Indicates that a new BLE scan result has been acquired |
+- [`bleScanAcquired`](#events)
 
 > Example usage in the application task graph:
 > ```ts
@@ -87,11 +85,9 @@ Task generator parameters:
 | `scanMode`     | [`BleScanMode`](https://github.com/GeoTecINIT/nativescript-context-apis#api) | The BLE scan mode to use, see [context-apis docs API](https://github.com/GeoTecINIT/nativescript-context-apis#api) section on BLE. Defaults to `balanced` mode |
 | `iBeaconUuids` | `Array<String>`                                                              | Filters the scan results to only show devices broadcasting one of the given iBeacon UUID(s)                                                                    |
 
-Task event output:
+Task output events:
 
-| Name              | Payload                      | Description                                                        |
-|-------------------|------------------------------|--------------------------------------------------------------------|
-| `bleScanAcquired` | [`Array<BleScan>`](#blescan) | Indicates that one or more new BLE scan results have been acquired |
+- [`bleScanAcquired`](#events)
 
 > Example usage in the application task graph:
 > ```ts
@@ -105,6 +101,12 @@ Task event output:
 > on('bleScanAcquired', run('writeRecords'));
 >```
 > **Note**: To use the `writeRecords` task, the persistence package must be installed and configured. See [persistence package docs](../persistence/README.md).
+
+### Events
+
+| Name              | Payload                                                 | Description                                                        |
+|-------------------|---------------------------------------------------------|--------------------------------------------------------------------|
+| `bleScanAcquired` | [<code>BleScan &vert; Array\<BleScan></code>](#blescan) | Indicates that one or more new BLE scan results have been acquired |
 
 ### Records
 
