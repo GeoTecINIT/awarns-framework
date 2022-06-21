@@ -3,11 +3,11 @@
 ![npm](https://img.shields.io/npm/dm/@awarns/persistence)
 
 This module defines tasks to persist the output of other tasks (namely, entities extending the base Record model). Concretely, it includes:
-- A local, document-based store for entities meeting the [Record](../core/README.md#extending-the-recordinternalentitiesrecordts-class) interface.
+- A local, document-based store for entities meeting the [Record](../core/README.md#extending-the-record-class) interface.
 - Optional one-way data synchronization of the local records store to any external store (e.g., a remote backend). 
 - The possibility to query and observe updates on the records stored locally. 
 - Ready-to-use data exporters to dump the stored records to JSON and CSV files.
-- A generic data store class to define entity-specific persistence stores, for data models that don't meet the [Record](../core/README.md#extending-the-recordinternalentitiesrecordts-class) specification.
+- A generic data store class to define entity-specific persistence stores, for data models that don't meet the [Record](../core/README.md#extending-the-record-class) specification.
 
 This plugin has been built as a wrapper of Triniwiz's [NativeScript Couchbase](https://github.com/triniwiz/nativescript-plugins/tree/master/packages/nativescript-couchbase) plugin, adapted to work with the records and the task model of the AwarNS Framework.
 
