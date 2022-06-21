@@ -145,13 +145,12 @@ Inside the same group, there exists the `clearAwarnsDB()` function. Use this fun
 
 ### Tasks
 
-#### Persist records
+| Task name                          | Description                                                                                                                                                                                                                                                                                              |
+|------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [`writeRecords`](#persist-records) | Persists, inside the local records' database, one or more records contained in the invocation event's payload. If specified at plugin initialization time, it will also try to remotely synchronize the newly stored records. If the process fails, it will be retried during the next application start |
 
-> **Task name**: `writeRecords`
->
-> **Description**: Persists, inside the local records' database, one or more records contained in the invocation event's payload. If specified at plugin initialization time, it will also try to remotely synchronize the newly stored records. If the process fails, it will be retried during the next application start
->
-> **Execution requirements:** None
+
+#### Persist records
 
 To register this task for its use, you just need to import it and call its generator function inside your application's task list:
 
@@ -170,7 +169,7 @@ Task generator parameters:
 
 Task event output:
 
-> This task doesn't produce significant events after it completes its execution, aside from the regular `{task-name}Finished` event: `writeRecordsFinished`.
+- `writeRecordsFinished` _(default, no content)_
 
 > Example usage in the application task graph:
 > 
