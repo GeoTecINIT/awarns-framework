@@ -5,17 +5,17 @@
 
 The AwarNS Framework (reads like Awareness *[əˈwernəs]* Framework), is a [NativeScript](https://nativescript.org/)-based application development framework created to simplify the development of mobile applications that need to react to the changes in the context of the phone, even when the app is not visible. 
 
-Unlike other similar frameworks, this has been developed with background execution in mind. No matter if the app is not open when the change occurs, if there is a listener for the change, a reaction to the change will be triggered in the form of a developer-defined task. This means, the framework is completely background-first.
+Unlike other similar frameworks, this has been developed with background execution in mind. No matter if the app is not open when the change occurs, if there is a listener for the change, a reaction to the change will be triggered in the form of a developer-defined task. This means the framework is completely background-first.
 
-This is possible thanks to the well-tested [NativeScript Task Dispatcher](https://github.com/GeoTecINIT/nativescript-task-dispatcher) (NTD), which this framework uses at its [core](packages/core/README.md). Indeed, this framework takes the task definition and execution model offered by the NTD and extends it with primitives to ease the development of context-aware plugins and applications. Due to that the NTD only supports the Android platform for now, this framework shares this same limitation (**iOS is not supported**).
+This is possible thanks to the well-tested [NativeScript Task Dispatcher](https://github.com/GeoTecINIT/nativescript-task-dispatcher) (NTD), which is at the [core](packages/core/README.md) of the AwarNS framework. Indeed, this framework takes the task definition and execution model offered by the NTD and extends it with primitives to ease the development of context-aware plugins and applications. Due to that the NTD only supports the Android platform for now, this framework shares this same limitation (**iOS is not supported**).
 
-AwarNS sits as a modular layer on top of the NTD. This means that it is possible to build applications with just the minimum number of dependencies required by each application use case. Individual modules are available as a separate NPM packages. The modules can be classified in 4 categories, depending on their purpose: common, sense, analyze and act. The following figure depicts how the 4 categories are related:
+AwarNS sits as a modular layer on top of the NTD. This means that it is possible to build applications with just the minimum number of dependencies required by each application use case. Each individual module is available as a separate NPM package. The modules can be classified in 4 categories, depending on their purpose: common, sense, analyze and act. The following figure depicts how the 4 categories are related:
 
 ![AwarNS Framework modules categories](img/overall-structure.png)
 
 ## Framework modules
 
-The following tables lists the modules that come with the framework, grouped by the 4 categories: common, sense, analyze and act. However, the possibilities of the framework are not limited to the modules listed here. It is perfectly fine to develop internal (domain-specific) plugins to extend what is offered by the framework in any of these categories (see our [Detailed usage and extension](TUTORIALS.md#detailed-usage-and-extension) guide). Similarly, contributions of new (general-purpose) plugins are welcome (see our [Contributing](CONTRIBUTING.md) guide).
+The following tables list the modules that come with the framework, grouped by the 4 categories: common, sense, analyze and act. However, the possibilities of the framework are not limited to the modules listed here. It is perfectly fine to develop internal (domain-specific) plugins to extend what is offered by the framework in any of these categories (see our [Detailed usage and extension](TUTORIALS.md#detailed-usage-and-extension) guide). Similarly, contributions of new (general-purpose) plugins are welcome (see our [Contributing](CONTRIBUTING.md) guide).
 
 ### Common
 
