@@ -107,7 +107,7 @@ In the application UI you can interact with the framework to check if certain ta
 
 The Record class is central to the AwarNS framework. Extending it in your entities, means that they will speak the framework's common language regarding data sharing. This will greatly simplify certain operations like, for example, persistence and data exporting, to name a few.
 
-This class is ideal for representing things that change over time. Each children Record class must hold its type, which is a string. This string uniquely identifies each record entity type, required later on, for example, to persist and query each type of entity individually. Records must hold a timestamp too, indicating when they were generated. Optionally, they can state a change, which can be: a start, an end or nothing (no change).
+This class is ideal for representing things that change over time. Each extension (child) to the Record class must hold its type, which is a string. This string uniquely identifies each record's entity type, which is required later on, for example, to persist and query each type of entity individually. Records must hold a timestamp too, indicating when they were generated. Optionally, they can state a change, which can be: a start, an end or nothing (no change).
 
 The best way to see how the Record class can be extended is through some already existing examples in the framework:
 
