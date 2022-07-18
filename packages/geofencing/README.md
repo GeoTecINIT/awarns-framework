@@ -47,13 +47,13 @@ The `areasOfInterest` singleton object is the main plugin entrypoint. Through it
 
 ### Tasks
 
-#### Check area of interest proximity
+| Task name                                                                                     | Description                                                                                                                                                                                                                      |
+|-----------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [`checkAreaOfInterestProximity`](#check-area-of-interest-proximity)                           | Given one or more locations included in the payload of the event invoking the task, this task checks their proximity towards a set of registered areas of interest                                                               |
+| [`filterGeolocationByAoIProximity`](#filter-geolocations-based-on-area-of-interest-proximity) | Given one or more locations included in the payload of the event invoking the task, this task checks their proximity towards a set of registered areas of interest and only outputs those that fall nearby or inside their radii |
 
-> **Task name**: `checkAreaOfInterestProximity`
->
-> **Description**: Given one or more locations included in the payload of the event invoking the task, this task checks their proximity towards a set of registered areas of interest
->
-> **Execution requirements:** None
+
+#### Check area of interest proximity
 
 To register this task for its use, you just need to import it and call its generator function inside your application's task list:
 
@@ -103,14 +103,60 @@ Task output events:
 > ```
 > **Note**: To use the `acquirePhoneGeolocation` and `writeRecords` tasks, the geolocation and persistence packages must be installed and configured. See [geolocation package](../geolocation/README.md) and [persistence package](../persistence/README.md) docs.
 
+#### Filter geolocations based on area of interest proximity
+
+To register this task for its use, you just need to import it and call its generator function inside your application's task list:
+
+```ts
+import { Task } from '@awarns/core/tasks';
+import { filterGeolocationByAoIProximityTask } from '@awarns/geofencing';
+
+export const demoTasks: Array<Task> = [
+  filterGeolocationByAoIProximityTask(),
+];
+
+```
+
+Task generator parameters:
+
+> The task generator takes no parameters.
+
+Task output events:
+
+- [`filterGeolocationByAoIProximityFinished`](#events) _(default, no content)_
+- [`geolocationCloseToAoIAcquired`](#events)
+
+> Example usage in the application task graph:
+> ```ts
+> on(
+>   'startEvent',
+>   run('acquirePhoneGeolocation')
+>     .every(1, 'minutes')
+>     .cancelOn('stopEvent')
+> );
+> 
+> on(
+>   'geolocationAcquired',
+>   run('filterGeolocationByAoIProximity', {
+>     nearbyRange: 100, // Area approximation radius, in meters (defaults to 100)
+>     offset: 15, // Optional distance calculation offset, in meters. Can help mitigating location error (defaults to 0)
+>     includeNearby: true // Optional indicate if points nearby an area should be taken into consideration (defaults to false)
+>   })
+> );
+>
+> on('geolocationCloseToAoIAcquired', run('writeRecords')); // Just write the locations captured nearby an area of interest
+> ```
+> **Note**: To use the `acquirePhoneGeolocation` and `writeRecords` tasks, the geolocation and persistence packages must be installed and configured. See [geolocation package](../geolocation/README.md) and [persistence package](../persistence/README.md) docs.
+
 ### Events
 
-| Name                                   | Payload                                            | Description                                                                                                                                                                                                                                               |
-|----------------------------------------|----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `movedCloseToAreaOfInterest`           | [`Array<AoIProximityChange>`](#aoiproximitychange) | Detected that one or more of the given locations represent an approximation towards the surroundings of one or more registered areas of interest. The approximation radius can be configured in the application workflow. See an example below this table |
-| `movedInsideAreaOfInterest`            | [`Array<AoIProximityChange>`](#aoiproximitychange) | Detected that one or more of the given locations have just fallen between the center of one or more registered areas and their radii                                                                                                                      |
-| `movedOutsideAreaOfInterest`           | [`Array<AoIProximityChange>`](#aoiproximitychange) | Detected that one or more of the given locations have just fallen outside one or more area radii, but are still within their approximation radii. This event won't fire while there's still a location that falls inside an area                          |
-| `movedAwayFromAreaOfInterest`          | [`Array<AoIProximityChange>`](#aoiproximitychange) | Detected that one or more of the given locations have just fallen completely outside one or more area approximation radii. This event won't fire while there's still a location that falls inside the approximation radius of an area                     |
+| Name                            | Payload                                                | Description                                                                                                                                                                                                                                               |
+|---------------------------------|--------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `movedCloseToAreaOfInterest`    | [`Array<AoIProximityChange>`](#aoiproximitychange)     | Detected that one or more of the given locations represent an approximation towards the surroundings of one or more registered areas of interest. The approximation radius can be configured in the application workflow. See an example below this table |
+| `movedInsideAreaOfInterest`     | [`Array<AoIProximityChange>`](#aoiproximitychange)     | Detected that one or more of the given locations have just fallen between the center of one or more registered areas and their radii                                                                                                                      |
+| `movedOutsideAreaOfInterest`    | [`Array<AoIProximityChange>`](#aoiproximitychange)     | Detected that one or more of the given locations have just fallen outside one or more area radii, but are still within their approximation radii. This event won't fire while there's still a location that falls inside an area                          |
+| `movedAwayFromAreaOfInterest`   | [`Array<AoIProximityChange>`](#aoiproximitychange)     | Detected that one or more of the given locations have just fallen completely outside one or more area approximation radii. This event won't fire while there's still a location that falls inside the approximation radius of an area                     |
+| `geolocationCloseToAoIAcquired` | <code>'Geolocation' &vert; 'Array<Geolocation>'</code> | A location or a list of locations which have passed the area of interest filter (fall nearby or inside the known areas)                                                                                                                                   |
 
 
 ### Records
