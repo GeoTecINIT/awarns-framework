@@ -168,7 +168,7 @@ describe('Geofencing-based filter task', () => {
   });
 });
 
-function createFakeLocation(option: number = 0): Geolocation {
+function createFakeLocation(option = 0): Geolocation {
   switch (option) {
     case 0:
       return new Geolocation(39.9938, -0.0736, 50, 10, 10, 0, 0, new Date());
