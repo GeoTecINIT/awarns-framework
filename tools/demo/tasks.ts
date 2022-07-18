@@ -8,7 +8,7 @@ import { acquireBatteryLevelTask } from '@awarns/battery';
 import { acquireMultiplePhoneGeolocationTask, acquirePhoneGeolocationTask } from '@awarns/geolocation';
 import { acquireMultiplePhoneWifiScanTask } from '@awarns/wifi';
 import { acquireMultiplePhoneBleScanTask, BleScanMode } from '@awarns/ble';
-import { checkAreaOfInterestProximityTask } from '@awarns/geofencing';
+import { checkAreaOfInterestProximityTask, filterGeolocationByAoIProximityTask } from '@awarns/geofencing';
 import { sendNotificationTask, sendRandomNotificationTask } from '@awarns/notifications';
 import { writeRecordsTask } from '@awarns/persistence';
 
@@ -27,6 +27,7 @@ export const demoTasks: Array<Task> = [
         /* optional */ { scanTime: 5000, scanMode: BleScanMode.BALANCED, iBeaconUuids: [] }
       ),
       checkAreaOfInterestProximityTask(),
+      filterGeolocationByAoIProximityTask(),
       sendNotificationTask(),
       sendRandomNotificationTask(),
     ],
