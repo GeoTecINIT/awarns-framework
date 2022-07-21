@@ -1,6 +1,6 @@
 {
   "name": "@awarns/geofencing",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "AwarNS Framework package that enables geofence proximity detection",
   "main": "index",
   "typings": "index.d.ts",

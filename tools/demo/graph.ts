@@ -29,7 +29,8 @@ class DemoTaskGraph implements TaskGraph {
 
     on('userFinishedBeingStill', run('acquirePhoneGeolocation').every(1, 'minutes').cancelOn('userStartedBeingStill'));
 
-    on('geolocationAcquired', run('writeRecords'));
+    on('geolocationAcquired', run('filterGeolocationByAoIProximity'));
+    on('geolocationCloseToAoIAcquired', run('writeRecords'));
 
     on(
       'geolocationAcquired',
