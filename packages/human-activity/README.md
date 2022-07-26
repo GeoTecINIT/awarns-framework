@@ -79,6 +79,7 @@ Task output events:
 > 
 > However, once the start task has finished running, relevant events will be emitted by the internal listeners once the corresponding action has been detected. These are listed below.
 
+- [`userActivityChanged`](#events)
 - [`userStartedBeingStill`](#events)
 - [`userFinishedBeingStill`](#events)
 - [`userStartedWalking`](#events)
@@ -94,6 +95,8 @@ Task output events:
 > ```ts
 > on('startEvent', run('startDetectingCoarseHumanActivityChanges'));
 > on('stopEvent', run('stopDetectingCoarseHumanActivityChanges'));
+> 
+> on('userActivityChanged', run('writeRecords'))
 > 
 > on('userStartedBeingStill', run('writeRecords'));
 > on('userFinishedBeingStill', run('writeRecords'));
@@ -138,6 +141,7 @@ Task output events:
 >
 > However, once the start task has finished running, relevant events will be emitted by the internal listeners once the corresponding action has been detected. These are listed below.
 
+- [`userActivityChanged`](#events)
 - [`userStartedBeingStill`](#events)
 - [`userFinishedBeingStill`](#events)
 - [`userStartedStandingUp`](#events)
@@ -155,6 +159,8 @@ Task output events:
 > ```ts
 > on('startEvent', run('startDetectingCoarseHumanActivityChanges'));
 > on('stopEvent', run('stopDetectingCoarseHumanActivityChanges'));
+> 
+> on('userActivityChanged', run('writeRecords'))
 > 
 > on('userStartedBeingStill', run('writeRecords'));
 > on('userFinishedBeingStill', run('writeRecords'));
@@ -178,20 +184,21 @@ Task output events:
 
 ### Events
 
-| Name                          | Payload                                       | Description                                                         |
-|-------------------------------|-----------------------------------------------|---------------------------------------------------------------------|
-| `userStartedBeingStill`       | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has stopped moving             |
-| `userFinishedBeingStill`      | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has started moving             |
-| `userStartedStandingUp`       | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has started standing up        |
-| `userFinishedStandingUp`      | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has finished standing up       |
-| `userStartedWalking`          | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has started to walk            |
-| `userFinishedWalking`         | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has stopped walking            |
-| `userStartedRunning`          | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has started to run             |
-| `userFinishedRunning`         | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has stopped running            |
-| `userStartedRidingABicycle`   | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has started riding a bicycle   |
-| `userFinishedRidingABicycle`  | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has stopped riding a bicycle   |
-| `userStartedBeingInAVehicle`  | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has started being in a vehicle |
-| `userFinishedBeingInAVehicle` | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has stopped being in a vehicle |
+| Name                          | Payload                                       | Description                                                                                              |
+|-------------------------------|-----------------------------------------------|----------------------------------------------------------------------------------------------------------|
+| `userActivityChanged`         | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user activity has changed, either by ending an ongoing activity or starting a new one |
+| `userStartedBeingStill`       | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has stopped moving                                                  |
+| `userFinishedBeingStill`      | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has started moving                                                  |
+| `userStartedStandingUp`       | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has started standing up                                             |
+| `userFinishedStandingUp`      | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has finished standing up                                            |
+| `userStartedWalking`          | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has started to walk                                                 |
+| `userFinishedWalking`         | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has stopped walking                                                 |
+| `userStartedRunning`          | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has started to run                                                  |
+| `userFinishedRunning`         | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has stopped running                                                 |
+| `userStartedRidingABicycle`   | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has started riding a bicycle                                        |
+| `userFinishedRidingABicycle`  | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has stopped riding a bicycle                                        |
+| `userStartedBeingInAVehicle`  | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has started being in a vehicle                                      |
+| `userFinishedBeingInAVehicle` | [`HumanActivityChange`](#humanactivitychange) | Indicates that the user of the phone has stopped being in a vehicle                                      |
 
 
 ### Records
