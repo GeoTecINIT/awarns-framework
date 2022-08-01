@@ -1,2 +1,2 @@
-export { BackgroundSensorsProvider } from './provider';
+export { PhoneSensorsProvider } from './provider';
 export * from './provider-configuration';

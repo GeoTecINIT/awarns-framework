@@ -1,5 +1,5 @@
 import { Task, StartPushProviderTask, StopPushProviderTask } from '@awarns/core/tasks';
-import { BackgroundSensorsProvider, ProviderConfiguration } from './provider';
+import { PhoneSensorsProvider, ProviderConfiguration } from './provider';
 import { PhoneSensor } from './phone-sensor';
 import { pascalCase } from '@awarns/core/utils/strings';
 
@@ -9,11 +9,11 @@ export function startDetectingSensorChangesTask(
   prefix: string = ''
 ): Task {
   return new StartPushProviderTask(
-    new BackgroundSensorsProvider(sensor, providerConfig),
+    new PhoneSensorsProvider(sensor, providerConfig),
     `Phone${prefix}${pascalCase(sensor)}`
   );
 }
 
 export function stopDetectingSensorChangesTask(sensor: PhoneSensor, prefix: string = ''): Task {
-  return new StopPushProviderTask(new BackgroundSensorsProvider(sensor), `Phone${prefix}${pascalCase(sensor)}`);
+  return new StopPushProviderTask(new PhoneSensorsProvider(sensor), `Phone${prefix}${pascalCase(sensor)}`);
 }
