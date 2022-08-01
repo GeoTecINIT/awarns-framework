@@ -16,7 +16,7 @@ import {
   SensorDelay,
   startDetectingSensorChangesTask,
   stopDetectingSensorChangesTask,
-} from '@awarns/background-sensors';
+} from '@awarns/phone-sensors';
 
 export const demoTasks: Array<Task> = [
   ...makeTraceable([

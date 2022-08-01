@@ -1,22 +1,22 @@
 {
-  "root": "packages/background-sensors",
+  "root": "packages/phone-sensors",
   "projectType": "library",
-  "sourceRoot": "packages/background-sensors",
+  "sourceRoot": "packages/phone-sensors",
   "targets": {
     "build": {
       "executor": "@nrwl/js:tsc",
       "options": {
-        "outputPath": "dist/packages/background-sensors",
-        "tsConfig": "packages/background-sensors/tsconfig.json",
-        "packageJson": "packages/background-sensors/package.json",
-        "main": "packages/background-sensors/index.d.ts",
+        "outputPath": "dist/packages/phone-sensors",
+        "tsConfig": "packages/phone-sensors/tsconfig.json",
+        "packageJson": "packages/phone-sensors/package.json",
+        "main": "packages/phone-sensors/index.d.ts",
         "assets": [
-          "packages/background-sensors/*.md",
-          "packages/background-sensors/index.d.ts",
+          "packages/phone-sensors/*.md",
+          "packages/phone-sensors/index.d.ts",
           "LICENSE",
           {
             "glob": "**/*",
-            "input": "packages/background-sensors/platforms/",
+            "input": "packages/phone-sensors/platforms/",
             "output": "./platforms/"
           }
         ],
@@ -31,10 +31,10 @@
     "build.all": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
-        "commands": ["node tools/scripts/build-finish.ts background-sensors"],
+        "commands": ["node tools/scripts/build-finish.ts phone-sensors"],
         "parallel": false
       },
-      "outputs": ["dist/packages/background-sensors"],
+      "outputs": ["dist/packages/phone-sensors"],
       "dependsOn": [
         {
           "target": "build.all",
@@ -49,14 +49,14 @@
     "focus": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
-        "commands": ["nx g @nativescript/plugin-tools:focus-packages background-sensors"],
+        "commands": ["nx g @nativescript/plugin-tools:focus-packages phone-sensors"],
         "parallel": false
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["packages/background-sensors/**/*.ts"]
+        "lintFilePatterns": ["packages/phone-sensors/**/*.ts"]
       }
     }
   },

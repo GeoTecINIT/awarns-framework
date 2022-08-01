@@ -16,7 +16,7 @@
     "@awarns/geofencing": "file:../../packages/geofencing",
     "@awarns/human-activity": "file:../../packages/human-activity",
     "@awarns/notifications": "file:../../packages/notifications",
-    "@awarns/background-sensors": "file:../../packages/background-sensors"
+    "@awarns/phone-sensors": "file:../../packages/phone-sensors"
   },
   "devDependencies": {
     "@jsdevtools/coverage-istanbul-loader": "3.0.5",

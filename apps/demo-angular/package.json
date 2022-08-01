@@ -12,7 +12,7 @@
     "@awarns/geofencing": "file:../../dist/packages/geofencing",
     "@awarns/human-activity": "file:../../dist/packages/human-activity",
     "@awarns/notifications": "file:../../dist/packages/notifications",
-    "@awarns/background-sensors": "file:../../dist/packages/background-sensors"
+    "@awarns/phone-sensors": "file:../../dist/packages/phone-sensors"
   },
   "devDependencies": {
     "@nativescript/android": "~8.2.0",

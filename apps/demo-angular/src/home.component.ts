@@ -37,7 +37,7 @@ export class HomeComponent {
       name: 'notifications',
     },
     {
-      name: 'background-sensors',
+      name: 'phone-sensors',
     },
   ];
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@awarns/background-sensors",
+  "name": "@awarns/phone-sensors",
   "version": "1.0.0",
   "description": "Add a plugin description",
   "main": "index",
@@ -31,5 +31,8 @@
   "license": "Apache-2.0",
   "homepage": "http://github.com/GeoTecINIT/awarns-framework",
   "readmeFilename": "README.md",
-  "bootstrapper": "@nativescript/plugin-seed"
+  "bootstrapper": "@nativescript/plugin-seed",
+  "dependencies": {
+    "@awarns/core": "^1.0.0"
+  }
 }

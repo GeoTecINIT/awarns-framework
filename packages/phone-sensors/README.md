@@ -1,7 +1,7 @@
-# @awarns/background-sensors
+# @awarns/phone-sensors
 
 ```javascript
-ns plugin add @awarns/background-sensors
+ns plugin add @awarns/phone-sensors
 ```
 
 ## Usage
