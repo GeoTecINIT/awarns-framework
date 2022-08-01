@@ -31,6 +31,7 @@
       "@awarns/geofencing": ["packages/geofencing/index.d.ts"],
       "@awarns/human-activity": ["packages/human-activity/index.d.ts"],
       "@awarns/notifications": ["packages/notifications/index.d.ts"],
+      "@awarns/background-sensors": ["packages/background-sensors/index.d.ts"],
       "@demo/shared": ["tools/demo/index.ts"]
     }
   },

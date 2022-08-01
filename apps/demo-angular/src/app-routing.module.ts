@@ -47,6 +47,10 @@ const routes: Routes = [
     path: 'notifications',
     loadChildren: () => import('./plugin-demos/notifications.module').then((m) => m.NotificationsModule),
   },
+  {
+    path: 'background-sensors',
+    loadChildren: () => import('./plugin-demos/background-sensors.module').then((m) => m.BackgroundSensorsModule),
+  },
 ];
 
 @NgModule({

@@ -1,0 +1,64 @@
+{
+  "root": "packages/background-sensors",
+  "projectType": "library",
+  "sourceRoot": "packages/background-sensors",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "options": {
+        "outputPath": "dist/packages/background-sensors",
+        "tsConfig": "packages/background-sensors/tsconfig.json",
+        "packageJson": "packages/background-sensors/package.json",
+        "main": "packages/background-sensors/index.d.ts",
+        "assets": [
+          "packages/background-sensors/*.md",
+          "packages/background-sensors/index.d.ts",
+          "LICENSE",
+          {
+            "glob": "**/*",
+            "input": "packages/background-sensors/platforms/",
+            "output": "./platforms/"
+          }
+        ],
+        "dependsOn": [
+          {
+            "target": "build.all",
+            "projects": "dependencies"
+          }
+        ]
+      }
+    },
+    "build.all": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["node tools/scripts/build-finish.ts background-sensors"],
+        "parallel": false
+      },
+      "outputs": ["dist/packages/background-sensors"],
+      "dependsOn": [
+        {
+          "target": "build.all",
+          "projects": "dependencies"
+        },
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ]
+    },
+    "focus": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["nx g @nativescript/plugin-tools:focus-packages background-sensors"],
+        "parallel": false
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["packages/background-sensors/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}
