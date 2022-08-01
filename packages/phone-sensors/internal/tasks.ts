@@ -14,6 +14,6 @@ export function startDetectingSensorChangesTask(
   );
 }
 
-export function stopDetectingSensorChangesTask(sensor: PhoneSensor, prefix: string = ''): Task {
-  return new StopPushProviderTask(new PhoneSensorsProvider(sensor), `Phone${prefix}${pascalCase(sensor)}`);
+export function stopDetectingSensorChangesTask(sensor: PhoneSensor): Task {
+  return new StopPushProviderTask(new PhoneSensorsProvider(sensor), `Phone${pascalCase(sensor)}`);
 }
