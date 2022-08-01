@@ -11,12 +11,22 @@ import { acquireMultiplePhoneBleScanTask, BleScanMode } from '@awarns/ble';
 import { checkAreaOfInterestProximityTask, filterGeolocationByAoIProximityTask } from '@awarns/geofencing';
 import { sendNotificationTask, sendRandomNotificationTask } from '@awarns/notifications';
 import { writeRecordsTask } from '@awarns/persistence';
+import {
+  PhoneSensor,
+  SensorDelay,
+  startDetectingSensorChangesTask,
+  stopDetectingSensorChangesTask,
+} from '@awarns/background-sensors';
 
 export const demoTasks: Array<Task> = [
   ...makeTraceable([
     startDetectingCoarseHumanActivityChangesTask(),
     stopDetectingCoarseHumanActivityChangesTask(),
     acquireBatteryLevelTask(),
+    startDetectingSensorChangesTask(PhoneSensor.ACCELEROMETER, { sensorDelay: SensorDelay.NORMAL, batchSize: 50 }),
+    startDetectingSensorChangesTask(PhoneSensor.GYROSCOPE, { sensorDelay: SensorDelay.NORMAL, batchSize: 50 }),
+    stopDetectingSensorChangesTask(PhoneSensor.ACCELEROMETER),
+    stopDetectingSensorChangesTask(PhoneSensor.GYROSCOPE),
   ]),
   ...makeTraceable(
     [
