@@ -38,7 +38,7 @@ describe('Phone sensors provider', () => {
     spyOn(serviceManager, 'startCollection').and.callThrough();
     const nativeConfig = collectionConfigurationMock(nativeSensor, config);
     await provider.startProviding();
-    expect(serviceManager.startCollection).toHaveBeenCalledWith(nativeConfig, PhoneSensorsProvider.callback);
+    expect(serviceManager.startCollection).toHaveBeenCalledWith(nativeConfig, callbackMock());
   });
 
   it('instructs the service manager to stop the data collection', async () => {
@@ -50,7 +50,7 @@ describe('Phone sensors provider', () => {
 
 function createSensorManagerMock() {
   return {
-    isSensorAvailable(sensor) {
+    isSensorAvailable(_sensor) {
       return false;
     },
     availableSensors() {
@@ -61,8 +61,12 @@ function createSensorManagerMock() {
 
 function createServiceManagerMock() {
   return {
-    startCollection(config, callback) {},
-    stopCollection(sensor) {},
+    startCollection(_config, _callback) {
+      return;
+    },
+    stopCollection(_sensor) {
+      return;
+    },
   };
 }
 
@@ -73,4 +77,13 @@ function collectionConfigurationMock(sensor, config: ProviderConfiguration) {
     config.sensorDelay * 1000,
     config.batchSize
   );
+}
+
+function callbackMock() {
+  // @ts-ignore
+  return new es.uji.geotec.backgroundsensors.record.callback.RecordCallback({
+    onRecordsCollected: (_param0: java.util.List<any>) => {
+      return;
+    },
+  });
 }

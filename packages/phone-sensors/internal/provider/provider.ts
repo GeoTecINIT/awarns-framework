@@ -13,15 +13,21 @@ import RecordCallback = es.uji.geotec.backgroundsensors.record.callback.RecordCa
 import TriAxialRecord = es.uji.geotec.backgroundsensors.record.TriAxialRecord;
 
 export class PhoneSensorsProvider implements PushProvider {
-  static callback = new RecordCallback({
-    onRecordsCollected: (records: java.util.List<TriAxialRecord>) => getTriAxialReceiver().onReceive(records),
-  });
-
   private nativeSensor: BaseSensor;
   private nativeConfiguration: CollectionConfiguration;
 
   get provides(): string {
     return this.sensor;
+  }
+
+  private _callback: RecordCallback<TriAxialRecord>;
+  get callback() {
+    if (!this._callback) {
+      this._callback = new RecordCallback({
+        onRecordsCollected: (records: java.util.List<TriAxialRecord>) => getTriAxialReceiver().onReceive(records),
+      });
+    }
+    return this._callback;
   }
 
   constructor(
@@ -45,7 +51,7 @@ export class PhoneSensorsProvider implements PushProvider {
   }
 
   async startProviding(): Promise<void> {
-    this.serviceManager.startCollection(this.nativeConfiguration, PhoneSensorsProvider.callback);
+    this.serviceManager.startCollection(this.nativeConfiguration, this.callback);
   }
 
   async stopProviding(): Promise<void> {
