@@ -1,9 +1,9 @@
 import BaseSensor = es.uji.geotec.backgroundsensors.sensor.BaseSensor;
 
 export enum PhoneSensor {
-  ACCELEROMETER = 'ACCELEROMETER',
-  GYROSCOPE = 'GYROSCOPE',
-  MAGNETOMETER = 'MAGNETOMETER',
+  ACCELEROMETER = 'accelerometer',
+  GYROSCOPE = 'gyroscope',
+  MAGNETOMETER = 'magnetometer',
 }
 
 export function fromNativeSensor(sensor: BaseSensor): PhoneSensor {

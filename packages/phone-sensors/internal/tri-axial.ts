@@ -1,11 +1,9 @@
 import { Record } from '@awarns/core/entities';
 import { PhoneSensor } from './phone-sensor';
 
-export const TriAxialType = 'tri-axial';
-
 export class TriAxial extends Record {
-  constructor(public sensor: PhoneSensor, public samples: TriAxialSample[], detectedAt: Date) {
-    super(TriAxialType, detectedAt);
+  constructor(sensor: PhoneSensor, public samples: TriAxialSample[], detectedAt: Date) {
+    super(sensor, detectedAt);
   }
 }
 

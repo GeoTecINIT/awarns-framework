@@ -1,5 +1,4 @@
 import { PushProvider } from '@awarns/core/providers';
-import { TriAxialType } from '../tri-axial';
 import { Utils } from '@nativescript/core';
 import { PhoneSensor, toNativeSensor } from '../phone-sensor';
 import { getTriAxialReceiver } from '../receiver';
@@ -22,7 +21,7 @@ export class PhoneSensorsProvider implements PushProvider {
   private nativeConfiguration: CollectionConfiguration;
 
   get provides(): string {
-    return TriAxialType;
+    return this.sensor;
   }
 
   constructor(

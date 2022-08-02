@@ -22,10 +22,10 @@ The collected data from the sensors, will be a [TriAxial](#triaxial) record, des
 
 ### Tasks 
 
-| Task name                                                                                                                 | Description                                                                                                                                                          |
-|---------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [`startDetectingPhone{prefix}{sensor}TriAxialChanges`](#start-data-collection-for-a-sensor-with-a-specific-configuration) | Allows to start the data collection for a `sensor` with a specific configuration (see below). The `prefix` can be used to distinguish among different configurations |
-| [`stopDetectingPhone{sensor}TriAxialChanges`](#stop-data-collection-for-a-sensor)                                         | The complement to the previous task. Allows to stop collecting data from `sensor`.                                                                                   |
+| Task name                                                                                                         | Description                                                                                                                                                          |
+|-------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [`startDetectingPhone{prefix}{sensor}Changes`](#start-data-collection-for-a-sensor-with-a-specific-configuration) | Allows to start the data collection for a `sensor` with a specific configuration (see below). The `prefix` can be used to distinguish among different configurations |
+| [`stopDetectingPhone{sensor}Changes`](#stop-data-collection-for-a-sensor)                                         | The complement to the previous task. Allows to stop collecting data from `sensor`.                                                                                   |
 
 #### Start data collection for a sensor with a specific configuration
 To register these tasks for their use, you just need to import them and call their generator functions inside your application's task list:
@@ -160,10 +160,9 @@ Task output events:
 | Property    | Type                                  | Description                                                                                            |
 |-------------|---------------------------------------|--------------------------------------------------------------------------------------------------------|
 | `id`        | `string`                              | Record's unique id.                                                                                    |
-| `type`      | `string`                              | Always `tri-axial`.                                                                                    |
+| `type`      | `string`                              | One of the following values: `accelerometer`, `gyroscope`, or `magnetometer`.                          |
 | `change`    | `Change`                              | Always `NONE`.                                                                                         |
 | `timestamp` | `Date`                                | The local time when the data was collected. It is equal to the time of the first sample in the record. |
-| `sensor`    | `PhoneSensor`                         | Sensor which the samples are from.                                                                     |
 | `samples`   | [`TriAxialSample[]`](#triaxialsample) | List with the collected samples.                                                                       |
 
 ##### `TriAxialSample`
