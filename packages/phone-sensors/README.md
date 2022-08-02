@@ -143,15 +143,15 @@ Task output events:
 > on('gyroscopeSamplesAcquired', run('stopDetectingPhoneGyroscopeChanges'));
 > on('magnetometerSamplesAcquired', run('stopDetectingPhoneMagnetometerChanges'));
 >```
-> **Note**: it makes no sense to use these tasks without using before their complement tasks to start the data collection.
+> **Note**: it makes no sense to use these tasks without using before their complementary tasks to start the data collection.
 
 ### Events
 
-| Name                           | Payload                 | Description                                                                                  |
-|--------------------------------|-------------------------|----------------------------------------------------------------------------------------------|
-| `accelerometerSamplesAcquired` | [`TriAxial`](#triaxial) | Contains a list of samples with the `x`, `y`, and `z` components of an accelerometer sensor. |
-| `gyroscopeSamplesAcquired`     | [`TriAxial`](#triaxial) | Contains a list of samples with the `x`, `y`, and `z` components of an gyroscope sensor.     |
-| `magnetometerSamplesAcquired`  | [`TriAxial`](#triaxial) | Contains a list of samples with the `x`, `y`, and `z` components of an magnetometer sensor.  |
+| Name                           | Payload                 | Description                                                                              |
+|--------------------------------|-------------------------|------------------------------------------------------------------------------------------|
+| `accelerometerSamplesAcquired` | [`TriAxial`](#triaxial) | Contains a list of samples with the `x`, `y`, and `z` values of an accelerometer sensor. |
+| `gyroscopeSamplesAcquired`     | [`TriAxial`](#triaxial) | Contains a list of samples with the `x`, `y`, and `z` values of a gyroscope sensor.      |
+| `magnetometerSamplesAcquired`  | [`TriAxial`](#triaxial) | Contains a list of samples with the `x`, `y`, and `z` values of a magnetometer sensor.   |
 
 ### Records
 
@@ -170,9 +170,9 @@ Task output events:
 
 | Property     | Type     | Description                                   |
 |--------------|----------|-----------------------------------------------|
-| `x`          | `number` | Component `x` of the sensor.                  |
-| `y`          | `number` | Component `y` of the sensor.                  |
-| `z`          | `number` | Component `z` of the sensor.                  |
+| `x`          | `number` | Value `x` of the sensor.                      |
+| `y`          | `number` | Value `y` of the sensor.                      |
+| `z`          | `number` | Value `z` of the sensor.                      |
 | `detectedAt` | `Date`   | The local time when the sample was collected. |
 
 
