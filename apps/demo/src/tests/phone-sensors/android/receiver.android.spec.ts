@@ -1,4 +1,4 @@
-import { TriAxialReceiver } from '@awarns/phone-sensors/internal/receiver';
+import { AndroidTriAxialReceiver } from '@awarns/phone-sensors/internal/receiver/android/receiver.android';
 import { EventData } from '@awarns/core/events';
 import { TriAxial } from '@awarns/phone-sensors/internal/tri-axial';
 import { PhoneSensor } from '@awarns/phone-sensors/internal/phone-sensor';
@@ -7,11 +7,11 @@ const now = new Date().getTime();
 
 describe('TriAxial receiver', () => {
   let eventEmitter: (eventName: string, eventData?: EventData) => void;
-  let receiver: TriAxialReceiver;
+  let receiver: AndroidTriAxialReceiver;
 
   beforeEach(() => {
     eventEmitter = jasmine.createSpy();
-    receiver = new TriAxialReceiver(eventEmitter);
+    receiver = new AndroidTriAxialReceiver(eventEmitter);
   });
 
   it('does nothing when receives an empty list of native records', () => {

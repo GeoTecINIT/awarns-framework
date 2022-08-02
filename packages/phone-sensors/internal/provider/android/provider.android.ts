@@ -1,8 +1,8 @@
 import { PushProvider } from '@awarns/core/providers';
 import { Utils } from '@nativescript/core';
-import { PhoneSensor, toNativeSensor } from '../phone-sensor';
-import { getTriAxialReceiver } from '../receiver';
-import { defaultConfig, providerConfigToNativeConfig, ProviderConfiguration } from './provider-configuration';
+import { PhoneSensor, toNativeSensor } from '../../phone-sensor';
+import { getTriAxialReceiver } from '../../receiver/android/receiver.android';
+import { providerConfigToNativeConfig, ProviderConfiguration } from '../provider-configuration';
 
 import ServiceManager = es.uji.geotec.backgroundsensors.service.manager.ServiceManager;
 import BaseSensorRecordingService = es.uji.geotec.backgroundsensors.service.BaseSensorRecordingService;
@@ -12,7 +12,7 @@ import BaseSensor = es.uji.geotec.backgroundsensors.sensor.BaseSensor;
 import RecordCallback = es.uji.geotec.backgroundsensors.record.callback.RecordCallback;
 import TriAxialRecord = es.uji.geotec.backgroundsensors.record.TriAxialRecord;
 
-export class PhoneSensorsProvider implements PushProvider {
+export class AndroidPhoneSensorsProvider implements PushProvider {
   private nativeSensor: BaseSensor;
   private nativeConfiguration: CollectionConfiguration;
 
@@ -32,7 +32,7 @@ export class PhoneSensorsProvider implements PushProvider {
 
   constructor(
     private sensor: PhoneSensor,
-    configuration: ProviderConfiguration = defaultConfig,
+    configuration: ProviderConfiguration,
     private sensorManager = new SensorManager(Utils.android.getApplicationContext()),
     private serviceManager = new ServiceManager(Utils.android.getApplicationContext(), BaseSensorRecordingService.class)
   ) {

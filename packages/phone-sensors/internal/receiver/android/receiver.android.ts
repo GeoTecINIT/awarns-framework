@@ -2,10 +2,10 @@ import { EventData } from '@awarns/core/events';
 import { awarns } from '@awarns/core/index';
 
 import TriAxialRecord = es.uji.geotec.backgroundsensors.record.TriAxialRecord;
-import { TriAxial } from './tri-axial';
-import { fromNativeSensor } from './phone-sensor';
+import { TriAxial } from '../../tri-axial';
+import { fromNativeSensor } from '../../phone-sensor';
 
-export class TriAxialReceiver {
+export class AndroidTriAxialReceiver {
   constructor(private emitEvent: (eventName: string, eventData?: EventData) => void) {}
 
   onReceive(nativeRecords: java.util.List<TriAxialRecord>) {
@@ -32,10 +32,10 @@ export class TriAxialReceiver {
   }
 }
 
-let _receiver: TriAxialReceiver;
-export function getTriAxialReceiver(): TriAxialReceiver {
+let _receiver: AndroidTriAxialReceiver;
+export function getTriAxialReceiver(): AndroidTriAxialReceiver {
   if (!_receiver) {
-    _receiver = new TriAxialReceiver(awarns.emitEvent);
+    _receiver = new AndroidTriAxialReceiver(awarns.emitEvent);
   }
   return _receiver;
 }

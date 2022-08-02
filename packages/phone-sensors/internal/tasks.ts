@@ -1,5 +1,5 @@
 import { Task, StartPushProviderTask, StopPushProviderTask } from '@awarns/core/tasks';
-import { PhoneSensorsProvider, ProviderConfiguration } from './provider';
+import { getProvider, ProviderConfiguration } from './provider';
 import { PhoneSensor } from './phone-sensor';
 
 export function startDetectingSensorChangesTask(
@@ -7,9 +7,9 @@ export function startDetectingSensorChangesTask(
   providerConfig: ProviderConfiguration,
   prefix: string = ''
 ): Task {
-  return new StartPushProviderTask(new PhoneSensorsProvider(sensor, providerConfig), `Phone${prefix}`);
+  return new StartPushProviderTask(getProvider(sensor, providerConfig), `Phone${prefix}`);
 }
 
 export function stopDetectingSensorChangesTask(sensor: PhoneSensor): Task {
-  return new StopPushProviderTask(new PhoneSensorsProvider(sensor), 'Phone');
+  return new StopPushProviderTask(getProvider(sensor), 'Phone');
 }

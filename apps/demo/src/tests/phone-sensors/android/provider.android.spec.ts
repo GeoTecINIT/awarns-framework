@@ -1,5 +1,6 @@
-import { PhoneSensorsProvider, ProviderConfiguration } from '@awarns/phone-sensors/internal/provider';
+import { ProviderConfiguration } from '@awarns/phone-sensors/internal/provider';
 import { PhoneSensor, toNativeSensor } from '@awarns/phone-sensors/internal/phone-sensor';
+import { AndroidPhoneSensorsProvider } from '@awarns/phone-sensors/internal/provider/android/provider.android';
 
 describe('Phone sensors provider', () => {
   const sensor = PhoneSensor.ACCELEROMETER;
@@ -12,13 +13,13 @@ describe('Phone sensors provider', () => {
   let sensorManager;
   let serviceManager;
 
-  let provider: PhoneSensorsProvider;
+  let provider: AndroidPhoneSensorsProvider;
 
   beforeEach(() => {
     sensorManager = createSensorManagerMock();
     serviceManager = createServiceManagerMock();
 
-    provider = new PhoneSensorsProvider(sensor, config, sensorManager, serviceManager);
+    provider = new AndroidPhoneSensorsProvider(sensor, config, sensorManager, serviceManager);
   });
 
   it('allows to check if the sensor is present in the device', async () => {
