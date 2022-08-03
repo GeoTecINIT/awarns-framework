@@ -20,6 +20,7 @@ describe('Phone sensors provider', () => {
     serviceManager = createServiceManagerMock();
 
     provider = new AndroidPhoneSensorsProvider(sensor, config, sensorManager, serviceManager);
+    spyOnProperty(provider, 'callback').and.returnValue(callbackMock());
   });
 
   it('allows to check if the sensor is present in the device', async () => {
@@ -83,7 +84,7 @@ function collectionConfigurationMock(sensor, config: ProviderConfiguration) {
 function callbackMock() {
   // @ts-ignore
   return new es.uji.geotec.backgroundsensors.record.callback.RecordCallback({
-    onRecordsCollected: (_param0: java.util.List<any>) => {
+    onRecordsCollected: (_param0: java.util.List<never>) => {
       return;
     },
   });
