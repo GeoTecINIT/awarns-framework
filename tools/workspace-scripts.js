@@ -154,7 +154,7 @@ module.exports = {
       // @awarns/phone-sensors
       'phone-sensors': {
         build: {
-          script: 'nx run phone-sensors:build.all',
+          script: 'nx run phone-sensors:build.all --parallel=false',
           description: '@awarns/phone-sensors: Build',
         },
       },
