@@ -1,5 +1,6 @@
-import { WatchRecord, WatchSample } from './index';
+import { WatchRecord } from './index';
 import { WatchSensor } from '../watch-sensor';
+import { HeartRateSensorSample as HeartRateSample } from 'nativescript-wearos-sensors/internal/sensors/heart-rate/sample';
 
 export class HeartRate extends WatchRecord {
   constructor(samples: HeartRateSample[], detectedAt: Date) {
@@ -7,6 +8,4 @@ export class HeartRate extends WatchRecord {
   }
 }
 
-export interface HeartRateSample extends WatchSample {
-  value: number;
-}
+export { HeartRateSample };

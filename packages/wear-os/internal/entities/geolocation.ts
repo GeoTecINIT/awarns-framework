@@ -1,5 +1,6 @@
-import { WatchRecord, WatchSample } from './index';
+import { WatchRecord } from './index';
 import { WatchSensor } from '../watch-sensor';
+import { LocationSensorSample as GeolocationSample } from 'nativescript-wearos-sensors/internal/sensors/location/sample';
 
 export class Geolocation extends WatchRecord {
   constructor(samples: GeolocationSample[], detectedAt: Date) {
@@ -7,8 +8,4 @@ export class Geolocation extends WatchRecord {
   }
 }
 
-export interface GeolocationSample extends WatchSample {
-  latitude: number;
-  longitude: number;
-  altitude: number;
-}
+export { GeolocationSample };
