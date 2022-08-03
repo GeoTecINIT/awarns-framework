@@ -17,6 +17,12 @@ import {
   startDetectingPhoneSensorChangesTask,
   stopDetectingPhoneSensorChangesTask,
 } from '@awarns/phone-sensors';
+import {
+  startDetectingWatchSensorChangesTask,
+  stopDetectingWatchSensorChangesTask,
+  WatchSensor,
+  WatchSensorDelay,
+} from '@awarns/wear-os';
 
 export const demoTasks: Array<Task> = [
   ...makeTraceable([
@@ -27,6 +33,22 @@ export const demoTasks: Array<Task> = [
     startDetectingPhoneSensorChangesTask(PhoneSensor.GYROSCOPE, { sensorDelay: SensorDelay.NORMAL, batchSize: 50 }),
     stopDetectingPhoneSensorChangesTask(PhoneSensor.ACCELEROMETER),
     stopDetectingPhoneSensorChangesTask(PhoneSensor.GYROSCOPE),
+
+    startDetectingWatchSensorChangesTask(WatchSensor.ACCELEROMETER, {
+      sensorDelay: WatchSensorDelay.NORMAL,
+      batchSize: 50,
+    }),
+    stopDetectingWatchSensorChangesTask(WatchSensor.ACCELEROMETER),
+    startDetectingWatchSensorChangesTask(WatchSensor.HEART_RATE, {
+      sensorDelay: WatchSensorDelay.NORMAL,
+      batchSize: 3,
+    }),
+    stopDetectingWatchSensorChangesTask(WatchSensor.HEART_RATE),
+    startDetectingWatchSensorChangesTask(WatchSensor.GEOLOCATION, {
+      sensorDelay: WatchSensorDelay.NORMAL,
+      batchSize: 5,
+    }),
+    stopDetectingWatchSensorChangesTask(WatchSensor.GEOLOCATION),
   ]),
   ...makeTraceable(
     [

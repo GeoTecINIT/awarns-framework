@@ -5,6 +5,7 @@ import { registerHumanActivityPlugin } from '@awarns/human-activity';
 import { registerNotificationsPlugin } from '@awarns/notifications';
 import { registerTracingPlugin } from '@awarns/tracing';
 import { registerPersistencePlugin } from '@awarns/persistence';
+import { registerWearOSPlugin } from '@awarns/wear-os';
 
 export function initializePlugin() {
   awarns
@@ -16,6 +17,7 @@ export function initializePlugin() {
         registerNotificationsPlugin('Intervention alerts'),
         registerPersistencePlugin(),
         registerTracingPlugin(),
+        registerWearOSPlugin(),
       ],
       {
         enableLogging: true,

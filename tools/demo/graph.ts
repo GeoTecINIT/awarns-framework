@@ -120,6 +120,20 @@ class DemoTaskGraph implements TaskGraph {
     on('gyroscopeSamplesAcquired', run('writeRecords'));
     on('gyroscopeSamplesAcquired', run('trackEvent'));
     on('gyroscopeSamplesAcquired', run('stopDetectingPhoneGyroscopeChanges'));
+
+    on('startEvent', run('startDetectingWatchAccelerometerChanges').every(1, 'minutes').cancelOn('stopEvent'));
+    on('startEvent', run('startDetectingWatchHeartRateChanges').every(1, 'minutes').cancelOn('stopEvent'));
+    on('startEvent', run('startDetectingWatchGeolocationChanges').every(1, 'minutes').cancelOn('stopEvent'));
+
+    on('watchAccelerometerSamplesAcquired', run('writeRecords'));
+    on('watchAccelerometerSamplesAcquired', run('trackEvent'));
+    on('watchAccelerometerSamplesAcquired', run('stopDetectingWatchAccelerometerChanges'));
+    on('watchHeartRateSamplesAcquired', run('writeRecords'));
+    on('watchHeartRateSamplesAcquired', run('trackEvent'));
+    on('watchHeartRateSamplesAcquired', run('stopDetectingWatchHeartRateChanges'));
+    on('watchGeolocationSamplesAcquired', run('writeRecords'));
+    on('watchGeolocationSamplesAcquired', run('trackEvent'));
+    on('watchGeolocationSamplesAcquired', run('stopDetectingWatchGeolocationChanges'));
   }
 }
 
