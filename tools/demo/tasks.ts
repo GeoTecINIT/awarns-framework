@@ -14,8 +14,8 @@ import { writeRecordsTask } from '@awarns/persistence';
 import {
   PhoneSensor,
   SensorDelay,
-  startDetectingSensorChangesTask,
-  stopDetectingSensorChangesTask,
+  startDetectingPhoneSensorChangesTask,
+  stopDetectingPhoneSensorChangesTask,
 } from '@awarns/phone-sensors';
 
 export const demoTasks: Array<Task> = [
@@ -23,10 +23,10 @@ export const demoTasks: Array<Task> = [
     startDetectingCoarseHumanActivityChangesTask(),
     stopDetectingCoarseHumanActivityChangesTask(),
     acquireBatteryLevelTask(),
-    startDetectingSensorChangesTask(PhoneSensor.ACCELEROMETER, { sensorDelay: SensorDelay.NORMAL, batchSize: 50 }),
-    startDetectingSensorChangesTask(PhoneSensor.GYROSCOPE, { sensorDelay: SensorDelay.NORMAL, batchSize: 50 }),
-    stopDetectingSensorChangesTask(PhoneSensor.ACCELEROMETER),
-    stopDetectingSensorChangesTask(PhoneSensor.GYROSCOPE),
+    startDetectingPhoneSensorChangesTask(PhoneSensor.ACCELEROMETER, { sensorDelay: SensorDelay.NORMAL, batchSize: 50 }),
+    startDetectingPhoneSensorChangesTask(PhoneSensor.GYROSCOPE, { sensorDelay: SensorDelay.NORMAL, batchSize: 50 }),
+    stopDetectingPhoneSensorChangesTask(PhoneSensor.ACCELEROMETER),
+    stopDetectingPhoneSensorChangesTask(PhoneSensor.GYROSCOPE),
   ]),
   ...makeTraceable(
     [

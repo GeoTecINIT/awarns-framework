@@ -2,14 +2,14 @@ import { Task, StartPushProviderTask, StopPushProviderTask } from '@awarns/core/
 import { getProvider, ProviderConfiguration } from './provider';
 import { PhoneSensor } from './phone-sensor';
 
-export function startDetectingSensorChangesTask(
+export function startDetectingPhoneSensorChangesTask(
   sensor: PhoneSensor,
   providerConfig: ProviderConfiguration,
-  prefix: string = ''
+  prefix = ''
 ): Task {
   return new StartPushProviderTask(getProvider(sensor, providerConfig), `Phone${prefix}`);
 }
 
-export function stopDetectingSensorChangesTask(sensor: PhoneSensor): Task {
+export function stopDetectingPhoneSensorChangesTask(sensor: PhoneSensor): Task {
   return new StopPushProviderTask(getProvider(sensor), 'Phone');
 }

@@ -33,22 +33,22 @@ To register these tasks for their use, you just need to import them and call the
 ```typescript
 import { Task } from '@awarns/core/tasks';
 import {
-  startDetectingSensorChangesTask,
+  startDetectingPhoneSensorChangesTask,
   PhoneSensor,
   SensorDelay,
 } from '@awarns/phone-sensors';
 
 export const demoTasks: Array<Task> = [
-  startDetectingSensorChangesTask(PhoneSensor.ACCELEROMETER, { sensorDelay: SensorDelay.NORMAL, batchSize: 50 }),
+  startDetectingPhoneSensorChangesTask(PhoneSensor.ACCELEROMETER, { sensorDelay: SensorDelay.NORMAL, batchSize: 50 }),
   // startDetectingPhoneAccelerometerChanges
   
-  startDetectingSensorChangesTask(PhoneSensor.ACCELEROMETER, { sensorDelay: SensorDelay.FASTEST, batchSize: 50 }, 'Fast'),
+  startDetectingPhoneSensorChangesTask(PhoneSensor.ACCELEROMETER, { sensorDelay: SensorDelay.FASTEST, batchSize: 50 }, 'Fast'),
   // startDetectingPhoneFastAccelerometerChanges
 
-  startDetectingSensorChangesTask(PhoneSensor.GYROSCOPE, { sensorDelay: SensorDelay.NORMAL, batchSize: 50 }),
+  startDetectingPhoneSensorChangesTask(PhoneSensor.GYROSCOPE, { sensorDelay: SensorDelay.NORMAL, batchSize: 50 }),
   // startDetectingPhoneGyroscopeChanges
 
-  startDetectingSensorChangesTask(PhoneSensor.MAGNETOMETER, { sensorDelay: SensorDelay.NORMAL, batchSize: 50 }),
+  startDetectingPhoneSensorChangesTask(PhoneSensor.MAGNETOMETER, { sensorDelay: SensorDelay.NORMAL, batchSize: 50 }),
   // startDetectingPhoneMagnetometerChanges
 
 ];
@@ -111,14 +111,14 @@ To register these tasks for their use, you just need to import them and call the
 ```typescript
 import { Task } from '@awarns/core/tasks';
 import {
-  stopDetectingSensorChangesTask,
+  stopDetectingPhoneSensorChangesTask,
   PhoneSensor,
 } from '@awarns/phone-sensors';
 
 export const demoTasks: Array<Task> = [
-  stopDetectingSensorChangesTask(PhoneSensor.ACCELEROMETER), // stopDetectingPhoneAccelerometerChanges
-  stopDetectingSensorChangesTask(PhoneSensor.GYROSCOPE),     // stopDetectingPhoneGyroscopeChanges
-  stopDetectingSensorChangesTask(PhoneSensor.MAGNETOMETER),  // stopDetectingPhoneMagnetometerChanges
+  stopDetectingPhoneSensorChangesTask(PhoneSensor.ACCELEROMETER), // stopDetectingPhoneAccelerometerChanges
+  stopDetectingPhoneSensorChangesTask(PhoneSensor.GYROSCOPE),     // stopDetectingPhoneGyroscopeChanges
+  stopDetectingPhoneSensorChangesTask(PhoneSensor.MAGNETOMETER),  // stopDetectingPhoneMagnetometerChanges
 ];
 ```
 
