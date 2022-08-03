@@ -158,6 +158,13 @@ module.exports = {
           description: '@awarns/phone-sensors: Build',
         },
       },
+      // @awarns/wear-os
+      'wear-os': {
+        build: {
+          script: 'nx run wear-os:build.all --parallel=false',
+          description: '@awarns/wear-os: Build',
+        },
+      },
       'build-all': {
         script: 'nx run-many --target=build.all --all --parallel=1',
         description: 'Build all packages',
@@ -211,6 +218,10 @@ module.exports = {
       'phone-sensors': {
         script: 'nx run phone-sensors:focus',
         description: 'Focus on @awarns/phone-sensors',
+      },
+      'wear-os': {
+        script: 'nx run wear-os:focus',
+        description: 'Focus on @awarns/wear-os',
       },
       reset: {
         script: 'nx g @awarns/plugin-tools:focus-packages',

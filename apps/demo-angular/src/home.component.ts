@@ -39,5 +39,8 @@ export class HomeComponent {
     {
       name: 'phone-sensors',
     },
+    {
+      name: 'wear-os',
+    },
   ];
 }
