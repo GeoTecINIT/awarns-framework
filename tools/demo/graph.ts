@@ -134,6 +134,28 @@ class DemoTaskGraph implements TaskGraph {
     on('watchGeolocationSamplesAcquired', run('writeRecords'));
     on('watchGeolocationSamplesAcquired', run('trackEvent'));
     on('watchGeolocationSamplesAcquired', run('stopDetectingWatchGeolocationChanges'));
+
+    on(
+      'startEvent',
+      run('sendPlainMessageToWatch', {
+        message: 'I do not expect a response :)!',
+      }).now()
+    );
+    on(
+      'startEvent',
+      run('sendPlainMessageToWatchAndAwaitResponse', {
+        message: 'PING!',
+      })
+        .every(1, 'minutes')
+        .cancelOn('stopEvent')
+    );
+
+    on('plainMessageSent', run('writeRecords'));
+    on('plainMessageSent', run('trackEvent'));
+    on('plainMessageSentAndResponseReceived', run('writeRecords'));
+    on('plainMessageSentAndResponseReceived', run('trackEvent'));
+    on('plainMessageReceived', run('writeRecords'));
+    on('plainMessageReceived', run('trackEvent'));
   }
 }
 

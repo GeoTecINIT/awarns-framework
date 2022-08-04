@@ -18,6 +18,8 @@ import {
   stopDetectingPhoneSensorChangesTask,
 } from '@awarns/phone-sensors';
 import {
+  sendPlainMessageToWatchTask,
+  sendPlainMessageToWatchAndAwaitResponseTask,
   startDetectingWatchSensorChangesTask,
   stopDetectingWatchSensorChangesTask,
   WatchSensor,
@@ -49,6 +51,9 @@ export const demoTasks: Array<Task> = [
       batchSize: 5,
     }),
     stopDetectingWatchSensorChangesTask(WatchSensor.GEOLOCATION),
+
+    sendPlainMessageToWatchTask(),
+    sendPlainMessageToWatchAndAwaitResponseTask(),
   ]),
   ...makeTraceable(
     [
