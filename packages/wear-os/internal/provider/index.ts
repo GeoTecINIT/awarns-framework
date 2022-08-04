@@ -1,5 +1,5 @@
 import { PushProvider } from '@awarns/core/providers';
-import { getWatchSensorsReceiver } from '../receiver';
+import { getWatchSensorsReceiver } from '../receiver/sensors';
 import { SensorType } from 'nativescript-wearos-sensors/sensors';
 import { CollectionConfiguration, CollectorManager, getCollectorManager } from 'nativescript-wearos-sensors/collection';
 import { Watch } from '../watch';

@@ -1,11 +1,11 @@
 import { SensorRecord, SensorSample } from 'nativescript-wearos-sensors/sensors/records';
 import { awarns } from '@awarns/core/index';
 import { EventData } from '@awarns/core/events';
-import { fromSensorType, WatchSensor } from './watch-sensor';
+import { fromSensorType, WatchSensor } from '../../watch-sensor';
 import { camelCase } from '@awarns/core/internal/utils/string';
-import { TriAxial, TriAxialSample } from './entities/tri-axial';
-import { HeartRate, HeartRateSample } from './entities/heart-rate';
-import { Geolocation, GeolocationSample } from './entities/geolocation';
+import { TriAxial, TriAxialSample } from '../../entities/sensors/tri-axial';
+import { HeartRate, HeartRateSample } from '../../entities/sensors/heart-rate';
+import { Geolocation, GeolocationSample } from '../../entities/sensors/geolocation';
 import { Record } from '@awarns/core/entities';
 
 export class WatchSensorsReceiver {
