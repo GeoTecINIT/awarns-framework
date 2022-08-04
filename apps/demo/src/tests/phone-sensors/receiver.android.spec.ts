@@ -5,7 +5,7 @@ import { PhoneSensor } from '@awarns/phone-sensors/internal/phone-sensor';
 
 const now = new Date().getTime();
 
-xdescribe('TriAxial receiver', () => {
+describe('TriAxial receiver', () => {
   let eventEmitter: (eventName: string, eventData?: EventData) => void;
   let receiver: AndroidTriAxialReceiver;
 
