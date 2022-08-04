@@ -2,7 +2,7 @@ import { ProviderConfiguration } from '@awarns/phone-sensors/internal/provider';
 import { PhoneSensor, toNativeSensor } from '@awarns/phone-sensors/internal/phone-sensor';
 import { AndroidPhoneSensorsProvider } from '@awarns/phone-sensors/internal/provider/android/provider.android';
 
-describe('Phone sensors provider', () => {
+xdescribe('Phone sensors provider', () => {
   const sensor = PhoneSensor.ACCELEROMETER;
   const nativeSensor = toNativeSensor(sensor);
   const config: ProviderConfiguration = {
