@@ -24,7 +24,7 @@ The collected data from the sensors, will be a [TriAxial](#triaxial) record, des
 
 | Task name                                                                                                         | Description                                                                                                                                                          |
 |-------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [`startDetectingPhone{prefix}{sensor}Changes`](#start-data-collection-for-a-sensor-with-a-specific-configuration) | Allows to start the data collection for a `sensor` with a specific configuration (see below). The `prefix` can be used to distinguish among different configurations |
+| [`startDetecting{prefix}Phone{sensor}Changes`](#start-data-collection-for-a-sensor-with-a-specific-configuration) | Allows to start the data collection for a `sensor` with a specific configuration (see below). The `prefix` can be used to distinguish among different configurations |
 | [`stopDetectingPhone{sensor}Changes`](#stop-data-collection-for-a-sensor)                                         | The complement to the previous task. Allows to stop collecting data from `sensor`.                                                                                   |
 
 #### Start data collection for a sensor with a specific configuration
@@ -43,7 +43,7 @@ export const demoTasks: Array<Task> = [
   // startDetectingPhoneAccelerometerChanges
   
   startDetectingPhoneSensorChangesTask(PhoneSensor.ACCELEROMETER, { sensorDelay: SensorDelay.FASTEST, batchSize: 50 }, 'Fast'),
-  // startDetectingPhoneFastAccelerometerChanges
+  // startDetectingFastPhoneAccelerometerChanges
 
   startDetectingPhoneSensorChangesTask(PhoneSensor.GYROSCOPE, { sensorDelay: SensorDelay.NORMAL, batchSize: 50 }),
   // startDetectingPhoneGyroscopeChanges
