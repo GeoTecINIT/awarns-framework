@@ -44,7 +44,7 @@ export class WatchSensorsProvider implements PushProvider {
 
   async checkIfIsReady(): Promise<void> {
     if (!areWatchFeaturesEnabled()) {
-      throw featuresNotEnabledError;
+      return;
     }
 
     const isReady = await this.collectorManager.isReady(this.watch, this.sensorType);
@@ -57,7 +57,7 @@ export class WatchSensorsProvider implements PushProvider {
 
   async prepare(): Promise<void> {
     if (!areWatchFeaturesEnabled()) {
-      throw featuresNotEnabledError;
+      return;
     }
 
     const prepareErrors = await this.collectorManager.prepare(this.watch, this.sensorType);

@@ -24,9 +24,12 @@ describe('Watch sensors provider', () => {
     spyOnProperty(provider, 'collectorManager').and.returnValue(collectorManager);
   });
 
-  it('checkIfIsReady throws an error when watch features are disabled', async () => {
+  it('checkIfIsReady does nothing when watch features are disabled', async () => {
     setWatchFeaturesState(false);
-    await expectAsync(provider.checkIfIsReady()).toBeRejectedWith(featuresNotEnabledError);
+    spyOn(collectorManager, 'isReady').and.resolveTo(false);
+
+    await expectAsync(provider.checkIfIsReady()).toBeResolved();
+    expect(collectorManager.isReady).not.toHaveBeenCalled();
   });
 
   it('checkIfIsReady throws an error when there is no watch being used', async () => {
@@ -57,9 +60,12 @@ describe('Watch sensors provider', () => {
     expect(collectorManager.isReady).toHaveBeenCalledWith(watch, sensorType);
   });
 
-  it('prepare throws an error when watch features are disabled', async () => {
+  it('prepare does nothing when watch features are disabled', async () => {
     setWatchFeaturesState(false);
-    await expectAsync(provider.prepare()).toBeRejectedWith(featuresNotEnabledError);
+    spyOn(collectorManager, 'prepare').and.resolveTo(undefined);
+
+    await expectAsync(provider.prepare()).toBeResolved();
+    expect(collectorManager.prepare).not.toHaveBeenCalled();
   });
 
   it('prepare throws an error when there is no watch being used', async () => {
