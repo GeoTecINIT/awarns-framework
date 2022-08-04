@@ -1,4 +1,4 @@
-import { WatchSensor } from '../watch-sensor';
+import { WatchSensor } from '../../watch-sensor';
 import { WatchRecord } from './index';
 import { TriAxialSensorSample as TSS } from 'nativescript-wearos-sensors/sensors/records';
 

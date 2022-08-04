@@ -1,5 +1,5 @@
 import { Record } from '@awarns/core/entities';
-import { WatchSensor } from '../watch-sensor';
+import { WatchSensor } from '../../watch-sensor';
 import { SensorSample as SS } from 'nativescript-wearos-sensors/sensors/records';
 
 export type WatchSample = SS;

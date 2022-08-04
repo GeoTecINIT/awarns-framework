@@ -1,5 +1,5 @@
 import { WatchRecord } from './index';
-import { WatchSensor } from '../watch-sensor';
+import { WatchSensor } from '../../watch-sensor';
 import { LocationSensorSample as LSS } from 'nativescript-wearos-sensors/sensors/records';
 
 export type GeolocationSample = LSS;
