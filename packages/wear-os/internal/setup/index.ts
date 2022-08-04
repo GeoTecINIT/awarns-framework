@@ -5,6 +5,9 @@ import { Node } from 'nativescript-wearos-sensors/node';
 const WATCH_FEATURES_ENABLED = 'WATCH_FEATURES_ENABLED_KEY';
 const CURRENT_WATCH = 'CURRENT_WATCH_KEY';
 
+export const featuresNotEnabledError = new Error('Watch features are not enabled!');
+export const noWatchSelectedError = new Error('There is no watch selected for use!');
+
 export function setWatchFeaturesState(enabled: boolean): void {
   setBoolean(WATCH_FEATURES_ENABLED, enabled);
   flush();
@@ -23,7 +26,7 @@ export function useWatch(watch: Watch): void {
 export function getWatchInUse(): Watch {
   const stringifiedWatch = getString(CURRENT_WATCH);
   if (!stringifiedWatch) {
-    throw new Error('There is no watch selected for use!');
+    throw noWatchSelectedError;
   }
 
   const watchProperties = stringifiedWatch.split('#');

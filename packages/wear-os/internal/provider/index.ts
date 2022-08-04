@@ -4,7 +4,7 @@ import { SensorType } from 'nativescript-wearos-sensors/sensors';
 import { CollectionConfiguration, CollectorManager, getCollectorManager } from 'nativescript-wearos-sensors/collection';
 import { Watch } from '../watch';
 import { toSensorType, WatchSensor } from '../watch-sensor';
-import { areWatchFeaturesEnabled, getWatchInUse } from '../setup';
+import { areWatchFeaturesEnabled, featuresNotEnabledError, getWatchInUse } from '../setup';
 import { defaultConfig, ProviderConfiguration, toCollectionConfiguration } from './provider-configuration';
 
 export class WatchSensorsProvider implements PushProvider {
@@ -44,7 +44,7 @@ export class WatchSensorsProvider implements PushProvider {
 
   async checkIfIsReady(): Promise<void> {
     if (!areWatchFeaturesEnabled()) {
-      return;
+      throw featuresNotEnabledError;
     }
 
     const isReady = await this.collectorManager.isReady(this.watch, this.sensorType);
@@ -57,7 +57,7 @@ export class WatchSensorsProvider implements PushProvider {
 
   async prepare(): Promise<void> {
     if (!areWatchFeaturesEnabled()) {
-      return;
+      throw featuresNotEnabledError;
     }
 
     const prepareErrors = await this.collectorManager.prepare(this.watch, this.sensorType);
@@ -72,7 +72,7 @@ export class WatchSensorsProvider implements PushProvider {
 
   async startProviding(): Promise<void> {
     if (!areWatchFeaturesEnabled()) {
-      return;
+      throw featuresNotEnabledError;
     }
 
     return await this.collectorManager.startCollecting(this.watch, this.sensorType, this.collectionConfiguration);
@@ -80,7 +80,7 @@ export class WatchSensorsProvider implements PushProvider {
 
   async stopProviding(): Promise<void> {
     if (!areWatchFeaturesEnabled()) {
-      return;
+      throw featuresNotEnabledError;
     }
 
     return await this.collectorManager.stopCollecting(this.watch, this.sensorType);
