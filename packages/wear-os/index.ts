@@ -1,3 +1,5 @@
+import { PlainMessageClient } from './internal/plain-message-client';
+
 export * from './entities';
 export * from './provider';
 export * from './sensors';
@@ -20,7 +22,7 @@ export function registerWearOSPlugin(config: WearOSPluginConfig = defaultConfig)
     }
 
     if (!config.disablePlainMessaging) {
-      // TODO: Setup plain messaging
+      PlainMessageClient.setup();
     }
 
     await wearosSensors.init(config);
