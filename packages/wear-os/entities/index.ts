@@ -1,4 +1,4 @@
-export { WatchRecord, WatchSample } from '../internal/entities';
-export { TriAxial, TriAxialSample } from '../internal/entities/tri-axial';
-export { HeartRate, HeartRateSample } from '../internal/entities/heart-rate';
-export { Geolocation, GeolocationSample } from '../internal/entities/geolocation';
+export * from '../internal/entities';
+export * from '../internal/entities/tri-axial';
+export * from '../internal/entities/heart-rate';
+export * from '../internal/entities/geolocation';

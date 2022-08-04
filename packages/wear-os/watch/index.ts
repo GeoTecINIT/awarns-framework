@@ -1,1 +1,1 @@
-export { getConnectedWatches, Watch } from '../internal/watch';
+export * from '../internal/watch';

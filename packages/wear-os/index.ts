@@ -6,8 +6,7 @@ export * from './tasks';
 export * from './watch';
 
 import { PluginLoader } from '@awarns/core/common';
-import { wearosSensors, WearosSensorsConfig as WSC } from 'nativescript-wearos-sensors';
-import { allSensors, defaultConfig } from 'nativescript-wearos-sensors/wearos-sensors.common';
+import { wearosSensors, allSensors, defaultConfig, WearosSensorsConfig as WSC } from 'nativescript-wearos-sensors';
 import { WatchSensorsProvider } from './internal/provider';
 
 export type WearOSPluginConfig = WSC;
