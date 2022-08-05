@@ -1,9 +1,9 @@
 /// <reference path="android-declarations.d.ts"/>
 
-declare module es {
-  export module uji {
-    export module geotec {
-      export module backgroundsensors {
+declare namespace es {
+  export namespace uji {
+    export namespace geotec {
+      export namespace backgroundsensors {
         export class BuildConfig {
           public static class: java.lang.Class<es.uji.geotec.backgroundsensors.BuildConfig>;
           public static DEBUG: boolean;
@@ -16,11 +16,11 @@ declare module es {
   }
 }
 
-declare module es {
-  export module uji {
-    export module geotec {
-      export module backgroundsensors {
-        export module collection {
+declare namespace es {
+  export namespace uji {
+    export namespace geotec {
+      export namespace backgroundsensors {
+        export namespace collection {
           export class BaseCollectorManager extends es.uji.geotec.backgroundsensors.collection.CollectorManager {
             public static class: java.lang.Class<es.uji.geotec.backgroundsensors.collection.BaseCollectorManager>;
             public constructor(
@@ -41,11 +41,11 @@ declare module es {
   }
 }
 
-declare module es {
-  export module uji {
-    export module geotec {
-      export module backgroundsensors {
-        export module collection {
+declare namespace es {
+  export namespace uji {
+    export namespace geotec {
+      export namespace backgroundsensors {
+        export namespace collection {
           export class CollectionConfiguration {
             public static class: java.lang.Class<es.uji.geotec.backgroundsensors.collection.CollectionConfiguration>;
             public getSensor(): es.uji.geotec.backgroundsensors.sensor.Sensor;
@@ -59,11 +59,11 @@ declare module es {
   }
 }
 
-declare module es {
-  export module uji {
-    export module geotec {
-      export module backgroundsensors {
-        export module collection {
+declare namespace es {
+  export namespace uji {
+    export namespace geotec {
+      export namespace backgroundsensors {
+        export namespace collection {
           export abstract class CollectorManager {
             public static class: java.lang.Class<es.uji.geotec.backgroundsensors.collection.CollectorManager>;
             public context: globalAndroid.content.Context;
@@ -94,11 +94,11 @@ declare module es {
   }
 }
 
-declare module es {
-  export module uji {
-    export module geotec {
-      export module backgroundsensors {
-        export module listener {
+declare namespace es {
+  export namespace uji {
+    export namespace geotec {
+      export namespace backgroundsensors {
+        export namespace listener {
           export class TriAxialSensorListener {
             public static class: java.lang.Class<es.uji.geotec.backgroundsensors.listener.TriAxialSensorListener>;
             public onAccuracyChanged(param0: globalAndroid.hardware.Sensor, param1: number): void;
@@ -115,11 +115,11 @@ declare module es {
   }
 }
 
-declare module es {
-  export module uji {
-    export module geotec {
-      export module backgroundsensors {
-        export module notification {
+declare namespace es {
+  export namespace uji {
+    export namespace geotec {
+      export namespace backgroundsensors {
+        export namespace notification {
           export class NotificationProvider {
             public static class: java.lang.Class<es.uji.geotec.backgroundsensors.notification.NotificationProvider>;
             public constructor(param0: globalAndroid.content.Context);
@@ -132,11 +132,11 @@ declare module es {
   }
 }
 
-declare module es {
-  export module uji {
-    export module geotec {
-      export module backgroundsensors {
-        export module record {
+declare namespace es {
+  export namespace uji {
+    export namespace geotec {
+      export namespace backgroundsensors {
+        export namespace record {
           export class Record {
             public static class: java.lang.Class<es.uji.geotec.backgroundsensors.record.Record>;
             public getSensor(): es.uji.geotec.backgroundsensors.sensor.Sensor;
@@ -150,11 +150,11 @@ declare module es {
   }
 }
 
-declare module es {
-  export module uji {
-    export module geotec {
-      export module backgroundsensors {
-        export module record {
+declare namespace es {
+  export namespace uji {
+    export namespace geotec {
+      export namespace backgroundsensors {
+        export namespace record {
           export class TriAxialRecord extends es.uji.geotec.backgroundsensors.record.Record {
             public static class: java.lang.Class<es.uji.geotec.backgroundsensors.record.TriAxialRecord>;
             public getX(): number;
@@ -176,12 +176,12 @@ declare module es {
   }
 }
 
-declare module es {
-  export module uji {
-    export module geotec {
-      export module backgroundsensors {
-        export module record {
-          export module accumulator {
+declare namespace es {
+  export namespace uji {
+    export namespace geotec {
+      export namespace backgroundsensors {
+        export namespace record {
+          export namespace accumulator {
             export class RecordAccumulator<T> extends java.lang.Object {
               public static class: java.lang.Class<
                 es.uji.geotec.backgroundsensors.record.accumulator.RecordAccumulator<any>
@@ -199,12 +199,12 @@ declare module es {
   }
 }
 
-declare module es {
-  export module uji {
-    export module geotec {
-      export module backgroundsensors {
-        export module record {
-          export module callback {
+declare namespace es {
+  export namespace uji {
+    export namespace geotec {
+      export namespace backgroundsensors {
+        export namespace record {
+          export namespace callback {
             export class RecordCallback<T> extends java.lang.Object {
               public static class: java.lang.Class<es.uji.geotec.backgroundsensors.record.callback.RecordCallback<any>>;
               /**
@@ -221,11 +221,11 @@ declare module es {
   }
 }
 
-declare module es {
-  export module uji {
-    export module geotec {
-      export module backgroundsensors {
-        export module sensor {
+declare namespace es {
+  export namespace uji {
+    export namespace geotec {
+      export namespace backgroundsensors {
+        export namespace sensor {
           export class BaseSensor extends es.uji.geotec.backgroundsensors.sensor.Sensor {
             public static class: java.lang.Class<es.uji.geotec.backgroundsensors.sensor.BaseSensor>;
             public static ACCELEROMETER: es.uji.geotec.backgroundsensors.sensor.BaseSensor;
@@ -242,11 +242,11 @@ declare module es {
   }
 }
 
-declare module es {
-  export module uji {
-    export module geotec {
-      export module backgroundsensors {
-        export module sensor {
+declare namespace es {
+  export namespace uji {
+    export namespace geotec {
+      export namespace backgroundsensors {
+        export namespace sensor {
           export class Sensor {
             public static class: java.lang.Class<es.uji.geotec.backgroundsensors.sensor.Sensor>;
             /**
@@ -263,11 +263,11 @@ declare module es {
   }
 }
 
-declare module es {
-  export module uji {
-    export module geotec {
-      export module backgroundsensors {
-        export module sensor {
+declare namespace es {
+  export namespace uji {
+    export namespace geotec {
+      export namespace backgroundsensors {
+        export namespace sensor {
           export class SensorManager {
             public static class: java.lang.Class<es.uji.geotec.backgroundsensors.sensor.SensorManager>;
             public isSensorAvailable(param0: es.uji.geotec.backgroundsensors.sensor.Sensor): boolean;
@@ -282,11 +282,11 @@ declare module es {
   }
 }
 
-declare module es {
-  export module uji {
-    export module geotec {
-      export module backgroundsensors {
-        export module service {
+declare namespace es {
+  export namespace uji {
+    export namespace geotec {
+      export namespace backgroundsensors {
+        export namespace service {
           export class BaseSensorRecordingService extends es.uji.geotec.backgroundsensors.service
             .SensorRecordingService {
             public static class: java.lang.Class<es.uji.geotec.backgroundsensors.service.BaseSensorRecordingService>;
@@ -299,11 +299,11 @@ declare module es {
   }
 }
 
-declare module es {
-  export module uji {
-    export module geotec {
-      export module backgroundsensors {
-        export module service {
+declare namespace es {
+  export namespace uji {
+    export namespace geotec {
+      export namespace backgroundsensors {
+        export namespace service {
           export abstract class SensorRecordingService {
             public static class: java.lang.Class<es.uji.geotec.backgroundsensors.service.SensorRecordingService>;
             public constructor();
@@ -313,7 +313,7 @@ declare module es {
             public getCollectorManager(): es.uji.geotec.backgroundsensors.collection.CollectorManager;
             public onStartCommand(param0: globalAndroid.content.Intent, param1: number, param2: number): number;
           }
-          export module SensorRecordingService {
+          export namespace SensorRecordingService {
             export class SensorRecordingBinder {
               public static class: java.lang.Class<es.uji.geotec.backgroundsensors.service.SensorRecordingService.SensorRecordingBinder>;
               public startRecordingFor(
@@ -330,12 +330,12 @@ declare module es {
   }
 }
 
-declare module es {
-  export module uji {
-    export module geotec {
-      export module backgroundsensors {
-        export module service {
-          export module manager {
+declare namespace es {
+  export namespace uji {
+    export namespace geotec {
+      export namespace backgroundsensors {
+        export namespace service {
+          export namespace manager {
             export class ServiceManager {
               public static class: java.lang.Class<es.uji.geotec.backgroundsensors.service.manager.ServiceManager>;
               public startCollection(
@@ -352,11 +352,11 @@ declare module es {
   }
 }
 
-declare module es {
-  export module uji {
-    export module geotec {
-      export module backgroundsensors {
-        export module time {
+declare namespace es {
+  export namespace uji {
+    export namespace geotec {
+      export namespace backgroundsensors {
+        export namespace time {
           export class DefaultTimeProvider extends es.uji.geotec.backgroundsensors.time.TimeProvider {
             public static class: java.lang.Class<es.uji.geotec.backgroundsensors.time.DefaultTimeProvider>;
             public constructor();
@@ -368,11 +368,11 @@ declare module es {
   }
 }
 
-declare module es {
-  export module uji {
-    export module geotec {
-      export module backgroundsensors {
-        export module time {
+declare namespace es {
+  export namespace uji {
+    export namespace geotec {
+      export namespace backgroundsensors {
+        export namespace time {
           export abstract class TimeProvider {
             public static class: java.lang.Class<es.uji.geotec.backgroundsensors.time.TimeProvider>;
             public constructor();
