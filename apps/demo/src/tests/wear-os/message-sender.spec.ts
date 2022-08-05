@@ -15,7 +15,7 @@ describe('Message sender task', () => {
 
   beforeEach(() => {
     setWatchFeaturesState(true);
-    sender = fakeSender();
+    sender = jasmine.createSpy().and.callFake(fakeSender());
     messageSender = new MessageSenderTask('messageSender', eventName, sender);
   });
 
@@ -34,41 +34,53 @@ describe('Message sender task', () => {
     const invocationEvent = createEvent('triggerEvent');
     const done = listenToEventTrigger(eventName, invocationEvent.id);
 
-    const messageToSend = {
+    const plainMessage = {
       message: 'Hi :D',
       inResponseTo: {
         message: 'Hello!',
       },
     };
-    const expectedOutputRecord = new MessageSent(messageToSend);
+    const timeout = 1000;
+    const taskParams = {
+      plainMessage,
+      timeout,
+    };
+
+    const expectedOutputRecord = new MessageSent(plainMessage);
     const { id, timestamp, ...expectedProperties } = expectedOutputRecord;
 
-    messageSender.run(messageToSend, invocationEvent);
+    messageSender.run(taskParams, invocationEvent);
 
     const event = await done;
     expect(event).toEqual(jasmine.objectContaining(expectedProperties));
+    expect(sender).toHaveBeenCalledWith(plainMessage, timeout);
   });
 
   it('emits an event with the sent message injected through invocation event', async () => {
-    const messageToSend = {
+    const plainMessage = {
       message: 'Hi :D',
       inResponseTo: {
         message: 'Hello!',
       },
     };
+    const timeout = 1000;
 
     const invocationEvent = createEvent('triggerEvent', {
-      data: messageToSend,
+      data: {
+        plainMessage,
+        timeout,
+      },
     });
     const done = listenToEventTrigger(eventName, invocationEvent.id);
 
-    const expectedOutputRecord = new MessageSent(messageToSend);
+    const expectedOutputRecord = new MessageSent(plainMessage);
     const { id, timestamp, ...expectedProperties } = expectedOutputRecord;
 
-    messageSender.run(messageToSend, invocationEvent);
+    messageSender.run(plainMessage, invocationEvent);
 
     const event = await done;
     expect(event).toEqual(jasmine.objectContaining(expectedProperties));
+    expect(sender).toHaveBeenCalledWith(plainMessage, timeout);
   });
 
   afterEach(() => {
@@ -77,5 +89,5 @@ describe('Message sender task', () => {
 });
 
 function fakeSender(): MessageSender {
-  return async (content) => new MessageSent(content);
+  return async (content, _timeout?) => new MessageSent(content);
 }

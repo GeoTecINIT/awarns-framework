@@ -5,8 +5,8 @@ const EVENT = 'plainMessageSentAndResponseReceived';
 
 export class SendPlainMessageAndAwaitResponseTask extends MessageSenderTask {
   constructor() {
-    super('sendPlainMessageToWatchAndAwaitResponse', EVENT, async (content) => {
-      const response = await this.plainMessageClient.sendAndAwaitResponse(content);
+    super('sendPlainMessageToWatchAndAwaitResponse', EVENT, async (content, timeout) => {
+      const response = await this.plainMessageClient.sendAndAwaitResponse(content, timeout);
       return new MessageReceived(response);
     });
   }

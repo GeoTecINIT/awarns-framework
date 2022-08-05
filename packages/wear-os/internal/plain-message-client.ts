@@ -22,8 +22,8 @@ export class PlainMessageClient {
     await this.plainMessageClient.send(getWatchInUse(), plainMessage);
   }
 
-  public async sendAndAwaitResponse(plainMessage: PlainMessage): Promise<ReceivedMessage> {
-    return await this.plainMessageClient.sendExpectingResponse(getWatchInUse(), plainMessage);
+  public async sendAndAwaitResponse(plainMessage: PlainMessage, timeout?: number): Promise<ReceivedMessage> {
+    return await this.plainMessageClient.sendExpectingResponse(getWatchInUse(), plainMessage, timeout);
   }
 }
 

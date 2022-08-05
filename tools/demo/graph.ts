@@ -138,13 +138,18 @@ class DemoTaskGraph implements TaskGraph {
     on(
       'startEvent',
       run('sendPlainMessageToWatch', {
-        message: 'I do not expect a response :)!',
+        plainMessage: {
+          message: 'I do not expect a response :)!',
+        },
       }).now()
     );
     on(
       'startEvent',
       run('sendPlainMessageToWatchAndAwaitResponse', {
-        message: 'PING!',
+        plainMessage: {
+          message: 'PING!',
+        },
+        timeout: 5000,
       })
         .every(1, 'minutes')
         .cancelOn('stopEvent')
