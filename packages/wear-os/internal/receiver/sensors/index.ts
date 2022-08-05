@@ -1,11 +1,17 @@
-import { SensorRecord, SensorSample } from 'nativescript-wearos-sensors/sensors/records';
+import {
+  HeartRateSensorSample,
+  LocationSensorSample,
+  SensorRecord,
+  SensorSample,
+  TriAxialSensorSample,
+} from 'nativescript-wearos-sensors/sensors/records';
 import { awarns } from '@awarns/core/index';
 import { EventData } from '@awarns/core/events';
 import { fromSensorType, WatchSensor } from '../../watch-sensor';
 import { camelCase } from '@awarns/core/internal/utils/string';
-import { TriAxial, TriAxialSample } from '../../entities/sensors/tri-axial';
-import { HeartRate, HeartRateSample } from '../../entities/sensors/heart-rate';
-import { Geolocation, GeolocationSample } from '../../entities/sensors/geolocation';
+import { TriAxial } from '../../entities/sensors/tri-axial';
+import { HeartRate } from '../../entities/sensors/heart-rate';
+import { Geolocation } from '../../entities/sensors/geolocation';
 import { Record } from '@awarns/core/entities';
 
 export class WatchSensorsReceiver {
@@ -31,11 +37,43 @@ function buildRecord(watchSensor: WatchSensor, samples: SensorSample[]): Record 
     case WatchSensor.ACCELEROMETER:
     case WatchSensor.GYROSCOPE:
     case WatchSensor.MAGNETOMETER:
-      return new TriAxial(watchSensor, samples as TriAxialSample[], firstSampleDate);
+      const triAxialSamples = samples as TriAxialSensorSample[];
+      return new TriAxial(
+        watchSensor,
+        triAxialSamples.map((sample) => {
+          return {
+            x: sample.x,
+            y: sample.y,
+            z: sample.z,
+            timestamp: new Date(sample.timestamp),
+          };
+        }),
+        firstSampleDate
+      );
     case WatchSensor.HEART_RATE:
-      return new HeartRate(samples as HeartRateSample[], firstSampleDate);
+      const heartRateSamples = samples as HeartRateSensorSample[];
+      return new HeartRate(
+        heartRateSamples.map((sample) => {
+          return {
+            value: sample.value,
+            timestamp: new Date(sample.timestamp),
+          };
+        }),
+        firstSampleDate
+      );
     case WatchSensor.GEOLOCATION:
-      return new Geolocation(samples as GeolocationSample[], firstSampleDate);
+      const geolocationSamples = samples as LocationSensorSample[];
+      return new Geolocation(
+        geolocationSamples.map((sample) => {
+          return {
+            latitude: sample.latitude,
+            longitude: sample.longitude,
+            altitude: sample.altitude,
+            timestamp: new Date(sample.timestamp),
+          };
+        }),
+        firstSampleDate
+      );
   }
 }
 
