@@ -54,17 +54,18 @@ export const demoTasks: Array<Task> = [
 ];
 ```
 
-> **Warning**: the data collection for a `PhoneSensor` can only be started once, if `startDetectingPhoneFastAccelerometerChanges` is
-> executed after `startDetectingPhoneAccelerometerChanges` and while the collection is in progress, `startDetectingPhoneFastAccelerometerChanges`
+> **Warning**: the data collection for a `PhoneSensor` can only be started once, if `startDetectingFastPhoneAccelerometerChanges` is
+> executed after `startDetectingPhoneAccelerometerChanges` and while the collection is in progress, `startDetectingFastPhoneAccelerometerChanges`
 > will be ignored. Therefore, if you want to dynamically change the collection's configuration while the collection is in progress, 
 >  you will have to stop the collection to start it again with the new desired configuration. 
 
 Task generator parameters:
 
-| Parameter name          | Type                    | Description                                        |
-|-------------------------|-------------------------|----------------------------------------------------|
-| `sensor`                | `PhoneSensor`           | Sensor to collect data from. See below.            |
-| `providerConfiguration` | `ProviderConfiguration` | Collection's configuration of the task. See below. |
+| Parameter name          | Type                    | Description                                                                                                                    |
+|-------------------------|-------------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| `sensor`                | `PhoneSensor`           | Sensor to collect data from. See below.                                                                                        |
+| `providerConfiguration` | `ProviderConfiguration` | Collection's configuration of the task. See below.                                                                             |
+| `prefix` _(Optional)_   | `string`                | Adds the prefix to the name of the task. Useful to create multiple tasks for the same sensor but with multiple configurations. |
 
 - PhoneSensor
 
