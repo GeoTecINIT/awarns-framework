@@ -8,10 +8,27 @@ export * from './tasks';
 export * from './watch';
 
 import { PluginLoader } from '@awarns/core/common';
-import { wearosSensors, allSensors, defaultConfig, WearosSensorsConfig as WSC } from 'nativescript-wearos-sensors';
+import { wearosSensors } from 'nativescript-wearos-sensors';
 import { WatchSensorsProvider } from './internal/provider';
+import { toSensorType, WatchSensor } from './internal/watch-sensor';
 
-export type WearOSPluginConfig = WSC;
+export interface WearOSPluginConfig {
+  sensors?: WatchSensor[];
+  disablePlainMessaging?: boolean;
+  disableWearCommands?: boolean;
+}
+
+export const allSensors = [
+  WatchSensor.ACCELEROMETER,
+  WatchSensor.GYROSCOPE,
+  WatchSensor.MAGNETOMETER,
+  WatchSensor.HEART_RATE,
+  WatchSensor.GEOLOCATION,
+];
+
+export const defaultConfig = {
+  sensors: allSensors,
+};
 
 export function registerWearOSPlugin(config: WearOSPluginConfig = defaultConfig): PluginLoader {
   return async () => {
@@ -25,6 +42,10 @@ export function registerWearOSPlugin(config: WearOSPluginConfig = defaultConfig)
       PlainMessageClient.setup();
     }
 
-    await wearosSensors.init(config);
+    await wearosSensors.init({
+      sensors: config.sensors.map((sensor) => toSensorType(sensor)),
+      disablePlainMessaging: config.disablePlainMessaging,
+      disableWearCommands: config.disableWearCommands,
+    });
   };
 }

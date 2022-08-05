@@ -36,7 +36,7 @@ awarns
     demoTasks,
     demoTaskGraph,
     [
-      registerWearOSPlugin(config),
+      registerWearOSPlugin(config), // Parameter config is optional
     ]
   )
   // ... handle initialization promise
