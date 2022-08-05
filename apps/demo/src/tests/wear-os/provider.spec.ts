@@ -160,7 +160,9 @@ function createCollectorManagerMock(): CollectorManager {
     prepare(_node, _sensor): Promise<PrepareError> {
       return Promise.resolve(undefined);
     },
-    removeSensorListener(_listenerId?: number): any {},
+    removeSensorListener(_listenerId?: number): unknown {
+      return undefined;
+    },
     startCollecting(_node, _sensor, _config?): Promise<void> {
       return Promise.resolve(undefined);
     },

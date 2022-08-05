@@ -62,7 +62,7 @@ describe('Watch sensors receiver', () => {
   });
 });
 
-function createFakeSensorRecords(sensorType: SensorType, empty: boolean = false): SensorRecord<any> {
+function createFakeSensorRecords(sensorType: SensorType, empty = false): SensorRecord<any> {
   return {
     deviceId: '',
     type: sensorType,

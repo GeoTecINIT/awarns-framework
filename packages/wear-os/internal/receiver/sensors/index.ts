@@ -17,7 +17,7 @@ import { Record } from '@awarns/core/entities';
 export class WatchSensorsReceiver {
   constructor(private emitEvent: (eventName: string, eventData?: EventData) => void) {}
 
-  onReceive(receivedRecords: SensorRecord<any>) {
+  onReceive(receivedRecords: SensorRecord<SensorSample>) {
     const watchSensor = fromSensorType(receivedRecords.type);
     const samples = receivedRecords.samples;
 
@@ -36,7 +36,7 @@ function buildRecord(watchSensor: WatchSensor, samples: SensorSample[]): Record 
   switch (watchSensor) {
     case WatchSensor.ACCELEROMETER:
     case WatchSensor.GYROSCOPE:
-    case WatchSensor.MAGNETOMETER:
+    case WatchSensor.MAGNETOMETER: {
       const triAxialSamples = samples as TriAxialSensorSample[];
       return new TriAxial(
         watchSensor,
@@ -50,7 +50,8 @@ function buildRecord(watchSensor: WatchSensor, samples: SensorSample[]): Record 
         }),
         firstSampleDate
       );
-    case WatchSensor.HEART_RATE:
+    }
+    case WatchSensor.HEART_RATE: {
       const heartRateSamples = samples as HeartRateSensorSample[];
       return new HeartRate(
         heartRateSamples.map((sample) => {
@@ -61,7 +62,8 @@ function buildRecord(watchSensor: WatchSensor, samples: SensorSample[]): Record 
         }),
         firstSampleDate
       );
-    case WatchSensor.GEOLOCATION:
+    }
+    case WatchSensor.GEOLOCATION: {
       const geolocationSamples = samples as LocationSensorSample[];
       return new Geolocation(
         geolocationSamples.map((sample) => {
@@ -74,6 +76,7 @@ function buildRecord(watchSensor: WatchSensor, samples: SensorSample[]): Record 
         }),
         firstSampleDate
       );
+    }
   }
 }
 
