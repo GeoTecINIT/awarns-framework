@@ -128,7 +128,9 @@ export const demoTasks: Array<Task> = [
 
 Task generator parameters:
 
-> These task generators take no parameters
+| Parameter name          | Type                    | Description                              |
+|-------------------------|-------------------------|------------------------------------------|
+| `sensor`                | `WatchSensor`           | Sensor to stop the data collection from. |
 
 Task output events:
 
