@@ -1,9 +1,0 @@
-allprojects {
-    repositories {
-        maven { url "https://jitpack.io" }
-    }
-}
-
-dependencies {
-    implementation 'com.github.GeotecINIT:BackgroundSensors:1.0.1'
-}
