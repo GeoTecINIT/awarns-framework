@@ -2,6 +2,9 @@ repositories {
     maven { url "https://jitpack.io" }
 }
 
+android {
+}
+
 dependencies {
     implementation 'com.github.GeotecINIT:BackgroundSensors:1.0.1'
 }
