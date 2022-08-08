@@ -10,8 +10,8 @@ export * from './watch';
 
 export interface WearOSPluginConfig {
   sensors?: WatchSensor[];
-  disablePlainMessaging?: boolean;
-  disableWearCommands?: boolean;
+  enablePlainMessaging?: boolean;
+  enableWearCommands?: boolean;
 }
 
 export declare const allSensors;
