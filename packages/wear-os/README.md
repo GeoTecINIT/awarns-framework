@@ -44,11 +44,11 @@ awarns
 
 Plugin loader parameter (`WearOSPluginConfig`):
 
-| Parameter                | Type            | Description                                                                                                 |
-|--------------------------|-----------------|-------------------------------------------------------------------------------------------------------------|
-| `sensors?`               | `WatchSensor[]` | Enable the specified sensors. By default, all sensors are enabled.                                          |
-| `disablePlainMessaging?` | `boolean`       | Disable the plain messaging communication mechanism. Default: `false`.                                      |
-| `disableWearCommands?`   | `boolean`       | Disable the command mechanism that allows to start the data collection on the watch side. Default: `false`. |
+| Parameter               | Type            | Description                                                                                                |
+|-------------------------|-----------------|------------------------------------------------------------------------------------------------------------|
+| `sensors?`              | `WatchSensor[]` | Enable the specified sensors. By default, all sensors are enabled.                                         |
+| `enablePlainMessaging?` | `boolean`       | Enable the plain messaging communication mechanism. Default: `false`.                                      |
+| `enableWearCommands?`   | `boolean`       | Enable the command mechanism that allows to start the data collection on the watch side. Default: `false`. |
 
 In addition, you also have to specify if you want to use these plugin features and which watch you want to use. This offers to possibility to use or not
 these plugin features without modifying the task graph definition. For example, you can disable the features if there isn't a paired watch available. Here is

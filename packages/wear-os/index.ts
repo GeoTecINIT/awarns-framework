@@ -14,8 +14,8 @@ import { toSensorType, WatchSensor } from './internal/watch-sensor';
 
 export interface WearOSPluginConfig {
   sensors?: WatchSensor[];
-  disablePlainMessaging?: boolean;
-  disableWearCommands?: boolean;
+  enablePlainMessaging?: boolean;
+  enableWearCommands?: boolean;
 }
 
 export const allSensors = [
@@ -34,18 +34,18 @@ export function registerWearOSPlugin(config: WearOSPluginConfig = defaultConfig)
   return async () => {
     const enabledSensors = config.sensors ? config.sensors : allSensors;
 
-    if (enabledSensors.length > 0 || !config.disableWearCommands) {
+    if (enabledSensors.length > 0 || config.enableWearCommands) {
       WatchSensorsProvider.setup();
     }
 
-    if (!config.disablePlainMessaging) {
+    if (config.enablePlainMessaging) {
       PlainMessageClient.setup();
     }
 
     await wearosSensors.init({
       sensors: config.sensors.map((sensor) => toSensorType(sensor)),
-      disablePlainMessaging: config.disablePlainMessaging,
-      disableWearCommands: config.disableWearCommands,
+      disablePlainMessaging: !config.enablePlainMessaging,
+      disableWearCommands: !config.enableWearCommands,
     });
   };
 }
