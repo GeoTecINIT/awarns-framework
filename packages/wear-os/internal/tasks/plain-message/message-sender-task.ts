@@ -1,7 +1,8 @@
 import { Task, TaskOutcome, TaskParams, DispatchableEvent } from '@awarns/core/tasks';
 import { Message, PlainMessage } from '../../entities/plain-message';
 import { getPlainMessageClient, PlainMessageClient } from '../../plain-message-client';
-import { areWatchFeaturesEnabled, featuresNotEnabledError } from '../../setup';
+import { getLogger } from '@awarns/core/utils/logger';
+import { areWatchFeaturesEnabled } from '../../setup';
 
 export const noMessageIncludedError = new Error(
   'A message must be included as task parameter or injected via the invocation event!'
@@ -16,15 +17,18 @@ export abstract class MessageSenderTask extends Task {
     return this._plainMessageClient;
   }
 
-  protected constructor(name: string, eventName: string) {
+  protected constructor(name: string, eventName: string, private logger = getLogger('MessageSenderTask')) {
     super(name, {
-      outputEventNames: [eventName],
+      outputEventNames: [`${name}Finished`, eventName],
     });
   }
 
   protected async onRun(taskParams: TaskParams, invocationEvent: DispatchableEvent): Promise<void | TaskOutcome> {
-    if (!areWatchFeaturesEnabled()) {
-      throw featuresNotEnabledError;
+    if (!areWatchFeaturesEnabled() || !this.plainMessageClient.enabled()) {
+      this.logger.warn('tried to send a message but watch features are not enabled!');
+      return {
+        eventName: this.outputEventNames[0],
+      };
     }
 
     const { plainMessage, timeout } = invocationEvent.data;
@@ -38,6 +42,7 @@ export abstract class MessageSenderTask extends Task {
     const record = await this.sendMessage(messageContent, waitTimeout);
 
     return {
+      eventName: this.outputEventNames[1],
       result: record,
     };
   }

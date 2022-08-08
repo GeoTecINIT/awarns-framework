@@ -4,8 +4,9 @@ import { SensorType } from 'nativescript-wearos-sensors/sensors';
 import { CollectionConfiguration, CollectorManager, getCollectorManager } from 'nativescript-wearos-sensors/collection';
 import { Watch } from '../watch';
 import { toSensorType, WatchSensor } from '../watch-sensor';
-import { areWatchFeaturesEnabled, featuresNotEnabledError, getWatchInUse } from '../setup';
+import { areWatchFeaturesEnabled, getWatchInUse } from '../setup';
 import { defaultConfig, ProviderConfiguration, toCollectionConfiguration } from './provider-configuration';
+import { getLogger } from '@awarns/core/utils/logger';
 
 export class WatchSensorsProvider implements PushProvider {
   static setup() {
@@ -37,7 +38,11 @@ export class WatchSensorsProvider implements PushProvider {
     return this._collectorManager;
   }
 
-  constructor(private sensor: WatchSensor, configuration: ProviderConfiguration = defaultConfig) {
+  constructor(
+    private sensor: WatchSensor,
+    configuration: ProviderConfiguration = defaultConfig,
+    private logger = getLogger('WatchSensorsProvider')
+  ) {
     this.sensorType = toSensorType(this.sensor);
     this.collectionConfiguration = toCollectionConfiguration(configuration);
   }
@@ -72,7 +77,8 @@ export class WatchSensorsProvider implements PushProvider {
 
   async startProviding(): Promise<void> {
     if (!areWatchFeaturesEnabled()) {
-      throw featuresNotEnabledError;
+      this.logger.warn('tried to start providing but watch features are disabled!');
+      return;
     }
 
     return await this.collectorManager.startCollecting(this.watch, this.sensorType, this.collectionConfiguration);
@@ -80,7 +86,8 @@ export class WatchSensorsProvider implements PushProvider {
 
   async stopProviding(): Promise<void> {
     if (!areWatchFeaturesEnabled()) {
-      throw featuresNotEnabledError;
+      this.logger.warn('tried to stop providing but watch features are disabled!');
+      return;
     }
 
     return await this.collectorManager.stopCollecting(this.watch, this.sensorType);

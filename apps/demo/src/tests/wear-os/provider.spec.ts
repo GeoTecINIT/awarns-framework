@@ -4,7 +4,7 @@ import { defaultConfig } from '@awarns/phone-sensors/internal/provider';
 import { Node } from 'nativescript-wearos-sensors/node';
 import { WatchSensorsProvider } from '@awarns/wear-os/internal/provider';
 import { CollectorManager, PrepareError } from 'nativescript-wearos-sensors/internal/collection/collector-manager';
-import { setWatchFeaturesState, featuresNotEnabledError, noWatchSelectedError } from '@awarns/wear-os/internal/setup';
+import { setWatchFeaturesState, noWatchSelectedError } from '@awarns/wear-os/internal/setup';
 import { clear } from '@nativescript/core/application-settings';
 
 describe('Watch sensors provider', () => {
@@ -13,13 +13,14 @@ describe('Watch sensors provider', () => {
   const configuration = defaultConfig;
   const watch = new Node('test', 'test', [SensorType.ACCELEROMETER]);
 
+  let logger;
   let provider: WatchSensorsProvider;
   let collectorManager: CollectorManager;
 
   beforeEach(() => {
     setWatchFeaturesState(true);
-
-    provider = new WatchSensorsProvider(watchSensor, configuration);
+    logger = jasmine.createSpyObj('logger', ['warn']);
+    provider = new WatchSensorsProvider(watchSensor, configuration, logger);
     collectorManager = createCollectorManagerMock();
     spyOnProperty(provider, 'collectorManager').and.returnValue(collectorManager);
   });
@@ -99,9 +100,10 @@ describe('Watch sensors provider', () => {
     expect(collectorManager.prepare).toHaveBeenCalledWith(watch, sensorType);
   });
 
-  it('startProviding throws an error when watch features are disabled', async () => {
+  it('startProviding logs a warn and does nothing when watch features are disabled', async () => {
     setWatchFeaturesState(false);
-    await expectAsync(provider.startProviding()).toBeRejectedWith(featuresNotEnabledError);
+    await expectAsync(provider.startProviding()).toBeResolved();
+    expect(logger.warn).toHaveBeenCalled();
   });
 
   it('startProviding throws an error when there is no watch being used', async () => {
@@ -123,9 +125,10 @@ describe('Watch sensors provider', () => {
     });
   });
 
-  it('stopProviding throws an error when watch features are disabled', async () => {
+  it('stopProviding logs a warn and does nothing when watch features are disabled', async () => {
     setWatchFeaturesState(false);
-    await expectAsync(provider.stopProviding()).toBeRejectedWith(featuresNotEnabledError);
+    await expectAsync(provider.stopProviding()).toBeResolved();
+    expect(logger.warn).toHaveBeenCalled();
   });
 
   it('stopProviding throws an error when there is no watch being used', async () => {

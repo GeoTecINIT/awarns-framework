@@ -2,7 +2,7 @@ import {
   MessageSenderTask,
   noMessageIncludedError,
 } from '@awarns/wear-os/internal/tasks/plain-message/message-sender-task';
-import { featuresNotEnabledError, setWatchFeaturesState } from '@awarns/wear-os/internal/setup';
+import { setWatchFeaturesState } from '@awarns/wear-os/internal/setup';
 import { createEvent, listenToEventTrigger } from '@awarns/core/testing/events';
 import { MessageSent } from '@awarns/wear-os/internal/entities/plain-message';
 import { clear } from '@nativescript/core/application-settings';
@@ -10,19 +10,39 @@ import { SendPlainMessageTask } from '@awarns/wear-os/internal/tasks/plain-messa
 
 describe('Message sender task', () => {
   const eventName = 'plainMessageSent';
+  let spiedMessageClient;
   let spiedSender;
   let messageSender: MessageSenderTask;
 
   beforeEach(() => {
     setWatchFeaturesState(true);
     messageSender = new SendPlainMessageTask();
+    spiedMessageClient = jasmine.createSpyObj('messageClient', ['enabled']);
+    spiedMessageClient.enabled.and.returnValue(true);
+    spyOnProperty(messageSender, 'plainMessageClient').and.returnValue(spiedMessageClient);
     spiedSender = spyOn<any>(messageSender, 'sendMessage').and.callFake(fakeSender());
   });
 
-  it('throws an error when watch features are not enabled', async () => {
+  it('does nothing when watch features are not enabled', async () => {
     setWatchFeaturesState(false);
     const invocationEvent = createEvent('triggerEvent');
-    await expectAsync(messageSender.run({}, invocationEvent)).toBeRejectedWith(featuresNotEnabledError);
+    const done = listenToEventTrigger('sendPlainMessageToWatchFinished', invocationEvent.id);
+
+    messageSender.run({}, invocationEvent);
+
+    const event = await done;
+    expect(event).toEqual({});
+  });
+
+  it('does nothing when messaging features are not enabled', async () => {
+    spiedMessageClient.enabled.and.returnValue(false);
+    const invocationEvent = createEvent('triggerEvent');
+    const done = listenToEventTrigger('sendPlainMessageToWatchFinished', invocationEvent.id);
+
+    messageSender.run({}, invocationEvent);
+
+    const event = await done;
+    expect(event).toEqual({});
   });
 
   it('throws an error when the message is not included neither in the invocation event nor the task params', async () => {

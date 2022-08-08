@@ -18,6 +18,10 @@ export class PlainMessageClient {
     return this._plainMessageClient;
   }
 
+  public enabled(): boolean {
+    return this.plainMessageClient.enabled();
+  }
+
   public async send(plainMessage: PlainMessage) {
     await this.plainMessageClient.send(getWatchInUse(), plainMessage);
   }
