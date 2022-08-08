@@ -75,13 +75,13 @@ function createFakeSamples(sensorType: SensorType) {
     case SensorType.ACCELEROMETER:
       return [
         {
-          timestamp: new Date(),
+          timestamp: Date.now(),
           x: 0,
           y: 0,
           z: 0,
         },
         {
-          timestamp: new Date(),
+          timestamp: Date.now(),
           x: 1,
           y: 2,
           z: 3,
@@ -90,24 +90,24 @@ function createFakeSamples(sensorType: SensorType) {
     case SensorType.HEART_RATE:
       return [
         {
-          timestamp: new Date(),
+          timestamp: Date.now(),
           value: 74,
         },
         {
-          timestamp: new Date(),
+          timestamp: Date.now(),
           value: 75,
         },
       ];
     case SensorType.LOCATION:
       return [
         {
-          timestamp: new Date(),
+          timestamp: Date.now(),
           latitude: 53,
           longitude: 53,
           altitude: 53,
         },
         {
-          timestamp: new Date(),
+          timestamp: Date.now(),
           latitude: 54,
           longitude: 54,
           altitude: 54,

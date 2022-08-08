@@ -356,12 +356,12 @@ by the smartphone, the `plainMessageReceivedEvent` is emitted.
 
 ##### `TriAxialSample`
 
-| Property    | Type     | Description                                   |
-|-------------|----------|-----------------------------------------------|
-| `x`         | `number` | Value `x` of the sensor.                      |
-| `y`         | `number` | Value `y` of the sensor.                      |
-| `z`         | `number` | Value `z` of the sensor.                      |
-| `timestamp` | `Date`   | The local time when the sample was collected. |
+| Property    | Type     | Description                                                    |
+|-------------|----------|----------------------------------------------------------------|
+| `x`         | `number` | Value `x` of the sensor.                                       |
+| `y`         | `number` | Value `y` of the sensor.                                       |
+| `z`         | `number` | Value `z` of the sensor.                                       |
+| `timestamp` | `number` | The local time (UNIX timestamp) when the sample was collected. |
 
 #### HeartRate
 
@@ -375,10 +375,10 @@ by the smartphone, the `plainMessageReceivedEvent` is emitted.
 
 ##### `HeartRateSample`
 
-| Property    | Type     | Description                                   |
-|-------------|----------|-----------------------------------------------|
-| `value`     | `number` | Heart rate value reported by the sensor.      |
-| `timestamp` | `Date`   | The local time when the sample was collected. |
+| Property    | Type     | Description                                                    |
+|-------------|----------|----------------------------------------------------------------|
+| `value`     | `number` | Heart rate value reported by the sensor.                       |
+| `timestamp` | `number` | The local time (UNIX timestamp) when the sample was collected. |
 
 #### Geolocation
 
@@ -392,12 +392,12 @@ by the smartphone, the `plainMessageReceivedEvent` is emitted.
 
 ##### `GeolocationSample`
 
-| Property    | Type     | Description                                   |
-|-------------|----------|-----------------------------------------------|
-| `latitude`  | `number` | Latitude reported by the GPS.                 |
-| `longitude` | `number` | Longitude reported by the GPS.                |
-| `altitude`  | `number` | Altitude reported by the GPS.                 |
-| `timestamp` | `Date`   | The local time when the sample was collected. |
+| Property    | Type     | Description                                                    |
+|-------------|----------|----------------------------------------------------------------|
+| `latitude`  | `number` | Latitude reported by the GPS.                                  |
+| `longitude` | `number` | Longitude reported by the GPS.                                 |
+| `altitude`  | `number` | Altitude reported by the GPS.                                  |
+| `timestamp` | `number` | The local time (UNIX timestamp) when the sample was collected. |
 
 #### MessageSent
 
