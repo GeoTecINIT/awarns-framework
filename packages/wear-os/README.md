@@ -79,8 +79,8 @@ export async function setupWatchToUse(): Promise<void> {
 |-----------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [`startDetecting{prefix}Watch{sensor}Changes`](#start-data-collection-for-a-sensor-with-specific-configuration) | Allows to start the data collection for a `sensor` with a specific configuration (see below). The `prefix` can be used to distinguish among different configurations. |
 | [`stopDetectingWatch{sensor}Changes`](#stop-data-collection-for-a-sensor)                                       | The complement to the previous task. Allows to stop collecting data from `sensor`.                                                                                    |
-| [`sendPlainMessageToWatch`](#send-a-message-to-the-paired-watch)                                                | Allows to send a string-base message to the paired smartwatch. An usage example could be to send information for updating the UI.                                     |
-| [`sendPlainMessageToWatchAndAwaitResponse`](#send-a-message-to-the-paired-watch-and-wait-for-a-response)        | Allows to send a string-base message to the paired smartwatch and to wait for a response from it.                                                                     |
+| [`sendPlainMessageToWatch`](#send-a-message-to-the-paired-watch)                                                | Allows to send a string-based message to the paired smartwatch. An example of use could be to send information for updating the UI.                                   |
+| [`sendPlainMessageToWatchAndAwaitResponse`](#send-a-message-to-the-paired-watch-and-wait-for-a-response)        | Allows to send a string-based message to the paired smartwatch and to wait for a response from it.                                                                    |
 
 #### Start data collection for a sensor with specific configuration
 To register these tasks for their use, you just need to import them and call their generator functions inside your application's task list:
@@ -218,6 +218,8 @@ Task output events:
 
 #### Send a message to the paired watch
 
+> **Note**: to be able to use this feature, the messaging feature must be enabled.
+
 To register these tasks for their use, you just need to import them and call their generator functions inside your application's task list:
 
 ```typescript
@@ -252,6 +254,8 @@ Task output events:
 > **Note**: To use the `writeRecords` task, the persistence package must be installed and configured. See [persistence package docs](../persistence/README.md).
 
 #### Send a message to the paired watch and wait for a response
+
+> **Note**: to be able to use this feature, the messaging feature must be enabled.
 
 To register these tasks for their use, you just need to import them and call their generator functions inside your application's task list:
 
@@ -288,6 +292,9 @@ Task output events:
 > **Note**: To use the `writeRecords` task, the persistence package must be installed and configured. See [persistence package docs](../persistence/README.md).
 
 ### Send a message from an event's data
+
+> **Note**: to be able to use this feature, the messaging feature must be enabled.
+
 You can also invoke these tasks by injecting the message in the event that triggers their execution. This allows to send messages in a more flexible way (i.e., no need to specify 
 the message in the task graph).
 
@@ -310,6 +317,9 @@ the message in the task graph).
 >```
 
 ### Receive watch-triggered message
+
+> **Note**: to be able to use this feature, the messaging feature must be enabled.
+
 The watch can also send message to the smartphone by its own (i.e., no need to receive a message from the smartphone first to then reply). When those messages are received
 by the smartphone, the `plainMessageReceivedEvent` is emitted.
 
