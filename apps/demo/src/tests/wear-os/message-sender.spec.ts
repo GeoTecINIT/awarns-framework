@@ -1,5 +1,4 @@
 import {
-  MessageSender,
   MessageSenderTask,
   noMessageIncludedError,
 } from '@awarns/wear-os/internal/tasks/plain-message/message-sender-task';
@@ -7,16 +6,17 @@ import { featuresNotEnabledError, setWatchFeaturesState } from '@awarns/wear-os/
 import { createEvent, listenToEventTrigger } from '@awarns/core/testing/events';
 import { MessageSent } from '@awarns/wear-os/internal/entities/plain-message';
 import { clear } from '@nativescript/core/application-settings';
+import { SendPlainMessageTask } from '@awarns/wear-os/internal/tasks/plain-message';
 
 describe('Message sender task', () => {
-  const eventName = 'testing';
-  let sender: MessageSender;
+  const eventName = 'plainMessageSent';
+  let spiedSender;
   let messageSender: MessageSenderTask;
 
   beforeEach(() => {
     setWatchFeaturesState(true);
-    sender = jasmine.createSpy().and.callFake(fakeSender());
-    messageSender = new MessageSenderTask('messageSender', eventName, sender);
+    messageSender = new SendPlainMessageTask();
+    spiedSender = spyOn<any>(messageSender, 'sendMessage').and.callFake(fakeSender());
   });
 
   it('throws an error when watch features are not enabled', async () => {
@@ -53,7 +53,7 @@ describe('Message sender task', () => {
 
     const event = await done;
     expect(event).toEqual(jasmine.objectContaining(expectedProperties));
-    expect(sender).toHaveBeenCalledWith(plainMessage, timeout);
+    expect(spiedSender).toHaveBeenCalledWith(plainMessage, timeout);
   });
 
   it('emits an event with the sent message injected through invocation event', async () => {
@@ -80,7 +80,7 @@ describe('Message sender task', () => {
 
     const event = await done;
     expect(event).toEqual(jasmine.objectContaining(expectedProperties));
-    expect(sender).toHaveBeenCalledWith(plainMessage, timeout);
+    expect(spiedSender).toHaveBeenCalledWith(plainMessage, timeout);
   });
 
   afterEach(() => {
@@ -88,6 +88,6 @@ describe('Message sender task', () => {
   });
 });
 
-function fakeSender(): MessageSender {
+function fakeSender() {
   return async (content, _timeout?) => new MessageSent(content);
 }

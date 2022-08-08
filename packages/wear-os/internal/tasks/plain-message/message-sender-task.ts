@@ -3,13 +3,11 @@ import { Message, PlainMessage } from '../../entities/plain-message';
 import { getPlainMessageClient, PlainMessageClient } from '../../plain-message-client';
 import { areWatchFeaturesEnabled, featuresNotEnabledError } from '../../setup';
 
-export type MessageSender = (content: PlainMessage, timeout?: number) => Promise<Message>;
-
 export const noMessageIncludedError = new Error(
   'A message must be included as task parameter or injected via the invocation event!'
 );
 
-export class MessageSenderTask extends Task {
+export abstract class MessageSenderTask extends Task {
   private _plainMessageClient: PlainMessageClient;
   get plainMessageClient() {
     if (!this._plainMessageClient) {
@@ -18,7 +16,7 @@ export class MessageSenderTask extends Task {
     return this._plainMessageClient;
   }
 
-  constructor(name: string, eventName: string, private sender: MessageSender) {
+  protected constructor(name: string, eventName: string) {
     super(name, {
       outputEventNames: [eventName],
     });
@@ -37,10 +35,12 @@ export class MessageSenderTask extends Task {
     const messageContent: PlainMessage = plainMessage ? plainMessage : taskParams.plainMessage;
     const waitTimeout = timeout ? timeout : taskParams.timeout;
 
-    const record = await this.sender(messageContent, waitTimeout);
+    const record = await this.sendMessage(messageContent, waitTimeout);
 
     return {
       result: record,
     };
   }
+
+  protected abstract sendMessage(content: PlainMessage, timeout?: number): Promise<Message>;
 }
