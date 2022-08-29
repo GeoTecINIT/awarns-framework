@@ -45,6 +45,13 @@ steps:
     displayName: 'Build'
 
   - script: |
+      cd apps/demo
+      ns build android
+      cd platforms/android/app/build/outputs/apk/debug
+      unzip app-debug.apk
+    displayName: 'APK Check'
+
+  - script: |
       ./ci-tools/wait-for-emulator.sh
       npm start android-test-ci
     displayName: 'Test'
