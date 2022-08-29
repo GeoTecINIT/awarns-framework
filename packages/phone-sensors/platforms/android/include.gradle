@@ -1,8 +1,8 @@
-repositories {
-    maven { url "https://jitpack.io" }
+android {
 }
 
-android {
+repositories {
+    maven { url "https://jitpack.io" }
 }
 
 dependencies {
