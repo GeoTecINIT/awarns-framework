@@ -50,7 +50,8 @@ steps:
     displayName: 'Build demo'
 
   - script: |
-      cd platforms/tempPlugin/phone_sensors
+      cd apps/demo/platforms/tempPlugin/phone_sensors
+      ls -la
       cat plugin-data.json
     displayName: 'Check platforms'
 
