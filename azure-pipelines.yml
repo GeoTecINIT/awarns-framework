@@ -45,6 +45,23 @@ steps:
     displayName: 'Build'
 
   - script: |
+      cd apps/demo
+      ns build android
+    displayName: 'Build demo'
+
+  - script: |
+      cd platforms/tempPlugin/phone_sensors
+      cat plugin-data.json
+    displayName: 'Check platforms'
+
+  - script: |
+      cd ~/.gradle/caches/modules-2/files-2.1/com.github.GeotecINIT/BackgroundSensors/1.0.1
+      aar_dir=$(find . -name "*.aar")
+      unzip $aar_dir
+      unzip classes.jar
+    displayName: 'Check gradle cache'
+
+  - script: |
       ./ci-tools/wait-for-emulator.sh
       npm start android-test-ci
     displayName: 'Test'
