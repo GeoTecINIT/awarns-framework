@@ -47,7 +47,7 @@
     "nativescript-task-dispatcher": "^3.1.1",
     "nativescript-vue": "~2.9.0",
     "nativescript-vue-template-compiler": "~2.9.0",
-    "nativescript-wearos-sensors": "^1.1.0",
+    "nativescript-wearos-sensors": "^1.2.0",
     "ng-packagr": "^13.2.0",
     "rxjs": "~7.5.0",
     "typescript": "~4.5.5",

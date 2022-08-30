@@ -40,6 +40,6 @@
   "bootstrapper": "@nativescript/plugin-seed",
   "dependencies": {
     "@awarns/core": "^1.0.0",
-    "nativescript-wearos-sensors": "^1.1.0"
+    "nativescript-wearos-sensors": "^1.2.0"
   }
 }
