@@ -150,7 +150,8 @@ Task output events:
 - [`watchGyroscopeSamplesAcquired`](#events)
 - [`watchMagnetometerSamplesAcquired`](#events)
 - [`watchHeartRateSamplesAcquired`](#events)
-- [`watchGeolocationSamplesAcquired`](#events)
+- [`watchGeolocationAcquired`](#events)
+- [`multipleWatchGeolocationAcquired`](#events)
 
 > Example usage in the application task graph:
 > ```ts
@@ -164,9 +165,10 @@ Task output events:
 > on('watchGyroscopeSamplesAcquired', run('writeRecords'));
 > on('watchMagnetometerSamplesAcquired', run('writeRecords'));
 > on('watchHeartRateSamplesAcquired', run('writeRecords'));
-> on('watchGeolocationSamplesAcquired', run('writeRecords'));
+> on('watchGeolocationAcquired', run('writeRecords'));
+> on('watchGeolocationAcquired', run('checkAreaOfInterestProximity', { nearbyRange: 100, offset: 15 }));
 >```
-> **Note**: To use the `writeRecords` task, the persistence package must be installed and configured. See [persistence package docs](../persistence/README.md).
+> **Note**: To use the `writeRecords` or the `checkAreaOfInterestProximity` task, the persistence or geofencing package must be installed and configured, respectively. See [persistence](../persistence/README.md) and [geofencing](../geofencing/README.md) package docs.
 
 #### Stop data collection for a sensor
 To register these tasks for their use, you just need to import them and call their generator functions inside your application's task list:
@@ -212,7 +214,7 @@ Task output events:
 > on('watchGyroscopeSamplesAcquired', run('stopDetectingWatchGyroscopeChanges'));
 > on('watchMagnetometerSamplesAcquired', run('stopDetectingWatchMagnetometerChanges'));
 > on('watchHeartRateSamplesAcquired', run('stopDetectingWatchMagnetometerChanges'));
-> on('watchGeolocationSamplesAcquired', run('stopDetectingWatchMagnetometerChanges'));
+> on('multipleWatchGeolocationAcquired', run('stopDetectingWatchMagnetometerChanges'));
 >```
 > **Note**: it makes no sense to use these tasks without using before their complementary tasks to start the data collection.
 
@@ -331,16 +333,17 @@ by the smartphone, the `plainMessageReceivedEvent` is emitted.
 
 ### Events
 
-| Name                                  | Payload                        | Description                                                                                    |
-|---------------------------------------|--------------------------------|------------------------------------------------------------------------------------------------|
-| `watchAccelerometerSamplesAcquired`   | [`TriAxial`](#triaxial)        | Contains a list of samples with the `x`, `y`, and `z` values of an accelerometer sensor.       |
-| `watchGyroscopeSamplesAcquired`       | [`TriAxial`](#triaxial)        | Contains a list of samples with the `x`, `y`, and `z` values of a gyroscope sensor.            |
-| `watchMagnetometerSamplesAcquired`    | [`TriAxial`](#triaxial)        | Contains a list of samples with the `x`, `y`, and `z` values of a magnetometer sensor.         |
-| `watchHeartRateSamplesAcquired`       | [`HeartRate`](#heartrate)      | Contains a list with the values of a heart rate sensor.                                        |
-| `watchGeolocationSamplesAcquired`     | [`Geolocation`](#geolocation)  | Contains a list of samples with the `latitude`, `longitude`, and `altitude` values of the GPS. |
-| `plainMessageSent`                    | [`MessageSent`](#triaxial)     | Contains the content of the message sent to the watch.                                         |
-| `plainMessageSentAndResponseReceived` | [`MessageReceived`](#triaxial) | Contains the content of the message sent to the watch and the response from it.                |
-| `plainMessageReceived`                | [`MessageReceived`](#triaxial) | Contains the content of a message received from the watch.                                     |
+| Name                                  | Payload                         | Description                                                                                                                                                                |
+|---------------------------------------|---------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `watchAccelerometerSamplesAcquired`   | [`TriAxial`](#triaxial)         | Contains a list of samples with the `x`, `y`, and `z` values of an accelerometer sensor.                                                                                   |
+| `watchGyroscopeSamplesAcquired`       | [`TriAxial`](#triaxial)         | Contains a list of samples with the `x`, `y`, and `z` values of a gyroscope sensor.                                                                                        |
+| `watchMagnetometerSamplesAcquired`    | [`TriAxial`](#triaxial)         | Contains a list of samples with the `x`, `y`, and `z` values of a magnetometer sensor.                                                                                     |
+| `watchHeartRateSamplesAcquired`       | [`HeartRate`](#heartrate)       | Contains a list with the values of a heart rate sensor.                                                                                                                    |
+| `watchGeolocationAcquired`            | [`Geolocation`](#geolocation)   | Contains the `latitude`, `longitude`, `altitude` and other values of the GPS. This event will be emitted when the `batchSize` of the corresponding start task is set to 1. |
+| `multipleWatchGeolocationAcquired`    | [`Geolocation[]`](#geolocation) | Contains a list of `Geolocation` records. This event will be emitted when the `batchSize` of the corresponding start task is set to a value different than 1.              |
+| `plainMessageSent`                    | [`MessageSent`](#triaxial)      | Contains the content of the message sent to the watch.                                                                                                                     |
+| `plainMessageSentAndResponseReceived` | [`MessageReceived`](#triaxial)  | Contains the content of the message sent to the watch and the response from it.                                                                                            |
+| `plainMessageReceived`                | [`MessageReceived`](#triaxial)  | Contains the content of a message received from the watch.                                                                                                                 |
 
 ### Records
 
@@ -382,22 +385,20 @@ by the smartphone, the `plainMessageReceivedEvent` is emitted.
 
 #### Geolocation
 
-| Property    | Type                                        | Description                                                                                            |
-|-------------|---------------------------------------------|--------------------------------------------------------------------------------------------------------|
-| `id`        | `string`                                    | Record's unique id.                                                                                    |
-| `type`      | `string`                                    | Always `watch-geolocation`.                                                                            |
-| `change`    | `Change`                                    | Always `NONE`.                                                                                         |
-| `timestamp` | `Date`                                      | The local time when the data was collected. It is equal to the time of the first sample in the record. |
-| `samples`   | [`GeolocationSample[]`](#geolocationsample) | List with the collected samples.                                                                       |
+| Property             | Type     | Description                                                                                            |
+|----------------------|----------|--------------------------------------------------------------------------------------------------------|
+| `id`                 | `string` | Record's unique id.                                                                                    |
+| `type`               | `string` | Always `watch-geolocation`.                                                                            |
+| `change`             | `Change` | Always `NONE`.                                                                                         |
+| `timestamp`          | `Date`   | The local time when the data was collected. It is equal to the time of the first sample in the record. |
+| `latitude`           | `number` | Latitude reported by the GPS.                                                                          |
+| `longitude`          | `number` | Longitude reported by the GPS.                                                                         |
+| `altitude`           | `number` | Altitude reported by the GPS.                                                                          |
+| `verticalAccuracy`   | `number` | The estimated error in the latitude.                                                                   |
+| `horizontalAccuracy` | `number` | The estimated error in the longitude.                                                                  |
+| `speed`              | `number` | The estimated speed of the device when the location was acquired.                                      |
+| `direction`          | `number` | The estimated direction of the device when the location was acquired.                                  |
 
-##### `GeolocationSample`
-
-| Property    | Type     | Description                                                    |
-|-------------|----------|----------------------------------------------------------------|
-| `latitude`  | `number` | Latitude reported by the GPS.                                  |
-| `longitude` | `number` | Longitude reported by the GPS.                                 |
-| `altitude`  | `number` | Altitude reported by the GPS.                                  |
-| `timestamp` | `number` | The local time (UNIX timestamp) when the sample was collected. |
 
 #### MessageSent
 
