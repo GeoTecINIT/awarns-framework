@@ -51,8 +51,16 @@ steps:
 
   - script: |
       ./ci-tools/wait-for-emulator.sh
-      npm start android-test-ci
+      npm start android-test-ci &
+      sleep 300
+      mkdir screenshots
+      adb exec-out screencap -p > screenshots/screen.png
     displayName: 'Test'
+
+  - task: PublishPipelineArtifact@1
+    inputs:
+      targetPath: $(System.DefaultWorkingDirectory)/screenshots
+      artifactName: screenshots
 
   - task: PublishTestResults@2
     condition: succeededOrFailed()
