@@ -1,11 +1,17 @@
-import { WatchRecord } from './index';
+import { Record } from '@awarns/core/internal/entities';
 import { WatchSensor } from '../../watch-sensor';
-import { LocationSensorSample as LSS } from 'nativescript-wearos-sensors/sensors/records';
 
-export type GeolocationSample = LSS;
-
-export class Geolocation extends WatchRecord {
-  constructor(samples: GeolocationSample[], detectedAt: Date) {
-    super(WatchSensor.GEOLOCATION, samples, detectedAt);
+export class Geolocation extends Record {
+  constructor(
+    public latitude: number,
+    public longitude: number,
+    public altitude: number,
+    public horizontalAccuracy: number,
+    public verticalAccuracy: number,
+    public speed: number,
+    public direction: number,
+    public detectedAt: Date
+  ) {
+    super(WatchSensor.GEOLOCATION, detectedAt);
   }
 }

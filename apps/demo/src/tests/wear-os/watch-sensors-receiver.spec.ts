@@ -49,15 +49,37 @@ describe('Watch sensors receiver', () => {
     );
   });
 
-  it('emits the watchGeolocationSamplesAcquired event when receives geolocation records', () => {
-    const sensorRecords = createFakeSensorRecords(SensorType.LOCATION);
-    const expectedRecord = new Geolocation(sensorRecords.samples, new Date(sensorRecords.samples[0].timestamp));
+  it('emits the watchGeolocationAcquired event when receives a geolocation record', () => {
+    const samples = createFakeSamples(SensorType.LOCATION);
+    const sensorRecords = {
+      deviceId: '',
+      type: SensorType.LOCATION,
+      samples: samples.slice(0, 1),
+    };
+    const expectedRecord = buildGeolocation(samples[0]);
     const { id, ...expectedProperties } = expectedRecord;
 
     receiver.onReceive(sensorRecords);
+    expect(eventEmitter).toHaveBeenCalledWith('watchGeolocationAcquired', jasmine.objectContaining(expectedProperties));
+  });
+
+  it('emits the multipleWatchGeolocationAcquired event when receives geolocation records', () => {
+    const samples = createFakeSamples(SensorType.LOCATION);
+    const sensorRecords = {
+      deviceId: '',
+      type: SensorType.LOCATION,
+      samples,
+    };
+    const expectedRecords = samples.map((sample) => buildGeolocation(sample));
+    const expectedProperties = expectedRecords.map((record) => {
+      const { id, ...properties } = record;
+      return jasmine.objectContaining(properties);
+    });
+
+    receiver.onReceive(sensorRecords);
     expect(eventEmitter).toHaveBeenCalledWith(
-      'watchGeolocationSamplesAcquired',
-      jasmine.objectContaining(expectedProperties)
+      'multipleWatchGeolocationAcquired',
+      jasmine.arrayContaining(expectedProperties)
     );
   });
 });
@@ -105,13 +127,34 @@ function createFakeSamples(sensorType: SensorType) {
           latitude: 53,
           longitude: 53,
           altitude: 53,
+          horizontalAccuracy: 10,
+          verticalAccuracy: 10,
+          speed: 1000,
+          direction: 30,
         },
         {
           timestamp: Date.now(),
           latitude: 54,
           longitude: 54,
           altitude: 54,
+          horizontalAccuracy: 20,
+          verticalAccuracy: 20,
+          speed: 500,
+          direction: 230,
         },
       ];
   }
+}
+
+function buildGeolocation(sample): Geolocation {
+  return new Geolocation(
+    sample.latitude,
+    sample.longitude,
+    sample.altitude,
+    sample.horizontalAccuracy,
+    sample.verticalAccuracy,
+    sample.speed,
+    sample.direction,
+    new Date(sample.timestamp)
+  );
 }
