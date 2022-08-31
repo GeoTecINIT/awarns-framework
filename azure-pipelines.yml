@@ -52,7 +52,7 @@ steps:
   - script: |
       ./ci-tools/wait-for-emulator.sh
       npm start android-test-ci &
-      mkdir screenshots && cd screenshots && npx --yes android-capture video --no-countdown
+      ./ci-tools/android-screenrec.sh
     displayName: 'Test'
 
   - task: PublishPipelineArtifact@1
