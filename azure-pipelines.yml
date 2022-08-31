@@ -52,10 +52,10 @@ steps:
   - script: |
       mkdir screenshots
       ./ci-tools/wait-for-emulator.sh
-      cd screenshots && npx --yes android-capture image && cd ..
+      ./ci-tools/android-screencap.sh
       npm start android-test-ci &
       sleep 300
-      cd screenshots && npx --yes android-capture image && cd ..
+      ./ci-tools/android-screencap.sh
     displayName: 'Test'
 
   - task: PublishPipelineArtifact@1
