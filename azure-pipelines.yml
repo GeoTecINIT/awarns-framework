@@ -52,7 +52,7 @@ steps:
   - script: |
       ./ci-tools/wait-for-emulator.sh
       npm start android-test-ci &
-      ./ci-tools/android-screenrec.sh 300
+      ./ci-tools/android-screenrec.sh 180
     displayName: 'Test'
 
   - task: PublishPipelineArtifact@1
