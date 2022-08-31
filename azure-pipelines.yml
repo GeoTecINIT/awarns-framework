@@ -50,12 +50,12 @@ steps:
     displayName: 'Build demo'
 
   - script: |
+      mkdir screenshots
       ./ci-tools/wait-for-emulator.sh
-      adb exec-out screencap -p > screenshots/screen.png
+      cd screenshots && npx --yes android-capture image && cd ..
       npm start android-test-ci &
       sleep 300
-      mkdir screenshots
-      adb exec-out screencap -p > screenshots/screen.png
+      cd screenshots && npx --yes android-capture image && cd ..
     displayName: 'Test'
 
   - task: PublishPipelineArtifact@1
