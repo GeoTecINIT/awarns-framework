@@ -51,6 +51,7 @@ steps:
 
   - script: |
       ./ci-tools/wait-for-emulator.sh
+      adb exec-out screencap -p > screenshots/screen.png
       npm start android-test-ci &
       sleep 300
       mkdir screenshots
