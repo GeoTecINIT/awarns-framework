@@ -6,5 +6,5 @@ repositories {
 }
 
 dependencies {
-    // implementation 'com.github.GeotecINIT:BackgroundSensors:1.0.1'
+    implementation 'com.github.GeotecINIT:BackgroundSensors:jitpack-yml-d5a8dbfb61-1'
 }
