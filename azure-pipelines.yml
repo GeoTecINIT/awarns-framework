@@ -50,10 +50,9 @@ steps:
     displayName: 'Build demo'
 
   - script: |
-      mkdir screenshots
       ./ci-tools/wait-for-emulator.sh
       npm start android-test-ci &
-      ./ci-tools/android-screencap.sh
+      mkdir screenshots && cd screenshots && npx --yes android-capture video --no-countdown
     displayName: 'Test'
 
   - task: PublishPipelineArtifact@1
