@@ -51,8 +51,9 @@ steps:
 
   - script: |
       ./ci-tools/wait-for-emulator.sh
-      npm start apps.demo.android &
-      ./ci-tools/android-screenrec.sh 180 4
+      npm start android-test-ci &
+      ./ci-tools/android-log.sh &
+      ./ci-tools/android-screenrec.sh 180 2
     displayName: 'Test'
 
   - task: PublishPipelineArtifact@1
