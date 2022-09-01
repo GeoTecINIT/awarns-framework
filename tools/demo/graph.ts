@@ -123,8 +123,7 @@ class DemoTaskGraph implements TaskGraph {
 
     on('startEvent', run('startDetectingWatchAccelerometerChanges').every(1, 'minutes').cancelOn('stopEvent'));
     on('startEvent', run('startDetectingWatchHeartRateChanges').every(1, 'minutes').cancelOn('stopEvent'));
-    on('startEvent', run('startDetectingWatchGeolocationChanges').now());
-    on('startEvent', run('startDetectingMultipleWatchGeolocationChanges').every(1, 'minutes').cancelOn('stopEvent'));
+    on('startEvent', run('startDetectingWatchGeolocationChanges').every(1, 'minutes').cancelOn('stopEvent'));
 
     on('watchAccelerometerSamplesAcquired', run('writeRecords'));
     on('watchAccelerometerSamplesAcquired', run('trackEvent'));
@@ -135,20 +134,9 @@ class DemoTaskGraph implements TaskGraph {
     on('watchGeolocationAcquired', run('writeRecords'));
     on('watchGeolocationAcquired', run('trackEvent'));
     on('watchGeolocationAcquired', run('stopDetectingWatchGeolocationChanges'));
-    on('multipleWatchGeolocationAcquired', run('writeRecords'));
-    on('multipleWatchGeolocationAcquired', run('trackEvent'));
-    on('multipleWatchGeolocationAcquired', run('stopDetectingWatchGeolocationChanges'));
 
     on(
       'watchGeolocationAcquired',
-      run('checkAreaOfInterestProximity', {
-        nearbyRange: 100,
-        offset: 15,
-      })
-    );
-
-    on(
-      'multipleWatchGeolocationAcquired',
       run('checkAreaOfInterestProximity', {
         nearbyRange: 100,
         offset: 15,

@@ -151,7 +151,6 @@ Task output events:
 - [`watchMagnetometerSamplesAcquired`](#events)
 - [`watchHeartRateSamplesAcquired`](#events)
 - [`watchGeolocationAcquired`](#events)
-- [`multipleWatchGeolocationAcquired`](#events)
 
 > Example usage in the application task graph:
 > ```ts
@@ -213,8 +212,8 @@ Task output events:
 > on('watchAccelerometerSamplesAcquired', run('stopDetectingWatchAccelerometerChanges'));
 > on('watchGyroscopeSamplesAcquired', run('stopDetectingWatchGyroscopeChanges'));
 > on('watchMagnetometerSamplesAcquired', run('stopDetectingWatchMagnetometerChanges'));
-> on('watchHeartRateSamplesAcquired', run('stopDetectingWatchMagnetometerChanges'));
-> on('multipleWatchGeolocationAcquired', run('stopDetectingWatchMagnetometerChanges'));
+> on('watchHeartRateSamplesAcquired', run('stopDetectingWatchHeartRateChanges'));
+> on('watchGeolocationAcquired', run('stopDetectingWatchGeolocationChanges'));
 >```
 > **Note**: it makes no sense to use these tasks without using before their complementary tasks to start the data collection.
 
@@ -333,17 +332,16 @@ by the smartphone, the `plainMessageReceivedEvent` is emitted.
 
 ### Events
 
-| Name                                  | Payload                         | Description                                                                                                                                                                |
-|---------------------------------------|---------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `watchAccelerometerSamplesAcquired`   | [`TriAxial`](#triaxial)         | Contains a list of samples with the `x`, `y`, and `z` values of an accelerometer sensor.                                                                                   |
-| `watchGyroscopeSamplesAcquired`       | [`TriAxial`](#triaxial)         | Contains a list of samples with the `x`, `y`, and `z` values of a gyroscope sensor.                                                                                        |
-| `watchMagnetometerSamplesAcquired`    | [`TriAxial`](#triaxial)         | Contains a list of samples with the `x`, `y`, and `z` values of a magnetometer sensor.                                                                                     |
-| `watchHeartRateSamplesAcquired`       | [`HeartRate`](#heartrate)       | Contains a list with the values of a heart rate sensor.                                                                                                                    |
-| `watchGeolocationAcquired`            | [`Geolocation`](#geolocation)   | Contains the `latitude`, `longitude`, `altitude` and other values of the GPS. This event will be emitted when the `batchSize` of the corresponding start task is set to 1. |
-| `multipleWatchGeolocationAcquired`    | [`Geolocation[]`](#geolocation) | Contains a list of `Geolocation` records. This event will be emitted when the `batchSize` of the corresponding start task is set to a value different than 1.              |
-| `plainMessageSent`                    | [`MessageSent`](#triaxial)      | Contains the content of the message sent to the watch.                                                                                                                     |
-| `plainMessageSentAndResponseReceived` | [`MessageReceived`](#triaxial)  | Contains the content of the message sent to the watch and the response from it.                                                                                            |
-| `plainMessageReceived`                | [`MessageReceived`](#triaxial)  | Contains the content of a message received from the watch.                                                                                                                 |
+| Name                                  | Payload                                                             | Description                                                                                                                                                            |
+|---------------------------------------|---------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `watchAccelerometerSamplesAcquired`   | [`TriAxial`](#triaxial)                                             | Contains a list of samples with the `x`, `y`, and `z` values of an accelerometer sensor.                                                                               |
+| `watchGyroscopeSamplesAcquired`       | [`TriAxial`](#triaxial)                                             | Contains a list of samples with the `x`, `y`, and `z` values of a gyroscope sensor.                                                                                    |
+| `watchMagnetometerSamplesAcquired`    | [`TriAxial`](#triaxial)                                             | Contains a list of samples with the `x`, `y`, and `z` values of a magnetometer sensor.                                                                                 |
+| `watchHeartRateSamplesAcquired`       | [`HeartRate`](#heartrate)                                           | Contains a list with the values of a heart rate sensor.                                                                                                                |
+| `watchGeolocationAcquired`            | [<code>Geolocation &vert; Array\<Geolocation></code>](#geolocation) | Contains one or more GNSS locations. If the `batchSize` is set to 1, the payload will be a `Geolocation` record. Otherwise, the payload will be a `Geolocation` array. |
+| `plainMessageSent`                    | [`MessageSent`](#triaxial)                                          | Contains the content of the message sent to the watch.                                                                                                                 |
+| `plainMessageSentAndResponseReceived` | [`MessageReceived`](#triaxial)                                      | Contains the content of the message sent to the watch and the response from it.                                                                                        |
+| `plainMessageReceived`                | [`MessageReceived`](#triaxial)                                      | Contains the content of a message received from the watch.                                                                                                             |
 
 ### Records
 

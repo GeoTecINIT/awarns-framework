@@ -47,17 +47,9 @@ export const demoTasks: Array<Task> = [
     }),
     stopDetectingWatchSensorChangesTask(WatchSensor.HEART_RATE),
     startDetectingWatchSensorChangesTask(WatchSensor.GEOLOCATION, {
-      sensorDelay: WatchSensorDelay.NORMAL,
-      batchSize: 1,
+      sensorDelay: 1000,
+      batchSize: 5,
     }),
-    startDetectingWatchSensorChangesTask(
-      WatchSensor.GEOLOCATION,
-      {
-        sensorDelay: WatchSensorDelay.NORMAL,
-        batchSize: 5,
-      },
-      'Multiple'
-    ),
     stopDetectingWatchSensorChangesTask(WatchSensor.GEOLOCATION),
 
     sendPlainMessageToWatchTask(),

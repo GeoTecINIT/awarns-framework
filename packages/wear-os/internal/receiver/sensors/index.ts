@@ -20,12 +20,9 @@ export class WatchSensorsReceiver {
     }
 
     if (watchSensor === WatchSensor.GEOLOCATION) {
-      const { record, event } =
-        samples.length === 1
-          ? { record: buildRecord(watchSensor, samples), event: 'watchGeolocationAcquired' }
-          : { record: buildRecords(samples), event: 'multipleWatchGeolocationAcquired' };
+      const record = samples.length === 1 ? buildRecord(watchSensor, samples) : buildRecords(samples);
 
-      this.emitEvent(event, record);
+      this.emitEvent('watchGeolocationAcquired', record);
       return;
     }
 

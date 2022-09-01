@@ -49,7 +49,7 @@ describe('Watch sensors receiver', () => {
     );
   });
 
-  it('emits the watchGeolocationAcquired event when receives a geolocation record', () => {
+  it('emits the watchGeolocationAcquired event with one record when it receives a geolocation sample', () => {
     const samples = createFakeSamples(SensorType.LOCATION);
     const sensorRecords = {
       deviceId: '',
@@ -63,7 +63,7 @@ describe('Watch sensors receiver', () => {
     expect(eventEmitter).toHaveBeenCalledWith('watchGeolocationAcquired', jasmine.objectContaining(expectedProperties));
   });
 
-  it('emits the multipleWatchGeolocationAcquired event when receives geolocation records', () => {
+  it('emits the watchGeolocationAcquired event with an array of records when receives multiple geolocation samples', () => {
     const samples = createFakeSamples(SensorType.LOCATION);
     const sensorRecords = {
       deviceId: '',
@@ -77,10 +77,7 @@ describe('Watch sensors receiver', () => {
     });
 
     receiver.onReceive(sensorRecords);
-    expect(eventEmitter).toHaveBeenCalledWith(
-      'multipleWatchGeolocationAcquired',
-      jasmine.arrayContaining(expectedProperties)
-    );
+    expect(eventEmitter).toHaveBeenCalledWith('watchGeolocationAcquired', jasmine.arrayContaining(expectedProperties));
   });
 });
 
