@@ -1,0 +1,11 @@
+android {
+
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'io.github.geotecinit:background-sensors:1.0.0'
+}
