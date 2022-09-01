@@ -1,9 +1,13 @@
+android {
+
+}
+
 allprojects {
     repositories {
-        maven { url "https://jitpack.io" }
+        mavenCentral()
     }
 }
 
 dependencies {
-    implementation 'com.github.GeotecINIT:BackgroundSensors:1.0.1'
+    implementation 'io.github.geotecinit:background-sensors:1.0.1'
 }
