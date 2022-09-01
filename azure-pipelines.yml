@@ -51,7 +51,7 @@ steps:
 
   - script: |
       ./ci-tools/wait-for-emulator.sh
-      npm start android-test-ci &
+      npm start apps.demo.android &
       ./ci-tools/android-screenrec.sh 180 4
     displayName: 'Test'
 
