@@ -110,8 +110,11 @@ export const demoTasks: Array<Task> = [
 
 > **Warning**: the data collection for a `WatchSensor` can only be started once, if `startDetectingFastWatchAccelerometerChanges` is executed after
 > `startDetectingWatchAccelerometerChanges` and while the collection is in progress, `startDetectingFastWatchAccelerometerChanges` will be ignored.
+> 
 > Therefore, if you want to dynamically change the collection's configuration while the collection is in progress, you will have to stop the collection
-> and start it again with the new desired configuration.
+> and start it again with the new desired configuration. However, due to the underlying communication APIs (i.e., Bluetooth), the order of the tasks **is not guaranteed**. 
+> This means that if the stop and start tasks are executed very close in time, the start task could be executed before the stop task in the smartwatch.
+> If you really need to change the collection's configuration, you should wait a certain amount of time (e.g., 1 second) after the execution of the stop task before executing the start task.
 
 Task generator parameters:
 
