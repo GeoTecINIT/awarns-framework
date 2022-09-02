@@ -7,7 +7,7 @@ export function startDetectingPhoneSensorChangesTask(
   providerConfig: ProviderConfiguration,
   prefix = ''
 ): Task {
-  return new StartPushProviderTask(getProvider(sensor, providerConfig), `Phone${prefix}`);
+  return new StartPushProviderTask(getProvider(sensor, providerConfig), `${prefix}Phone`);
 }
 
 export function stopDetectingPhoneSensorChangesTask(sensor: PhoneSensor): Task {

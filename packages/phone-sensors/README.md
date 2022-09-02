@@ -24,7 +24,7 @@ The collected data from the sensors, will be a [TriAxial](#triaxial) record, des
 
 | Task name                                                                                                         | Description                                                                                                                                                          |
 |-------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [`startDetectingPhone{prefix}{sensor}Changes`](#start-data-collection-for-a-sensor-with-a-specific-configuration) | Allows to start the data collection for a `sensor` with a specific configuration (see below). The `prefix` can be used to distinguish among different configurations |
+| [`startDetecting{prefix}Phone{sensor}Changes`](#start-data-collection-for-a-sensor-with-a-specific-configuration) | Allows to start the data collection for a `sensor` with a specific configuration (see below). The `prefix` can be used to distinguish among different configurations |
 | [`stopDetectingPhone{sensor}Changes`](#stop-data-collection-for-a-sensor)                                         | The complement to the previous task. Allows to stop collecting data from `sensor`.                                                                                   |
 
 #### Start data collection for a sensor with a specific configuration
@@ -43,7 +43,7 @@ export const demoTasks: Array<Task> = [
   // startDetectingPhoneAccelerometerChanges
   
   startDetectingPhoneSensorChangesTask(PhoneSensor.ACCELEROMETER, { sensorDelay: SensorDelay.FASTEST, batchSize: 50 }, 'Fast'),
-  // startDetectingPhoneFastAccelerometerChanges
+  // startDetectingFastPhoneAccelerometerChanges
 
   startDetectingPhoneSensorChangesTask(PhoneSensor.GYROSCOPE, { sensorDelay: SensorDelay.NORMAL, batchSize: 50 }),
   // startDetectingPhoneGyroscopeChanges
@@ -54,17 +54,18 @@ export const demoTasks: Array<Task> = [
 ];
 ```
 
-> **Warning**: the data collection for a `PhoneSensor` can only be started once, if `startDetectingPhoneFastAccelerometerChanges` is
-> executed after `startDetectingPhoneAccelerometerChanges` and while the collection is in progress, `startDetectingPhoneFastAccelerometerChanges`
+> **Warning**: the data collection for a `PhoneSensor` can only be started once, if `startDetectingFastPhoneAccelerometerChanges` is
+> executed after `startDetectingPhoneAccelerometerChanges` and while the collection is in progress, `startDetectingFastPhoneAccelerometerChanges`
 > will be ignored. Therefore, if you want to dynamically change the collection's configuration while the collection is in progress, 
 >  you will have to stop the collection to start it again with the new desired configuration. 
 
 Task generator parameters:
 
-| Parameter name          | Type                    | Description                                        |
-|-------------------------|-------------------------|----------------------------------------------------|
-| `sensor`                | `PhoneSensor`           | Sensor to collect data from. See below.            |
-| `providerConfiguration` | `ProviderConfiguration` | Collection's configuration of the task. See below. |
+| Parameter name          | Type                    | Description                                                                                                                    |
+|-------------------------|-------------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| `sensor`                | `PhoneSensor`           | Sensor to collect data from. See below.                                                                                        |
+| `providerConfiguration` | `ProviderConfiguration` | Collection's configuration of the task. See below.                                                                             |
+| `prefix` _(Optional)_   | `string`                | Adds the prefix to the name of the task. Useful to create multiple tasks for the same sensor but with multiple configurations. |
 
 - PhoneSensor
 
@@ -127,7 +128,9 @@ export const demoTasks: Array<Task> = [
 
 Task generator parameters:
 
-> These task generators take no parameters
+| Parameter name          | Type                    | Description                              |
+|-------------------------|-------------------------|------------------------------------------|
+| `sensor`                | `WatchSensor`           | Sensor to stop the data collection from. |
 
 Task output events:
 
