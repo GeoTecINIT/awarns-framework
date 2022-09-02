@@ -110,6 +110,16 @@ class DemoTaskGraph implements TaskGraph {
 
     on('notificationTapped', run('trackEvent'));
     on('notificationCleared', run('trackEvent'));
+
+    on('startEvent', run('startDetectingPhoneAccelerometerChanges').every(1, 'minutes').cancelOn('stopEvent'));
+    on('startEvent', run('startDetectingPhoneGyroscopeChanges').every(1, 'minutes').cancelOn('stopEvent'));
+
+    on('accelerometerSamplesAcquired', run('writeRecords'));
+    on('accelerometerSamplesAcquired', run('trackEvent'));
+    on('accelerometerSamplesAcquired', run('stopDetectingPhoneAccelerometerChanges'));
+    on('gyroscopeSamplesAcquired', run('writeRecords'));
+    on('gyroscopeSamplesAcquired', run('trackEvent'));
+    on('gyroscopeSamplesAcquired', run('stopDetectingPhoneGyroscopeChanges'));
   }
 }
 

@@ -1,0 +1,43 @@
+{
+  "name": "@awarns/phone-sensors",
+  "version": "1.0.0",
+  "description": "Reliable and concurrent access to smartphone's sensors",
+  "main": "index",
+  "typings": "index.d.ts",
+  "nativescript": {
+    "platforms": {
+      "ios": "6.0.0",
+      "android": "6.0.0"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/GeoTecINIT/awarns-framework.git"
+  },
+  "keywords": [
+    "NativeScript",
+    "TypeScript",
+    "Android",
+    "Sensors"
+  ],
+  "authors": [
+    {
+      "name": "Miguel Matey Sanz",
+      "email": "matey@uji.es"
+    },
+    {
+      "name": "Alberto González Pérez",
+      "email": "algonzal@uji.es"
+    }
+  ],
+  "bugs": {
+    "url": "http://github.com/GeoTecINIT/awarns-framework/issues"
+  },
+  "license": "Apache-2.0",
+  "homepage": "http://github.com/GeoTecINIT/awarns-framework",
+  "readmeFilename": "README.md",
+  "bootstrapper": "@nativescript/plugin-seed",
+  "dependencies": {
+    "@awarns/core": "^1.0.0"
+  }
+}

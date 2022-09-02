@@ -151,6 +151,13 @@ module.exports = {
           description: '@awarns/notifications: Build',
         },
       },
+      // @awarns/phone-sensors
+      'phone-sensors': {
+        build: {
+          script: 'nx run phone-sensors:build.all --parallel=false',
+          description: '@awarns/phone-sensors: Build',
+        },
+      },
       'build-all': {
         script: 'nx run-many --target=build.all --all --parallel=1',
         description: 'Build all packages',
@@ -200,6 +207,10 @@ module.exports = {
       ble: {
         script: 'nx run ble:focus',
         description: 'Focus on @awarns/ble',
+      },
+      'phone-sensors': {
+        script: 'nx run phone-sensors:focus',
+        description: 'Focus on @awarns/phone-sensors',
       },
       reset: {
         script: 'nx g @awarns/plugin-tools:focus-packages',

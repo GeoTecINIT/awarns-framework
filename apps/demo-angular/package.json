@@ -11,7 +11,8 @@
     "@awarns/ble": "file:../../dist/packages/ble",
     "@awarns/geofencing": "file:../../dist/packages/geofencing",
     "@awarns/human-activity": "file:../../dist/packages/human-activity",
-    "@awarns/notifications": "file:../../dist/packages/notifications"
+    "@awarns/notifications": "file:../../dist/packages/notifications",
+    "@awarns/phone-sensors": "file:../../dist/packages/phone-sensors"
   },
   "devDependencies": {
     "@nativescript/android": "~8.2.0",

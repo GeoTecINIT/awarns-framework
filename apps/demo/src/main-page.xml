@@ -15,6 +15,7 @@
         <Button text="human-activity" tap="{{ viewDemo }}" class="btn btn-primary view-demo"/>
         <Button text="notifications" tap="{{ viewDemo }}" class="btn btn-primary view-demo"/>
         <Button text="ble" tap="{{ viewDemo }}" class="btn btn-primary view-demo"/>
+        <Button text="phone-sensors" tap="{{ viewDemo }}" class="btn btn-primary view-demo"/>
       </StackLayout>
     </ScrollView>
   </StackLayout>

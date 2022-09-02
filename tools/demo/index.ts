@@ -9,3 +9,4 @@ export * from './ble';
 export * from './geofencing';
 export * from './human-activity';
 export * from './notifications';
+export * from './phone-sensors';

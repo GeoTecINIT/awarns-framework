@@ -12,6 +12,7 @@
     "notifications": "packages/notifications",
     "persistence": "packages/persistence",
     "tracing": "packages/tracing",
-    "wifi": "packages/wifi"
+    "wifi": "packages/wifi",
+    "phone-sensors": "packages/phone-sensors"
   }
 }

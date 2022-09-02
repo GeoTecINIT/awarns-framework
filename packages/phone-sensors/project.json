@@ -1,0 +1,64 @@
+{
+  "root": "packages/phone-sensors",
+  "projectType": "library",
+  "sourceRoot": "packages/phone-sensors",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "options": {
+        "outputPath": "dist/packages/phone-sensors",
+        "tsConfig": "packages/phone-sensors/tsconfig.json",
+        "packageJson": "packages/phone-sensors/package.json",
+        "main": "packages/phone-sensors/index.d.ts",
+        "assets": [
+          "packages/phone-sensors/*.md",
+          "packages/phone-sensors/index.d.ts",
+          "LICENSE",
+          {
+            "glob": "**/*",
+            "input": "packages/phone-sensors/platforms/",
+            "output": "./platforms/"
+          }
+        ],
+        "dependsOn": [
+          {
+            "target": "build.all",
+            "projects": "dependencies"
+          }
+        ]
+      }
+    },
+    "build.all": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["node tools/scripts/build-finish.ts phone-sensors"],
+        "parallel": false
+      },
+      "outputs": ["dist/packages/phone-sensors"],
+      "dependsOn": [
+        {
+          "target": "build.all",
+          "projects": "dependencies"
+        },
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ]
+    },
+    "focus": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["nx g @nativescript/plugin-tools:focus-packages phone-sensors"],
+        "parallel": false
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["packages/phone-sensors/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}
