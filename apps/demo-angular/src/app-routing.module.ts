@@ -51,6 +51,10 @@ const routes: Routes = [
     path: 'phone-sensors',
     loadChildren: () => import('./plugin-demos/phone-sensors.module').then((m) => m.PhoneSensorsModule),
   },
+  {
+    path: 'wear-os',
+    loadChildren: () => import('./plugin-demos/wear-os.module').then((m) => m.WearOsModule),
+  },
 ];
 
 @NgModule({

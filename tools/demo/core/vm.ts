@@ -10,6 +10,7 @@ import { createTracesExporter, ExportResult, Trace, TracesStore, tracesStore } f
 
 import { setupAreasOfInterest } from '../geofencing/setup';
 import { emitStartEvent } from './common';
+import { setupWatchToUse } from '../wear-os/setup';
 
 const SIZE_INCREMENT = 10;
 
@@ -42,6 +43,7 @@ export class DemoSharedCore extends DemoSharedBase {
 
   setupDemo() {
     setupAreasOfInterest()
+      .then(() => setupWatchToUse())
       .then(() => emitStartEvent())
       .then(() => {
         console.log('Start event emitted!');

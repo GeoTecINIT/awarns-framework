@@ -120,6 +120,55 @@ class DemoTaskGraph implements TaskGraph {
     on('gyroscopeSamplesAcquired', run('writeRecords'));
     on('gyroscopeSamplesAcquired', run('trackEvent'));
     on('gyroscopeSamplesAcquired', run('stopDetectingPhoneGyroscopeChanges'));
+
+    on('startEvent', run('startDetectingWatchAccelerometerChanges').every(1, 'minutes').cancelOn('stopEvent'));
+    on('startEvent', run('startDetectingWatchHeartRateChanges').every(1, 'minutes').cancelOn('stopEvent'));
+    on('startEvent', run('startDetectingWatchGeolocationChanges').every(1, 'minutes').cancelOn('stopEvent'));
+
+    on('watchAccelerometerSamplesAcquired', run('writeRecords'));
+    on('watchAccelerometerSamplesAcquired', run('trackEvent'));
+    on('watchAccelerometerSamplesAcquired', run('stopDetectingWatchAccelerometerChanges'));
+    on('watchHeartRateSamplesAcquired', run('writeRecords'));
+    on('watchHeartRateSamplesAcquired', run('trackEvent'));
+    on('watchHeartRateSamplesAcquired', run('stopDetectingWatchHeartRateChanges'));
+    on('watchGeolocationAcquired', run('writeRecords'));
+    on('watchGeolocationAcquired', run('trackEvent'));
+    on('watchGeolocationAcquired', run('stopDetectingWatchGeolocationChanges'));
+
+    on(
+      'watchGeolocationAcquired',
+      run('checkAreaOfInterestProximity', {
+        nearbyRange: 100,
+        offset: 15,
+      })
+    );
+
+    on(
+      'startEvent',
+      run('sendPlainMessageToWatch', {
+        plainMessage: {
+          message: 'I do not expect a response :)!',
+        },
+      }).now()
+    );
+    on(
+      'startEvent',
+      run('sendPlainMessageToWatchAndAwaitResponse', {
+        plainMessage: {
+          message: 'PING!',
+        },
+        timeout: 5000,
+      })
+        .every(1, 'minutes')
+        .cancelOn('stopEvent')
+    );
+
+    on('plainMessageSent', run('writeRecords'));
+    on('plainMessageSent', run('trackEvent'));
+    on('plainMessageSentAndResponseReceived', run('writeRecords'));
+    on('plainMessageSentAndResponseReceived', run('trackEvent'));
+    on('plainMessageReceived', run('writeRecords'));
+    on('plainMessageReceived', run('trackEvent'));
   }
 }
 

@@ -13,6 +13,7 @@
     "persistence": "packages/persistence",
     "tracing": "packages/tracing",
     "wifi": "packages/wifi",
-    "phone-sensors": "packages/phone-sensors"
+    "phone-sensors": "packages/phone-sensors",
+    "wear-os": "packages/wear-os"
   }
 }

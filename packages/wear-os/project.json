@@ -1,0 +1,64 @@
+{
+  "root": "packages/wear-os",
+  "projectType": "library",
+  "sourceRoot": "packages/wear-os",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "options": {
+        "outputPath": "dist/packages/wear-os",
+        "tsConfig": "packages/wear-os/tsconfig.json",
+        "packageJson": "packages/wear-os/package.json",
+        "main": "packages/wear-os/index.d.ts",
+        "assets": [
+          "packages/wear-os/*.md",
+          "packages/wear-os/index.d.ts",
+          "LICENSE",
+          {
+            "glob": "**/*",
+            "input": "packages/wear-os/platforms/",
+            "output": "./platforms/"
+          }
+        ],
+        "dependsOn": [
+          {
+            "target": "build.all",
+            "projects": "dependencies"
+          }
+        ]
+      }
+    },
+    "build.all": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["node tools/scripts/build-finish.ts wear-os"],
+        "parallel": false
+      },
+      "outputs": ["dist/packages/wear-os"],
+      "dependsOn": [
+        {
+          "target": "build.all",
+          "projects": "dependencies"
+        },
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ]
+    },
+    "focus": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": ["nx g @nativescript/plugin-tools:focus-packages wear-os"],
+        "parallel": false
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["packages/wear-os/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}

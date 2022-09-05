@@ -1,0 +1,45 @@
+{
+  "name": "@awarns/wear-os",
+  "version": "1.0.0",
+  "description": "Reliable and concurrent access to a paired smartwatch's sensors and enables communication between both devices",
+  "main": "index",
+  "typings": "index.d.ts",
+  "nativescript": {
+    "platforms": {
+      "ios": "6.0.0",
+      "android": "6.0.0"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/GeoTecINIT/awarns-framework.git"
+  },
+  "keywords": [
+    "NativeScript",
+    "TypeScript",
+    "Android",
+    "WearOS",
+    "Sensors"
+  ],
+  "authors": [
+    {
+      "name": "Miguel Matey Sanz",
+      "email": "matey@uji.es"
+    },
+    {
+      "name": "Alberto González Pérez",
+      "email": "algonzal@uji.es"
+    }
+  ],
+  "bugs": {
+    "url": "http://github.com/GeoTecINIT/awarns-framework/issues"
+  },
+  "license": "Apache-2.0",
+  "homepage": "http://github.com/GeoTecINIT/awarns-framework",
+  "readmeFilename": "README.md",
+  "bootstrapper": "@nativescript/plugin-seed",
+  "dependencies": {
+    "@awarns/core": "^1.0.0",
+    "nativescript-wearos-sensors": "^1.2.0"
+  }
+}

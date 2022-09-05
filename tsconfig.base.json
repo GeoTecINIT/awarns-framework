@@ -32,6 +32,7 @@
       "@awarns/human-activity": ["packages/human-activity/index.d.ts"],
       "@awarns/notifications": ["packages/notifications/index.d.ts"],
       "@awarns/phone-sensors": ["packages/phone-sensors/index.d.ts"],
+      "@awarns/wear-os": ["packages/wear-os/index.d.ts"],
       "@demo/shared": ["tools/demo/index.ts"]
     }
   },
