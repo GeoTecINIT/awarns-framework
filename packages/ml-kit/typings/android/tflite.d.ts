@@ -1,8 +1,8 @@
 /// <reference path="android-declarations.d.ts"/>
 
-declare module org {
-  export module tensorflow {
-    export module lite {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
       export class DataTypeUtils {
         public static class: java.lang.Class<org.tensorflow.lite.DataTypeUtils>;
       }
@@ -10,9 +10,25 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export class Delegate {
+        public static class: java.lang.Class<org.tensorflow.lite.Delegate>;
+        /**
+         * Constructs a new instance of the org.tensorflow.lite.Delegate interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
+         */
+        public constructor(implementation: { getNativeHandle(): number });
+        public constructor();
+        public getNativeHandle(): number;
+      }
+    }
+  }
+}
+
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
       export class Interpreter extends org.tensorflow.lite.InterpreterImpl {
         public static class: java.lang.Class<org.tensorflow.lite.Interpreter>;
         public constructor(param0: java.nio.ByteBuffer);
@@ -35,7 +51,7 @@ declare module org {
         public resetVariableTensors(): void;
         public setCancelled(param0: boolean): void;
       }
-      export module Interpreter {
+      export namespace Interpreter {
         export class Options extends org.tensorflow.lite.InterpreterImpl.Options {
           public static class: java.lang.Class<org.tensorflow.lite.Interpreter.Options>;
           public setUseNNAPI(param0: boolean): org.tensorflow.lite.Interpreter.Options;
@@ -61,9 +77,9 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
       export class InterpreterFactoryImpl {
         public static class: java.lang.Class<org.tensorflow.lite.InterpreterFactoryImpl>;
         public runtimeVersion(): string;
@@ -85,9 +101,9 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
       export class InterpreterImpl {
         public static class: java.lang.Class<org.tensorflow.lite.InterpreterImpl>;
         public constructor(param0: java.nio.ByteBuffer);
@@ -112,7 +128,7 @@ declare module org {
         public resizeInput(param0: number, param1: androidNative.Array<number>): void;
         public getOutputTensorCount(): number;
       }
-      export module InterpreterImpl {
+      export namespace InterpreterImpl {
         export class Options {
           public static class: java.lang.Class<org.tensorflow.lite.InterpreterImpl.Options>;
           public constructor();
@@ -124,9 +140,9 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
       export class NativeInterpreterWrapper {
         public static class: java.lang.Class<org.tensorflow.lite.NativeInterpreterWrapper>;
         public close(): void;
@@ -141,9 +157,9 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
       export class NativeInterpreterWrapperExperimental extends org.tensorflow.lite.NativeInterpreterWrapper {
         public static class: java.lang.Class<org.tensorflow.lite.NativeInterpreterWrapperExperimental>;
       }
@@ -151,9 +167,9 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
       export class NativeSignatureRunnerWrapper {
         public static class: java.lang.Class<org.tensorflow.lite.NativeSignatureRunnerWrapper>;
         public invoke(): void;
@@ -171,9 +187,9 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
       export class TensorImpl {
         public static class: java.lang.Class<org.tensorflow.lite.TensorImpl>;
         public name(): string;
@@ -191,10 +207,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module nnapi {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace nnapi {
         export class NnApiDelegateImpl {
           public static class: java.lang.Class<org.tensorflow.lite.nnapi.NnApiDelegateImpl>;
           public constructor(param0: org.tensorflow.lite.nnapi.NnApiDelegate.Options);

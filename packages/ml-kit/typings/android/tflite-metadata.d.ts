@@ -1,9 +1,9 @@
 /// <reference path="android-declarations.d.ts"/>
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class AbsOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.AbsOptions>;
           public static endAbsOptions(param0: com.google.flatbuffers.FlatBufferBuilder): number;
@@ -24,7 +24,7 @@ declare module org {
           ): number;
           public static getRootAsAbsOptions(param0: java.nio.ByteBuffer): org.tensorflow.lite.schema.AbsOptions;
         }
-        export module AbsOptions {
+        export namespace AbsOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.AbsOptions.Vector>;
             public get(
@@ -45,10 +45,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class AbsOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.AbsOptionsT>;
           public constructor();
@@ -58,10 +58,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ActivationFunctionType {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ActivationFunctionType>;
           public static NONE: number;
@@ -78,10 +78,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class AddNOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.AddNOptions>;
           public unpackTo(param0: org.tensorflow.lite.schema.AddNOptionsT): void;
@@ -102,7 +102,7 @@ declare module org {
           public unpack(): org.tensorflow.lite.schema.AddNOptionsT;
           public __assign(param0: number, param1: java.nio.ByteBuffer): org.tensorflow.lite.schema.AddNOptions;
         }
-        export module AddNOptions {
+        export namespace AddNOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.AddNOptions.Vector>;
             public __assign(
@@ -123,10 +123,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class AddNOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.AddNOptionsT>;
           public constructor();
@@ -136,10 +136,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class AddOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.AddOptions>;
           public static addFusedActivationFunction(
@@ -172,7 +172,7 @@ declare module org {
           public potScaleInt16(): boolean;
           public static addPotScaleInt16(param0: com.google.flatbuffers.FlatBufferBuilder, param1: boolean): void;
         }
-        export module AddOptions {
+        export namespace AddOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.AddOptions.Vector>;
             public constructor();
@@ -193,10 +193,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class AddOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.AddOptionsT>;
           public constructor();
@@ -210,10 +210,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ArgMaxOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ArgMaxOptions>;
           public outputType(): number;
@@ -237,7 +237,7 @@ declare module org {
           public static endArgMaxOptions(param0: com.google.flatbuffers.FlatBufferBuilder): number;
           public unpackTo(param0: org.tensorflow.lite.schema.ArgMaxOptionsT): void;
         }
-        export module ArgMaxOptions {
+        export namespace ArgMaxOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.ArgMaxOptions.Vector>;
             public get(
@@ -258,10 +258,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ArgMaxOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ArgMaxOptionsT>;
           public constructor();
@@ -273,10 +273,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ArgMinOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ArgMinOptions>;
           public outputType(): number;
@@ -300,7 +300,7 @@ declare module org {
             param1: org.tensorflow.lite.schema.ArgMinOptionsT
           ): number;
         }
-        export module ArgMinOptions {
+        export namespace ArgMinOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.ArgMinOptions.Vector>;
             public get(
@@ -321,10 +321,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ArgMinOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ArgMinOptionsT>;
           public constructor();
@@ -336,10 +336,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class AssignVariableOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.AssignVariableOptions>;
           public static pack(
@@ -365,7 +365,7 @@ declare module org {
           public static startAssignVariableOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
           public unpackTo(param0: org.tensorflow.lite.schema.AssignVariableOptionsT): void;
         }
-        export module AssignVariableOptions {
+        export namespace AssignVariableOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.AssignVariableOptions.Vector>;
             public get(
@@ -386,10 +386,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class AssignVariableOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.AssignVariableOptionsT>;
           public constructor();
@@ -399,10 +399,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class BatchMatMulOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.BatchMatMulOptions>;
           public static startBatchMatMulOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
@@ -440,7 +440,7 @@ declare module org {
           public adjX(): boolean;
           public unpackTo(param0: org.tensorflow.lite.schema.BatchMatMulOptionsT): void;
         }
-        export module BatchMatMulOptions {
+        export namespace BatchMatMulOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.BatchMatMulOptions.Vector>;
             public constructor();
@@ -461,10 +461,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class BatchMatMulOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.BatchMatMulOptionsT>;
           public getAdjX(): boolean;
@@ -480,10 +480,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class BatchToSpaceNDOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.BatchToSpaceNDOptions>;
           public static endBatchToSpaceNDOptions(param0: com.google.flatbuffers.FlatBufferBuilder): number;
@@ -509,7 +509,7 @@ declare module org {
           ): number;
           public static startBatchToSpaceNDOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
         }
-        export module BatchToSpaceNDOptions {
+        export namespace BatchToSpaceNDOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.BatchToSpaceNDOptions.Vector>;
             public constructor();
@@ -530,10 +530,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class BatchToSpaceNDOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.BatchToSpaceNDOptionsT>;
           public constructor();
@@ -543,10 +543,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class BidirectionalSequenceLSTMOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.BidirectionalSequenceLSTMOptions>;
           public static startBidirectionalSequenceLSTMOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
@@ -599,7 +599,7 @@ declare module org {
             param1: boolean
           ): void;
         }
-        export module BidirectionalSequenceLSTMOptions {
+        export namespace BidirectionalSequenceLSTMOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.BidirectionalSequenceLSTMOptions.Vector>;
             public constructor();
@@ -620,10 +620,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class BidirectionalSequenceLSTMOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.BidirectionalSequenceLSTMOptionsT>;
           public getMergeOutputs(): boolean;
@@ -645,10 +645,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class BidirectionalSequenceRNNOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.BidirectionalSequenceRNNOptions>;
           public static startBidirectionalSequenceRNNOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
@@ -695,7 +695,7 @@ declare module org {
           ): org.tensorflow.lite.schema.BidirectionalSequenceRNNOptions;
           public unpackTo(param0: org.tensorflow.lite.schema.BidirectionalSequenceRNNOptionsT): void;
         }
-        export module BidirectionalSequenceRNNOptions {
+        export namespace BidirectionalSequenceRNNOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.BidirectionalSequenceRNNOptions.Vector>;
             public constructor();
@@ -716,10 +716,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class BidirectionalSequenceRNNOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.BidirectionalSequenceRNNOptionsT>;
           public getTimeMajor(): boolean;
@@ -737,10 +737,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class BroadcastToOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.BroadcastToOptions>;
           public static pack(
@@ -763,7 +763,7 @@ declare module org {
           public unpack(): org.tensorflow.lite.schema.BroadcastToOptionsT;
           public unpackTo(param0: org.tensorflow.lite.schema.BroadcastToOptionsT): void;
         }
-        export module BroadcastToOptions {
+        export namespace BroadcastToOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.BroadcastToOptions.Vector>;
             public constructor();
@@ -784,10 +784,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class BroadcastToOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.BroadcastToOptionsT>;
           public constructor();
@@ -797,10 +797,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class BucketizeOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.BucketizeOptions>;
           public boundariesInByteBuffer(param0: java.nio.ByteBuffer): java.nio.ByteBuffer;
@@ -839,7 +839,7 @@ declare module org {
           public boundariesLength(): number;
           public boundariesVector(param0: com.google.flatbuffers.FloatVector): com.google.flatbuffers.FloatVector;
         }
-        export module BucketizeOptions {
+        export namespace BucketizeOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.BucketizeOptions.Vector>;
             public constructor();
@@ -860,10 +860,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class BucketizeOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.BucketizeOptionsT>;
           public setBoundaries(param0: androidNative.Array<number>): void;
@@ -875,10 +875,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class Buffer {
           public static class: java.lang.Class<org.tensorflow.lite.schema.Buffer>;
           public static createBuffer(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): number;
@@ -916,7 +916,7 @@ declare module org {
           public unpack(): org.tensorflow.lite.schema.BufferT;
           public dataVector(param0: com.google.flatbuffers.ByteVector): com.google.flatbuffers.ByteVector;
         }
-        export module Buffer {
+        export namespace Buffer {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.Buffer.Vector>;
             public get(param0: number): org.tensorflow.lite.schema.Buffer;
@@ -934,10 +934,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class BufferT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.BufferT>;
           public constructor();
@@ -949,10 +949,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class BuiltinOperator {
           public static class: java.lang.Class<org.tensorflow.lite.schema.BuiltinOperator>;
           public static ADD: number;
@@ -1117,10 +1117,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class BuiltinOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.BuiltinOptions>;
           public static NONE: number;
@@ -1250,10 +1250,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class BuiltinOptionsUnion {
           public static class: java.lang.Class<org.tensorflow.lite.schema.BuiltinOptionsUnion>;
           public getValue(): any;
@@ -1389,10 +1389,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class CallOnceOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.CallOnceOptions>;
           public static startCallOnceOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
@@ -1418,7 +1418,7 @@ declare module org {
           public unpack(): org.tensorflow.lite.schema.CallOnceOptionsT;
           public initSubgraphIndex(): number;
         }
-        export module CallOnceOptions {
+        export namespace CallOnceOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.CallOnceOptions.Vector>;
             public constructor();
@@ -1439,10 +1439,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class CallOnceOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.CallOnceOptionsT>;
           public getInitSubgraphIndex(): number;
@@ -1454,10 +1454,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class CallOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.CallOptions>;
           public __assign(param0: number, param1: java.nio.ByteBuffer): org.tensorflow.lite.schema.CallOptions;
@@ -1481,7 +1481,7 @@ declare module org {
           public static createCallOptions(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): number;
           public unpack(): org.tensorflow.lite.schema.CallOptionsT;
         }
-        export module CallOptions {
+        export namespace CallOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.CallOptions.Vector>;
             public constructor();
@@ -1502,10 +1502,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class CallOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.CallOptionsT>;
           public constructor();
@@ -1517,10 +1517,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class CastOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.CastOptions>;
           public static getRootAsCastOptions(
@@ -1550,7 +1550,7 @@ declare module org {
             param1: org.tensorflow.lite.schema.CastOptionsT
           ): number;
         }
-        export module CastOptions {
+        export namespace CastOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.CastOptions.Vector>;
             public get(param0: number): org.tensorflow.lite.schema.CastOptions;
@@ -1571,10 +1571,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class CastOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.CastOptionsT>;
           public setInDataType(param0: number): void;
@@ -1588,10 +1588,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class CombinerType {
           public static class: java.lang.Class<org.tensorflow.lite.schema.CombinerType>;
           public static SUM: number;
@@ -1605,10 +1605,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ConcatEmbeddingsOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ConcatEmbeddingsOptions>;
           public embeddingDimPerChannelInByteBuffer(param0: java.nio.ByteBuffer): java.nio.ByteBuffer;
@@ -1677,7 +1677,7 @@ declare module org {
             param1: androidNative.Array<number>
           ): number;
         }
-        export module ConcatEmbeddingsOptions {
+        export namespace ConcatEmbeddingsOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.ConcatEmbeddingsOptions.Vector>;
             public constructor();
@@ -1698,10 +1698,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ConcatEmbeddingsOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ConcatEmbeddingsOptionsT>;
           public getEmbeddingDimPerChannel(): androidNative.Array<number>;
@@ -1717,10 +1717,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ConcatenationOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ConcatenationOptions>;
           public static pack(
@@ -1755,7 +1755,7 @@ declare module org {
             param1: org.tensorflow.lite.schema.ConcatenationOptions
           ): org.tensorflow.lite.schema.ConcatenationOptions;
         }
-        export module ConcatenationOptions {
+        export namespace ConcatenationOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.ConcatenationOptions.Vector>;
             public constructor();
@@ -1776,10 +1776,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ConcatenationOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ConcatenationOptionsT>;
           public constructor();
@@ -1793,10 +1793,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class Conv2DOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.Conv2DOptions>;
           public static startConv2DOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
@@ -1841,7 +1841,7 @@ declare module org {
           public dilationWFactor(): number;
           public dilationHFactor(): number;
         }
-        export module Conv2DOptions {
+        export namespace Conv2DOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.Conv2DOptions.Vector>;
             public constructor();
@@ -1862,10 +1862,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class Conv2DOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.Conv2DOptionsT>;
           public getDilationHFactor(): number;
@@ -1887,10 +1887,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class Conv3DOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.Conv3DOptions>;
           public static addDilationDFactor(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): void;
@@ -1941,7 +1941,7 @@ declare module org {
           public strideW(): number;
           public dilationWFactor(): number;
         }
-        export module Conv3DOptions {
+        export namespace Conv3DOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.Conv3DOptions.Vector>;
             public get(
@@ -1962,10 +1962,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class Conv3DOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.Conv3DOptionsT>;
           public getDilationHFactor(): number;
@@ -1991,10 +1991,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class CosOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.CosOptions>;
           public static pack(
@@ -2015,7 +2015,7 @@ declare module org {
           public static getRootAsCosOptions(param0: java.nio.ByteBuffer): org.tensorflow.lite.schema.CosOptions;
           public static startCosOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
         }
-        export module CosOptions {
+        export namespace CosOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.CosOptions.Vector>;
             public get(param0: number): org.tensorflow.lite.schema.CosOptions;
@@ -2036,10 +2036,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class CosOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.CosOptionsT>;
           public constructor();
@@ -2049,10 +2049,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class CumsumOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.CumsumOptions>;
           public unpackTo(param0: org.tensorflow.lite.schema.CumsumOptionsT): void;
@@ -2082,7 +2082,7 @@ declare module org {
           public static startCumsumOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
           public exclusive(): boolean;
         }
-        export module CumsumOptions {
+        export namespace CumsumOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.CumsumOptions.Vector>;
             public get(
@@ -2103,10 +2103,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class CumsumOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.CumsumOptionsT>;
           public getExclusive(): boolean;
@@ -2120,10 +2120,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class CustomOptionsFormat {
           public static class: java.lang.Class<org.tensorflow.lite.schema.CustomOptionsFormat>;
           public static FLEXBUFFERS: number;
@@ -2135,10 +2135,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class CustomQuantization {
           public static class: java.lang.Class<org.tensorflow.lite.schema.CustomQuantization>;
           public customVector(): com.google.flatbuffers.ByteVector;
@@ -2181,7 +2181,7 @@ declare module org {
           public static endCustomQuantization(param0: com.google.flatbuffers.FlatBufferBuilder): number;
           public customInByteBuffer(param0: java.nio.ByteBuffer): java.nio.ByteBuffer;
         }
-        export module CustomQuantization {
+        export namespace CustomQuantization {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.CustomQuantization.Vector>;
             public get(param0: number): org.tensorflow.lite.schema.CustomQuantization;
@@ -2202,10 +2202,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class CustomQuantizationT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.CustomQuantizationT>;
           public getCustom(): androidNative.Array<number>;
@@ -2217,10 +2217,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class DensifyOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.DensifyOptions>;
           public static startDensifyOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
@@ -2241,7 +2241,7 @@ declare module org {
           ): org.tensorflow.lite.schema.DensifyOptions;
           public static endDensifyOptions(param0: com.google.flatbuffers.FlatBufferBuilder): number;
         }
-        export module DensifyOptions {
+        export namespace DensifyOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.DensifyOptions.Vector>;
             public constructor();
@@ -2262,10 +2262,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class DensifyOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.DensifyOptionsT>;
           public constructor();
@@ -2275,10 +2275,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class DepthToSpaceOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.DepthToSpaceOptions>;
           public static endDepthToSpaceOptions(param0: com.google.flatbuffers.FlatBufferBuilder): number;
@@ -2307,7 +2307,7 @@ declare module org {
           public __assign(param0: number, param1: java.nio.ByteBuffer): org.tensorflow.lite.schema.DepthToSpaceOptions;
           public constructor();
         }
-        export module DepthToSpaceOptions {
+        export namespace DepthToSpaceOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.DepthToSpaceOptions.Vector>;
             public constructor();
@@ -2328,10 +2328,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class DepthToSpaceOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.DepthToSpaceOptionsT>;
           public setBlockSize(param0: number): void;
@@ -2343,10 +2343,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class DepthwiseConv2DOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.DepthwiseConv2DOptions>;
           public static getRootAsDepthwiseConv2DOptions(
@@ -2399,7 +2399,7 @@ declare module org {
           public strideW(): number;
           public dilationWFactor(): number;
         }
-        export module DepthwiseConv2DOptions {
+        export namespace DepthwiseConv2DOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.DepthwiseConv2DOptions.Vector>;
             public get(param0: number): org.tensorflow.lite.schema.DepthwiseConv2DOptions;
@@ -2420,10 +2420,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class DepthwiseConv2DOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.DepthwiseConv2DOptionsT>;
           public getDilationHFactor(): number;
@@ -2447,10 +2447,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class DequantizeOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.DequantizeOptions>;
           public static getRootAsDequantizeOptions(
@@ -2473,7 +2473,7 @@ declare module org {
           public static ValidateVersion(): void;
           public unpackTo(param0: org.tensorflow.lite.schema.DequantizeOptionsT): void;
         }
-        export module DequantizeOptions {
+        export namespace DequantizeOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.DequantizeOptions.Vector>;
             public constructor();
@@ -2494,10 +2494,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class DequantizeOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.DequantizeOptionsT>;
           public constructor();
@@ -2507,10 +2507,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class DimensionMetadata {
           public static class: java.lang.Class<org.tensorflow.lite.schema.DimensionMetadata>;
           public static addFormat(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): void;
@@ -2554,7 +2554,7 @@ declare module org {
           public static endDimensionMetadata(param0: com.google.flatbuffers.FlatBufferBuilder): number;
           public arrayIndicesType(): number;
         }
-        export module DimensionMetadata {
+        export namespace DimensionMetadata {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.DimensionMetadata.Vector>;
             public __assign(
@@ -2575,10 +2575,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class DimensionMetadataT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.DimensionMetadataT>;
           public getFormat(): number;
@@ -2596,10 +2596,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class DimensionType {
           public static class: java.lang.Class<org.tensorflow.lite.schema.DimensionType>;
           public static DENSE: number;
@@ -2612,10 +2612,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class DivOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.DivOptions>;
           public static startDivOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
@@ -2642,7 +2642,7 @@ declare module org {
           public unpack(): org.tensorflow.lite.schema.DivOptionsT;
           public static endDivOptions(param0: com.google.flatbuffers.FlatBufferBuilder): number;
         }
-        export module DivOptions {
+        export namespace DivOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.DivOptions.Vector>;
             public __assign(
@@ -2663,10 +2663,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class DivOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.DivOptionsT>;
           public constructor();
@@ -2678,10 +2678,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class DynamicUpdateSliceOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.DynamicUpdateSliceOptions>;
           public static pack(
@@ -2707,7 +2707,7 @@ declare module org {
           ): org.tensorflow.lite.schema.DynamicUpdateSliceOptions;
           public static startDynamicUpdateSliceOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
         }
-        export module DynamicUpdateSliceOptions {
+        export namespace DynamicUpdateSliceOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.DynamicUpdateSliceOptions.Vector>;
             public constructor();
@@ -2728,10 +2728,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class DynamicUpdateSliceOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.DynamicUpdateSliceOptionsT>;
           public constructor();
@@ -2741,10 +2741,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class EmbeddingLookupSparseOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.EmbeddingLookupSparseOptions>;
           public static addCombiner(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): void;
@@ -2776,7 +2776,7 @@ declare module org {
             param1: org.tensorflow.lite.schema.EmbeddingLookupSparseOptions
           ): org.tensorflow.lite.schema.EmbeddingLookupSparseOptions;
         }
-        export module EmbeddingLookupSparseOptions {
+        export namespace EmbeddingLookupSparseOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.EmbeddingLookupSparseOptions.Vector>;
             public constructor();
@@ -2797,10 +2797,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class EmbeddingLookupSparseOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.EmbeddingLookupSparseOptionsT>;
           public constructor();
@@ -2812,10 +2812,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class EqualOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.EqualOptions>;
           public static endEqualOptions(param0: com.google.flatbuffers.FlatBufferBuilder): number;
@@ -2836,7 +2836,7 @@ declare module org {
           public unpackTo(param0: org.tensorflow.lite.schema.EqualOptionsT): void;
           public static getRootAsEqualOptions(param0: java.nio.ByteBuffer): org.tensorflow.lite.schema.EqualOptions;
         }
-        export module EqualOptions {
+        export namespace EqualOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.EqualOptions.Vector>;
             public constructor();
@@ -2857,10 +2857,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class EqualOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.EqualOptionsT>;
           public constructor();
@@ -2870,10 +2870,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ExpOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ExpOptions>;
           public __assign(param0: number, param1: java.nio.ByteBuffer): org.tensorflow.lite.schema.ExpOptions;
@@ -2894,7 +2894,7 @@ declare module org {
           ): org.tensorflow.lite.schema.ExpOptions;
           public static getRootAsExpOptions(param0: java.nio.ByteBuffer): org.tensorflow.lite.schema.ExpOptions;
         }
-        export module ExpOptions {
+        export namespace ExpOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.ExpOptions.Vector>;
             public constructor();
@@ -2915,10 +2915,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ExpOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ExpOptionsT>;
           public constructor();
@@ -2928,10 +2928,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ExpandDimsOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ExpandDimsOptions>;
           public unpackTo(param0: org.tensorflow.lite.schema.ExpandDimsOptionsT): void;
@@ -2954,7 +2954,7 @@ declare module org {
           ): org.tensorflow.lite.schema.ExpandDimsOptions;
           public static startExpandDimsOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
         }
-        export module ExpandDimsOptions {
+        export namespace ExpandDimsOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.ExpandDimsOptions.Vector>;
             public get(
@@ -2975,10 +2975,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ExpandDimsOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ExpandDimsOptionsT>;
           public constructor();
@@ -2988,10 +2988,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class FakeQuantOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.FakeQuantOptions>;
           public static addNumBits(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): void;
@@ -3029,7 +3029,7 @@ declare module org {
             param1: org.tensorflow.lite.schema.FakeQuantOptions
           ): org.tensorflow.lite.schema.FakeQuantOptions;
         }
-        export module FakeQuantOptions {
+        export namespace FakeQuantOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.FakeQuantOptions.Vector>;
             public constructor();
@@ -3050,10 +3050,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class FakeQuantOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.FakeQuantOptionsT>;
           public setNarrowRange(param0: boolean): void;
@@ -3071,10 +3071,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class FillOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.FillOptions>;
           public static getRootAsFillOptions(
@@ -3095,7 +3095,7 @@ declare module org {
           public static endFillOptions(param0: com.google.flatbuffers.FlatBufferBuilder): number;
           public unpack(): org.tensorflow.lite.schema.FillOptionsT;
         }
-        export module FillOptions {
+        export namespace FillOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.FillOptions.Vector>;
             public constructor();
@@ -3116,10 +3116,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class FillOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.FillOptionsT>;
           public constructor();
@@ -3129,10 +3129,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class FloorDivOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.FloorDivOptions>;
           public static startFloorDivOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
@@ -3155,7 +3155,7 @@ declare module org {
             param1: org.tensorflow.lite.schema.FloorDivOptions
           ): org.tensorflow.lite.schema.FloorDivOptions;
         }
-        export module FloorDivOptions {
+        export namespace FloorDivOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.FloorDivOptions.Vector>;
             public __assign(
@@ -3176,10 +3176,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class FloorDivOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.FloorDivOptionsT>;
           public constructor();
@@ -3189,10 +3189,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class FloorModOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.FloorModOptions>;
           public static startFloorModOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
@@ -3215,7 +3215,7 @@ declare module org {
             param0: java.nio.ByteBuffer
           ): org.tensorflow.lite.schema.FloorModOptions;
         }
-        export module FloorModOptions {
+        export namespace FloorModOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.FloorModOptions.Vector>;
             public constructor();
@@ -3236,10 +3236,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class FloorModOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.FloorModOptionsT>;
           public constructor();
@@ -3249,10 +3249,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class FullyConnectedOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.FullyConnectedOptions>;
           public static addWeightsFormat(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): void;
@@ -3299,7 +3299,7 @@ declare module org {
             param4: boolean
           ): number;
         }
-        export module FullyConnectedOptions {
+        export namespace FullyConnectedOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.FullyConnectedOptions.Vector>;
             public __assign(
@@ -3320,10 +3320,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class FullyConnectedOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.FullyConnectedOptionsT>;
           public getAsymmetricQuantizeInputs(): boolean;
@@ -3341,10 +3341,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class FullyConnectedOptionsWeightsFormat {
           public static class: java.lang.Class<org.tensorflow.lite.schema.FullyConnectedOptionsWeightsFormat>;
           public static DEFAULT: number;
@@ -3357,10 +3357,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class GatherNdOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.GatherNdOptions>;
           public unpack(): org.tensorflow.lite.schema.GatherNdOptionsT;
@@ -3383,7 +3383,7 @@ declare module org {
             param1: org.tensorflow.lite.schema.GatherNdOptionsT
           ): number;
         }
-        export module GatherNdOptions {
+        export namespace GatherNdOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.GatherNdOptions.Vector>;
             public constructor();
@@ -3404,10 +3404,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class GatherNdOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.GatherNdOptionsT>;
           public constructor();
@@ -3417,10 +3417,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class GatherOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.GatherOptions>;
           public static createGatherOptions(
@@ -3450,7 +3450,7 @@ declare module org {
           public batchDims(): number;
           public unpackTo(param0: org.tensorflow.lite.schema.GatherOptionsT): void;
         }
-        export module GatherOptions {
+        export namespace GatherOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.GatherOptions.Vector>;
             public constructor();
@@ -3471,10 +3471,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class GatherOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.GatherOptionsT>;
           public constructor();
@@ -3488,10 +3488,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class GeluOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.GeluOptions>;
           public static startGeluOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
@@ -3515,7 +3515,7 @@ declare module org {
             param1: org.tensorflow.lite.schema.GeluOptionsT
           ): number;
         }
-        export module GeluOptions {
+        export namespace GeluOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.GeluOptions.Vector>;
             public constructor();
@@ -3536,10 +3536,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class GeluOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.GeluOptionsT>;
           public setApproximate(param0: boolean): void;
@@ -3551,10 +3551,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class GreaterEqualOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.GreaterEqualOptions>;
           public static endGreaterEqualOptions(param0: com.google.flatbuffers.FlatBufferBuilder): number;
@@ -3577,7 +3577,7 @@ declare module org {
           ): number;
           public static startGreaterEqualOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
         }
-        export module GreaterEqualOptions {
+        export namespace GreaterEqualOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.GreaterEqualOptions.Vector>;
             public constructor();
@@ -3598,10 +3598,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class GreaterEqualOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.GreaterEqualOptionsT>;
           public constructor();
@@ -3611,10 +3611,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class GreaterOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.GreaterOptions>;
           public static getRootAsGreaterOptions(
@@ -3635,7 +3635,7 @@ declare module org {
           public unpackTo(param0: org.tensorflow.lite.schema.GreaterOptionsT): void;
           public __assign(param0: number, param1: java.nio.ByteBuffer): org.tensorflow.lite.schema.GreaterOptions;
         }
-        export module GreaterOptions {
+        export namespace GreaterOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.GreaterOptions.Vector>;
             public get(
@@ -3656,10 +3656,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class GreaterOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.GreaterOptionsT>;
           public constructor();
@@ -3669,10 +3669,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class HardSwishOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.HardSwishOptions>;
           public static endHardSwishOptions(param0: com.google.flatbuffers.FlatBufferBuilder): number;
@@ -3695,7 +3695,7 @@ declare module org {
             param1: org.tensorflow.lite.schema.HardSwishOptionsT
           ): number;
         }
-        export module HardSwishOptions {
+        export namespace HardSwishOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.HardSwishOptions.Vector>;
             public constructor();
@@ -3716,10 +3716,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class HardSwishOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.HardSwishOptionsT>;
           public constructor();
@@ -3729,10 +3729,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class HashtableFindOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.HashtableFindOptions>;
           public static getRootAsHashtableFindOptions(
@@ -3755,7 +3755,7 @@ declare module org {
           public static startHashtableFindOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
           public unpackTo(param0: org.tensorflow.lite.schema.HashtableFindOptionsT): void;
         }
-        export module HashtableFindOptions {
+        export namespace HashtableFindOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.HashtableFindOptions.Vector>;
             public __assign(
@@ -3776,10 +3776,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class HashtableFindOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.HashtableFindOptionsT>;
           public constructor();
@@ -3789,10 +3789,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class HashtableImportOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.HashtableImportOptions>;
           public static startHashtableImportOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
@@ -3818,7 +3818,7 @@ declare module org {
           public unpack(): org.tensorflow.lite.schema.HashtableImportOptionsT;
           public static endHashtableImportOptions(param0: com.google.flatbuffers.FlatBufferBuilder): number;
         }
-        export module HashtableImportOptions {
+        export namespace HashtableImportOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.HashtableImportOptions.Vector>;
             public constructor();
@@ -3839,10 +3839,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class HashtableImportOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.HashtableImportOptionsT>;
           public constructor();
@@ -3852,10 +3852,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class HashtableOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.HashtableOptions>;
           public __assign(param0: number, param1: java.nio.ByteBuffer): org.tensorflow.lite.schema.HashtableOptions;
@@ -3890,7 +3890,7 @@ declare module org {
           ): number;
           public valueDtype(): number;
         }
-        export module HashtableOptions {
+        export namespace HashtableOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.HashtableOptions.Vector>;
             public constructor();
@@ -3911,10 +3911,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class HashtableOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.HashtableOptionsT>;
           public setKeyDtype(param0: number): void;
@@ -3930,10 +3930,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class HashtableSizeOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.HashtableSizeOptions>;
           public constructor();
@@ -3956,7 +3956,7 @@ declare module org {
           ): org.tensorflow.lite.schema.HashtableSizeOptions;
           public unpackTo(param0: org.tensorflow.lite.schema.HashtableSizeOptionsT): void;
         }
-        export module HashtableSizeOptions {
+        export namespace HashtableSizeOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.HashtableSizeOptions.Vector>;
             public constructor();
@@ -3977,10 +3977,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class HashtableSizeOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.HashtableSizeOptionsT>;
           public constructor();
@@ -3990,10 +3990,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class IfOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.IfOptions>;
           public static createIfOptions(
@@ -4023,7 +4023,7 @@ declare module org {
           public thenSubgraphIndex(): number;
           public unpackTo(param0: org.tensorflow.lite.schema.IfOptionsT): void;
         }
-        export module IfOptions {
+        export namespace IfOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.IfOptions.Vector>;
             public constructor();
@@ -4044,10 +4044,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class IfOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.IfOptionsT>;
           public getThenSubgraphIndex(): number;
@@ -4061,10 +4061,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class Int32Vector {
           public static class: java.lang.Class<org.tensorflow.lite.schema.Int32Vector>;
           public static getRootAsInt32Vector(
@@ -4098,7 +4098,7 @@ declare module org {
           public values(param0: number): number;
           public unpack(): org.tensorflow.lite.schema.Int32VectorT;
         }
-        export module Int32Vector {
+        export namespace Int32Vector {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.Int32Vector.Vector>;
             public constructor();
@@ -4119,10 +4119,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class Int32VectorT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.Int32VectorT>;
           public constructor();
@@ -4134,10 +4134,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class L2NormOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.L2NormOptions>;
           public static getRootAsL2NormOptions(
@@ -4164,7 +4164,7 @@ declare module org {
           public static startL2NormOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
           public static endL2NormOptions(param0: com.google.flatbuffers.FlatBufferBuilder): number;
         }
-        export module L2NormOptions {
+        export namespace L2NormOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.L2NormOptions.Vector>;
             public get(param0: number): org.tensorflow.lite.schema.L2NormOptions;
@@ -4185,10 +4185,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class L2NormOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.L2NormOptionsT>;
           public constructor();
@@ -4200,10 +4200,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class LSHProjectionOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.LSHProjectionOptions>;
           public static pack(
@@ -4232,7 +4232,7 @@ declare module org {
           public constructor();
           public __assign(param0: number, param1: java.nio.ByteBuffer): org.tensorflow.lite.schema.LSHProjectionOptions;
         }
-        export module LSHProjectionOptions {
+        export namespace LSHProjectionOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.LSHProjectionOptions.Vector>;
             public get(param0: number): org.tensorflow.lite.schema.LSHProjectionOptions;
@@ -4253,10 +4253,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class LSHProjectionOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.LSHProjectionOptionsT>;
           public getType(): number;
@@ -4268,10 +4268,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class LSHProjectionType {
           public static class: java.lang.Class<org.tensorflow.lite.schema.LSHProjectionType>;
           public static UNKNOWN: number;
@@ -4285,10 +4285,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class LSTMKernelType {
           public static class: java.lang.Class<org.tensorflow.lite.schema.LSTMKernelType>;
           public static FULL: number;
@@ -4301,10 +4301,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class LSTMOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.LSTMOptions>;
           public static getRootAsLSTMOptions(param0: java.nio.ByteBuffer): org.tensorflow.lite.schema.LSTMOptions;
@@ -4349,7 +4349,7 @@ declare module org {
           ): void;
           public static endLSTMOptions(param0: com.google.flatbuffers.FlatBufferBuilder): number;
         }
-        export module LSTMOptions {
+        export namespace LSTMOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.LSTMOptions.Vector>;
             public constructor();
@@ -4370,10 +4370,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class LSTMOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.LSTMOptionsT>;
           public getKernelType(): number;
@@ -4393,10 +4393,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class LeakyReluOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.LeakyReluOptions>;
           public unpackTo(param0: org.tensorflow.lite.schema.LeakyReluOptionsT): void;
@@ -4425,7 +4425,7 @@ declare module org {
             param1: org.tensorflow.lite.schema.LeakyReluOptionsT
           ): number;
         }
-        export module LeakyReluOptions {
+        export namespace LeakyReluOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.LeakyReluOptions.Vector>;
             public __assign(
@@ -4446,10 +4446,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class LeakyReluOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.LeakyReluOptionsT>;
           public getAlpha(): number;
@@ -4461,10 +4461,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class LessEqualOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.LessEqualOptions>;
           public static getRootAsLessEqualOptions(
@@ -4487,7 +4487,7 @@ declare module org {
           public static startLessEqualOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
           public unpack(): org.tensorflow.lite.schema.LessEqualOptionsT;
         }
-        export module LessEqualOptions {
+        export namespace LessEqualOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.LessEqualOptions.Vector>;
             public get(param0: number): org.tensorflow.lite.schema.LessEqualOptions;
@@ -4508,10 +4508,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class LessEqualOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.LessEqualOptionsT>;
           public constructor();
@@ -4521,10 +4521,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class LessOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.LessOptions>;
           public static startLessOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
@@ -4545,7 +4545,7 @@ declare module org {
           public static getRootAsLessOptions(param0: java.nio.ByteBuffer): org.tensorflow.lite.schema.LessOptions;
           public unpackTo(param0: org.tensorflow.lite.schema.LessOptionsT): void;
         }
-        export module LessOptions {
+        export namespace LessOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.LessOptions.Vector>;
             public constructor();
@@ -4566,10 +4566,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class LessOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.LessOptionsT>;
           public constructor();
@@ -4579,10 +4579,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class LocalResponseNormalizationOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.LocalResponseNormalizationOptions>;
           public static addAlpha(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): void;
@@ -4623,7 +4623,7 @@ declare module org {
             param1: org.tensorflow.lite.schema.LocalResponseNormalizationOptionsT
           ): number;
         }
-        export module LocalResponseNormalizationOptions {
+        export namespace LocalResponseNormalizationOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.LocalResponseNormalizationOptions.Vector>;
             public constructor();
@@ -4644,10 +4644,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class LocalResponseNormalizationOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.LocalResponseNormalizationOptionsT>;
           public setBias(param0: number): void;
@@ -4665,10 +4665,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class LogSoftmaxOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.LogSoftmaxOptions>;
           public static getRootAsLogSoftmaxOptions(
@@ -4691,7 +4691,7 @@ declare module org {
             param0: java.nio.ByteBuffer
           ): org.tensorflow.lite.schema.LogSoftmaxOptions;
         }
-        export module LogSoftmaxOptions {
+        export namespace LogSoftmaxOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.LogSoftmaxOptions.Vector>;
             public constructor();
@@ -4712,10 +4712,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class LogSoftmaxOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.LogSoftmaxOptionsT>;
           public constructor();
@@ -4725,10 +4725,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class LogicalAndOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.LogicalAndOptions>;
           public unpack(): org.tensorflow.lite.schema.LogicalAndOptionsT;
@@ -4751,7 +4751,7 @@ declare module org {
           public __assign(param0: number, param1: java.nio.ByteBuffer): org.tensorflow.lite.schema.LogicalAndOptions;
           public unpackTo(param0: org.tensorflow.lite.schema.LogicalAndOptionsT): void;
         }
-        export module LogicalAndOptions {
+        export namespace LogicalAndOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.LogicalAndOptions.Vector>;
             public constructor();
@@ -4772,10 +4772,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class LogicalAndOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.LogicalAndOptionsT>;
           public constructor();
@@ -4785,10 +4785,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class LogicalNotOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.LogicalNotOptions>;
           public constructor();
@@ -4811,7 +4811,7 @@ declare module org {
           ): org.tensorflow.lite.schema.LogicalNotOptions;
           public unpack(): org.tensorflow.lite.schema.LogicalNotOptionsT;
         }
-        export module LogicalNotOptions {
+        export namespace LogicalNotOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.LogicalNotOptions.Vector>;
             public get(
@@ -4832,10 +4832,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class LogicalNotOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.LogicalNotOptionsT>;
           public constructor();
@@ -4845,10 +4845,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class LogicalOrOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.LogicalOrOptions>;
           public static getRootAsLogicalOrOptions(
@@ -4871,7 +4871,7 @@ declare module org {
             param1: org.tensorflow.lite.schema.LogicalOrOptions
           ): org.tensorflow.lite.schema.LogicalOrOptions;
         }
-        export module LogicalOrOptions {
+        export namespace LogicalOrOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.LogicalOrOptions.Vector>;
             public constructor();
@@ -4892,10 +4892,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class LogicalOrOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.LogicalOrOptionsT>;
           public constructor();
@@ -4905,10 +4905,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class MatrixDiagOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.MatrixDiagOptions>;
           public static startMatrixDiagOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
@@ -4931,7 +4931,7 @@ declare module org {
             param1: org.tensorflow.lite.schema.MatrixDiagOptionsT
           ): number;
         }
-        export module MatrixDiagOptions {
+        export namespace MatrixDiagOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.MatrixDiagOptions.Vector>;
             public constructor();
@@ -4952,10 +4952,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class MatrixDiagOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.MatrixDiagOptionsT>;
           public constructor();
@@ -4965,10 +4965,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class MatrixSetDiagOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.MatrixSetDiagOptions>;
           public static endMatrixSetDiagOptions(param0: com.google.flatbuffers.FlatBufferBuilder): number;
@@ -4991,7 +4991,7 @@ declare module org {
           public static startMatrixSetDiagOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
           public __assign(param0: number, param1: java.nio.ByteBuffer): org.tensorflow.lite.schema.MatrixSetDiagOptions;
         }
-        export module MatrixSetDiagOptions {
+        export namespace MatrixSetDiagOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.MatrixSetDiagOptions.Vector>;
             public constructor();
@@ -5012,10 +5012,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class MatrixSetDiagOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.MatrixSetDiagOptionsT>;
           public constructor();
@@ -5025,10 +5025,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class MaximumMinimumOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.MaximumMinimumOptions>;
           public static endMaximumMinimumOptions(param0: com.google.flatbuffers.FlatBufferBuilder): number;
@@ -5054,7 +5054,7 @@ declare module org {
             param1: org.tensorflow.lite.schema.MaximumMinimumOptionsT
           ): number;
         }
-        export module MaximumMinimumOptions {
+        export namespace MaximumMinimumOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.MaximumMinimumOptions.Vector>;
             public constructor();
@@ -5075,10 +5075,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class MaximumMinimumOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.MaximumMinimumOptionsT>;
           public constructor();
@@ -5088,10 +5088,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class Metadata {
           public static class: java.lang.Class<org.tensorflow.lite.schema.Metadata>;
           public buffer(): number;
@@ -5123,7 +5123,7 @@ declare module org {
           public nameAsByteBuffer(): java.nio.ByteBuffer;
           public static endMetadata(param0: com.google.flatbuffers.FlatBufferBuilder): number;
         }
-        export module Metadata {
+        export namespace Metadata {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.Metadata.Vector>;
             public __assign(
@@ -5144,10 +5144,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class MetadataT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.MetadataT>;
           public getName(): string;
@@ -5161,10 +5161,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class MirrorPadMode {
           public static class: java.lang.Class<org.tensorflow.lite.schema.MirrorPadMode>;
           public static REFLECT: number;
@@ -5177,10 +5177,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class MirrorPadOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.MirrorPadOptions>;
           public static createMirrorPadOptions(
@@ -5209,7 +5209,7 @@ declare module org {
           public static endMirrorPadOptions(param0: com.google.flatbuffers.FlatBufferBuilder): number;
           public unpackTo(param0: org.tensorflow.lite.schema.MirrorPadOptionsT): void;
         }
-        export module MirrorPadOptions {
+        export namespace MirrorPadOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.MirrorPadOptions.Vector>;
             public __assign(
@@ -5230,10 +5230,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class MirrorPadOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.MirrorPadOptionsT>;
           public constructor();
@@ -5245,10 +5245,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class Model {
           public static class: java.lang.Class<org.tensorflow.lite.schema.Model>;
           public version(): number;
@@ -5390,7 +5390,7 @@ declare module org {
           ): org.tensorflow.lite.schema.Metadata.Vector;
           public static addVersion(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): void;
         }
-        export module Model {
+        export namespace Model {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.Model.Vector>;
             public get(param0: org.tensorflow.lite.schema.Model, param1: number): org.tensorflow.lite.schema.Model;
@@ -5408,10 +5408,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ModelT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ModelT>;
           public getOperatorCodes(): androidNative.Array<org.tensorflow.lite.schema.OperatorCodeT>;
@@ -5439,10 +5439,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class MulOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.MulOptions>;
           public static pack(
@@ -5469,7 +5469,7 @@ declare module org {
           ): org.tensorflow.lite.schema.MulOptions;
           public unpack(): org.tensorflow.lite.schema.MulOptionsT;
         }
-        export module MulOptions {
+        export namespace MulOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.MulOptions.Vector>;
             public constructor();
@@ -5490,10 +5490,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class MulOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.MulOptionsT>;
           public constructor();
@@ -5505,10 +5505,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class NegOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.NegOptions>;
           public static getRootAsNegOptions(
@@ -5529,7 +5529,7 @@ declare module org {
           public unpack(): org.tensorflow.lite.schema.NegOptionsT;
           public static startNegOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
         }
-        export module NegOptions {
+        export namespace NegOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.NegOptions.Vector>;
             public constructor();
@@ -5550,10 +5550,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class NegOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.NegOptionsT>;
           public constructor();
@@ -5563,10 +5563,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class NonMaxSuppressionV4Options {
           public static class: java.lang.Class<org.tensorflow.lite.schema.NonMaxSuppressionV4Options>;
           public static getRootAsNonMaxSuppressionV4Options(
@@ -5592,7 +5592,7 @@ declare module org {
             param1: org.tensorflow.lite.schema.NonMaxSuppressionV4OptionsT
           ): number;
         }
-        export module NonMaxSuppressionV4Options {
+        export namespace NonMaxSuppressionV4Options {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.NonMaxSuppressionV4Options.Vector>;
             public constructor();
@@ -5613,10 +5613,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class NonMaxSuppressionV4OptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.NonMaxSuppressionV4OptionsT>;
           public constructor();
@@ -5626,10 +5626,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class NonMaxSuppressionV5Options {
           public static class: java.lang.Class<org.tensorflow.lite.schema.NonMaxSuppressionV5Options>;
           public static getRootAsNonMaxSuppressionV5Options(
@@ -5655,7 +5655,7 @@ declare module org {
             param1: org.tensorflow.lite.schema.NonMaxSuppressionV5OptionsT
           ): number;
         }
-        export module NonMaxSuppressionV5Options {
+        export namespace NonMaxSuppressionV5Options {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.NonMaxSuppressionV5Options.Vector>;
             public get(
@@ -5676,10 +5676,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class NonMaxSuppressionV5OptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.NonMaxSuppressionV5OptionsT>;
           public constructor();
@@ -5689,10 +5689,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class NotEqualOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.NotEqualOptions>;
           public __assign(param0: number, param1: java.nio.ByteBuffer): org.tensorflow.lite.schema.NotEqualOptions;
@@ -5715,7 +5715,7 @@ declare module org {
           public static startNotEqualOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
           public unpack(): org.tensorflow.lite.schema.NotEqualOptionsT;
         }
-        export module NotEqualOptions {
+        export namespace NotEqualOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.NotEqualOptions.Vector>;
             public constructor();
@@ -5736,10 +5736,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class NotEqualOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.NotEqualOptionsT>;
           public constructor();
@@ -5749,10 +5749,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class OneHotOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.OneHotOptions>;
           public static createOneHotOptions(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): number;
@@ -5776,7 +5776,7 @@ declare module org {
           ): org.tensorflow.lite.schema.OneHotOptions;
           public static endOneHotOptions(param0: com.google.flatbuffers.FlatBufferBuilder): number;
         }
-        export module OneHotOptions {
+        export namespace OneHotOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.OneHotOptions.Vector>;
             public constructor();
@@ -5797,10 +5797,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class OneHotOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.OneHotOptionsT>;
           public constructor();
@@ -5812,10 +5812,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class Operator {
           public static class: java.lang.Class<org.tensorflow.lite.schema.Operator>;
           public static pack(
@@ -5934,7 +5934,7 @@ declare module org {
             param1: org.tensorflow.lite.schema.Operator
           ): org.tensorflow.lite.schema.Operator;
         }
-        export module Operator {
+        export namespace Operator {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.Operator.Vector>;
             public constructor();
@@ -5955,10 +5955,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class OperatorCode {
           public static class: java.lang.Class<org.tensorflow.lite.schema.OperatorCode>;
           public customCodeInByteBuffer(param0: java.nio.ByteBuffer): java.nio.ByteBuffer;
@@ -5999,7 +5999,7 @@ declare module org {
           public customCodeAsByteBuffer(): java.nio.ByteBuffer;
           public static addVersion(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): void;
         }
-        export module OperatorCode {
+        export namespace OperatorCode {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.OperatorCode.Vector>;
             public constructor();
@@ -6020,10 +6020,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class OperatorCodeT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.OperatorCodeT>;
           public getBuiltinCode(): number;
@@ -6041,10 +6041,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class OperatorT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.OperatorT>;
           public setBuiltinOptions(param0: org.tensorflow.lite.schema.BuiltinOptionsUnion): void;
@@ -6070,10 +6070,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class PackOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.PackOptions>;
           public static pack(
@@ -6103,7 +6103,7 @@ declare module org {
           public valuesCount(): number;
           public __assign(param0: number, param1: java.nio.ByteBuffer): org.tensorflow.lite.schema.PackOptions;
         }
-        export module PackOptions {
+        export namespace PackOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.PackOptions.Vector>;
             public __assign(
@@ -6124,10 +6124,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class PackOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.PackOptionsT>;
           public setValuesCount(param0: number): void;
@@ -6141,10 +6141,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class PadOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.PadOptions>;
           public static startPadOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
@@ -6165,7 +6165,7 @@ declare module org {
           public static ValidateVersion(): void;
           public unpackTo(param0: org.tensorflow.lite.schema.PadOptionsT): void;
         }
-        export module PadOptions {
+        export namespace PadOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.PadOptions.Vector>;
             public constructor();
@@ -6186,10 +6186,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class PadOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.PadOptionsT>;
           public constructor();
@@ -6199,10 +6199,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class PadV2Options {
           public static class: java.lang.Class<org.tensorflow.lite.schema.PadV2Options>;
           public static getRootAsPadV2Options(
@@ -6223,7 +6223,7 @@ declare module org {
           public static endPadV2Options(param0: com.google.flatbuffers.FlatBufferBuilder): number;
           public unpackTo(param0: org.tensorflow.lite.schema.PadV2OptionsT): void;
         }
-        export module PadV2Options {
+        export namespace PadV2Options {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.PadV2Options.Vector>;
             public constructor();
@@ -6244,10 +6244,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class PadV2OptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.PadV2OptionsT>;
           public constructor();
@@ -6257,10 +6257,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class Padding {
           public static class: java.lang.Class<org.tensorflow.lite.schema.Padding>;
           public static SAME: number;
@@ -6273,10 +6273,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class Pool2DOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.Pool2DOptions>;
           public static createPool2DOptions(
@@ -6321,7 +6321,7 @@ declare module org {
           public static addStrideH(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): void;
           public strideW(): number;
         }
-        export module Pool2DOptions {
+        export namespace Pool2DOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.Pool2DOptions.Vector>;
             public constructor();
@@ -6342,10 +6342,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class Pool2DOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.Pool2DOptionsT>;
           public getFilterWidth(): number;
@@ -6367,10 +6367,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class PowOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.PowOptions>;
           public static pack(
@@ -6391,7 +6391,7 @@ declare module org {
           public static startPowOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
           public static getRootAsPowOptions(param0: java.nio.ByteBuffer): org.tensorflow.lite.schema.PowOptions;
         }
-        export module PowOptions {
+        export namespace PowOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.PowOptions.Vector>;
             public constructor();
@@ -6412,10 +6412,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class PowOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.PowOptionsT>;
           public constructor();
@@ -6425,10 +6425,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class QuantizationDetails {
           public static class: java.lang.Class<org.tensorflow.lite.schema.QuantizationDetails>;
           public static NONE: number;
@@ -6441,10 +6441,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class QuantizationDetailsUnion {
           public static class: java.lang.Class<org.tensorflow.lite.schema.QuantizationDetailsUnion>;
           public getType(): number;
@@ -6463,10 +6463,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class QuantizationParameters {
           public static class: java.lang.Class<org.tensorflow.lite.schema.QuantizationParameters>;
           public maxAsByteBuffer(): java.nio.ByteBuffer;
@@ -6556,7 +6556,7 @@ declare module org {
           public minAsByteBuffer(): java.nio.ByteBuffer;
           public zeroPointAsByteBuffer(): java.nio.ByteBuffer;
         }
-        export module QuantizationParameters {
+        export namespace QuantizationParameters {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.QuantizationParameters.Vector>;
             public get(
@@ -6577,10 +6577,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class QuantizationParametersT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.QuantizationParametersT>;
           public setZeroPoint(param0: androidNative.Array<number>): void;
@@ -6602,10 +6602,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class QuantizeOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.QuantizeOptions>;
           public static getRootAsQuantizeOptions(
@@ -6628,7 +6628,7 @@ declare module org {
             param1: org.tensorflow.lite.schema.QuantizeOptionsT
           ): number;
         }
-        export module QuantizeOptions {
+        export namespace QuantizeOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.QuantizeOptions.Vector>;
             public get(param0: number): org.tensorflow.lite.schema.QuantizeOptions;
@@ -6649,10 +6649,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class QuantizeOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.QuantizeOptionsT>;
           public constructor();
@@ -6662,10 +6662,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class RNNOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.RNNOptions>;
           public static getRootAsRNNOptions(
@@ -6701,7 +6701,7 @@ declare module org {
             param1: boolean
           ): void;
         }
-        export module RNNOptions {
+        export namespace RNNOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.RNNOptions.Vector>;
             public get(param0: number): org.tensorflow.lite.schema.RNNOptions;
@@ -6722,10 +6722,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class RNNOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.RNNOptionsT>;
           public getAsymmetricQuantizeInputs(): boolean;
@@ -6739,10 +6739,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class RandomOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.RandomOptions>;
           public static addSeed2(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): void;
@@ -6772,7 +6772,7 @@ declare module org {
             param1: org.tensorflow.lite.schema.RandomOptionsT
           ): number;
         }
-        export module RandomOptions {
+        export namespace RandomOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.RandomOptions.Vector>;
             public __assign(
@@ -6793,10 +6793,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class RandomOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.RandomOptionsT>;
           public getSeed(): number;
@@ -6810,10 +6810,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class RangeOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.RangeOptions>;
           public constructor();
@@ -6834,7 +6834,7 @@ declare module org {
             param1: org.tensorflow.lite.schema.RangeOptionsT
           ): number;
         }
-        export module RangeOptions {
+        export namespace RangeOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.RangeOptions.Vector>;
             public __assign(
@@ -6855,10 +6855,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class RangeOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.RangeOptionsT>;
           public constructor();
@@ -6868,10 +6868,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class RankOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.RankOptions>;
           public static endRankOptions(param0: com.google.flatbuffers.FlatBufferBuilder): number;
@@ -6892,7 +6892,7 @@ declare module org {
           public static ValidateVersion(): void;
           public unpack(): org.tensorflow.lite.schema.RankOptionsT;
         }
-        export module RankOptions {
+        export namespace RankOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.RankOptions.Vector>;
             public constructor();
@@ -6913,10 +6913,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class RankOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.RankOptionsT>;
           public constructor();
@@ -6926,10 +6926,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ReadVariableOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ReadVariableOptions>;
           public unpack(): org.tensorflow.lite.schema.ReadVariableOptionsT;
@@ -6952,7 +6952,7 @@ declare module org {
             param0: java.nio.ByteBuffer
           ): org.tensorflow.lite.schema.ReadVariableOptions;
         }
-        export module ReadVariableOptions {
+        export namespace ReadVariableOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.ReadVariableOptions.Vector>;
             public get(param0: number): org.tensorflow.lite.schema.ReadVariableOptions;
@@ -6973,10 +6973,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ReadVariableOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ReadVariableOptionsT>;
           public constructor();
@@ -6986,10 +6986,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ReducerOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ReducerOptions>;
           public unpack(): org.tensorflow.lite.schema.ReducerOptionsT;
@@ -7013,7 +7013,7 @@ declare module org {
           public static startReducerOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
           public keepDims(): boolean;
         }
-        export module ReducerOptions {
+        export namespace ReducerOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.ReducerOptions.Vector>;
             public __assign(
@@ -7034,10 +7034,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ReducerOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ReducerOptionsT>;
           public getKeepDims(): boolean;
@@ -7049,10 +7049,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ReshapeOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ReshapeOptions>;
           public newShapeInByteBuffer(param0: java.nio.ByteBuffer): java.nio.ByteBuffer;
@@ -7086,7 +7086,7 @@ declare module org {
           public static addNewShape(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): void;
           public unpack(): org.tensorflow.lite.schema.ReshapeOptionsT;
         }
-        export module ReshapeOptions {
+        export namespace ReshapeOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.ReshapeOptions.Vector>;
             public constructor();
@@ -7107,10 +7107,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ReshapeOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ReshapeOptionsT>;
           public constructor();
@@ -7122,10 +7122,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ResizeBilinearOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ResizeBilinearOptions>;
           public static addAlignCorners(param0: com.google.flatbuffers.FlatBufferBuilder, param1: boolean): void;
@@ -7160,7 +7160,7 @@ declare module org {
             param1: java.nio.ByteBuffer
           ): org.tensorflow.lite.schema.ResizeBilinearOptions;
         }
-        export module ResizeBilinearOptions {
+        export namespace ResizeBilinearOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.ResizeBilinearOptions.Vector>;
             public constructor();
@@ -7181,10 +7181,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ResizeBilinearOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ResizeBilinearOptionsT>;
           public getHalfPixelCenters(): boolean;
@@ -7198,10 +7198,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ResizeNearestNeighborOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ResizeNearestNeighborOptions>;
           public static addAlignCorners(param0: com.google.flatbuffers.FlatBufferBuilder, param1: boolean): void;
@@ -7236,7 +7236,7 @@ declare module org {
           ): number;
           public static startResizeNearestNeighborOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
         }
-        export module ResizeNearestNeighborOptions {
+        export namespace ResizeNearestNeighborOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.ResizeNearestNeighborOptions.Vector>;
             public get(param0: number): org.tensorflow.lite.schema.ResizeNearestNeighborOptions;
@@ -7257,10 +7257,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ResizeNearestNeighborOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ResizeNearestNeighborOptionsT>;
           public getHalfPixelCenters(): boolean;
@@ -7274,10 +7274,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ReverseSequenceOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ReverseSequenceOptions>;
           public seqDim(): number;
@@ -7312,7 +7312,7 @@ declare module org {
           ): org.tensorflow.lite.schema.ReverseSequenceOptions;
           public static startReverseSequenceOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
         }
-        export module ReverseSequenceOptions {
+        export namespace ReverseSequenceOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.ReverseSequenceOptions.Vector>;
             public constructor();
@@ -7333,10 +7333,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ReverseSequenceOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ReverseSequenceOptionsT>;
           public setSeqDim(param0: number): void;
@@ -7350,10 +7350,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ReverseV2Options {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ReverseV2Options>;
           public unpackTo(param0: org.tensorflow.lite.schema.ReverseV2OptionsT): void;
@@ -7376,7 +7376,7 @@ declare module org {
           public static endReverseV2Options(param0: com.google.flatbuffers.FlatBufferBuilder): number;
           public unpack(): org.tensorflow.lite.schema.ReverseV2OptionsT;
         }
-        export module ReverseV2Options {
+        export namespace ReverseV2Options {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.ReverseV2Options.Vector>;
             public constructor();
@@ -7397,10 +7397,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ReverseV2OptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ReverseV2OptionsT>;
           public constructor();
@@ -7410,10 +7410,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class Rfft2dOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.Rfft2dOptions>;
           public unpackTo(param0: org.tensorflow.lite.schema.Rfft2dOptionsT): void;
@@ -7434,7 +7434,7 @@ declare module org {
           public static getRootAsRfft2dOptions(param0: java.nio.ByteBuffer): org.tensorflow.lite.schema.Rfft2dOptions;
           public __assign(param0: number, param1: java.nio.ByteBuffer): org.tensorflow.lite.schema.Rfft2dOptions;
         }
-        export module Rfft2dOptions {
+        export namespace Rfft2dOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.Rfft2dOptions.Vector>;
             public constructor();
@@ -7455,10 +7455,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class Rfft2dOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.Rfft2dOptionsT>;
           public constructor();
@@ -7468,10 +7468,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SVDFOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SVDFOptions>;
           public __assign(param0: number, param1: java.nio.ByteBuffer): org.tensorflow.lite.schema.SVDFOptions;
@@ -7510,7 +7510,7 @@ declare module org {
             param1: boolean
           ): void;
         }
-        export module SVDFOptions {
+        export namespace SVDFOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.SVDFOptions.Vector>;
             public constructor();
@@ -7531,10 +7531,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SVDFOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SVDFOptionsT>;
           public setRank(param0: number): void;
@@ -7550,10 +7550,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ScatterNdOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ScatterNdOptions>;
           public static getRootAsScatterNdOptions(
@@ -7576,7 +7576,7 @@ declare module org {
             param1: org.tensorflow.lite.schema.ScatterNdOptions
           ): org.tensorflow.lite.schema.ScatterNdOptions;
         }
-        export module ScatterNdOptions {
+        export namespace ScatterNdOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.ScatterNdOptions.Vector>;
             public get(param0: number): org.tensorflow.lite.schema.ScatterNdOptions;
@@ -7597,10 +7597,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ScatterNdOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ScatterNdOptionsT>;
           public constructor();
@@ -7610,10 +7610,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SegmentSumOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SegmentSumOptions>;
           public static pack(
@@ -7636,7 +7636,7 @@ declare module org {
           public static startSegmentSumOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
           public static endSegmentSumOptions(param0: com.google.flatbuffers.FlatBufferBuilder): number;
         }
-        export module SegmentSumOptions {
+        export namespace SegmentSumOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.SegmentSumOptions.Vector>;
             public __assign(
@@ -7657,10 +7657,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SegmentSumOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SegmentSumOptionsT>;
           public constructor();
@@ -7670,10 +7670,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SelectOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SelectOptions>;
           public static endSelectOptions(param0: com.google.flatbuffers.FlatBufferBuilder): number;
@@ -7694,7 +7694,7 @@ declare module org {
             param1: org.tensorflow.lite.schema.SelectOptionsT
           ): number;
         }
-        export module SelectOptions {
+        export namespace SelectOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.SelectOptions.Vector>;
             public constructor();
@@ -7715,10 +7715,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SelectOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SelectOptionsT>;
           public constructor();
@@ -7728,10 +7728,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SelectV2Options {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SelectV2Options>;
           public __assign(param0: number, param1: java.nio.ByteBuffer): org.tensorflow.lite.schema.SelectV2Options;
@@ -7754,7 +7754,7 @@ declare module org {
           public static endSelectV2Options(param0: com.google.flatbuffers.FlatBufferBuilder): number;
           public unpack(): org.tensorflow.lite.schema.SelectV2OptionsT;
         }
-        export module SelectV2Options {
+        export namespace SelectV2Options {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.SelectV2Options.Vector>;
             public constructor();
@@ -7775,10 +7775,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SelectV2OptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SelectV2OptionsT>;
           public constructor();
@@ -7788,10 +7788,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SequenceRNNOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SequenceRNNOptions>;
           public static getRootAsSequenceRNNOptions(
@@ -7832,7 +7832,7 @@ declare module org {
             param0: java.nio.ByteBuffer
           ): org.tensorflow.lite.schema.SequenceRNNOptions;
         }
-        export module SequenceRNNOptions {
+        export namespace SequenceRNNOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.SequenceRNNOptions.Vector>;
             public __assign(
@@ -7853,10 +7853,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SequenceRNNOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SequenceRNNOptionsT>;
           public getTimeMajor(): boolean;
@@ -7872,10 +7872,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ShapeOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ShapeOptions>;
           public static getRootAsShapeOptions(
@@ -7899,7 +7899,7 @@ declare module org {
           ): number;
           public static addOutType(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): void;
         }
-        export module ShapeOptions {
+        export namespace ShapeOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.ShapeOptions.Vector>;
             public __assign(
@@ -7920,10 +7920,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ShapeOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ShapeOptionsT>;
           public constructor();
@@ -7935,10 +7935,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SignatureDef {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SignatureDef>;
           public inputsVector(
@@ -8004,7 +8004,7 @@ declare module org {
           ): number;
           public static addSignatureKey(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): void;
         }
-        export module SignatureDef {
+        export namespace SignatureDef {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.SignatureDef.Vector>;
             public get(param0: number): org.tensorflow.lite.schema.SignatureDef;
@@ -8025,10 +8025,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SignatureDefT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SignatureDefT>;
           public setSignatureKey(param0: string): void;
@@ -8046,10 +8046,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SkipGramOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SkipGramOptions>;
           public includeAllNgrams(): boolean;
@@ -8084,7 +8084,7 @@ declare module org {
           public ngramSize(): number;
           public static addNgramSize(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): void;
         }
-        export module SkipGramOptions {
+        export namespace SkipGramOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.SkipGramOptions.Vector>;
             public constructor();
@@ -8105,10 +8105,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SkipGramOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SkipGramOptionsT>;
           public getMaxSkipSize(): number;
@@ -8124,10 +8124,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SliceOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SliceOptions>;
           public unpack(): org.tensorflow.lite.schema.SliceOptionsT;
@@ -8148,7 +8148,7 @@ declare module org {
             param1: org.tensorflow.lite.schema.SliceOptionsT
           ): number;
         }
-        export module SliceOptions {
+        export namespace SliceOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.SliceOptions.Vector>;
             public get(
@@ -8169,10 +8169,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SliceOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SliceOptionsT>;
           public constructor();
@@ -8182,10 +8182,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SoftmaxOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SoftmaxOptions>;
           public static createSoftmaxOptions(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): number;
@@ -8209,7 +8209,7 @@ declare module org {
           public static startSoftmaxOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
           public unpackTo(param0: org.tensorflow.lite.schema.SoftmaxOptionsT): void;
         }
-        export module SoftmaxOptions {
+        export namespace SoftmaxOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.SoftmaxOptions.Vector>;
             public constructor();
@@ -8230,10 +8230,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SoftmaxOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SoftmaxOptionsT>;
           public constructor();
@@ -8245,10 +8245,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SpaceToBatchNDOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SpaceToBatchNDOptions>;
           public static endSpaceToBatchNDOptions(param0: com.google.flatbuffers.FlatBufferBuilder): number;
@@ -8274,7 +8274,7 @@ declare module org {
           ): org.tensorflow.lite.schema.SpaceToBatchNDOptions;
           public unpackTo(param0: org.tensorflow.lite.schema.SpaceToBatchNDOptionsT): void;
         }
-        export module SpaceToBatchNDOptions {
+        export namespace SpaceToBatchNDOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.SpaceToBatchNDOptions.Vector>;
             public constructor();
@@ -8295,10 +8295,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SpaceToBatchNDOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SpaceToBatchNDOptionsT>;
           public constructor();
@@ -8308,10 +8308,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SpaceToDepthOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SpaceToDepthOptions>;
           public unpackTo(param0: org.tensorflow.lite.schema.SpaceToDepthOptionsT): void;
@@ -8340,7 +8340,7 @@ declare module org {
           public __assign(param0: number, param1: java.nio.ByteBuffer): org.tensorflow.lite.schema.SpaceToDepthOptions;
           public unpack(): org.tensorflow.lite.schema.SpaceToDepthOptionsT;
         }
-        export module SpaceToDepthOptions {
+        export namespace SpaceToDepthOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.SpaceToDepthOptions.Vector>;
             public constructor();
@@ -8361,10 +8361,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SpaceToDepthOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SpaceToDepthOptionsT>;
           public setBlockSize(param0: number): void;
@@ -8376,10 +8376,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SparseIndexVector {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SparseIndexVector>;
           public static NONE: number;
@@ -8394,10 +8394,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SparseIndexVectorUnion {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SparseIndexVectorUnion>;
           public getType(): number;
@@ -8418,10 +8418,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SparseToDenseOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SparseToDenseOptions>;
           public static startSparseToDenseOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
@@ -8450,7 +8450,7 @@ declare module org {
             param0: java.nio.ByteBuffer
           ): org.tensorflow.lite.schema.SparseToDenseOptions;
         }
-        export module SparseToDenseOptions {
+        export namespace SparseToDenseOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.SparseToDenseOptions.Vector>;
             public constructor();
@@ -8471,10 +8471,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SparseToDenseOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SparseToDenseOptionsT>;
           public constructor();
@@ -8486,10 +8486,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SparsityParameters {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SparsityParameters>;
           public dimMetadata(
@@ -8561,7 +8561,7 @@ declare module org {
           ): number;
           public static startSparsityParameters(param0: com.google.flatbuffers.FlatBufferBuilder): void;
         }
-        export module SparsityParameters {
+        export namespace SparsityParameters {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.SparsityParameters.Vector>;
             public constructor();
@@ -8582,10 +8582,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SparsityParametersT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SparsityParametersT>;
           public getTraversalOrder(): androidNative.Array<number>;
@@ -8601,10 +8601,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SplitOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SplitOptions>;
           public static pack(
@@ -8628,7 +8628,7 @@ declare module org {
           public unpackTo(param0: org.tensorflow.lite.schema.SplitOptionsT): void;
           public unpack(): org.tensorflow.lite.schema.SplitOptionsT;
         }
-        export module SplitOptions {
+        export namespace SplitOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.SplitOptions.Vector>;
             public constructor();
@@ -8649,10 +8649,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SplitOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SplitOptionsT>;
           public setNumSplits(param0: number): void;
@@ -8664,10 +8664,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SplitVOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SplitVOptions>;
           public static getRootAsSplitVOptions(param0: java.nio.ByteBuffer): org.tensorflow.lite.schema.SplitVOptions;
@@ -8691,7 +8691,7 @@ declare module org {
           public static startSplitVOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
           public static createSplitVOptions(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): number;
         }
-        export module SplitVOptions {
+        export namespace SplitVOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.SplitVOptions.Vector>;
             public constructor();
@@ -8712,10 +8712,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SplitVOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SplitVOptionsT>;
           public setNumSplits(param0: number): void;
@@ -8727,10 +8727,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SquareOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SquareOptions>;
           public static endSquareOptions(param0: com.google.flatbuffers.FlatBufferBuilder): number;
@@ -8751,7 +8751,7 @@ declare module org {
           public unpack(): org.tensorflow.lite.schema.SquareOptionsT;
           public static startSquareOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
         }
-        export module SquareOptions {
+        export namespace SquareOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.SquareOptions.Vector>;
             public constructor();
@@ -8772,10 +8772,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SquareOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SquareOptionsT>;
           public constructor();
@@ -8785,10 +8785,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SquaredDifferenceOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SquaredDifferenceOptions>;
           public static endSquaredDifferenceOptions(param0: com.google.flatbuffers.FlatBufferBuilder): number;
@@ -8814,7 +8814,7 @@ declare module org {
           public static startSquaredDifferenceOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
           public unpackTo(param0: org.tensorflow.lite.schema.SquaredDifferenceOptionsT): void;
         }
-        export module SquaredDifferenceOptions {
+        export namespace SquaredDifferenceOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.SquaredDifferenceOptions.Vector>;
             public constructor();
@@ -8835,10 +8835,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SquaredDifferenceOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SquaredDifferenceOptionsT>;
           public constructor();
@@ -8848,10 +8848,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SqueezeOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SqueezeOptions>;
           public static createSqueezeOptions(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): number;
@@ -8885,7 +8885,7 @@ declare module org {
             param1: androidNative.Array<number>
           ): number;
         }
-        export module SqueezeOptions {
+        export namespace SqueezeOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.SqueezeOptions.Vector>;
             public constructor();
@@ -8906,10 +8906,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SqueezeOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SqueezeOptionsT>;
           public constructor();
@@ -8921,10 +8921,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class StridedSliceOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.StridedSliceOptions>;
           public shrinkAxisMask(): number;
@@ -8965,7 +8965,7 @@ declare module org {
             param5: number
           ): number;
         }
-        export module StridedSliceOptions {
+        export namespace StridedSliceOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.StridedSliceOptions.Vector>;
             public constructor();
@@ -8986,10 +8986,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class StridedSliceOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.StridedSliceOptionsT>;
           public setEllipsisMask(param0: number): void;
@@ -9009,10 +9009,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SubGraph {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SubGraph>;
           public unpackTo(param0: org.tensorflow.lite.schema.SubGraphT): void;
@@ -9098,7 +9098,7 @@ declare module org {
           ): org.tensorflow.lite.schema.Operator;
           public static startOutputsVector(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): void;
         }
-        export module SubGraph {
+        export namespace SubGraph {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.SubGraph.Vector>;
             public constructor();
@@ -9119,10 +9119,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SubGraphT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SubGraphT>;
           public getOperators(): androidNative.Array<org.tensorflow.lite.schema.OperatorT>;
@@ -9142,10 +9142,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SubOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SubOptions>;
           public static addFusedActivationFunction(
@@ -9178,7 +9178,7 @@ declare module org {
             param1: org.tensorflow.lite.schema.SubOptionsT
           ): number;
         }
-        export module SubOptions {
+        export namespace SubOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.SubOptions.Vector>;
             public get(param0: number): org.tensorflow.lite.schema.SubOptions;
@@ -9199,10 +9199,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class SubOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.SubOptionsT>;
           public constructor();
@@ -9216,10 +9216,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class Tensor {
           public static class: java.lang.Class<org.tensorflow.lite.schema.Tensor>;
           public buffer(): number;
@@ -9298,7 +9298,7 @@ declare module org {
           public shapeInByteBuffer(param0: java.nio.ByteBuffer): java.nio.ByteBuffer;
           public static startShapeVector(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): void;
         }
-        export module Tensor {
+        export namespace Tensor {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.Tensor.Vector>;
             public get(param0: number): org.tensorflow.lite.schema.Tensor;
@@ -9316,10 +9316,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class TensorMap {
           public static class: java.lang.Class<org.tensorflow.lite.schema.TensorMap>;
           public static addName(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): void;
@@ -9351,7 +9351,7 @@ declare module org {
           public nameInByteBuffer(param0: java.nio.ByteBuffer): java.nio.ByteBuffer;
           public nameAsByteBuffer(): java.nio.ByteBuffer;
         }
-        export module TensorMap {
+        export namespace TensorMap {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.TensorMap.Vector>;
             public constructor();
@@ -9372,10 +9372,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class TensorMapT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.TensorMapT>;
           public getTensorIndex(): number;
@@ -9389,10 +9389,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class TensorT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.TensorT>;
           public getType(): number;
@@ -9418,10 +9418,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class TensorType {
           public static class: java.lang.Class<org.tensorflow.lite.schema.TensorType>;
           public static FLOAT32: number;
@@ -9449,10 +9449,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class TileOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.TileOptions>;
           public static startTileOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
@@ -9473,7 +9473,7 @@ declare module org {
             param1: org.tensorflow.lite.schema.TileOptionsT
           ): number;
         }
-        export module TileOptions {
+        export namespace TileOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.TileOptions.Vector>;
             public get(param0: number): org.tensorflow.lite.schema.TileOptions;
@@ -9494,10 +9494,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class TileOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.TileOptionsT>;
           public constructor();
@@ -9507,10 +9507,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class TopKV2Options {
           public static class: java.lang.Class<org.tensorflow.lite.schema.TopKV2Options>;
           public static startTopKV2Options(param0: com.google.flatbuffers.FlatBufferBuilder): void;
@@ -9531,7 +9531,7 @@ declare module org {
             param1: org.tensorflow.lite.schema.TopKV2OptionsT
           ): number;
         }
-        export module TopKV2Options {
+        export namespace TopKV2Options {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.TopKV2Options.Vector>;
             public constructor();
@@ -9552,10 +9552,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class TopKV2OptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.TopKV2OptionsT>;
           public constructor();
@@ -9565,10 +9565,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class TransposeConvOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.TransposeConvOptions>;
           public static pack(
@@ -9603,7 +9603,7 @@ declare module org {
           ): org.tensorflow.lite.schema.TransposeConvOptions;
           public unpack(): org.tensorflow.lite.schema.TransposeConvOptionsT;
         }
-        export module TransposeConvOptions {
+        export namespace TransposeConvOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.TransposeConvOptions.Vector>;
             public get(param0: number): org.tensorflow.lite.schema.TransposeConvOptions;
@@ -9624,10 +9624,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class TransposeConvOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.TransposeConvOptionsT>;
           public getStrideH(): number;
@@ -9643,10 +9643,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class TransposeOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.TransposeOptions>;
           public static pack(
@@ -9669,7 +9669,7 @@ declare module org {
           public static startTransposeOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
           public unpackTo(param0: org.tensorflow.lite.schema.TransposeOptionsT): void;
         }
-        export module TransposeOptions {
+        export namespace TransposeOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.TransposeOptions.Vector>;
             public get(
@@ -9690,10 +9690,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class TransposeOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.TransposeOptionsT>;
           public constructor();
@@ -9703,10 +9703,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class Uint16Vector {
           public static class: java.lang.Class<org.tensorflow.lite.schema.Uint16Vector>;
           public valuesLength(): number;
@@ -9740,7 +9740,7 @@ declare module org {
           public values(param0: number): number;
           public valuesVector(): com.google.flatbuffers.ShortVector;
         }
-        export module Uint16Vector {
+        export namespace Uint16Vector {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.Uint16Vector.Vector>;
             public get(param0: number): org.tensorflow.lite.schema.Uint16Vector;
@@ -9761,10 +9761,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class Uint16VectorT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.Uint16VectorT>;
           public constructor();
@@ -9776,10 +9776,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class Uint8Vector {
           public static class: java.lang.Class<org.tensorflow.lite.schema.Uint8Vector>;
           public valuesLength(): number;
@@ -9817,7 +9817,7 @@ declare module org {
             param1: org.tensorflow.lite.schema.Uint8VectorT
           ): number;
         }
-        export module Uint8Vector {
+        export namespace Uint8Vector {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.Uint8Vector.Vector>;
             public constructor();
@@ -9838,10 +9838,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class Uint8VectorT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.Uint8VectorT>;
           public constructor();
@@ -9853,10 +9853,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class UnidirectionalSequenceLSTMOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.UnidirectionalSequenceLSTMOptions>;
           public static createUnidirectionalSequenceLSTMOptions(
@@ -9906,7 +9906,7 @@ declare module org {
             param1: boolean
           ): void;
         }
-        export module UnidirectionalSequenceLSTMOptions {
+        export namespace UnidirectionalSequenceLSTMOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.UnidirectionalSequenceLSTMOptions.Vector>;
             public __assign(
@@ -9927,10 +9927,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class UnidirectionalSequenceLSTMOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.UnidirectionalSequenceLSTMOptionsT>;
           public getTimeMajor(): boolean;
@@ -9950,10 +9950,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class UniqueOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.UniqueOptions>;
           public static pack(
@@ -9977,7 +9977,7 @@ declare module org {
           public static createUniqueOptions(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): number;
           public static startUniqueOptions(param0: com.google.flatbuffers.FlatBufferBuilder): void;
         }
-        export module UniqueOptions {
+        export namespace UniqueOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.UniqueOptions.Vector>;
             public get(param0: number): org.tensorflow.lite.schema.UniqueOptions;
@@ -9998,10 +9998,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class UniqueOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.UniqueOptionsT>;
           public getIdxOutType(): number;
@@ -10013,10 +10013,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class UnpackOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.UnpackOptions>;
           public static getRootAsUnpackOptions(param0: java.nio.ByteBuffer): org.tensorflow.lite.schema.UnpackOptions;
@@ -10046,7 +10046,7 @@ declare module org {
             param2: number
           ): number;
         }
-        export module UnpackOptions {
+        export namespace UnpackOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.UnpackOptions.Vector>;
             public get(
@@ -10067,10 +10067,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class UnpackOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.UnpackOptionsT>;
           public getNum(): number;
@@ -10084,10 +10084,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class UnsortedSegmentProdOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.UnsortedSegmentProdOptions>;
           public numSegments(): number;
@@ -10119,7 +10119,7 @@ declare module org {
             param1: java.nio.ByteBuffer
           ): org.tensorflow.lite.schema.UnsortedSegmentProdOptions;
         }
-        export module UnsortedSegmentProdOptions {
+        export namespace UnsortedSegmentProdOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.UnsortedSegmentProdOptions.Vector>;
             public constructor();
@@ -10140,10 +10140,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class UnsortedSegmentProdOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.UnsortedSegmentProdOptionsT>;
           public constructor();
@@ -10155,10 +10155,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class VarHandleOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.VarHandleOptions>;
           public container(): string;
@@ -10194,7 +10194,7 @@ declare module org {
           public static addContainer(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): void;
           public sharedNameInByteBuffer(param0: java.nio.ByteBuffer): java.nio.ByteBuffer;
         }
-        export module VarHandleOptions {
+        export namespace VarHandleOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.VarHandleOptions.Vector>;
             public get(
@@ -10215,10 +10215,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class VarHandleOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.VarHandleOptionsT>;
           public setSharedName(param0: string): void;
@@ -10232,10 +10232,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class WhereOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.WhereOptions>;
           public static pack(
@@ -10256,7 +10256,7 @@ declare module org {
           public __assign(param0: number, param1: java.nio.ByteBuffer): org.tensorflow.lite.schema.WhereOptions;
           public static endWhereOptions(param0: com.google.flatbuffers.FlatBufferBuilder): number;
         }
-        export module WhereOptions {
+        export namespace WhereOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.WhereOptions.Vector>;
             public get(
@@ -10277,10 +10277,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class WhereOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.WhereOptionsT>;
           public constructor();
@@ -10290,10 +10290,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class WhileOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.WhileOptions>;
           public static addBodySubgraphIndex(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): void;
@@ -10323,7 +10323,7 @@ declare module org {
             param1: org.tensorflow.lite.schema.WhileOptions
           ): org.tensorflow.lite.schema.WhileOptions;
         }
-        export module WhileOptions {
+        export namespace WhileOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.WhileOptions.Vector>;
             public constructor();
@@ -10344,10 +10344,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class WhileOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.WhileOptionsT>;
           public setCondSubgraphIndex(param0: number): void;
@@ -10361,10 +10361,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ZerosLikeOptions {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ZerosLikeOptions>;
           public constructor();
@@ -10387,7 +10387,7 @@ declare module org {
           ): org.tensorflow.lite.schema.ZerosLikeOptions;
           public __assign(param0: number, param1: java.nio.ByteBuffer): org.tensorflow.lite.schema.ZerosLikeOptions;
         }
-        export module ZerosLikeOptions {
+        export namespace ZerosLikeOptions {
           export class Vector {
             public static class: java.lang.Class<org.tensorflow.lite.schema.ZerosLikeOptions.Vector>;
             public get(
@@ -10408,10 +10408,10 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace schema {
         export class ZerosLikeOptionsT {
           public static class: java.lang.Class<org.tensorflow.lite.schema.ZerosLikeOptionsT>;
           public constructor();
@@ -10421,11 +10421,11 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
           export class BoundedInputStream {
             public static class: java.lang.Class<org.tensorflow.lite.support.metadata.BoundedInputStream>;
             public read(): number;
@@ -10438,11 +10438,11 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
           export class ByteBufferChannel extends org.tensorflow.lite.support.metadata.SeekableByteChannelCompat {
             public static class: java.lang.Class<org.tensorflow.lite.support.metadata.ByteBufferChannel>;
             public write(param0: java.nio.ByteBuffer): number;
@@ -10463,11 +10463,11 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
           export class MetadataExtractor {
             public static class: java.lang.Class<org.tensorflow.lite.support.metadata.MetadataExtractor>;
             public getInputTensorShape(param0: number): androidNative.Array<number>;
@@ -10491,7 +10491,7 @@ declare module org {
             public isMinimumParserVersionSatisfied(): boolean;
             public getAssociatedFileNames(): java.util.Set<string>;
           }
-          export module MetadataExtractor {
+          export namespace MetadataExtractor {
             export class QuantizationParams {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.MetadataExtractor.QuantizationParams>;
               public getScale(): number;
@@ -10505,11 +10505,11 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
           export class MetadataParser {
             public static class: java.lang.Class<org.tensorflow.lite.support.metadata.MetadataParser>;
             public static VERSION: string;
@@ -10520,11 +10520,11 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
           export class ModelInfo {
             public static class: java.lang.Class<org.tensorflow.lite.support.metadata.ModelInfo>;
           }
@@ -10534,11 +10534,11 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
           export class ModelMetadataInfo {
             public static class: java.lang.Class<org.tensorflow.lite.support.metadata.ModelMetadataInfo>;
           }
@@ -10548,11 +10548,11 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
           export class Preconditions {
             public static class: java.lang.Class<org.tensorflow.lite.support.metadata.Preconditions>;
             public static checkNotNull(param0: any): any;
@@ -10572,11 +10572,11 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
           export class SeekableByteChannelCompat {
             public static class: java.lang.Class<org.tensorflow.lite.support.metadata.SeekableByteChannelCompat>;
             /**
@@ -10604,11 +10604,11 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
           export class ZipFile {
             public static class: java.lang.Class<org.tensorflow.lite.support.metadata.ZipFile>;
             public close(): void;
@@ -10618,7 +10618,7 @@ declare module org {
             public getRawInputStream(param0: string): java.io.InputStream;
             public getFileNames(): java.util.Set<string>;
           }
-          export module ZipFile {
+          export namespace ZipFile {
             export class ZipConstants {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.ZipFile.ZipConstants>;
             }
@@ -10643,12 +10643,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class AssociatedFile {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.AssociatedFile>;
               public static ValidateVersion(): void;
@@ -10700,7 +10700,7 @@ declare module org {
                 param1: java.nio.ByteBuffer
               ): org.tensorflow.lite.support.metadata.schema.AssociatedFile;
             }
-            export module AssociatedFile {
+            export namespace AssociatedFile {
               export class Vector {
                 public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.AssociatedFile.Vector>;
                 public __assign(
@@ -10723,12 +10723,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class AssociatedFileT {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.AssociatedFileT>;
               public constructor();
@@ -10750,12 +10750,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class AssociatedFileType {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.AssociatedFileType>;
               public static UNKNOWN: number;
@@ -10775,12 +10775,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class AudioProperties {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.AudioProperties>;
               public constructor();
@@ -10815,7 +10815,7 @@ declare module org {
               ): org.tensorflow.lite.support.metadata.schema.AudioProperties;
               public static addChannels(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): void;
             }
-            export module AudioProperties {
+            export namespace AudioProperties {
               export class Vector {
                 public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.AudioProperties.Vector>;
                 public get(
@@ -10838,12 +10838,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class AudioPropertiesT {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.AudioPropertiesT>;
               public constructor();
@@ -10859,12 +10859,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class BertTokenizerOptions {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.BertTokenizerOptions>;
               public constructor();
@@ -10913,7 +10913,7 @@ declare module org {
                 param1: number
               ): void;
             }
-            export module BertTokenizerOptions {
+            export namespace BertTokenizerOptions {
               export class Vector {
                 public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.BertTokenizerOptions.Vector>;
                 public get(param0: number): org.tensorflow.lite.support.metadata.schema.BertTokenizerOptions;
@@ -10936,12 +10936,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class BertTokenizerOptionsT {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.BertTokenizerOptionsT>;
               public constructor();
@@ -10957,12 +10957,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class BoundingBoxProperties {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.BoundingBoxProperties>;
               public static ValidateVersion(): void;
@@ -11010,7 +11010,7 @@ declare module org {
                 param1: androidNative.Array<number>
               ): number;
             }
-            export module BoundingBoxProperties {
+            export namespace BoundingBoxProperties {
               export class Vector {
                 public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.BoundingBoxProperties.Vector>;
                 public get(param0: number): org.tensorflow.lite.support.metadata.schema.BoundingBoxProperties;
@@ -11033,12 +11033,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class BoundingBoxPropertiesT {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.BoundingBoxPropertiesT>;
               public constructor();
@@ -11056,12 +11056,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class BoundingBoxType {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.BoundingBoxType>;
               public static UNKNOWN: number;
@@ -11078,12 +11078,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class ColorSpaceType {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.ColorSpaceType>;
               public static UNKNOWN: number;
@@ -11099,12 +11099,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class Content {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.Content>;
               public constructor();
@@ -11151,7 +11151,7 @@ declare module org {
               public static addRange(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): void;
               public unpackTo(param0: org.tensorflow.lite.support.metadata.schema.ContentT): void;
             }
-            export module Content {
+            export namespace Content {
               export class Vector {
                 public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.Content.Vector>;
                 public get(param0: number): org.tensorflow.lite.support.metadata.schema.Content;
@@ -11174,12 +11174,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class ContentProperties {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.ContentProperties>;
               public static NONE: number;
@@ -11197,12 +11197,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class ContentPropertiesUnion {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.ContentPropertiesUnion>;
               public getValue(): any;
@@ -11226,12 +11226,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class ContentT {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.ContentT>;
               public constructor();
@@ -11249,12 +11249,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class CoordinateType {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.CoordinateType>;
               public static RATIO: number;
@@ -11269,12 +11269,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class FeatureProperties {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.FeatureProperties>;
               public constructor();
@@ -11300,7 +11300,7 @@ declare module org {
                 param1: org.tensorflow.lite.support.metadata.schema.FeaturePropertiesT
               ): number;
             }
-            export module FeatureProperties {
+            export namespace FeatureProperties {
               export class Vector {
                 public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.FeatureProperties.Vector>;
                 public get(
@@ -11323,12 +11323,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class FeaturePropertiesT {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.FeaturePropertiesT>;
               public constructor();
@@ -11340,12 +11340,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class ImageProperties {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.ImageProperties>;
               public constructor();
@@ -11383,7 +11383,7 @@ declare module org {
               ): org.tensorflow.lite.support.metadata.schema.ImageProperties;
               public colorSpace(): number;
             }
-            export module ImageProperties {
+            export namespace ImageProperties {
               export class Vector {
                 public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.ImageProperties.Vector>;
                 public get(param0: number): org.tensorflow.lite.support.metadata.schema.ImageProperties;
@@ -11406,12 +11406,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class ImagePropertiesT {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.ImagePropertiesT>;
               public getDefaultSize(): org.tensorflow.lite.support.metadata.schema.ImageSizeT;
@@ -11427,12 +11427,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class ImageSize {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.ImageSize>;
               public constructor();
@@ -11467,7 +11467,7 @@ declare module org {
                 param0: java.nio.ByteBuffer
               ): org.tensorflow.lite.support.metadata.schema.ImageSize;
             }
-            export module ImageSize {
+            export namespace ImageSize {
               export class Vector {
                 public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.ImageSize.Vector>;
                 public get(param0: number): org.tensorflow.lite.support.metadata.schema.ImageSize;
@@ -11490,12 +11490,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class ImageSizeT {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.ImageSizeT>;
               public getWidth(): number;
@@ -11511,12 +11511,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class ModelMetadata {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.ModelMetadata>;
               public associatedFiles(param0: number): org.tensorflow.lite.support.metadata.schema.AssociatedFile;
@@ -11624,7 +11624,7 @@ declare module org {
               ): number;
               public static addAuthor(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): void;
             }
-            export module ModelMetadata {
+            export namespace ModelMetadata {
               export class Vector {
                 public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.ModelMetadata.Vector>;
                 public get(
@@ -11647,12 +11647,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class ModelMetadataT {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.ModelMetadataT>;
               public constructor();
@@ -11688,12 +11688,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class NormalizationOptions {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.NormalizationOptions>;
               public static ValidateVersion(): void;
@@ -11748,7 +11748,7 @@ declare module org {
               ): org.tensorflow.lite.support.metadata.schema.NormalizationOptions;
               public static endNormalizationOptions(param0: com.google.flatbuffers.FlatBufferBuilder): number;
             }
-            export module NormalizationOptions {
+            export namespace NormalizationOptions {
               export class Vector {
                 public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.NormalizationOptions.Vector>;
                 public __assign(
@@ -11771,12 +11771,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class NormalizationOptionsT {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.NormalizationOptionsT>;
               public constructor();
@@ -11792,12 +11792,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class ProcessUnit {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.ProcessUnit>;
               public constructor();
@@ -11832,7 +11832,7 @@ declare module org {
               public static addOptionsType(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): void;
               public unpack(): org.tensorflow.lite.support.metadata.schema.ProcessUnitT;
             }
-            export module ProcessUnit {
+            export namespace ProcessUnit {
               export class Vector {
                 public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.ProcessUnit.Vector>;
                 public get(
@@ -11855,12 +11855,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class ProcessUnitOptions {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.ProcessUnitOptions>;
               public static NONE: number;
@@ -11880,12 +11880,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class ProcessUnitOptionsUnion {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.ProcessUnitOptionsUnion>;
               public getValue(): any;
@@ -11911,12 +11911,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class ProcessUnitT {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.ProcessUnitT>;
               public constructor();
@@ -11930,12 +11930,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class RegexTokenizerOptions {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.RegexTokenizerOptions>;
               public constructor();
@@ -11992,7 +11992,7 @@ declare module org {
                 param1: number
               ): void;
             }
-            export module RegexTokenizerOptions {
+            export namespace RegexTokenizerOptions {
               export class Vector {
                 public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.RegexTokenizerOptions.Vector>;
                 public get(param0: number): org.tensorflow.lite.support.metadata.schema.RegexTokenizerOptions;
@@ -12015,12 +12015,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class RegexTokenizerOptionsT {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.RegexTokenizerOptionsT>;
               public constructor();
@@ -12038,12 +12038,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class ScoreCalibrationOptions {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.ScoreCalibrationOptions>;
               public constructor();
@@ -12081,7 +12081,7 @@ declare module org {
               public static endScoreCalibrationOptions(param0: com.google.flatbuffers.FlatBufferBuilder): number;
               public scoreTransformation(): number;
             }
-            export module ScoreCalibrationOptions {
+            export namespace ScoreCalibrationOptions {
               export class Vector {
                 public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.ScoreCalibrationOptions.Vector>;
                 public __assign(
@@ -12104,12 +12104,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class ScoreCalibrationOptionsT {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.ScoreCalibrationOptionsT>;
               public constructor();
@@ -12125,12 +12125,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class ScoreThresholdingOptions {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.ScoreThresholdingOptions>;
               public constructor();
@@ -12165,7 +12165,7 @@ declare module org {
                 param1: number
               ): number;
             }
-            export module ScoreThresholdingOptions {
+            export namespace ScoreThresholdingOptions {
               export class Vector {
                 public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.ScoreThresholdingOptions.Vector>;
                 public __assign(
@@ -12188,12 +12188,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class ScoreThresholdingOptionsT {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.ScoreThresholdingOptionsT>;
               public constructor();
@@ -12207,12 +12207,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class ScoreTransformationType {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.ScoreTransformationType>;
               public static IDENTITY: number;
@@ -12228,12 +12228,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class SentencePieceTokenizerOptions {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.SentencePieceTokenizerOptions>;
               public static ValidateVersion(): void;
@@ -12305,7 +12305,7 @@ declare module org {
                 param1: number
               ): void;
             }
-            export module SentencePieceTokenizerOptions {
+            export namespace SentencePieceTokenizerOptions {
               export class Vector {
                 public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.SentencePieceTokenizerOptions.Vector>;
                 public __assign(
@@ -12328,12 +12328,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class SentencePieceTokenizerOptionsT {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.SentencePieceTokenizerOptionsT>;
               public getSentencePieceModel(): androidNative.Array<org.tensorflow.lite.support.metadata.schema.AssociatedFileT>;
@@ -12353,12 +12353,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class Stats {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.Stats>;
               public static ValidateVersion(): void;
@@ -12413,7 +12413,7 @@ declare module org {
               public static startMaxVector(param0: com.google.flatbuffers.FlatBufferBuilder, param1: number): void;
               public min(param0: number): number;
             }
-            export module Stats {
+            export namespace Stats {
               export class Vector {
                 public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.Stats.Vector>;
                 public __assign(
@@ -12436,12 +12436,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class StatsT {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.StatsT>;
               public setMin(param0: androidNative.Array<number>): void;
@@ -12457,12 +12457,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class SubGraphMetadata {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.SubGraphMetadata>;
               public associatedFiles(param0: number): org.tensorflow.lite.support.metadata.schema.AssociatedFile;
@@ -12659,7 +12659,7 @@ declare module org {
                 param1: androidNative.Array<number>
               ): number;
             }
-            export module SubGraphMetadata {
+            export namespace SubGraphMetadata {
               export class Vector {
                 public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.SubGraphMetadata.Vector>;
                 public get(param0: number): org.tensorflow.lite.support.metadata.schema.SubGraphMetadata;
@@ -12682,12 +12682,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class SubGraphMetadataT {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.SubGraphMetadataT>;
               public constructor();
@@ -12731,12 +12731,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class TensorGroup {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.TensorGroup>;
               public constructor();
@@ -12786,7 +12786,7 @@ declare module org {
               ): com.google.flatbuffers.StringVector;
               public static endTensorGroup(param0: com.google.flatbuffers.FlatBufferBuilder): number;
             }
-            export module TensorGroup {
+            export namespace TensorGroup {
               export class Vector {
                 public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.TensorGroup.Vector>;
                 public constructor();
@@ -12809,12 +12809,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class TensorGroupT {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.TensorGroupT>;
               public constructor();
@@ -12830,12 +12830,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class TensorMetadata {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.TensorMetadata>;
               public associatedFiles(param0: number): org.tensorflow.lite.support.metadata.schema.AssociatedFile;
@@ -12942,7 +12942,7 @@ declare module org {
                 param1: org.tensorflow.lite.support.metadata.schema.TensorMetadataT
               ): number;
             }
-            export module TensorMetadata {
+            export namespace TensorMetadata {
               export class Vector {
                 public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.TensorMetadata.Vector>;
                 public get(
@@ -12965,12 +12965,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class TensorMetadataT {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.TensorMetadataT>;
               public constructor();
@@ -13000,12 +13000,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class ValueRange {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.ValueRange>;
               public constructor();
@@ -13040,7 +13040,7 @@ declare module org {
               public static endValueRange(param0: com.google.flatbuffers.FlatBufferBuilder): number;
               public unpackTo(param0: org.tensorflow.lite.support.metadata.schema.ValueRangeT): void;
             }
-            export module ValueRange {
+            export namespace ValueRange {
               export class Vector {
                 public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.ValueRange.Vector>;
                 public get(
@@ -13063,12 +13063,12 @@ declare module org {
   }
 }
 
-declare module org {
-  export module tensorflow {
-    export module lite {
-      export module support {
-        export module metadata {
-          export module schema {
+declare namespace org {
+  export namespace tensorflow {
+    export namespace lite {
+      export namespace support {
+        export namespace metadata {
+          export namespace schema {
             export class ValueRangeT {
               public static class: java.lang.Class<org.tensorflow.lite.support.metadata.schema.ValueRangeT>;
               public constructor();
