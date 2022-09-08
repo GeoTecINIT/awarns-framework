@@ -1,6 +1,9 @@
 import { ModelType } from './type';
+import { ModelOptions } from './options';
+import { Delegate, getDelegate } from './delegates';
 
 import Interpreter = org.tensorflow.lite.Interpreter;
+import InterpreterOptions = org.tensorflow.lite.Interpreter.Options;
 import MetadataExtractor = org.tensorflow.lite.support.metadata.MetadataExtractor;
 
 export interface ModelInfo {
@@ -28,13 +31,17 @@ export class Model {
     return this._modelInfo;
   }
 
-  constructor(modelFilePath: string, private modelType: ModelType) {
+  private delegate: Delegate;
+
+  constructor(modelFilePath: string, private modelType: ModelType, private modelOptions?: ModelOptions) {
     this.modelFile = new java.io.File(modelFilePath);
   }
 
   public closeInterpreter(): void {
     this.interpreter.close();
+    this.delegate.close();
     this._interpreter = undefined;
+    this.delegate = undefined;
   }
 
   protected createModelByteBuffer(): java.nio.ByteBuffer {
@@ -48,7 +55,29 @@ export class Model {
   }
 
   private loadInterpreter(): Interpreter {
-    return new Interpreter(this.modelFile);
+    const interpreterOptions = this.getInterpreterOptions();
+    return new Interpreter(this.modelFile, interpreterOptions);
+  }
+
+  private getInterpreterOptions(): InterpreterOptions {
+    const options = new Interpreter.Options();
+
+    if (this.modelOptions) {
+      const acceleration = this.modelOptions.acceleration;
+      if (typeof acceleration === 'number') {
+        if (acceleration >= 0) {
+          // Value 0 is accepted (no multithreading)
+          options.setNumThreads(acceleration);
+        }
+      } else {
+        this.delegate = getDelegate(acceleration);
+        if (this.delegate) {
+          options.addDelegate(this.delegate.getDelegate());
+        }
+      }
+    }
+
+    return options;
   }
 
   private loadModelInfo(): ModelInfo {
