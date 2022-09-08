@@ -14,6 +14,7 @@
     "tracing": "packages/tracing",
     "wifi": "packages/wifi",
     "phone-sensors": "packages/phone-sensors",
-    "wear-os": "packages/wear-os"
+    "wear-os": "packages/wear-os",
+    "ml-kit": "packages/ml-kit"
   }
 }

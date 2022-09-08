@@ -42,5 +42,8 @@ export class HomeComponent {
     {
       name: 'wear-os',
     },
+    {
+      name: 'ml-kit',
+    },
   ];
 }

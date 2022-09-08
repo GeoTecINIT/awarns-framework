@@ -165,6 +165,13 @@ module.exports = {
           description: '@awarns/wear-os: Build',
         },
       },
+      // @awarns/ml-kit
+      'ml-kit': {
+        build: {
+          script: 'nx run ml-kit:build.all --parallel=false',
+          description: '@awarns/ml-kit: Build',
+        },
+      },
       'build-all': {
         script: 'nx run-many --target=build.all --all --parallel=1',
         description: 'Build all packages',
@@ -222,6 +229,10 @@ module.exports = {
       'wear-os': {
         script: 'nx run wear-os:focus',
         description: 'Focus on @awarns/wear-os',
+      },
+      'ml-kit': {
+        script: 'nx run ml-kit:focus',
+        description: 'Focus on @awarns/ml-kit',
       },
       reset: {
         script: 'nx g @awarns/plugin-tools:focus-packages',
