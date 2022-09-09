@@ -3,10 +3,12 @@ import { Model } from '../model';
 
 import ByteBuffer = java.nio.ByteBuffer;
 
+export type InputData = number[];
+
 export abstract class AbstractPredictor<T extends PredictionResult> {
   protected constructor(protected model: Model) {}
 
-  public predict(inputData: any): T {
+  public predict(inputData: InputData): T {
     const inputBuffer = this.createInputBuffer(inputData);
     const outputBuffer = this.createOutputBuffer();
 
@@ -15,7 +17,7 @@ export abstract class AbstractPredictor<T extends PredictionResult> {
     return this.getPredictionResult(outputBuffer);
   }
 
-  private createInputBuffer(inputData: any): ByteBuffer {
+  private createInputBuffer(inputData: InputData): ByteBuffer {
     const inputByteSize = this.model.interpreter.getInputTensor(0).numBytes();
     const inputBuffer = createBuffer(inputByteSize);
 
