@@ -39,9 +39,16 @@ export class Model {
 
   public closeInterpreter(): void {
     this.interpreter.close();
-    this.delegate.close();
     this._interpreter = undefined;
-    this.delegate = undefined;
+    if (this.delegate) {
+      this.delegate.close();
+      this.delegate = undefined;
+    }
+  }
+
+  public setModelOptions(options: ModelOptions): void {
+    this.modelOptions = options;
+    this.closeInterpreter();
   }
 
   protected createModelByteBuffer(): java.nio.ByteBuffer {
