@@ -9,9 +9,10 @@ export class ClassificationTask extends PredictionTask {
   constructor(
     predictionAim: string,
     modelName: string | ModelNameResolver,
-    modelOptions: ModelOptions | ModelOptionsResolver
+    modelOptions: ModelOptions | ModelOptionsResolver,
+    tag: string
   ) {
-    super(predictionAim, modelName, modelOptions, 'Classification');
+    super(predictionAim, modelName, modelOptions, 'Classification', tag);
   }
 
   protected async doPrediction(data: InputData): Promise<Record> {

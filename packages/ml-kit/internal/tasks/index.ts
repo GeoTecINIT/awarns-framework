@@ -9,15 +9,17 @@ export type ModelOptionsResolver = () => ModelOptions;
 export function classificationTask(
   classificationAim: string,
   modelName: string | ModelNameResolver,
+  tag = '',
   modelOptions?: ModelOptions | ModelOptionsResolver
 ): Task {
-  return new ClassificationTask(classificationAim, modelName, modelOptions);
+  return new ClassificationTask(classificationAim, modelName, modelOptions, tag);
 }
 
 export function regressionTask(
   regressionAim: string,
   modelName: string | ModelNameResolver,
+  tag = '',
   modelOptions?: ModelOptions | ModelOptionsResolver
 ): Task {
-  return new RegressionTask(regressionAim, modelName, modelOptions);
+  return new RegressionTask(regressionAim, modelName, modelOptions, tag);
 }

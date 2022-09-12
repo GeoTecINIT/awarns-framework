@@ -1,6 +1,6 @@
 import { Task, TaskParams, DispatchableEvent, TaskOutcome } from '@awarns/core/tasks';
 import { ModelNameResolver, ModelOptionsResolver } from './index';
-import { camelCase, pascalCase } from '@awarns/core/utils/strings';
+import { camelCase } from '@awarns/core/utils/strings';
 import { getModelManager, Model, ModelOptions } from '../model';
 import { InputData } from '../predictor';
 import { Record } from '@awarns/core/internal/entities';
@@ -14,16 +14,12 @@ export abstract class PredictionTask extends Task {
     private modelName: string | ModelNameResolver,
     private modelOptions: ModelOptions | ModelOptionsResolver,
     predictionType: PredictionType,
+    tag: string,
     private modelManager = getModelManager()
   ) {
-    super(
-      `${camelCase(predictionAim)}${predictionType}With${pascalCase(
-        typeof modelName === 'function' ? modelName() : modelName
-      )}ModelTask`,
-      {
-        outputEventNames: [`${camelCase(predictionAim)}Predicted`],
-      }
-    );
+    super(`${camelCase(predictionAim)}${predictionType}${tag}`, {
+      outputEventNames: [`${camelCase(predictionAim)}Predicted`],
+    });
   }
 
   async checkIfCanRun(): Promise<void> {
