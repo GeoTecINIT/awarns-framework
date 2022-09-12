@@ -1,5 +1,6 @@
 import { Task, TaskParams, DispatchableEvent, TaskOutcome } from '@awarns/core/tasks';
-import { camelCase } from '@awarns/core/utils/strings';
+import { ModelNameResolver, ModelOptionsResolver } from './index';
+import { camelCase, pascalCase } from '@awarns/core/utils/strings';
 import { getModelManager, Model, ModelOptions } from '../model';
 import { InputData } from '../predictor';
 import { Record } from '@awarns/core/internal/entities';
@@ -7,19 +8,22 @@ import { Dialogs } from '@nativescript/core';
 
 type PredictionType = 'Classification' | 'Regression';
 
-export type ModelNameResolver = () => string;
-
 export abstract class PredictionTask extends Task {
   protected constructor(
     predictionAim: string,
     private modelName: string | ModelNameResolver,
-    private modelOptions: ModelOptions,
+    private modelOptions: ModelOptions | ModelOptionsResolver,
     predictionType: PredictionType,
     private modelManager = getModelManager()
   ) {
-    super(`${camelCase(predictionAim)}${predictionType}Task`, {
-      outputEventNames: [`${camelCase(predictionAim)}Predicted`],
-    });
+    super(
+      `${camelCase(predictionAim)}${predictionType}With${pascalCase(
+        typeof modelName === 'function' ? modelName() : modelName
+      )}ModelTask`,
+      {
+        outputEventNames: [`${camelCase(predictionAim)}Predicted`],
+      }
+    );
   }
 
   async checkIfCanRun(): Promise<void> {
@@ -51,8 +55,9 @@ export abstract class PredictionTask extends Task {
 
   protected async getModel(): Promise<Model> {
     const name = typeof this.modelName === 'function' ? this.modelName() : this.modelName;
+    const options = typeof this.modelOptions === 'function' ? this.modelOptions() : this.modelOptions;
 
-    return await this.modelManager.getModel(name, this.modelOptions);
+    return await this.modelManager.getModel(name, options);
   }
 
   protected abstract doPrediction(data: InputData): Promise<Record>;

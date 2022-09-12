@@ -1,11 +1,16 @@
-import { ModelNameResolver, PredictionTask } from './prediction-task';
+import { PredictionTask } from './prediction-task';
+import { ModelNameResolver, ModelOptionsResolver } from './index';
 import { Regressor, InputData } from '../predictor';
 import { Record } from '@awarns/core/internal/entities';
 import { Regression } from '../entities';
 import { ModelOptions } from '../model';
 
 export class RegressionTask extends PredictionTask {
-  constructor(predictionAim: string, modelName: string | ModelNameResolver, modelOptions: ModelOptions) {
+  constructor(
+    predictionAim: string,
+    modelName: string | ModelNameResolver,
+    modelOptions: ModelOptions | ModelOptionsResolver
+  ) {
     super(predictionAim, modelName, modelOptions, 'Regression');
   }
 
