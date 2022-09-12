@@ -13,22 +13,6 @@ declare namespace org {
 declare namespace org {
   export namespace tensorflow {
     export namespace lite {
-      export class Delegate {
-        public static class: java.lang.Class<org.tensorflow.lite.Delegate>;
-        /**
-         * Constructs a new instance of the org.tensorflow.lite.Delegate interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
-         */
-        public constructor(implementation: { getNativeHandle(): number });
-        public constructor();
-        public getNativeHandle(): number;
-      }
-    }
-  }
-}
-
-declare namespace org {
-  export namespace tensorflow {
-    export namespace lite {
       export class Interpreter extends org.tensorflow.lite.InterpreterImpl {
         public static class: java.lang.Class<org.tensorflow.lite.Interpreter>;
         public constructor(param0: java.nio.ByteBuffer);
@@ -57,9 +41,6 @@ declare namespace org {
           public setUseNNAPI(param0: boolean): org.tensorflow.lite.Interpreter.Options;
           public constructor();
           public addDelegate(param0: org.tensorflow.lite.Delegate): org.tensorflow.lite.Interpreter.Options;
-          public addDelegateFactory(
-            param0: org.tensorflow.lite.DelegateFactory
-          ): org.tensorflow.lite.Interpreter.Options;
           public setNumThreads(param0: number): org.tensorflow.lite.Interpreter.Options;
           public constructor(param0: org.tensorflow.lite.InterpreterImpl.Options);
           public setAllowBufferHandleOutput(param0: boolean): org.tensorflow.lite.Interpreter.Options;

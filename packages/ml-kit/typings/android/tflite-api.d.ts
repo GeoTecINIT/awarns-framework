@@ -29,28 +29,9 @@ declare namespace org {
         /**
          * Constructs a new instance of the org.tensorflow.lite.Delegate interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
          */
-        public constructor(implementation: { getNativeHandle(): number; close(): void });
+        public constructor(implementation: { getNativeHandle(): number });
         public constructor();
-        public close(): void;
         public getNativeHandle(): number;
-      }
-    }
-  }
-}
-
-declare namespace org {
-  export namespace tensorflow {
-    export namespace lite {
-      export class DelegateFactory {
-        public static class: java.lang.Class<org.tensorflow.lite.DelegateFactory>;
-        /**
-         * Constructs a new instance of the org.tensorflow.lite.DelegateFactory interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
-         */
-        public constructor(implementation: {
-          create(param0: org.tensorflow.lite.RuntimeFlavor): org.tensorflow.lite.Delegate;
-        });
-        public constructor();
-        public create(param0: org.tensorflow.lite.RuntimeFlavor): org.tensorflow.lite.Delegate;
       }
     }
   }
@@ -122,16 +103,12 @@ declare namespace org {
           public setUseNNAPI(param0: boolean): org.tensorflow.lite.InterpreterApi.Options;
           public addDelegate(param0: org.tensorflow.lite.Delegate): org.tensorflow.lite.InterpreterApi.Options;
           public getRuntime(): org.tensorflow.lite.InterpreterApi.Options.TfLiteRuntime;
+          public setCancellable(param0: boolean): org.tensorflow.lite.InterpreterApi.Options;
+          public getNumThreads(): number;
+          public constructor();
           public setNumThreads(param0: number): org.tensorflow.lite.InterpreterApi.Options;
           public getUseNNAPI(): boolean;
           public getDelegates(): java.util.List<org.tensorflow.lite.Delegate>;
-          public setCancellable(param0: boolean): org.tensorflow.lite.InterpreterApi.Options;
-          public addDelegateFactory(
-            param0: org.tensorflow.lite.DelegateFactory
-          ): org.tensorflow.lite.InterpreterApi.Options;
-          public getNumThreads(): number;
-          public constructor();
-          public getDelegateFactories(): java.util.List<org.tensorflow.lite.DelegateFactory>;
           public isCancellable(): boolean;
           public constructor(param0: org.tensorflow.lite.InterpreterApi.Options);
           public setRuntime(
@@ -209,20 +186,6 @@ declare namespace org {
           param0: java.nio.ByteBuffer,
           param1: org.tensorflow.lite.InterpreterApi.Options
         ): org.tensorflow.lite.InterpreterApi;
-      }
-    }
-  }
-}
-
-declare namespace org {
-  export namespace tensorflow {
-    export namespace lite {
-      export class RuntimeFlavor {
-        public static class: java.lang.Class<org.tensorflow.lite.RuntimeFlavor>;
-        public static APPLICATION: org.tensorflow.lite.RuntimeFlavor;
-        public static SYSTEM: org.tensorflow.lite.RuntimeFlavor;
-        public static valueOf(param0: string): org.tensorflow.lite.RuntimeFlavor;
-        public static values(): androidNative.Array<org.tensorflow.lite.RuntimeFlavor>;
       }
     }
   }
@@ -365,12 +328,7 @@ declare namespace org {
             /**
              * Constructs a new instance of the org.tensorflow.lite.nnapi.NnApiDelegate$PrivateInterface interface with the provided implementation. An empty constructor exists calling super() when extending the interface class.
              */
-            public constructor(implementation: {
-              getNnapiErrno(): number;
-              close(): void;
-              getNativeHandle(): number;
-              close(): void;
-            });
+            public constructor(implementation: { getNnapiErrno(): number; close(): void; getNativeHandle(): number });
             public constructor();
             public getNativeHandle(): number;
             public getNnapiErrno(): number;
