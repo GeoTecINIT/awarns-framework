@@ -47,6 +47,10 @@ export class Model {
   }
 
   public setModelOptions(options: ModelOptions): void {
+    if (this.modelOptions === options) {
+      return;
+    }
+
     this.modelOptions = options;
     this.closeInterpreter();
   }

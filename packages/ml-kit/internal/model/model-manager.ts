@@ -25,7 +25,11 @@ export class ModelManager {
 
   public async getModel(modelName: string, modelOptions?: ModelOptions): Promise<Model> {
     if (this.models.has(modelName)) {
-      return this.models.get(modelName);
+      const model = this.models.get(modelName);
+      if (modelOptions) {
+        model.setModelOptions(modelOptions);
+      }
+      return model;
     }
 
     const modelPath = path.join(this.baseModelsPath, `${modelName}.tflite`);
