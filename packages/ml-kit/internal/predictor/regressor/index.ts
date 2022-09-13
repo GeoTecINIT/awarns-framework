@@ -1,6 +1,6 @@
 import { PredictionResult } from '../prediction-result';
 import { AbstractPredictor } from '../abstract-predictor';
-import { Model } from '../../model';
+import { BaseModel } from '../../model';
 
 export type RegressionPrediction = number;
 
@@ -9,7 +9,7 @@ export interface RegressionResult extends PredictionResult {
 }
 
 export class Regressor extends AbstractPredictor<RegressionResult> {
-  constructor(model: Model) {
+  constructor(model: BaseModel) {
     super(model);
   }
 

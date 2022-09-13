@@ -1,12 +1,11 @@
+import { BaseModel } from '../model';
 import { PredictionResult } from './prediction-result';
-import { Model } from '../model';
-
 import ByteBuffer = java.nio.ByteBuffer;
 
 export type InputData = number[];
 
 export abstract class AbstractPredictor<T extends PredictionResult> {
-  protected constructor(protected model: Model) {}
+  protected constructor(protected model: BaseModel) {}
 
   public predict(inputData: InputData): T {
     const inputBuffer = this.createInputBuffer(inputData);
