@@ -1,5 +1,7 @@
 import { DemoSharedBase } from '../utils';
-import {} from '@awarns/ml-kit';
+
+export * from './data-randomizer';
+export * from './sample-data';
 
 export class DemoSharedMlKit extends DemoSharedBase {
   testIt() {
