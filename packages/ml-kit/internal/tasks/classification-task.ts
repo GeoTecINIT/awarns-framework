@@ -1,7 +1,7 @@
 import { PredictionTask } from './prediction-task';
 import { ModelNameResolver, ModelOptionsResolver } from './index';
 import { Classifier, InputData } from '../predictor';
-import { ClassificationModel, ModelOptions } from '../model';
+import { ClassificationModel, ModelOptions, ModelType } from '../model';
 import { Record } from '@awarns/core/entities';
 import { Classification } from '../entities';
 
@@ -12,7 +12,7 @@ export class ClassificationTask extends PredictionTask {
     modelOptions: ModelOptions | ModelOptionsResolver,
     tag: string
   ) {
-    super(predictionAim, modelName, modelOptions, 'Classification', tag);
+    super(predictionAim, modelName, modelOptions, ModelType.CLASSIFICATION, tag);
   }
 
   protected async doPrediction(data: InputData): Promise<Record> {

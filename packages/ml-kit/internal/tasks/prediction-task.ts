@@ -1,23 +1,21 @@
 import { Task, TaskParams, DispatchableEvent, TaskOutcome } from '@awarns/core/tasks';
 import { ModelNameResolver, ModelOptionsResolver } from './index';
-import { camelCase } from '@awarns/core/utils/strings';
-import { getModelManager, Model, ModelOptions } from '../model';
+import { camelCase, pascalCase } from '@awarns/core/utils/strings';
+import { getModelManager, Model, ModelOptions, ModelType } from '../model';
 import { InputData } from '../predictor';
 import { Record } from '@awarns/core/internal/entities';
 import { Dialogs } from '@nativescript/core';
-
-type PredictionType = 'Classification' | 'Regression';
 
 export abstract class PredictionTask extends Task {
   protected constructor(
     predictionAim: string,
     private modelName: string | ModelNameResolver,
     private modelOptions: ModelOptions | ModelOptionsResolver,
-    predictionType: PredictionType,
+    private modelType: ModelType,
     tag: string,
     private modelManager = getModelManager()
   ) {
-    super(`${camelCase(predictionAim)}${predictionType}${tag}`, {
+    super(`${camelCase(predictionAim)}${pascalCase(modelType)}${tag}`, {
       outputEventNames: [`${camelCase(predictionAim)}Predicted`],
     });
   }
@@ -42,7 +40,7 @@ export abstract class PredictionTask extends Task {
       throw new Error('PredictionTask was called without input data to make the prediction');
     }
 
-    const prediction = this.doPrediction(data);
+    const prediction = await this.doPrediction(data);
 
     return {
       result: prediction,
@@ -53,7 +51,7 @@ export abstract class PredictionTask extends Task {
     const name = typeof this.modelName === 'function' ? this.modelName() : this.modelName;
     const options = typeof this.modelOptions === 'function' ? this.modelOptions() : this.modelOptions;
 
-    return await this.modelManager.getModel(name, options);
+    return await this.modelManager.getModel(name, this.modelType, options);
   }
 
   protected abstract doPrediction(data: InputData): Promise<Record>;

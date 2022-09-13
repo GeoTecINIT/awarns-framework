@@ -1,9 +1,9 @@
 import { PredictionTask } from './prediction-task';
 import { ModelNameResolver, ModelOptionsResolver } from './index';
-import { Regressor, InputData } from '../predictor';
+import { InputData, Regressor } from '../predictor';
 import { Record } from '@awarns/core/internal/entities';
 import { Regression } from '../entities';
-import { ModelOptions } from '../model';
+import { BaseModel, ModelOptions, ModelType } from '../model';
 
 export class RegressionTask extends PredictionTask {
   constructor(
@@ -12,11 +12,11 @@ export class RegressionTask extends PredictionTask {
     modelOptions: ModelOptions | ModelOptionsResolver,
     tag: string
   ) {
-    super(predictionAim, modelName, modelOptions, 'Regression', tag);
+    super(predictionAim, modelName, modelOptions, ModelType.REGRESSION, tag);
   }
 
   protected async doPrediction(data: InputData): Promise<Record> {
-    const model = await this.getModel();
+    const model = (await this.getModel()) as BaseModel;
     const regressor = new Regressor(model);
     const regressionResult = regressor.predict(data);
     return new Regression(regressionResult);
