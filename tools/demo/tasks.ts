@@ -25,6 +25,8 @@ import {
   WatchSensor,
   WatchSensorDelay,
 } from '@awarns/wear-os';
+import { cnnData, DataRandomizer, mlpData } from './ml-kit';
+import { classificationTask } from '@awarns/ml-kit';
 
 export const demoTasks: Array<Task> = [
   ...makeTraceable([
@@ -54,6 +56,11 @@ export const demoTasks: Array<Task> = [
 
     sendPlainMessageToWatchTask(),
     sendPlainMessageToWatchAndAwaitResponseTask(),
+
+    new DataRandomizer(cnnData, 'cnn'),
+    classificationTask('human-activity', 'activity_classifier-cnn', 'UsingCNN'),
+    new DataRandomizer(mlpData, 'mlp'),
+    classificationTask('human-activity', 'activity_classifier-mlp', 'UsingMLP'),
   ]),
   ...makeTraceable(
     [

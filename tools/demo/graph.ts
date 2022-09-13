@@ -169,6 +169,13 @@ class DemoTaskGraph implements TaskGraph {
     on('plainMessageSentAndResponseReceived', run('trackEvent'));
     on('plainMessageReceived', run('writeRecords'));
     on('plainMessageReceived', run('trackEvent'));
+
+    on('startEvent', run('cnnDataRandomizerTask').now());
+    on('startEvent', run('mlpDataRandomizerTask').now());
+    on('cnnDataReceived', run('humanActivityClassificationUsingCNN'));
+    on('mlpDataReceived', run('humanActivityClassificationUsingMLP'));
+    on('humanActivityPredicted', run('writeRecords'));
+    on('humanActivityPredicted', run('trackEvent'));
   }
 }
 
