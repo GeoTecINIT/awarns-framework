@@ -20,7 +20,7 @@ export abstract class AbstractPredictor<T extends PredictionResult> {
     const inputByteSize = this.model.interpreter.getInputTensor(0).numBytes();
     const inputBuffer = createBuffer(inputByteSize);
 
-    for (let value of inputData) {
+    for (const value of inputData) {
       inputBuffer.putFloat(value);
     }
     return inputBuffer;
