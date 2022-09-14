@@ -53,8 +53,11 @@ export class ModelManager {
       case ModelType.CLASSIFICATION:
         model = new ClassificationModel(modelFile.path, modelArchitecture, modelOptions);
         break;
-      default:
+      case ModelType.REGRESSION:
         model = new BaseModel(modelFile.path, modelArchitecture, modelOptions);
+        break;
+      default:
+        model = new Model(modelFile.path, modelArchitecture);
     }
 
     this.models.set(modelName, model);
