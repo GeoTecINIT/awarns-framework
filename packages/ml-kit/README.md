@@ -21,8 +21,9 @@ But before using the plugin, you must meet the following requirements regarding 
 - Have a TensorFlow Lite machine learning model (*\*.tflite*) of the supported architectures (CNN or MLP). Classification models must have
   [metadata](https://www.tensorflow.org/lite/models/convert/metadata) (i.e., name, version, author, etc...) and an [associated labels file](https://www.tensorflow.org/lite/models/convert/metadata#pack_metadata_and_associated_files_into_the_model)
   with each label in a row of the file. While regression models don't have to include an associated labels file, it's recommended to add the metadata with the information of the model.
-- Place your TensorFlow Lite models in a folder named *ml-models* inside your app's *src* folder (i.e., same level as *app.ts/main.ts*).
-  - The model file name **must follow** the next format: {model_name}-{cnn|mlp}-\[version\].tflite.
+- Place your TensorFlow Lite models in a folder named *ml-models* inside your app's *src* folder (i.e., same level as {*app*|*main*}.*ts*).
+  - The model file name **must follow** the next format: {model_name}-{cnn|mlp}-\[version\].tflite. The file name must contain a name (*model_name*),
+    the model's architecture (*cnn* or *mlp*) and, optionally, the model's version (*version*). The file name elements must be splitted by a dash (**-**).
 
 ### API
 
@@ -66,30 +67,30 @@ export const demoTasks: Array<Task> = [
 ]
 ```
 
-**Task generator parameters:**
+#### Task generator parameters:
 
 | Parameter name                                   | Type                                                  | Description                                                                                                                                                         |
 |--------------------------------------------------|-------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | <code>{classification&vert;regression}Aim</code> | `string`                                              | Objective of the classification/regression. Used to name the task.                                                                                                  |
 | `modelName`                                      | <code>string &vert; ModelNameResolver</code>          | Name of the model (without *tflite* extension) stored in the *ml-models* folder to use for this task, or a function that returns the name of the model when called. |
-| `tag` *(Optional)*                               | `string`                                              | Adds a tag to the name of the task to differentiate it from other tasks with other configurations.                                                                  |
-| `modelOptions` *(Optional)*                      | <code>ModelOptions &vert; ModelOptionsResolver</code> | Configuration to use with the model or a function that returns the configuration when called.                                                                       |
+| `tag` *(**Optional**)*                           | `string`                                              | Adds a tag to the name of the task to differentiate it from other tasks with other configurations.                                                                  |
+| `modelOptions` *(**Optional**)*                  | <code>ModelOptions &vert; ModelOptionsResolver</code> | Configuration to use with the model or a function that returns the configuration when called.                                                                       |
 
-- `ModelNameResolver: () => string`
+##### `ModelNameResolver: () => string`
 
 Useful to change the model used by a task at runtime. You can use the [`ModelManager`](#modelmanager) to obtain a list with the models that are available in the device.
 
-- `ModelOptions`
+##### `ModelOptions`
 
 | Property       | Type                                    | Description                                                                                                                                                                                                                                                                                               |
 |----------------|-----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `acceleration` | <code>DelegateType &vert; number</code> | Which type of acceleration to use when running the model. It can take the values `DelegateType.GPU` (GPU acceleration), `DelegateType.NNAPI` ([Android Neural Networks API](https://developer.android.com/ndk/guides/neuralnetworks) acceleration) or a number indicating the quantity of threads to use. |
 
-- `ModelNameResolver: () => ModelOptions`
+##### `ModelOptionsResolver: () => ModelOptions`
 
 Useful to change the options used by the model of a task at runtime.
 
-**Tasks output events:**
+#### Tasks output events:
 
 - [`{classificationAim}Predicted`](#events)
 - [`{regressionAim}Predicted`](#events)
@@ -108,10 +109,10 @@ Useful to change the options used by the model of a task at runtime.
 
 ### Events
 
-| Name                           | Payload                             | Description |
-|--------------------------------|-------------------------------------|-------------|
-| `{classificationAim}Predicted` | [`Classification`](#classification) |             |
-| `{regressionAim}Predicted`     | [`Regression`](#regression)         |             |
+| Name                           | Payload                             | Description                                         |
+|--------------------------------|-------------------------------------|-----------------------------------------------------|
+| `{classificationAim}Predicted` | [`Classification`](#classification) | Indicates that a classification has been completed. |
+| `{regressionAim}Predicted`     | [`Regression`](#regression)         | Indicates that a regression has been completed.     |
 
 
 ### Records
@@ -154,3 +155,7 @@ Useful to change the options used by the model of a task at runtime.
 ## License
 
 Apache License Version 2.0
+
+## Disclaimer
+While we state that CNN models are supported, only 1D-CNN models have been tested. The code is general enough to support 2D and 3D CNN models with one input tensor,
+but they have not been tested. If you try 2D/3D-CNN models and something is not working as expected, contact us.
