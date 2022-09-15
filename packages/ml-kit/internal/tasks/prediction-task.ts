@@ -8,7 +8,7 @@ import { Dialogs } from '@nativescript/core';
 
 export abstract class PredictionTask extends Task {
   protected constructor(
-    predictionAim: string,
+    protected predictionAim: string,
     private modelName: string | ModelNameResolver,
     private modelOptions: ModelOptions | ModelOptionsResolver,
     private modelType: ModelType,

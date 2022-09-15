@@ -19,6 +19,6 @@ export class ClassificationTask extends PredictionTask {
     const model = (await this.getModel()) as ClassificationModel;
     const classifier = new Classifier(model);
     const classificationResult = classifier.predict(data);
-    return new Classification(classificationResult);
+    return new Classification(classificationResult, this.predictionAim);
   }
 }

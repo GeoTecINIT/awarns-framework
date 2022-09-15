@@ -19,6 +19,6 @@ export class RegressionTask extends PredictionTask {
     const model = (await this.getModel()) as BaseModel;
     const regressor = new Regressor(model);
     const regressionResult = regressor.predict(data);
-    return new Regression(regressionResult);
+    return new Regression(regressionResult, this.predictionAim);
   }
 }

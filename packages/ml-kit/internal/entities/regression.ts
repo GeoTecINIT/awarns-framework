@@ -1,10 +1,8 @@
-import { Record } from '@awarns/core/entities';
+import { Prediction } from './prediction';
 import { RegressionResult } from '../predictor';
 
-export const RegressionType = 'regression-prediction';
-
-export class Regression extends Record {
-  constructor(public regressionResult: RegressionResult) {
-    super(RegressionType, regressionResult.timestamp);
+export class Regression extends Prediction {
+  constructor(public regressionResult: RegressionResult, regressionAim: string) {
+    super(regressionAim);
   }
 }

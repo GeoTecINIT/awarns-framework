@@ -1,10 +1,8 @@
-import { Record } from '@awarns/core/entities';
+import { Prediction } from './prediction';
 import { ClassificationResult } from '../predictor';
 
-export const ClassificationType = 'classification-prediction';
-
-export class Classification extends Record {
-  constructor(public classificationResult: ClassificationResult) {
-    super(ClassificationType, classificationResult.timestamp);
+export class Classification extends Prediction {
+  constructor(public classificationResult: ClassificationResult, classificationAim: string) {
+    super(classificationAim);
   }
 }
