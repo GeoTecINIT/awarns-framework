@@ -1,3 +1,5 @@
 export interface PredictionResult {
-  timestamp: Date;
+  modelName: string;
+  architecture: string;
+  version: string;
 }

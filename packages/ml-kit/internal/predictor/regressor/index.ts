@@ -16,7 +16,9 @@ export class Regressor extends AbstractPredictor<RegressionResult> {
   protected interpretResults(results: number[]): RegressionResult {
     return {
       prediction: results,
-      timestamp: new Date(),
+      modelName: this.model.modelInfo.name,
+      architecture: this.model.modelInfo.architecture,
+      version: this.model.modelInfo.version,
     };
   }
 }

@@ -25,7 +25,9 @@ export class Classifier extends AbstractPredictor<ClassificationResult> {
 
     return {
       prediction: predictions,
-      timestamp: new Date(),
+      modelName: this.model.modelInfo.name,
+      architecture: this.model.modelInfo.architecture,
+      version: this.model.modelInfo.version,
     };
   }
 }
