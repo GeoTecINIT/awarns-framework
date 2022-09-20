@@ -6,13 +6,17 @@ import { modelArchitectureFrom } from './architecture';
 import { BaseModel } from './base-model';
 import { ClassificationModel } from './classification-model';
 
+type LoadedModel<T> = T extends ModelType.CLASSIFICATION ? ClassificationModel : BaseModel;
+
 const MODELS_FOLDER = 'ml-models';
 
 export class ModelManager {
   private models: Map<string, Model>;
+  private loadedModels: Map<string, Model>;
 
   constructor(private baseModelsPath = path.join(knownFolders.currentApp().path, MODELS_FOLDER)) {
-    this.models = new Map<string, BaseModel>();
+    this.models = new Map<string, Model>();
+    this.loadedModels = new Map<string, Model>();
   }
 
   public async listModels(): Promise<Model[]> {
@@ -20,15 +24,22 @@ export class ModelManager {
       const modelsFolder = Folder.fromPath(this.baseModelsPath);
       const modelFiles = await modelsFolder.getEntities();
 
-      modelFiles.forEach((modelFile) => this.loadModel(modelFile));
+      modelFiles.forEach((modelFile) => {
+        const model = loadModel(modelFile);
+        this.models.set(model.modelInfo.id, model);
+      });
     }
 
     return Array.from(this.models.values());
   }
 
-  public async getModel(modelName: string, modelType: ModelType, modelOptions?: ModelOptions): Promise<Model> {
-    if (this.models.has(modelName)) {
-      const model = this.models.get(modelName) as BaseModel;
+  public async getModel<T extends ModelType>(
+    modelName: string,
+    modelType: T,
+    modelOptions?: ModelOptions
+  ): Promise<LoadedModel<T>> {
+    if (this.loadedModels.has(modelName)) {
+      const model = this.loadedModels.get(modelName) as LoadedModel<T>;
       if (modelOptions) {
         model.setModelOptions(modelOptions);
       }
@@ -41,28 +52,29 @@ export class ModelManager {
     }
 
     const modelFile = File.fromPath(modelPath);
-    return this.loadModel(modelFile, modelType, modelOptions);
+    const model = loadModel(modelFile, modelType, modelOptions);
+    this.loadedModels.set(model.modelInfo.id, model);
+    return model as LoadedModel<T>;
+  }
+}
+
+export function loadModel(modelFile: FileSystemEntity, modelType?: ModelType, modelOptions?: ModelOptions): Model {
+  const modelName = modelFile.name.split('.')[0];
+  const modelArchitecture = modelArchitectureFrom(modelName);
+
+  let model: Model;
+  switch (modelType) {
+    case ModelType.CLASSIFICATION:
+      model = new ClassificationModel(modelFile.path, modelArchitecture, modelOptions);
+      break;
+    case ModelType.REGRESSION:
+      model = new BaseModel(modelFile.path, modelArchitecture, modelOptions);
+      break;
+    default:
+      model = new Model(modelFile.path, modelArchitecture);
   }
 
-  private loadModel(modelFile: FileSystemEntity, modelType?: ModelType, modelOptions?: ModelOptions): Model {
-    const modelName = modelFile.name.split('.')[0];
-    const modelArchitecture = modelArchitectureFrom(modelName);
-
-    let model: Model;
-    switch (modelType) {
-      case ModelType.CLASSIFICATION:
-        model = new ClassificationModel(modelFile.path, modelArchitecture, modelOptions);
-        break;
-      case ModelType.REGRESSION:
-        model = new BaseModel(modelFile.path, modelArchitecture, modelOptions);
-        break;
-      default:
-        model = new Model(modelFile.path, modelArchitecture);
-    }
-
-    this.models.set(modelName, model);
-    return model;
-  }
+  return model;
 }
 
 let _instance: ModelManager;
