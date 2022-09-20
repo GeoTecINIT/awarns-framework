@@ -5,3 +5,4 @@ export * from './model-manager';
 export * from './architecture';
 export * from './type';
 export * from './options';
+export { DelegateType } from './delegates';
