@@ -14,8 +14,7 @@ ns plugin add @awarns/ml-kit
 ```
 
 ## Usage
-After installing this plugin, you will have access to two tasks to perform classification or regression on the provided input data. It also provides an
-API to list the models embedded in the application.
+After installing this plugin, you will have access to an API and two tasks to perform classification or regression on the provided input data.
 But before using the plugin, you must meet the following requirements regarding the machine learning model:
 
 - Have a TensorFlow Lite machine learning model (*\*.tflite*) of the supported architectures (CNN or MLP). Classification models must have
@@ -26,13 +25,100 @@ But before using the plugin, you must meet the following requirements regarding 
     the model's architecture (*cnn* or *mlp*) and, optionally, the model's version (*version*). The file name elements must be splitted by a dash (**-**).
 
 ### API
+In order to do a regression or a classification, first you have to load a machine learning model. You can do that using the `getModel(...)` method provided
+by the [`ModelManager`](#modelmanager). It also provides the `listModels` method, useful known which models are available in the device.
 
-#### ModelManager
+When you load a model using the `getModel(...)` method, you obtain a `BaseModel` or a `ClassificationModel` to perform a regression or a 
+classification, respectively. To do so, you can create a [`Regressor`](#regressor) using a `BaseModel`, and a [`Classifier`](#classifier) using
+a `ClassificationModel`. Finally, to perform the prediction, you just have to call to the `predict` method, which will return a `RegressionResult` or a `ClassificationResult`, depending on which predictor has been used.
+
+Here's a complete example:
+
+```typescript
+import {
+  BaseModel,
+  ClassificationModel,
+  ClassificationResult,
+  Classifier,
+  DelegateType,
+  getModelManager,
+  InputData,
+  ModelType, RegressionResult, Regressor
+} from '@awarns/ml-kit';
+
+async function doClassification(inputData: InputData /* number[] */) {
+  const model: ClassificationModel = await getModelManager().getModel(
+    'activity_classifier-cnn',
+    ModelType.CLASSIFICATION,
+    { acceleration: DelegateType.GPU } // Use GPU, if available.
+  );
+
+  const classifier = new Classifier(model);
+  const result: ClassificationResult = classifier.predict(inputData);
+}
+
+async function doPrediction(inputData: InputData /* number[] */) {
+  const model: BaseModel = await getModelManager().getModel(
+    'activity_classifier-cnn',
+    ModelType.REGRESSION,
+    { acceleration: 4 } // Use 4 threads.
+  );
+
+  const regressor = new Regressor(model);
+  const result: RegressionResult = regressor.predict(inputData);
+}
+```
+
+> **Note**: the `RegressionResult` and `ClassificationResult` are not framework records. If you want to introduce these results into the framework
+> for example, to persist them using the [persistence package](https://github.com/GeoTecINIT/awarns-framework/blob/main/packages/persistence/README.md),
+> you have to manually create a [`Regression`](#regression) and [`Classification`](#classification) records.
+
+#### `ModelManager`
 You can obtain the singleton instance of the `ModelManager` calling the `getModelManager()` function.
 
-| Method                                                                           | Return type        | Description                                                    |
-|----------------------------------------------------------------------------------|--------------------|----------------------------------------------------------------|
-| `listModels()`                                                                   | `Promise<Model[]>` | Returns a list of the models that are available for their use. |
+| Method                                                                           | Return type                                              | Description                                                    |
+|----------------------------------------------------------------------------------|----------------------------------------------------------|----------------------------------------------------------------|
+| `listModels()`                                                                   | `Promise<Model[]>`                                       | Returns a list of the models that are available for their use. |
+| `getModel(modelName: string, modelType: ModelType, modelOptions?: ModelOptions)` | <code>Promise<BaseModel&vert;ClassificationModel></code> | Retrieves and loads the specified model, ready to be used.     |
+
+##### `Model`
+
+| Property    | Type        | Description                |
+|-------------|-------------|----------------------------|
+| `modelInfo` | `ModelInfo` | Contains model's metadata. |
+
+##### `ModelInfo`
+
+| Property       | Type                | Description                                              |
+|----------------|---------------------|----------------------------------------------------------|
+| `id`           | `string`            | Identifier of the model, generally the name of its file. |
+| `name`         | `string`            | Name info included in the model's metadata.              |
+| `architecture` | `ModelArchitecture` | Architecture of the model, i.e., `CNN` or `MLP`.         |
+| `version`      | `string`            | Version info included in the model's metadata.           |
+| `author`       | `string`            | Author info included in the model's metadata.            |
+
+##### `ModelType`
+
+| Value            | Description                             |
+|------------------|-----------------------------------------|
+| `REGRESSION`     | A model that performs a regression.     |
+| `CLASSIFICATION` | A model that performs a classification. |
+
+##### `ModelOptions`
+
+| Property       | Type                                    | Description                                                                                                                                                                                                                                                                                               |
+|----------------|-----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `acceleration` | <code>DelegateType &vert; number</code> | Which type of acceleration to use when running the model. It can take the values `DelegateType.GPU` (GPU acceleration), `DelegateType.NNAPI` ([Android Neural Networks API](https://developer.android.com/ndk/guides/neuralnetworks) acceleration) or a number indicating the quantity of threads to use. |
+
+#### `Regressor`
+| Method                          | Return type                             | Description                                    |
+|---------------------------------|-----------------------------------------|------------------------------------------------|
+| `predict(inputData: InputData)` | [`RegressionResult`](#regressionresult) | Preforms a regression using the provided data. |
+
+#### `Classifier`
+| Method                          | Return type                                     | Description                                        |
+|---------------------------------|-------------------------------------------------|----------------------------------------------------|
+| `predict(inputData: InputData)` | [`ClassificationResult`](#classificationresult) | Preforms a classification using the provided data. |
 
 ### Tasks
 
@@ -83,12 +169,6 @@ export const demoTasks: Array<Task> = [
 ##### `ModelNameResolver: () => string`
 
 Useful to change the model used by a task at runtime. You can use the [`ModelManager`](#modelmanager) to obtain a list with the models that are available in the device.
-
-##### `ModelOptions`
-
-| Property       | Type                                    | Description                                                                                                                                                                                                                                                                                               |
-|----------------|-----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `acceleration` | <code>DelegateType &vert; number</code> | Which type of acceleration to use when running the model. It can take the values `DelegateType.GPU` (GPU acceleration), `DelegateType.NNAPI` ([Android Neural Networks API](https://developer.android.com/ndk/guides/neuralnetworks) acceleration) or a number indicating the quantity of threads to use. |
 
 ##### `ModelOptionsResolver: () => ModelOptions`
 
