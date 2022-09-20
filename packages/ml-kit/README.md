@@ -57,9 +57,9 @@ async function doClassification(inputData: InputData /* number[] */) {
   const result: ClassificationResult = classifier.predict(inputData);
 }
 
-async function doPrediction(inputData: InputData /* number[] */) {
+async function doRegression(inputData: InputData /* number[] */) {
   const model: BaseModel = await getModelManager().getModel(
-    'activity_classifier-cnn',
+    'stress_regressor-cnn',
     ModelType.REGRESSION,
     { acceleration: 4 } // Use 4 threads.
   );
