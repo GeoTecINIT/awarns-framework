@@ -1,0 +1,19 @@
+android {
+  aaptOptions {
+    noCompress "tflite"
+  }
+}
+
+allprojects {
+  repositories {
+    mavenCentral()
+  }
+}
+
+dependencies {
+  def tensorflowLiteVersion = '2.9.0'
+  implementation "org.tensorflow:tensorflow-lite:$tensorflowLiteVersion"
+  implementation "org.tensorflow:tensorflow-lite-api:$tensorflowLiteVersion"
+  implementation "org.tensorflow:tensorflow-lite-gpu:$tensorflowLiteVersion"
+  implementation "org.tensorflow:tensorflow-lite-metadata:0.4.2"
+}

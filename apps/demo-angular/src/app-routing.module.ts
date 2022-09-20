@@ -55,6 +55,10 @@ const routes: Routes = [
     path: 'wear-os',
     loadChildren: () => import('./plugin-demos/wear-os.module').then((m) => m.WearOsModule),
   },
+  {
+    path: 'ml-kit',
+    loadChildren: () => import('./plugin-demos/ml-kit.module').then((m) => m.MlKitModule),
+  },
 ];
 
 @NgModule({

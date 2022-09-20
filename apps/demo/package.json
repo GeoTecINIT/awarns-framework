@@ -17,7 +17,8 @@
     "@awarns/human-activity": "file:../../packages/human-activity",
     "@awarns/notifications": "file:../../packages/notifications",
     "@awarns/phone-sensors": "file:../../packages/phone-sensors",
-    "@awarns/wear-os": "file:../../packages/wear-os"
+    "@awarns/wear-os": "file:../../packages/wear-os",
+    "@awarns/ml-kit": "file:../../packages/ml-kit"
   },
   "devDependencies": {
     "@jsdevtools/coverage-istanbul-loader": "3.0.5",

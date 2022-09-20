@@ -33,6 +33,7 @@
       "@awarns/notifications": ["packages/notifications/index.d.ts"],
       "@awarns/phone-sensors": ["packages/phone-sensors/index.d.ts"],
       "@awarns/wear-os": ["packages/wear-os/index.d.ts"],
+      "@awarns/ml-kit": ["packages/ml-kit/index.d.ts"],
       "@demo/shared": ["tools/demo/index.ts"]
     }
   },

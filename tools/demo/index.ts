@@ -11,3 +11,4 @@ export * from './human-activity';
 export * from './notifications';
 export * from './phone-sensors';
 export * from './wear-os';
+export * from './ml-kit';

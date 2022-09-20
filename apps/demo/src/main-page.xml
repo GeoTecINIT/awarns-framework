@@ -17,6 +17,7 @@
         <Button text="ble" tap="{{ viewDemo }}" class="btn btn-primary view-demo"/>
         <Button text="phone-sensors" tap="{{ viewDemo }}" class="btn btn-primary view-demo"/>
         <Button text="wear-os" tap="{{ viewDemo }}" class="btn btn-primary view-demo"/>
+        <Button text="ml-kit" tap="{{ viewDemo }}" class="btn btn-primary view-demo"/>
       </StackLayout>
     </ScrollView>
   </StackLayout>
