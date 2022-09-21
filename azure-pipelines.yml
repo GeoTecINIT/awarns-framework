@@ -45,6 +45,10 @@ steps:
     displayName: 'Build'
 
   - script: |
+      npm start apps.demo.build-android
+    displayName: 'Build demo'
+
+  - script: |
       ./ci-tools/wait-for-emulator.sh
       npm start android-test-ci
     displayName: 'Test'

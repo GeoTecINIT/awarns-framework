@@ -36,6 +36,10 @@ module.exports = {
           script: 'nx run demo:clean',
           description: '⚆  Clean  🧹',
         },
+        'build-android': {
+          script: 'nx run demo:build --platform=android --production=false --uglify=false --release=false',
+          description: '⚆  Run Android  🤖',
+        },
         ios: {
           script: 'nx run demo:ios --parallel=false',
           description: '⚆  Run iOS  ',
