@@ -16,7 +16,7 @@ export function startDetectingPhoneSensorChangesTask(
   );
 }
 
-export function startDetectingPhoneNTPSyncedSensorChanges(
+export function startDetectingPhoneNTPSyncedSensorChangesTask(
   sensor: PhoneSensor,
   providerConfig: ProviderConfiguration,
   prefix = ''

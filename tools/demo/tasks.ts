@@ -14,7 +14,7 @@ import { writeRecordsTask } from '@awarns/persistence';
 import {
   PhoneSensor,
   SensorDelay,
-  startDetectingPhoneNTPSyncedSensorChanges,
+  startDetectingPhoneNTPSyncedSensorChangesTask,
   startDetectingPhoneSensorChangesTask,
   stopDetectingPhoneNTPSyncedSensorChangesTask,
   stopDetectingPhoneSensorChangesTask,
@@ -36,7 +36,7 @@ export const demoTasks: Array<Task> = [
     stopDetectingCoarseHumanActivityChangesTask(),
     acquireBatteryLevelTask(),
 
-    startDetectingPhoneNTPSyncedSensorChanges(PhoneSensor.ACCELEROMETER, {
+    startDetectingPhoneNTPSyncedSensorChangesTask(PhoneSensor.ACCELEROMETER, {
       sensorDelay: SensorDelay.NORMAL,
       batchSize: 50,
     }),
