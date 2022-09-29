@@ -304,6 +304,26 @@ declare namespace es {
     export namespace geotec {
       export namespace backgroundsensors {
         export namespace service {
+          export class NTPSyncedSensorRecordingService extends es.uji.geotec.backgroundsensors.service
+            .SensorRecordingService {
+            public static class: java.lang.Class<es.uji.geotec.backgroundsensors.service.NTPSyncedSensorRecordingService>;
+            public ntpTimeProvider: es.uji.geotec.backgroundsensors.time.NTPTimeProvider;
+            public ntpSynced: boolean;
+            public constructor();
+            public onCreate(): void;
+            public getCollectorManager(): es.uji.geotec.backgroundsensors.collection.CollectorManager;
+          }
+        }
+      }
+    }
+  }
+}
+
+declare namespace es {
+  export namespace uji {
+    export namespace geotec {
+      export namespace backgroundsensors {
+        export namespace service {
           export abstract class SensorRecordingService {
             public static class: java.lang.Class<es.uji.geotec.backgroundsensors.service.SensorRecordingService>;
             public constructor();
@@ -312,6 +332,7 @@ declare namespace es {
             public onBind(param0: globalAndroid.content.Intent): globalAndroid.os.IBinder;
             public getCollectorManager(): es.uji.geotec.backgroundsensors.collection.CollectorManager;
             public onStartCommand(param0: globalAndroid.content.Intent, param1: number, param2: number): number;
+            public gracefullyStop(): void;
           }
           export namespace SensorRecordingService {
             export class SensorRecordingBinder {
@@ -373,11 +394,96 @@ declare namespace es {
     export namespace geotec {
       export namespace backgroundsensors {
         export namespace time {
+          export class NTPTimeProvider extends es.uji.geotec.backgroundsensors.time.TimeProvider {
+            public static class: java.lang.Class<es.uji.geotec.backgroundsensors.time.NTPTimeProvider>;
+            public sync(): boolean;
+            public getTimestamp(): number;
+            public isSynced(): boolean;
+            public static getInstance(): es.uji.geotec.backgroundsensors.time.NTPTimeProvider;
+          }
+        }
+      }
+    }
+  }
+}
+
+declare namespace es {
+  export namespace uji {
+    export namespace geotec {
+      export namespace backgroundsensors {
+        export namespace time {
           export abstract class TimeProvider {
             public static class: java.lang.Class<es.uji.geotec.backgroundsensors.time.TimeProvider>;
             public constructor();
             public getTimestamp(): number;
             public getTimestampFromElapsedNanos(param0: number): number;
+          }
+        }
+      }
+    }
+  }
+}
+
+declare namespace es {
+  export namespace uji {
+    export namespace geotec {
+      export namespace backgroundsensors {
+        export namespace time {
+          export namespace ntp {
+            export class GoodClock {
+              public static class: java.lang.Class<es.uji.geotec.backgroundsensors.time.ntp.GoodClock>;
+              public static DEFAULT_REQUESTS_PER_NTP_UPDATE: number;
+              public static DEFAULT_UPDATE_INTERVAL: number;
+              public SntpSuceeded: boolean;
+              public constructor();
+              public Now(): number;
+              public constructor(param0: number, param1: number);
+              public getDrift(): number;
+              public stop(): void;
+              public startSync(): void;
+              public currentTimeMillis(): number;
+              public singleSync(): boolean;
+              public getNtp_clockoffset(): number;
+            }
+            export namespace GoodClock {
+              export class SingleSyncFuture extends java.util.concurrent.Callable<java.lang.Boolean> {
+                public static class: java.lang.Class<es.uji.geotec.backgroundsensors.time.ntp.GoodClock.SingleSyncFuture>;
+                public call(): java.lang.Boolean;
+                public constructor(
+                  param0: es.uji.geotec.backgroundsensors.time.ntp.GoodClock,
+                  param1: es.uji.geotec.backgroundsensors.time.ntp.GoodClock
+                );
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+declare namespace es {
+  export namespace uji {
+    export namespace geotec {
+      export namespace backgroundsensors {
+        export namespace time {
+          export namespace ntp {
+            export class SntpDsense {
+              public static class: java.lang.Class<es.uji.geotec.backgroundsensors.time.ntp.SntpDsense>;
+              public get_ntp_update_monotonic_time(): number;
+              public requestTime(param0: java.net.InetAddress, param1: number, param2: number): boolean;
+              public get_ntp_update_sys_time(): number;
+              public getRoundTripTime(): number;
+              public requestTime(param0: string, param1: number): boolean;
+              public constructor(param0: number);
+              public getNtp_clockoffset(): number;
+            }
+            export namespace SntpDsense {
+              export class InvalidServerReplyException {
+                public static class: java.lang.Class<es.uji.geotec.backgroundsensors.time.ntp.SntpDsense.InvalidServerReplyException>;
+                public constructor(param0: string);
+              }
+            }
           }
         }
       }
