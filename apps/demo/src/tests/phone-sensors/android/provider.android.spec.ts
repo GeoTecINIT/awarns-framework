@@ -19,7 +19,7 @@ describe('Phone sensors provider', () => {
     sensorManager = createSensorManagerMock();
     serviceManager = createServiceManagerMock();
 
-    provider = new AndroidPhoneSensorsProvider(sensor, config, sensorManager, serviceManager);
+    provider = new AndroidPhoneSensorsProvider(sensor, serviceManager, config, sensorManager);
     spyOnProperty(provider, 'callback').and.returnValue(callbackMock());
   });
 
