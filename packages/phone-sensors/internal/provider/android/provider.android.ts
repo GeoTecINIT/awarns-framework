@@ -5,7 +5,6 @@ import { getTriAxialReceiver } from '../../receiver/android/receiver.android';
 import { providerConfigToNativeConfig, ProviderConfiguration } from '../provider-configuration';
 
 import ServiceManager = es.uji.geotec.backgroundsensors.service.manager.ServiceManager;
-import BaseSensorRecordingService = es.uji.geotec.backgroundsensors.service.BaseSensorRecordingService;
 import SensorManager = es.uji.geotec.backgroundsensors.sensor.SensorManager;
 import CollectionConfiguration = es.uji.geotec.backgroundsensors.collection.CollectionConfiguration;
 import BaseSensor = es.uji.geotec.backgroundsensors.sensor.BaseSensor;
@@ -32,9 +31,9 @@ export class AndroidPhoneSensorsProvider implements PushProvider {
 
   constructor(
     private sensor: PhoneSensor,
+    private serviceManager: ServiceManager,
     configuration: ProviderConfiguration,
-    private sensorManager = new SensorManager(Utils.android.getApplicationContext()),
-    private serviceManager = new ServiceManager(Utils.android.getApplicationContext(), BaseSensorRecordingService.class)
+    private sensorManager = new SensorManager(Utils.android.getApplicationContext())
   ) {
     this.nativeSensor = toNativeSensor(this.sensor);
     this.nativeConfiguration = providerConfigToNativeConfig(this.nativeSensor, configuration);
