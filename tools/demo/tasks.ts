@@ -14,7 +14,9 @@ import { writeRecordsTask } from '@awarns/persistence';
 import {
   PhoneSensor,
   SensorDelay,
+  startDetectingPhoneNTPSyncedSensorChanges,
   startDetectingPhoneSensorChangesTask,
+  stopDetectingPhoneNTPSyncedSensorChangesTask,
   stopDetectingPhoneSensorChangesTask,
 } from '@awarns/phone-sensors';
 import {
@@ -33,9 +35,13 @@ export const demoTasks: Array<Task> = [
     startDetectingCoarseHumanActivityChangesTask(),
     stopDetectingCoarseHumanActivityChangesTask(),
     acquireBatteryLevelTask(),
-    startDetectingPhoneSensorChangesTask(PhoneSensor.ACCELEROMETER, { sensorDelay: SensorDelay.NORMAL, batchSize: 50 }),
+
+    startDetectingPhoneNTPSyncedSensorChanges(PhoneSensor.ACCELEROMETER, {
+      sensorDelay: SensorDelay.NORMAL,
+      batchSize: 50,
+    }),
     startDetectingPhoneSensorChangesTask(PhoneSensor.GYROSCOPE, { sensorDelay: SensorDelay.NORMAL, batchSize: 50 }),
-    stopDetectingPhoneSensorChangesTask(PhoneSensor.ACCELEROMETER),
+    stopDetectingPhoneNTPSyncedSensorChangesTask(PhoneSensor.ACCELEROMETER),
     stopDetectingPhoneSensorChangesTask(PhoneSensor.GYROSCOPE),
 
     startDetectingWatchSensorChangesTask(WatchSensor.ACCELEROMETER, {
