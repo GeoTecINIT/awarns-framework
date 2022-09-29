@@ -17,15 +17,28 @@ ns plugin add @awarns/phone-sensors
 
 ## Usage
 
-After installing this plugin, you'll have access to two task groups to start and stop the data collection process.
+After installing this plugin, you'll have access to two task groups with two tasks each to start and stop the data collection process.
+The main difference between both tasks groups is the implementation of the underlying service that being used for the data collection.
+One group uses a standard data collection service, but the other one uses a special service that syncs the system clock with an NTP server
+to label the collected data with the most accurate timestamp.
 The collected data from the sensors, will be a [TriAxial](#triaxial) record, described below.
 
 ### Tasks 
 
-| Task name                                                                                                         | Description                                                                                                                                                          |
-|-------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [`startDetecting{prefix}Phone{sensor}Changes`](#start-data-collection-for-a-sensor-with-a-specific-configuration) | Allows to start the data collection for a `sensor` with a specific configuration (see below). The `prefix` can be used to distinguish among different configurations |
-| [`stopDetectingPhone{sensor}Changes`](#stop-data-collection-for-a-sensor)                                         | The complement to the previous task. Allows to stop collecting data from `sensor`.                                                                                   |
+#### Standard collection service tasks
+
+| Task name                                                                                                         | Description                                                                                                                                                           |
+|-------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [`startDetecting{prefix}Phone{sensor}Changes`](#start-data-collection-for-a-sensor-with-a-specific-configuration) | Allows to start the data collection for a `sensor` with a specific configuration (see below). The `prefix` can be used to distinguish among different configurations. |
+| [`stopDetectingPhone{sensor}Changes`](#stop-data-collection-for-a-sensor)                                         | The complement to the previous task. Allows to stop collecting data from `sensor`.                                                                                    |
+
+
+#### NTP synced collection service tasks
+| Task name                                                                                                                  | Description                                                                                                                                                                                                                                                                                               |
+|----------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [`startDetecting{prefix}PhoneNTPSynced{sensor}Changes`](#start-data-collection-for-a-sensor-with-a-specific-configuration) | Allows to start the data collection for a `sensor` with a specific configuration (see below). Before the collection starts, the system clock is synced with an NTP server to label the collected data with an accurate timestamp. The `prefix` can be used to distinguish among different configurations. |
+| [`stopDetectingPhoneNTPSynced{sensor}Changes`](#stop-data-collection-for-a-sensor)                                         | The complement to the previous task. Allows to stop collecting data from `sensor`.                                                                                                                                                                                                                        |
+
 
 #### Start data collection for a sensor with a specific configuration
 To register these tasks for their use, you just need to import them and call their generator functions inside your application's task list:
@@ -47,6 +60,9 @@ export const demoTasks: Array<Task> = [
 
   startDetectingPhoneSensorChangesTask(PhoneSensor.GYROSCOPE, { sensorDelay: SensorDelay.NORMAL, batchSize: 50 }),
   // startDetectingPhoneGyroscopeChanges
+
+  startDetectingPhoneNTPSyncedSensorChangesTask(PhoneSensor.GYROSCOPE, { sensorDelay: SensorDelay.NORMAL, batchSize: 50 }),
+  // startDetectingPhoneNTPSyncedGyroscopeChanges
 
   startDetectingPhoneSensorChangesTask(PhoneSensor.MAGNETOMETER, { sensorDelay: SensorDelay.NORMAL, batchSize: 50 }),
   // startDetectingPhoneMagnetometerChanges
@@ -117,9 +133,9 @@ import {
 } from '@awarns/phone-sensors';
 
 export const demoTasks: Array<Task> = [
-  stopDetectingPhoneSensorChangesTask(PhoneSensor.ACCELEROMETER), // stopDetectingPhoneAccelerometerChanges
-  stopDetectingPhoneSensorChangesTask(PhoneSensor.GYROSCOPE),     // stopDetectingPhoneGyroscopeChanges
-  stopDetectingPhoneSensorChangesTask(PhoneSensor.MAGNETOMETER),  // stopDetectingPhoneMagnetometerChanges
+  stopDetectingPhoneSensorChangesTask(PhoneSensor.ACCELEROMETER),        // stopDetectingPhoneAccelerometerChanges
+  stopDetectingPhoneNTPSyncedSensorChangesTask(PhoneSensor.GYROSCOPE),   // stopDetectingPhoneNTPSyncedGyroscopeChanges
+  stopDetectingPhoneSensorChangesTask(PhoneSensor.MAGNETOMETER),         // stopDetectingPhoneMagnetometerChanges
 ];
 ```
 
@@ -139,11 +155,11 @@ Task output events:
 > Example usage in the application task graph:
 > ```ts
 > on('startEvent', run('startDetectingPhoneAccelerometerChanges').every(1, 'minute'));
-> on('startEvent', run('startDetectingPhoneGyroscopeChanges').every(1, 'minute'));
+> on('startEvent', run('startDetectingPhoneNTPSyncedGyroscopeChanges').every(1, 'minute'));
 > on('startEvent', run('startDetectingPhoneMagnetometerChanges').every(1, 'minute'));
 > 
 > on('accelerometerSamplesAcquired', run('stopDetectingPhoneAccelerometerChanges'));
-> on('gyroscopeSamplesAcquired', run('stopDetectingPhoneGyroscopeChanges'));
+> on('gyroscopeSamplesAcquired', run('stopDetectingPhoneNTPSyncedGyroscopeChanges'));
 > on('magnetometerSamplesAcquired', run('stopDetectingPhoneMagnetometerChanges'));
 >```
 > **Note**: it makes no sense to use these tasks without using before their complementary tasks to start the data collection.
