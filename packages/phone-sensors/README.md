@@ -18,7 +18,7 @@ ns plugin add @awarns/phone-sensors
 ## Usage
 
 After installing this plugin, you'll have access to two task groups with two tasks each to start and stop the data collection process.
-The main difference between both tasks groups is the implementation of the underlying service that being used for the data collection.
+The main difference between both tasks groups is the implementation of the underlying service that is being used for the data collection.
 One group uses a standard data collection service, but the other one uses a special service that syncs the system clock with an NTP server
 to label the collected data with the most accurate timestamp.
 The collected data from the sensors, will be a [TriAxial](#triaxial) record, described below.
