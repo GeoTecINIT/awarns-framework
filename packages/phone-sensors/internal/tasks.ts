@@ -1,7 +1,9 @@
 import { Task, StartPushProviderTask, StopPushProviderTask } from '@awarns/core/tasks';
 import { getProvider, ProviderConfiguration } from './provider';
 import { PhoneSensor } from './phone-sensor';
-import { BaseSensorRecordingService, NTPSyncedSensorRecordingService, SensorRecordingService } from './service';
+import { SensorRecordingService } from './service';
+import { BaseSensorRecordingService } from './service/base';
+import { NTPSyncedSensorRecordingService } from './service/ntp';
 import ServiceManager = es.uji.geotec.backgroundsensors.service.manager.ServiceManager;
 import { Utils } from '@nativescript/core';
 
