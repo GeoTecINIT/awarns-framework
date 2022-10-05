@@ -13,6 +13,7 @@
         "assets": [
           "packages/ml-kit/*.md",
           "packages/ml-kit/index.d.ts",
+          "packages/ml-kit/nativescript.webpack.js",
           "LICENSE",
           {
             "glob": "**/*",

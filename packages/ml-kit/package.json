@@ -1,6 +1,6 @@
 {
   "name": "@awarns/ml-kit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Run CNN and MLP machine learning models for regression and classification tasks in your smartphone",
   "main": "index",
   "typings": "index.d.ts",
