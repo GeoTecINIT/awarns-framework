@@ -23,6 +23,41 @@ One group uses a standard data collection service, but the other one uses a spec
 to label the collected data with the most accurate timestamp.
 The collected data from the sensors, will be a [TriAxial](#triaxial) record, described below.
 
+### Setup (Optional)
+
+This plugin can be optionally registered using its loader during the framework initialization:
+
+```ts
+// ... platform imports
+import { awarns } from '@awarns/core';
+import { demoTasks } from '../tasks';
+import { demoTaskGraph } from '../graph';
+import { registerPhoneSensorsPlugin } from '@awarns/phone-sensors';
+
+awarns
+  .init(
+    demoTasks,
+    demoTaskGraph,
+    [
+      registerPhoneSensorsPlugin(false)
+    ]
+  )
+// ... handle initialization promise
+```
+
+Plugin loader parameters:
+
+| Property                 | Type      | Description                                                                                                               |
+|--------------------------|-----------|---------------------------------------------------------------------------------------------------------------------------|
+| `enableVibrationOnStart` | `boolean` | (Optional) Enables or disables the generation of a vibration when the data collection service starts. Enabled by default. |
+
+If the plugin is not registered, **the vibration will be enabled by default**.
+
+> **Warning**: due to restrictions imposed by the OS, the plugin can only be registered once (i.e., the first time the plugin is initialized). In other words,
+> if the plugin is first register with `enableVibrationOnStart` to `true`, and then the developer wants to disable the vibration, 
+> setting `enableVibrationOnStart` to `false` **will take no effect**. If you want to change the value of `enableVibrationOnStart`,
+> you will have to uninstall the app.
+
 ### Tasks 
 
 #### Standard collection service tasks
