@@ -28,4 +28,8 @@ export class SyncedRecordsStore extends TimeSeriesSyncedStore<Record, LocalRecor
   ): Observable<Array<Record>> {
     return this.localStore.listBy(recordType, order, conditions);
   }
+
+  deleteBy(recordType: string): Promise<void> {
+    return this.localStore.deleteBy(recordType);
+  }
 }

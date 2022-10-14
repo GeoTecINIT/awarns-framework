@@ -1,7 +1,7 @@
 import { Change, Record } from '@awarns/core/entities';
 import { deserialize, serialize } from '@awarns/core/utils/serialization';
 import { AbstractTimeSeriesStore, LocalTimeSeriesStore, TimeSeriesDoc, TimeSeriesStore } from '../common';
-import { distinctUntilChanged, distinctUntilKeyChanged, Observable, switchMap } from 'rxjs';
+import { distinctUntilChanged, distinctUntilKeyChanged, firstValueFrom, Observable, switchMap } from 'rxjs';
 import { QueryMeta } from '@triniwiz/nativescript-couchbase';
 import { FetchCondition, getPropertyValue, meetsConditions } from './filters';
 import { Query } from '../../db';
@@ -16,6 +16,7 @@ export interface RecordsStore extends TimeSeriesStore<Record> {
     conditions?: Array<FetchCondition>
   ): Observable<Array<Record>>;
   listBy(recordType: string, order?: ResultsOrder, conditions?: Array<FetchCondition>): Observable<Array<Record>>;
+  deleteBy(recordType: string): Promise<void>;
 }
 
 export interface LocalRecordsStore extends LocalTimeSeriesStore<Record> {
@@ -26,6 +27,7 @@ export interface LocalRecordsStore extends LocalTimeSeriesStore<Record> {
     conditions?: Array<FetchCondition>
   ): Observable<Array<Record>>;
   listBy(recordType: string, order?: ResultsOrder, conditions?: Array<FetchCondition>): Observable<Array<Record>>;
+  deleteBy(recordType: string): Promise<void>;
 }
 
 const DOC_TYPE = 'record';
@@ -133,6 +135,11 @@ class RecordsStoreDB extends AbstractTimeSeriesStore<Record> implements RecordsS
         subscription.unsubscribe();
       };
     }).pipe(distinctUntilKeyChanged('length'));
+  }
+
+  async deleteBy(recordType: string): Promise<void> {
+    const records = await firstValueFrom(this.listBy(recordType));
+    records.forEach((record) => this.store.delete(record.id));
   }
 }
 

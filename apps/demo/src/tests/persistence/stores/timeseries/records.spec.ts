@@ -1,7 +1,7 @@
 import { localRecordsStore as store } from '@awarns/persistence/internal/stores/timeseries/records/store';
 import { Change, Record } from '@awarns/core/entities';
 
-import { Geolocation } from '@awarns/geolocation';
+import { Geolocation, GeolocationType } from '@awarns/geolocation';
 import { HumanActivity, HumanActivityChange } from '@awarns/human-activity';
 import { AoIProximityChange, AoIProximityChangeType, AreaOfInterest, GeofencingProximity } from '@awarns/geofencing';
 import { QuestionnaireAnswer, QuestionnaireAnswers } from '@awarns/notifications';
@@ -270,6 +270,23 @@ describe('Records store', () => {
 
     expect({ ...changes[2][0] }).toEqual({ ...records[5] });
     expect({ ...changes[2][1] }).toEqual({ ...records[3] });
+  });
+
+  it('allows to delete records of a given type', async () => {
+    await store.insert(records[0]);
+    await store.insert(records[1]);
+    await store.insert(records[2]);
+    await store.insert(records[3]);
+
+    await store.deleteBy(GeolocationType);
+
+    const remainingRecords = await store.getAll();
+    const geolocationRecords = await firstValueFrom(store.listBy(GeolocationType));
+
+    expect(remainingRecords.length).toBe(2);
+    expect({ ...remainingRecords[0] }).toEqual({ ...records[1] });
+    expect({ ...remainingRecords[1] }).toEqual({ ...records[3] });
+    expect(geolocationRecords.length).toBe(0);
   });
 
   it('allows to query unsynced records sorted by ascending timestamp', async () => {
