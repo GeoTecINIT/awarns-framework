@@ -39,13 +39,15 @@ awarns
     demoTasks,
     demoTaskGraph,
     [
-      registerPhoneSensorsPlugin(false)
+      registerPhoneSensorsPlugin({ 
+        enableVibrationOnStart: false
+      })
     ]
   )
 // ... handle initialization promise
 ```
 
-Plugin loader parameters:
+Plugin loader parameter options:
 
 | Property                 | Type      | Description                                                                                                               |
 |--------------------------|-----------|---------------------------------------------------------------------------------------------------------------------------|

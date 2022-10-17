@@ -5,4 +5,8 @@ export * from './provider';
 export * from './sensors';
 export * from './tasks';
 
-export function registerPhoneSensorsPlugin(enableVibrationOnStart?: boolean): PluginLoader;
+export interface PhoneSensorsConfig {
+  enableVibrationOnStart?: boolean;
+}
+
+export function registerPhoneSensorsPlugin(config?: PhoneSensorsConfig): PluginLoader;

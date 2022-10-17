@@ -18,7 +18,9 @@ export function initializePlugin() {
         registerNotificationsPlugin('Intervention alerts'),
         registerPersistencePlugin(),
         registerTracingPlugin(),
-        registerPhoneSensorsPlugin(false),
+        registerPhoneSensorsPlugin({
+          enableVibrationOnStart: false,
+        }),
         registerWearOSPlugin({
           sensors: allSensors,
           enablePlainMessaging: true,
