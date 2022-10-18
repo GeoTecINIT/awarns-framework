@@ -104,12 +104,18 @@ In the records' storage group, there is the `recordsStore` singleton object, wit
 
 In the data exporters group, there is the `createRecordsExporter()` function, with the following parameters:
 
-| Parameter    | Type                             | Description                                                                                                                                                               |
-|--------------|----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `folder`     | `Folder`                         | System folder object. Use [NativeScript FileSystem API](https://v7.docs.nativescript.org/ns-framework-modules/file-system) to define where the exports file will be saved |
-| `format`     | <code>'csv' &vert; 'json'</code> | Select the information exchange format to use. Defaults to `csv`                                                                                                          |
-| `fileName`   | `string`                         | (Optional) Specify the file name to use for the exports file (without extension). Defaults to current date and time                                                       |
-| `recordType` | `string`                         | (Optional) Specify the type of records to export                                                                                                                          |
+| Parameter | Type                             | Description                                                                                                                                                               |
+|-----------|----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `folder`  | `Folder`                         | System folder object. Use [NativeScript FileSystem API](https://v7.docs.nativescript.org/ns-framework-modules/file-system) to define where the exports file will be saved |
+| `format`  | <code>'csv' &vert; 'json'</code> | Select the information exchange format to use. Defaults to `csv`                                                                                                          |
+| `options` | `RecordsExporterOptions`         | (Optional) Object containing export options such as the file name to use for the exports file, or the type of records to include in the exports                           |
+
+##### RecordsExporterOptions
+
+| Parameter     | Type       | Description                                                                                                         |
+|---------------|------------|---------------------------------------------------------------------------------------------------------------------|
+| `fileName`    | `string`   | (Optional) Specify the file name to use for the exports file (without extension). Defaults to current date and time |
+| `recordTypes` | `string[]` | (Optional) Specify the types of records to export                                                                   |
 
 The `createRecordsExporter()` returns an [`Exporter`](#exporter) object.
 

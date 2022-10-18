@@ -4,21 +4,21 @@ import { CSVExporter } from '../csv';
 import { Record } from '@awarns/core/entities';
 import { RecordsStore, syncedRecordsStore } from '../../stores';
 import { toTimestampWithTimezoneOffset, jsonDateReplacer } from '@awarns/core/utils/date';
-import { firstValueFrom } from 'rxjs';
 
 export class CSVRecordsExporter extends CSVExporter<Record> {
   constructor(
     folder: Folder,
     fileName?: string,
-    private recordType?: string,
+    private recordTypes?: string[],
     private recordsStore: RecordsStore = syncedRecordsStore
   ) {
     super(folder, fileName);
   }
 
-  protected getItemsToExport(): Promise<Array<Record>> {
-    if (!this.recordType) return this.recordsStore.getAll();
-    return firstValueFrom(this.recordsStore.listBy(this.recordType));
+  protected async getItemsToExport(): Promise<Array<Record>> {
+    const allRecords = await this.recordsStore.getAll();
+    if (!this.recordTypes) return allRecords;
+    return allRecords.filter((record) => this.recordTypes.includes(record.type));
   }
 
   protected formatHeaders(): Array<string> {
