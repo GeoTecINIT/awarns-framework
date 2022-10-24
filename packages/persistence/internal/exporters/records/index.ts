@@ -3,12 +3,21 @@ import { Exporter, ExportFormats } from '../index';
 import { CSVRecordsExporter } from './csv';
 import { JSONRecordsExporter } from './json';
 
-export function createRecordsExporter(folder: Folder, format: ExportFormats = 'csv', fileName?: string): Exporter {
+export interface RecordsExporterOptions {
+  fileName?: string;
+  recordTypes?: string[];
+}
+
+export function createRecordsExporter(
+  folder: Folder,
+  format: ExportFormats = 'csv',
+  options?: RecordsExporterOptions
+): Exporter {
   switch (format) {
     case 'csv':
-      return new CSVRecordsExporter(folder, fileName);
+      return new CSVRecordsExporter(folder, options.fileName, options.recordTypes);
     case 'json':
-      return new JSONRecordsExporter(folder, fileName);
+      return new JSONRecordsExporter(folder, options.fileName, options.recordTypes);
   }
 }
 

@@ -84,6 +84,7 @@ In the records' storage group, there is the `recordsStore` singleton object, wit
 | <code>listBy(recordType: string, order: 'asc' &vert; 'desc', conditions?: Array<FetchCondition>)</code> | `Observable<Array<Record>>` | Allows to observe all the records of a given type. The sorting of the records can be controlled using the order parameter. The default order is last records come first (`desc`). It is possible to filter the resulting records by one or more [FetchConditions](#fetchcondition)                                                  |
 | `listLast(recordType: string, conditions?: Array<FetchCondition>)`                                      | `Observable<Record>`        | Allows to obtain updates on the last record of a given type. It is possible to filter the resulting records by one or more [FetchConditions](#fetchcondition)                                                                                                                                                                       |
 | `listLastGroupedBy(recordType: string, groupByProperty: string, conditions?: Array<FetchCondition>)`    | `Observable<Array<Record>>` | Allows to obtain updates on the latest records of a given type, grouped by the unique values of a certain property. Property grouping allows nested property paths using the dot (`.`) character, e.g., `property.nestedProperty`. It is possible to filter the resulting records by one or more [FetchConditions](#fetchcondition) |
+| `deleteBy(recordType: string)`                                                                          | `Promise<void>`             | Allows to delete all the stored records of a given type from the local database                                                                                                                                                                                                                                                     |
 | `clear()`                                                                                               | `Promise<void>`             | Allows to clear all the stored records from the local database. **Use with care!** To only remove old records, configure the `oldRecordsMaxAgeHours` option during plugin initialization                                                                                                                                            |
 | `changes` _(property)_                                                                                  | `Observable<Array<string>>` | Listen to this observable property to know when a record has been created. It propagates updates on the ids of the records that have been recently stored                                                                                                                                                                           |
 
@@ -103,11 +104,18 @@ In the records' storage group, there is the `recordsStore` singleton object, wit
 
 In the data exporters group, there is the `createRecordsExporter()` function, with the following parameters:
 
-| Parameter  | Type                             | Description                                                                                                                                                               |
-|------------|----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `folder`   | `Folder`                         | System folder object. Use [NativeScript FileSystem API](https://v7.docs.nativescript.org/ns-framework-modules/file-system) to define where the exports file will be saved |
-| `format`   | <code>'csv' &vert; 'json'</code> | Select the information exchange format to use. Defaults to `csv`                                                                                                          |
-| `fileName` | `string`                         | (Optional) Specify the file name to use for the exports file (without extension). Defaults to current date and time                                                       |
+| Parameter | Type                             | Description                                                                                                                                                               |
+|-----------|----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `folder`  | `Folder`                         | System folder object. Use [NativeScript FileSystem API](https://v7.docs.nativescript.org/ns-framework-modules/file-system) to define where the exports file will be saved |
+| `format`  | <code>'csv' &vert; 'json'</code> | Select the information exchange format to use. Defaults to `csv`                                                                                                          |
+| `options` | `RecordsExporterOptions`         | (Optional) Object containing export options such as the file name to use for the exports file, or the type of records to include in the exports                           |
+
+##### RecordsExporterOptions
+
+| Parameter     | Type       | Description                                                                                                         |
+|---------------|------------|---------------------------------------------------------------------------------------------------------------------|
+| `fileName`    | `string`   | (Optional) Specify the file name to use for the exports file (without extension). Defaults to current date and time |
+| `recordTypes` | `string[]` | (Optional) Specify the types of records to export                                                                   |
 
 The `createRecordsExporter()` returns an [`Exporter`](#exporter) object.
 

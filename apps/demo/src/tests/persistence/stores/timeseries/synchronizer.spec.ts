@@ -9,19 +9,24 @@ import { TimeSeriesSyncedStore } from '@awarns/persistence/internal/stores/times
 describe('Time series synced store', () => {
   let localStoreMock: LocalTimeSeriesStore<TimeSeriesEntity>;
   let externalStoreMock: TimeSeriesStore<TimeSeriesEntity>;
-  let syncedStore: TimeSeriesSyncedStore<TimeSeriesEntity>;
+  let syncedStore: TimeSeriesSyncedStore<TimeSeriesEntity, LocalTimeSeriesStore<TimeSeriesEntity>>;
 
   const fakeEntity1: TimeSeriesEntity = {
+    id: '1',
     timestamp: new Date(),
   };
   const fakeEntity2: TimeSeriesEntity = {
+    id: '2',
     timestamp: new Date(),
   };
 
   beforeEach(() => {
     localStoreMock = createLocalStoreMock();
     externalStoreMock = createExternalStoreMock();
-    syncedStore = new TimeSeriesSyncedStore<TimeSeriesEntity>('TimeSeriesStore', localStoreMock);
+    syncedStore = new TimeSeriesSyncedStore<TimeSeriesEntity, LocalTimeSeriesStore<TimeSeriesEntity>>(
+      'TimeSeriesStore',
+      localStoreMock
+    );
 
     spyOn(localStoreMock, 'insert');
   });
