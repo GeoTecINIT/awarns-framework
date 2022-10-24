@@ -123,8 +123,8 @@ declare namespace es {
           export class NotificationProvider {
             public static class: java.lang.Class<es.uji.geotec.backgroundsensors.notification.NotificationProvider>;
             public constructor(param0: globalAndroid.content.Context);
-            public getNotificationForRecordingService(): globalAndroid.app.Notification;
             public getRecordingServiceNotificationId(): number;
+            public getNotificationForRecordingService(param0: boolean): globalAndroid.app.Notification;
           }
         }
       }
@@ -326,6 +326,7 @@ declare namespace es {
         export namespace service {
           export abstract class SensorRecordingService {
             public static class: java.lang.Class<es.uji.geotec.backgroundsensors.service.SensorRecordingService>;
+            public static vibrateOnStart: boolean;
             public constructor();
             public onDestroy(): void;
             public onCreate(): void;

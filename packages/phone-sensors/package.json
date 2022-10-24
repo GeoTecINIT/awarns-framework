@@ -1,6 +1,6 @@
 {
   "name": "@awarns/phone-sensors",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Reliable and concurrent access to smartphone's sensors",
   "main": "index",
   "typings": "index.d.ts",
