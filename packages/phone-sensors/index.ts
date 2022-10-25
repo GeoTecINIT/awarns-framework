@@ -12,7 +12,7 @@ export interface PhoneSensorsConfig {
 
 export function registerPhoneSensorsPlugin(config: PhoneSensorsConfig = {}): PluginLoader {
   return () => {
-    if (config.enableVibrationOnStart) {
+    if (config.enableVibrationOnStart !== undefined) {
       SensorRecordingService.vibrateOnStart = config.enableVibrationOnStart;
     }
   };
