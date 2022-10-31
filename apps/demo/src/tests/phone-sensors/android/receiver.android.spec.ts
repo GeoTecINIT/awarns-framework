@@ -3,7 +3,7 @@ import { EventData } from '@awarns/core/events';
 import { TriAxial } from '@awarns/phone-sensors/internal/tri-axial';
 import { PhoneSensor } from '@awarns/phone-sensors/internal/phone-sensor';
 
-const now = new Date().getTime();
+const now = Date.now();
 
 describe('TriAxial receiver', () => {
   let eventEmitter: (eventName: string, eventData?: EventData) => void;
@@ -23,9 +23,9 @@ describe('TriAxial receiver', () => {
     const expectedRecord = new TriAxial(
       PhoneSensor.ACCELEROMETER,
       [
-        { x: 0, y: 0, z: 0, detectedAt: new Date(now) },
-        { x: 1, y: 1, z: 1, detectedAt: new Date(now + 1000) },
-        { x: 2, y: 2, z: 2, detectedAt: new Date(now + 2000) },
+        { x: 0, y: 0, z: 0, timestamp: now },
+        { x: 1, y: 1, z: 1, timestamp: now + 1000 },
+        { x: 2, y: 2, z: 2, timestamp: now + 2000 },
       ],
       new Date(now)
     );

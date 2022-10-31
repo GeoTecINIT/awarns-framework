@@ -11,5 +11,5 @@ export interface TriAxialSample {
   x: number;
   y: number;
   z: number;
-  detectedAt: Date;
+  timestamp: number;
 }

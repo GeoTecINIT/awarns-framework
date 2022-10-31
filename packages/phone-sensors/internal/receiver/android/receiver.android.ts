@@ -23,7 +23,7 @@ export class AndroidTriAxialReceiver {
         x: sample.getX(),
         y: sample.getY(),
         z: sample.getZ(),
-        detectedAt: new Date(sample.getTimestamp()),
+        timestamp: sample.getTimestamp(),
       });
     }
 
