@@ -223,12 +223,12 @@ Task output events:
 
 ##### `TriAxialSample`
 
-| Property     | Type     | Description                                   |
-|--------------|----------|-----------------------------------------------|
-| `x`          | `number` | Value `x` of the sensor.                      |
-| `y`          | `number` | Value `y` of the sensor.                      |
-| `z`          | `number` | Value `z` of the sensor.                      |
-| `detectedAt` | `Date`   | The local time when the sample was collected. |
+| Property    | Type     | Description                                                    |
+|-------------|----------|----------------------------------------------------------------|
+| `x`         | `number` | Value `x` of the sensor.                                       |
+| `y`         | `number` | Value `y` of the sensor.                                       |
+| `z`         | `number` | Value `z` of the sensor.                                       |
+| `timestamp` | `number` | The local time (UNIX timestamp) when the sample was collected. |
 
 
 ## License
