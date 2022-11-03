@@ -207,9 +207,13 @@ awarns
     console.error('Could not load AwarNS framework:', err);
   });
 
-// TypeScript App:
+/* 
+ * Choose one depending on your application type: 
+ */
+ 
+// TypeScript App
 Application.run({ moduleName: 'app-root' });
-// Angular App:
+// Angular App
 runNativeScriptAngularApp({
   appModuleBootstrap: () => platformNativeScript().bootstrapModule(AppModule),
 });
@@ -264,7 +268,7 @@ import { awarns } from '@awarns/core';
   // - System services are enabled
   const isReady = await awarns.isReady();
   if (!isReady) {
-    const tasksNotReady = await awarns.tasksNotReady;
+    const tasksNotReady = await awarns.tasksNotReady$;
     // This allows to query which task(s), from the ones in use, are not ready
     // You can use this information to, for example, conditionally show different UI elements here, showing a rationale to your users about why certain permission or functionality must be activated
     console.log(`The following tasks are not ready!: ${tasksNotReady}`);
