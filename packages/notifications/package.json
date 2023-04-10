@@ -1,6 +1,6 @@
 {
   "name": "@awarns/notifications",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "AwarNS Framework package that allows to deliver notifications on demand",
   "main": "index",
   "typings": "index.d.ts",
