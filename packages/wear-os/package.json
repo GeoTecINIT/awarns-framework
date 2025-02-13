@@ -1,6 +1,6 @@
 {
   "name": "@awarns/wear-os",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Reliable and concurrent access to a paired smartwatch's sensors and enables communication between both devices",
   "main": "index",
   "typings": "index.d.ts",
@@ -40,6 +40,6 @@
   "bootstrapper": "@nativescript/plugin-seed",
   "dependencies": {
     "@awarns/core": "^1.0.0",
-    "nativescript-wearos-sensors": "^1.2.0"
+    "nativescript-wearos-sensors": "^1.4.0"
   }
 }
